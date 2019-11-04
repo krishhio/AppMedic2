@@ -5,7 +5,7 @@ export interface IMenuItem {
   active?: boolean,
   disabled?: boolean,
   groupTitle?: boolean,
-  routing?: string,
+  routing: string,
   externalLink?: string,
   layout?: string;
   sub?: IMenuItemSub[],
@@ -23,9 +23,9 @@ export interface IMenuItemSub {
   color?: string,
   active?: boolean,
   disabled?: boolean,
-  routing?: string,
+  routing: string,
   externalLink?: string,
-  layout?: string;
+  layout: string;
   sub?: IMenuItemSub[]
 }
 export interface IMenuItemBadge {
