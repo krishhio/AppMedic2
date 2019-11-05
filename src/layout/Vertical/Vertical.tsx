@@ -1,8 +1,16 @@
 import React from 'react';
-import {BaseLayoutProps} from "../Base/BaseLayout";
 
-const VerticalLayout: React.FC<BaseLayoutProps> = ({ children, pageData, settings }) => {
-  return <></>;
+import Navbar from '../components/Navbar/Navbar';
+import BaseLayout from '../Base/BaseLayout';
+
+type Props = {
+  children: any;
+};
+
+const VerticalLayout = ({ children }: Props) => {
+  const nav = <Navbar>Nav</Navbar>;
+  const sideNav = <Navbar orientation='vertical'></Navbar>;
+  return <BaseLayout nav={nav}>{children}</BaseLayout>;
 };
 
 export default VerticalLayout;

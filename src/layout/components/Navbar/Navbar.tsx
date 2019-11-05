@@ -1,23 +1,26 @@
-import React, { CSSProperties, useLayoutEffect } from 'react';
+import React, { CSSProperties, ReactNode, useLayoutEffect } from 'react';
 
 import classNames from '../../../utils/classNames';
 
-export interface SidebarProps {
+import './Navbar.scss';
+
+export type NavProps = {
   orientation?: 'vertical' | 'horizontal' | 'horizontal-vertical';
-  height: string | number;
+  height?: string | number;
   opened?: boolean;
   boxed?: boolean;
   className?: string;
-}
+  children?: ReactNode;
+};
 
-const Navbar: React.FC<SidebarProps> = ({
+const Navbar = ({
   height = 60,
   orientation = 'vertical',
   children,
   className = '',
   opened = false,
   boxed = false
-}) => {
+}: NavProps) => {
   const navClasses = classNames({
     boxed,
     opened,
@@ -32,7 +35,7 @@ const Navbar: React.FC<SidebarProps> = ({
 
   return (
     <div className={`navbar ${navClasses}`} style={navStyle}>
-      <div className='navbar-wrap'>{children}</div>;
+      <div className='navbar-wrap'>{children}</div>
     </div>
   );
 };
