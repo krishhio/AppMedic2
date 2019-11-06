@@ -12,30 +12,28 @@ import './Menu.scss';
 
 interface MenuProps {
   orientation?: 'vertical' | 'horizontal';
-  layout: string;
   data: IMenuItem[];
 }
 
-const Menu: React.FunctionComponent<MenuProps> = ({
-  layout,
-  data,
-  orientation
-}) => {
+const Menu: React.FunctionComponent<MenuProps> = ({ data, orientation }) => {
   const menuClasses = className({
-    menu: true,
+    'main-menu': true,
     horizontal: orientation === 'horizontal'
   });
 
   const menuItems = data.map((item: IMenuItem, i: number) => {
+    console.log(item);
     if (item.groupTitle) {
       return <MenuGroupTitle key={i} title={item.title} />;
     }
 
     if (item.sub) {
-      return <ItemWithSub key={i} layout={layout} sub={item.sub} {...item} />;
+      return (
+        <ItemWithSub key={i} layout={orientation} sub={item.sub} {...item} />
+      );
     }
 
-    return <SimpleItem key={i} layout={layout} {...item} />;
+    return <SimpleItem key={i} layout={orientation} title={item.title} routing={item.routing} />;
   });
 
   return (

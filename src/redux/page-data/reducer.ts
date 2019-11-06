@@ -1,13 +1,22 @@
-import { PageActionsTypes, RESET_PAGE_DATA, UPDATE_PAGE_DATA, SET_PAGE_DATA } from './types';
+import {
+  PageActionsTypes,
+  RESET_PAGE_DATA,
+  UPDATE_PAGE_DATA,
+  SET_PAGE_DATA
+} from './types';
 import { IPageData } from '../../interfaces/page-data';
 
 const initialState: IPageData = {
   title: '',
   loaded: true,
-  fullFilled: false
+  fullFilled: false,
+  breadcrumbs: [{ route: 'dashboard', title: 'Home' }, { title: 'Dashboard' }]
 };
 
-export const pageDataReducer = (state: IPageData = initialState, action: PageActionsTypes) => {
+export const pageDataReducer = (
+  state: IPageData = initialState,
+  action: PageActionsTypes
+) => {
   switch (action.type) {
     case SET_PAGE_DATA:
       return { ...action.payload };

@@ -4,6 +4,8 @@ import Breadcrumbs from './Breadcrumbs';
 import classNames from '../../../utils/classNames';
 import { IBreadcrumb } from '../../../interfaces/page-data';
 
+import './Footer.scss';
+
 type Props = {
   loaded: boolean;
   boxed: boolean;
@@ -32,7 +34,7 @@ const Footer = ({ boxed, loaded, layout, breadcrumbs }: Props) => {
               <span>Version 1.3.0</span>
               <button className='no-style ml-2'>
                 <i
-                  className='icofont-ui-settings'
+                  className='icofont icofont-ui-settings'
                   style={{ fontSize: 26, color: '#336cfb' }}
                 />
               </button>
@@ -61,3 +63,5 @@ const Footer = ({ boxed, loaded, layout, breadcrumbs }: Props) => {
     </div>
   );
 };
+
+export default Footer;

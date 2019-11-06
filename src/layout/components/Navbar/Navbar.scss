@@ -5,11 +5,16 @@ $_color: $main-color;
 $_color: var(--main-color);
 
 .navbar {
+  $_bg: #fff;
+  $_color: $main-color;
+  $_color: var(--main-color);
+
   background: $_bg;
   color: $_color;
   display: block;
   transition: box-shadow 0.2s $animation;
   will-change: box-shadow;
+  width: 100%;
 
   .navbar-wrap {
     align-items: center;
@@ -120,6 +125,7 @@ $_color: var(--main-color);
     }
   }
   &.vertical {
+    background: #FBFBFB;
     display: flex;
     justify-content: flex-end;
     height: 100%;

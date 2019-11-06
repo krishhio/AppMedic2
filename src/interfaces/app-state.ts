@@ -4,6 +4,6 @@ import { IPatient } from './patient';
 
 export interface IAppState {
   pageData: IPageData;
-  appSettings: IAppSettings,
+  settings: IAppSettings,
   patients: IPatient[]
 }

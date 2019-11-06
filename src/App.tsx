@@ -6,11 +6,9 @@ import './App.scss';
 
 const App: React.FC = () => {
   return (
-    <div className='App'>
-      <VerticalLayout>
-        <div>Some layout content</div>
-      </VerticalLayout>
-    </div>
+    <VerticalLayout>
+      <div>Some layout content</div>
+    </VerticalLayout>
   );
 };
 

@@ -5,8 +5,8 @@ import classNames from '../../../utils/classNames';
 import './Navbar.scss';
 
 export type NavProps = {
-  orientation?: 'vertical' | 'horizontal' | 'horizontal-vertical';
-  height?: string | number;
+  orientation: 'vertical' | 'horizontal' | 'horizontal-vertical';
+  minHeight?: string | number;
   opened?: boolean;
   boxed?: boolean;
   className?: string;
@@ -14,8 +14,8 @@ export type NavProps = {
 };
 
 const Navbar = ({
-  height = 60,
-  orientation = 'vertical',
+  minHeight = 60,
+  orientation,
   children,
   className = '',
   opened = false,
@@ -29,9 +29,7 @@ const Navbar = ({
     horizontal: orientation !== 'vertical'
   });
 
-  const navStyle: CSSProperties = {
-    height: typeof height === 'string' ? height : `${height}px`
-  };
+  const navStyle: CSSProperties | undefined = minHeight ? { minHeight } : null;
 
   return (
     <div className={`navbar ${navClasses}`} style={navStyle}>

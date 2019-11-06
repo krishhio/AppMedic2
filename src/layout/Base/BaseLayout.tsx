@@ -1,37 +1,56 @@
 import React, { ReactElement } from 'react';
 
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { IPageData } from '../../interfaces/page-data';
 import { IAppSettings } from '../../interfaces/settings';
 
-import * as pageActions from '../../redux/page-data/actions';
+import {
+  updatePageDada,
+  setPageData,
+  resetPageData
+} from '../../redux/page-data/actions';
+
 import * as settingsActions from '../../redux/settings/actions';
 import * as patientActions from '../../redux/patients/actions';
 
 import className from '../../utils/classNames';
 
 import { IAppState } from '../../interfaces/app-state';
+import { IPatient } from '../../interfaces/patient';
 
-type Props = {
-  pageData?: IPageData;
-  settings?: IAppSettings;
-  onPageReset?: () => void;
-  onSidebarToggle?: () => void;
+import './BaseLayout.scss';
+import Footer from '../components/Footer/Footer';
+
+type StateProps = {
+  pageData: IPageData;
+  patients: IPatient[];
+  settings: IAppSettings;
+};
+
+type DispatchProps = {
+  onPageReset: () => void;
+  onSidebarToggle: () => void;
+  onPageSet: (data: IPageData) => void;
+  onUpdatePage: (data: IPageData) => void;
+};
+
+type OwnProps = {
   nav: ReactElement<any>;
   sideNav?: ReactElement<any>;
   topNav?: ReactElement<any>;
-  children?: any;
+  children: ReactElement;
 };
+
+type Props = DispatchProps & StateProps & OwnProps;
 
 const BaseLayout = ({
   nav,
   topNav,
-  settings,
-  onPageReset,
-  onSidebarToggle,
-  pageData,
   sideNav,
+  settings,
+  pageData,
   children
 }: Props) => {
   const mainContentClasses = className({
@@ -44,24 +63,21 @@ const BaseLayout = ({
     'ful-filled': pageData.fullFilled
   });
 
-  const navbar = nav
-    ? React.cloneElement(nav, { boxed: settings.boxed })
-    : null;
+  const navbar = nav && React.cloneElement(nav, { boxed: settings.boxed });
 
-  const sidebar = sideNav
-    ? React.cloneElement(sideNav, { opened: settings.sidebarOpened })
-    : null;
+  const sidebar =
+    sideNav && React.cloneElement(sideNav, { opened: settings.sidebarOpened });
 
-  const additionalNav = topNav
-    ? React.cloneElement(topNav, {
-        ...settings,
-        opened: settings.sidebarOpened
-      })
-    : null;
+  const additionalNav =
+    topNav &&
+    React.cloneElement(topNav, {
+      ...settings,
+      opened: settings.sidebarOpened
+    });
 
   return (
     <div className='layout vertical'>
-      <div className={`app-container ${settings.boxed && 'boxed'}`}>
+      <div className={`app-container`}>
         {navbar}
 
         {additionalNav}
@@ -87,25 +103,34 @@ const BaseLayout = ({
           </div>
         </main>
 
-        {/* Footer*/}
+        <Footer
+          breadcrumbs={pageData.breadcrumbs}
+          layout={settings.layout}
+          boxed={settings.boxed}
+          loaded={pageData.loaded}
+          openModal={() => console.log()}
+        />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state: IAppState, ownProps): Props => ({
-  settings: state.appSettings,
-  pageData: state.pageData,
-  patients: state.patients,
-  ...ownProps
+const mapStateToProps = ({ patients, pageData, settings }) => ({
+  settings,
+  pageData,
+  patients
 });
 
-const mapDispatchToProps = dispatch => ({
-   
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  onPageSet: (data: IPageData) => dispatch(setPageData(data)),
+  onUpdatePage: (data: IPageData) => dispatch(updatePageDada(data)),
+  onSidebarToggle: () => dispatch(settingsActions.toggleSidebar()),
+  onPageReset: () => dispatch(resetPageData())
 });
 
-export default connect(
+const ConnectedLayout: (props: OwnProps) => ReactElement = connect(
   mapStateToProps,
-  null,
-  BaseLayout
-);
+  mapDispatchToProps
+)(BaseLayout);
+
+export default ConnectedLayout;

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export interface SimpleItemProps {
   title: string;
   routing: string;
-  key: any;
+  key?: any;
   layout: string;
 }
 
