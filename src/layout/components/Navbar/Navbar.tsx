@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode, useLayoutEffect } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 
 import classNames from '../../../utils/classNames';
 

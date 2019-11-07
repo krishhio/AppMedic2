@@ -1,22 +1,29 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { IMenuItemIcon } from '../../../interfaces/main-menu';
 
-export interface SimpleItemProps {
+type Props = {
   title: string;
   routing: string;
-  key?: any;
   layout: string;
-}
+  icon: IMenuItemIcon;
+};
 
-const SimpleItem: React.FC<SimpleItemProps> = ({
-  routing,
-  title,
-  layout,
-  key
-}) => (
-  <li className={`menu-item`} key={key}>
-    <NavLink to={`/${layout}/${routing}`} activeClassName='active' replace>
-      {title}
+const SimpleItem = ({ routing, title, layout, icon }: Props) => (
+  <li className='menu-item'>
+    <NavLink
+      className='item-link'
+      to={`/${layout}/${routing}`}
+      activeClassName='active'
+      replace
+    >
+      {icon && (
+        <span
+          className={`link-icon ${icon.class}`}
+          style={{ backgroundColor: icon.bg, color: icon.color }}
+        />
+      )}
+      <span className='link-text'>{title}</span>
     </NavLink>
   </li>
 );

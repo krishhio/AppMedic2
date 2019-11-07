@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { IMenuItem } from '../../../interfaces/main-menu';
+import { withRouter } from 'react-router-dom';
+import { IMenuItem, IMenuItemSub } from '../../../interfaces/main-menu';
 
-import className from '../../../utils/classNames';
+import classNames from '../../../utils/classNames';
 
 import MenuGroupTitle from './GroupTitle';
 import ItemWithSub from './ItemWithSub';
@@ -10,39 +11,105 @@ import SimpleItem from './SimpleItem';
 
 import './Menu.scss';
 
-interface MenuProps {
+type MenuProps = {
   orientation?: 'vertical' | 'horizontal';
-  data: IMenuItem[];
-}
+  data?: IMenuItem[];
+  children?: any;
+  className?: string;
+};
 
-const Menu: React.FunctionComponent<MenuProps> = ({ data, orientation }) => {
-  const menuClasses = className({
+type RouterProps = {
+  location: Location;
+};
+
+type Props = RouterProps & MenuProps | any;
+
+const haveActive = (sub: IMenuItemSub[], route: string) =>
+  !!sub.find(item => item.routing === route);
+
+const Menu = ({ data, orientation, location, children, className }: Props) => {
+  const [menu, setMenu] = useState<IMenuItem[]>([]);
+
+  useEffect(() => {
+    setMenu(data);
+  }, [data]);
+
+  useEffect(() => {
+    const currentRoute = location.pathname.split('/')[2];
+
+    const updatedMenu = data
+      ? data.map(item => {
+          if (item.sub) {
+            return { ...item, active: haveActive(item.sub, currentRoute) };
+          }
+
+          return { ...item, active: item.routing === currentRoute };
+        })
+      : [];
+
+    setMenu(updatedMenu);
+  }, [location, data]);
+
+  const handleItemClick = (itemTitle: string) => {
+    const updateMenu = [...menu];
+
+    for (let item of updateMenu) {
+      if (item.title !== itemTitle) {
+        continue;
+      }
+
+      item.active = !item.active;
+      break;
+    }
+
+    setMenu(updateMenu);
+  };
+
+  const menuClasses = classNames({
     'main-menu': true,
     horizontal: orientation === 'horizontal'
   });
 
-  const menuItems = data.map((item: IMenuItem, i: number) => {
-    console.log(item);
+  const menuItems = menu.map((item: IMenuItem, i: number) => {
     if (item.groupTitle) {
       return <MenuGroupTitle key={i} title={item.title} />;
     }
 
     if (item.sub) {
       return (
-        <ItemWithSub key={i} layout={orientation} sub={item.sub} {...item} />
+        <ItemWithSub
+          key={i}
+          layout={orientation}
+          sub={item.sub}
+          title={item.title}
+          location={location}
+          opened={item.active}
+          onClick={handleItemClick}
+        />
       );
     }
 
-    return <SimpleItem key={i} layout={orientation} title={item.title} routing={item.routing} />;
+    return (
+      <SimpleItem
+        key={i}
+        icon={item.icon}
+        layout={orientation}
+        title={item.title}
+        routing={item.routing}
+      />
+    );
   });
-
+  console.log(className);
   return (
-    <div className={menuClasses}>
-      <nav className='main-menu-wrap'>
-        <ul className='menu-ul'>{menuItems}</ul>
-      </nav>
+    <div className={`${menuClasses} ${!!className && className}`}>
+      {children}
+      {!!menuItems.length && (
+        <nav className='main-menu-wrap'>
+          <ul className='menu-ul'>{menuItems}</ul>
+        </nav>
+      )}
     </div>
   );
 };
 
-export default Menu;
+export default withRouter(Menu);

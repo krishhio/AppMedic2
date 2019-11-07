@@ -1,13 +1,12 @@
 import React from 'react';
 
 interface MenuGroupTitleProps {
-  key: any;
   title: string;
 }
 
-const MenuGroupTitle: React.FC<MenuGroupTitleProps> = ({ key, title }) => (
-  <li className='menu-item group' key={key}>
-    <span>{title}</span>
+const MenuGroupTitle: React.FC<MenuGroupTitleProps> = ({ title }) => (
+  <li className='menu-item group'>
+    <span className='group-title'>{title}</span>
   </li>
 );
 

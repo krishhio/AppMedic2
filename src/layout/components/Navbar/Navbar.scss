@@ -30,6 +30,42 @@ $_color: var(--main-color);
     > * {
       margin: 0 $module-rem;
     }
+    .navbar-close {
+      color: inherit;
+      cursor: pointer;
+      font-size: 30px;
+      position: absolute;
+      right: $module-rem;
+      top: $module-rem * 1.5;
+      width: auto !important;
+      z-index: 1;
+    }
+    .add-patient {
+      height: 100%;
+      padding: ($module-rem * 2) ($module-rem * 4);
+    }
+    .assistant-menu {
+      display: block;
+      padding: 0 ($module-rem * 4) ($module-rem * 2);
+
+      .link {
+        color: inherit;
+        display: block;
+        font-weight: 700;
+        opacity: 0.3;
+        padding: ($module-rem / 2) 0;
+        transition: opacity 0.2s $animation;
+
+        .link-icon {
+          margin-right: $module-rem;
+          padding: 0;
+          font-size: 1.3em;
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
     .navbar-toggle {
       align-items: center;
       color: inherit;
@@ -46,42 +82,6 @@ $_color: var(--main-color);
         height: 3px;
         margin: 4px 0;
         width: 35px;
-      }
-
-      .navbar-close {
-        color: inherit;
-        cursor: pointer;
-        font-size: 30px;
-        position: absolute;
-        right: $module-rem;
-        top: $module-rem * 1.5;
-        width: auto !important;
-        z-index: 1;
-      }
-      .add-patient {
-        height: 100%;
-        padding: ($module-rem * 2) ($module-rem * 4);
-      }
-      .assistant-menu {
-        display: block;
-        padding: 0 ($module-rem * 4) ($module-rem * 2);
-
-        .link {
-          color: inherit;
-          display: block;
-          font-weight: 700;
-          opacity: 0.3;
-          padding: ($module-rem / 2) 0;
-          transition: opacity 0.2s $animation;
-
-          .tc-icon {
-            margin-right: $module-rem;
-            padding: 0;
-          }
-          &:hover {
-            opacity: 1;
-          }
-        }
       }
     }
   }
@@ -125,7 +125,7 @@ $_color: var(--main-color);
     }
   }
   &.vertical {
-    background: #FBFBFB;
+    background: #fbfbfb;
     display: flex;
     justify-content: flex-end;
     height: 100%;

@@ -28,4 +28,22 @@
       }
     }
   }
+
+  .assistant-menu {
+    margin-top: auto;
+    .menu-item .item-link {
+      color: #000;
+      opacity: .3;
+      transition: opacity .2s ease-in-out;
+
+      .link-icon {
+        opacity: 1;
+      }
+
+      &:hover {
+        color: #000;
+        opacity: 1;
+      }
+    }
+  }
 }

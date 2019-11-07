@@ -1,0 +1,216 @@
+@import '../variables';
+
+$_types: (
+  default: (
+    bg: main-palette(500),
+    color: main-contrast(500),
+    hover-bg: main-palette(700),
+    hover-color: main-contrast(500)
+  ),
+  primary: (
+    bg: accent-palette(500),
+    color: accent-contrast(500),
+    hover-bg: accent-palette(700),
+    hover-color: accent-contrast(700)
+  ),
+  success: (
+    bg: $success-color,
+    color: $success-contrast,
+    hover-bg: darken($success-color, 10%),
+    hover-color: darken($success-contrast, 10%)
+  ),
+  info: (
+    bg: $info-color,
+    color: $info-contrast,
+    hover-bg: darken($info-color, 10%),
+    hover-color: darken($info-contrast, 10%)
+  ),
+  warning: (
+    bg: $warning-color,
+    color: $warning-contrast,
+    hover-bg: darken($warning-color, 10%),
+    hover-color: darken($warning-contrast, 10%)
+  ),
+  danger: (
+    bg: $error-color,
+    color: $error-contrast,
+    hover-bg: darken($error-color, 10%),
+    hover-color: darken($error-contrast, 10%)
+  )
+);
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+$_module-rem: $module-rem;
+$_border-width: 1px;
+$_border-style: solid;
+$_fs: 1rem;
+$_ff: $main-ff;
+$_fw: 700;
+$_lh: $_module-rem * 2 / $_fs;
+$_tt: none;
+$_padding: $_module-rem ($_module-rem * 1.5);
+$_shape: $shape;
+$_transition: $animation;
+$_shadow: $shadow;
+$_shadow-hover: $shadow-hover;
+
+$_lg-padding: ($_module-rem * 1.5) ($_module-rem * 2.5);
+$_lg-fs: ($_fs * 1.2);
+$_lg-lh: $_module-rem * 2 / $_lg-fs;
+
+$_sm-padding: ($_module-rem) ($_module-rem / 2);
+$_sm-fs: ($_fs * 0.8);
+$_sm-lh: $_module-rem / $_sm-fs;
+
+.ant-btn {
+  background: main-palette(500);
+  border-radius: $_shape;
+  box-shadow: $_shadow;
+  background-clip: padding-box;
+  color: main-contrast(500);
+  cursor: pointer;
+  font-family: $_ff;
+  font-size: $_fs;
+  font-weight: $_fw;
+  line-height: $main-lh;
+  height: 40px;
+  padding: $_padding;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background 0.2s $_transition, border 0.2s $_transition,
+    box-shadow 0.2s $_transition, color 0.2s $_transition,
+    opacity 0.2s $_transition;
+  user-select: none;
+  white-space: nowrap;
+  will-change: background, border, box-shadow, color, opacity;
+  -webkit-appearance: none;
+
+  @each $_type, $_color in $_types {
+    &.ant-btn-#{$_type} {
+      background: map-get($_color, bg);
+      color: map-get($_color, color);
+
+      &:hover {
+        background: map-get($_color, hover-bg);
+        color: map-get($_color, hover-color);
+      }
+      &.btn-outline {
+        border-color: map-get($_color, bg);
+        color: map-get($_color, bg);
+
+        &:hover,
+        .active & {
+          background: map-get($_color, bg);
+          color: map-get($_color, color);
+        }
+      }
+    }
+  }
+
+  &:hover {
+    background: main-palette(700);
+    color: main-contrast(500);
+  }
+
+  span {
+    margin: 0 ($module-rem / 2);
+    min-height: #{$_fs * $_lh};
+    letter-spacing: 0.2px;
+
+    &:empty {
+      margin: 0;
+    }
+  }
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.8;
+    color: #dfdfdf;
+  }
+  &:hover {
+    border-color: transparent;
+    box-shadow: $_shadow-hover;
+  }
+  &.ant-btn-danger {
+    border: none;
+  }
+  &.ant-btn-link {
+    background: none;
+
+    &:hover {
+      background: none;
+    }
+    &:focus {
+      background: none;
+    }
+  }
+  &.ant-btn-lg {
+    height: 50px;
+    font-size: $_lg-fs;
+    padding: $_lg-padding;
+    line-height: $_lg-lh;
+
+    span {
+      min-height: #{$_lg-fs * $_lg-lh};
+    }
+  }
+  &.ant-btn-sm {
+    font-size: $_sm-fs;
+    padding: $_sm-padding;
+    line-height: $_sm-lh;
+    height: 30px;
+    span {
+      min-height: #{$_sm-fs * $_sm-lh};
+    }
+  }
+  &.ant-btn-dashed {
+    border: 1px dashed inherit;
+  }
+  &.theme-button {
+    background: linear-gradient(250deg, #cd5447, #b3589c 65%, #9d5ce5);
+    border: none;
+    box-shadow: 5px 5px 20px 0 rgba(189, 16, 224, 0.4);
+    color: accent-palette(500);
+
+    &:hover {
+      background: linear-gradient(250deg, #cd5447, #b3589c 65%, #9d5ce5);
+      border: none;
+      box-shadow: 0 0 0 0 rgba(189, 16, 224, 0.4);
+      color: accent-palette(500);
+    }
+  }
+  &.ant-btn-circle {
+    height: 32px;
+    width: 32px;
+    padding: 0 !important;
+  }
+  &.ant-btn-background-ghost {
+    border: 1px solid currentColor;
+
+    &:hover {
+      &:not(.ant-btn-danger) {
+        color: lighten(#2fa7ff, 10);
+      }
+    }
+  }
+}
+
+.ant-btn-group {
+  > .ant-btn:first-child:not(:last-child) {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  > .ant-btn:last-child:not(:first-child) {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+}

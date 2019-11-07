@@ -17,7 +17,6 @@ import * as patientActions from '../../redux/patients/actions';
 
 import className from '../../utils/classNames';
 
-import { IAppState } from '../../interfaces/app-state';
 import { IPatient } from '../../interfaces/patient';
 
 import './BaseLayout.scss';
@@ -77,7 +76,7 @@ const BaseLayout = ({
 
   return (
     <div className='layout vertical'>
-      <div className={`app-container`}>
+      <div className={`app-container ${settings.boxed && 'boxed'}`}>
         {navbar}
 
         {additionalNav}
