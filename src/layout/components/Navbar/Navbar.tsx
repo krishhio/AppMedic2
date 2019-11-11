@@ -29,7 +29,7 @@ const Navbar = ({
     horizontal: orientation !== 'vertical'
   });
 
-  const navStyle: CSSProperties | undefined = minHeight ? { minHeight } : null;
+  const navStyle: CSSProperties | null = minHeight ? { minHeight } : null;
 
   return (
     <div className={`navbar ${navClasses}`} style={navStyle}>

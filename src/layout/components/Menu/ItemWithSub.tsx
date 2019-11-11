@@ -22,7 +22,7 @@ type Props = {
 
 const Sub = posed.div({
   closed: { height: 0, overflow: 'hidden' },
-  open: { height: 'auto' },
+  open: { height: 'auto', overflow: 'auto' },
   transition: { ease: 'ease-in-out', duration: 200 }
 });
 

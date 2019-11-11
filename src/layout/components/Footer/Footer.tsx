@@ -31,7 +31,7 @@ const Footer = ({ boxed, loaded, layout, breadcrumbs }: Props) => {
 
           <div className='col-12 col-md-6 text-right'>
             <div className='d-flex align-items-center justify-content-center justify-content-md-end'>
-              <span>Version 1.3.0</span>
+              <span>Version 1.0.0</span>
               <button className='no-style ml-2'>
                 <i
                   className='icofont icofont-ui-settings'

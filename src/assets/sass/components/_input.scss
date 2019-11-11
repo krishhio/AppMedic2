@@ -1,0 +1,117 @@
+@import '../variables';
+
+$_bg: (
+  default: #ebebeb,
+  hover: #ebebeb,
+  focus: #fff,
+  disabled: rgba(#ccc, 0.1)
+);
+$_border: (
+  default: #ebebeb,
+  hover: #ebebeb,
+  focus: accent-palette(500),
+  disabled: rgba(#ccc, 0.5)
+);
+$_color: (
+  default: main-palette(500),
+  hover: main-palette(500),
+  focus: main-palette(500),
+  disabled: #bdbdbd
+);
+
+$_module-rem: $module-rem;
+$_placeholder-color: #a8a8a8;
+$_border-style: solid;
+$_border-width: 1px;
+$_fs: 1rem;
+$_lh: $_module-rem * 2 / $_fs;
+$_padding-h: $_module-rem * 2;
+$_padding-v: $_module-rem;
+$_shape: 20px;
+$_animation: $animation;
+$_shadow-hover: $shadow-hover;
+
+// size sm
+$_fs-sm: ($_fs * 0.9);
+$_lh-sm: $_module-rem * 2 / $_fs-sm;
+$_shape-sm: ($_shape * 0.8);
+$_padding-v-sm: ($_module-rem / 2);
+
+// size lg
+$_fs-lg: ($_fs * 1.3);
+$_lh-lg: $_module-rem * 2 / $_fs-lg;
+$_shape-lg: ($_shape * 1.5);
+$_padding-v-lg: $_module-rem * 1.5;
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+@mixin input {
+  box-shadow: none;
+  border-color: map_get($_border, default);
+  background-color: map_get($_bg, default);
+  border-radius: $_shape;
+  color: map_get($_color, default);
+  line-height: $_lh;
+  height: (4 * $module);
+  padding: 0 $_padding-h;
+  padding: 0 calc(#{$_padding-h} - 0.2em);
+  transition: background 0.2s $_animation, border 0.2s $_animation,
+    box-shadow 0.2s $_animation, color 0.2s $_animation;
+  will-change: background, border, box-shadow, color;
+  width: 100%;
+
+  @include placeholder {
+    color: #000;
+    opacity: 1;
+  }
+
+  &:hover {
+    cursor: text;
+    border-color: map_get($_border, hover);
+    box-shadow: $_shadow-hover;
+  }
+  &:focus {
+    background-color: map_get($_bg, focus) !important;
+    border-color: map_get($_border, focus) !important;
+    box-shadow: none;
+    color: map_get($_color, focus);
+  }
+
+  &.ant-input-sm {
+    border-radius: $_shape * 0.8;
+    font-size: $_fs-sm;
+    height: (3 * $module);
+    line-height: $_lh-sm;
+    padding-top: $_padding-v-sm;
+    padding-bottom: $_padding-v-sm;
+  }
+  &.ant-input-lg {
+    border-radius: $_shape * 1.5;
+    font-size: $_fs-lg;
+    height: (5 * $module);
+    line-height: $_lh-lg;
+    padding-top: $_padding-v-lg;
+    padding-bottom: $_padding-v-lg;
+  }
+}
+
+.ant-cascader-picker-clear {
+  border-radius: 50%;
+}
+
+.ant-form-item-label {
+  font-weight: 600;
+}
+
+.ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+  border-color: map-get($_border, default);
+}
+
+.ant-input-affix-wrapper .ant-input:not(:last-child) {
+  padding-right: $module-rem * 4 !important;
+}

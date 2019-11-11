@@ -78,6 +78,9 @@ $_sub-separator: main-palette(300);
           text-decoration: none;
           transition: background 0.2s $_animation, color 0.2s $_animation;
 
+          &.active {
+            color: accent-palette(500);
+          }
           .link-text {
             flex-grow: 2;
             flex-shrink: 1;

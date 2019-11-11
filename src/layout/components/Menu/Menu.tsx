@@ -99,7 +99,7 @@ const Menu = ({ data, orientation, location, children, className }: Props) => {
       />
     );
   });
-  console.log(className);
+
   return (
     <div className={`${menuClasses} ${!!className && className}`}>
       {children}
