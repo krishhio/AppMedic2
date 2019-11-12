@@ -1,0 +1,39 @@
+@import '../../assets/sass/variables';
+
+.layout.horizontal {
+  .app-container {
+    .navbar.horizontal {
+      &-vertical {
+        background-color: #fbfbfb;
+      }
+      .navbar-wrap {
+        .logo {
+          padding: 0;
+          @media #{$min992} {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+    &.scrolled {
+      .navbar {
+        &.horizontal-vertical {
+          @media #{$min992} {
+            box-shadow: 0 2px 5px rgba(#000, 0.05);
+            z-index: 9997;
+          }
+        }
+        &.horizontal {
+          @media #{$max991} {
+            box-shadow: 0 2px 5px rgba(#000, 0.05);
+            z-index: 9997;
+          }
+        }
+      }
+    }
+  }
+}
+> div.logo {
+  padding: 0;
+}

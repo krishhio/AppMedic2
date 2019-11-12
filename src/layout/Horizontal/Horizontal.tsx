@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import { Button } from 'antd';
-import { NavLink } from 'react-router-dom';
 
 import { DataSourceItemType } from 'antd/es/auto-complete';
 
@@ -14,7 +12,7 @@ import LogoSvg from './../../assets/img/logo.svg';
 import Menu from '../components/Menu/Menu';
 import Search from '../components/Search/Search';
 
-import './Vertical.scss';
+import './Horizontal.scss';
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import Actions from '../components/Actions/Actions';
 
@@ -22,12 +20,12 @@ type Props = {
   children: any;
 };
 
-const VerticalLayout = ({ children }: Props) => {
+const HorizontalLayout = ({ children }: Props) => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
     async function fetchMenuData() {
-      const result = await axios('./data/menu.json');
+      const result = await axios('./data/menu-horizontal.json');
       setMenuData(result.data);
     }
 
@@ -75,61 +73,27 @@ const VerticalLayout = ({ children }: Props) => {
 
   const nav = (
     <Navbar orientation='horizontal'>
+      <Logo src={LogoSvg} />
+
       <Search layout='vertical' data={searchData} />
 
       <Actions />
     </Navbar>
   );
 
-  const sideNav = (
-    <Navbar orientation='vertical'>
-      <Logo src={LogoSvg} />
-
-      <Menu orientation='vertical' data={menuData} />
-
-      <div className='add-patient'>
-        <Button type='primary'>
-          <span
-            className='icofont icofont-plus mr-2'
-            style={{ fontSize: '1.3em' }}
-          />
-          Add patient
-        </Button>
-      </div>
-
-      <Menu className='assistant-menu' orientation='vertical'>
-        <NavLink
-          className='link'
-          to='/vertical/vertical'
-          activeClassName='active'
-          replace
-        >
-          <span className='link-icon icofont icofont-ui-settings' />
-
-          <span className='link-text'>Settings</span>
-        </NavLink>
-
-        <NavLink
-          className='link'
-          to='/vertical/default-dashboard'
-          activeClassName='active'
-          replace
-        >
-          <span className='link-icon icofont icofont-question-square' />
-
-          <span className='link-text'>FAQ & Support</span>
-        </NavLink>
-      </Menu>
+  const additionalNav = (
+    <Navbar minHeight={40} orientation='horizontal-vertical'>
+      <Menu orientation='horizontal' data={menuData} />
     </Navbar>
   );
 
   return (
     <>
-      <BaseLayout orientation='vertical' nav={nav} sideNav={sideNav}>
+      <BaseLayout orientation='horizontal' nav={nav} topNav={additionalNav}>
         {children}
       </BaseLayout>
     </>
   );
 };
 
-export default VerticalLayout;
+export default HorizontalLayout;

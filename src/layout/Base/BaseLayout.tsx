@@ -39,6 +39,7 @@ type OwnProps = {
   nav: ReactElement<any>;
   sideNav?: ReactElement<any>;
   topNav?: ReactElement<any>;
+  orientation: 'vertical' | 'horizontal';
   children: ReactElement;
 };
 
@@ -50,7 +51,9 @@ const BaseLayout = ({
   sideNav,
   settings,
   pageData,
-  children
+  orientation,
+  children,
+  ...dispatchProps
 }: Props) => {
   const mainContentClasses = className({
     'main-content': true,
@@ -74,8 +77,13 @@ const BaseLayout = ({
       opened: settings.sidebarOpened
     });
 
+  const pageComponent = React.cloneElement(children, {
+    ...pageData,
+    ...dispatchProps,
+    ...settings
+  });
   return (
-    <div className='layout vertical'>
+    <div className={`layout ${orientation}`}>
       <div className={`app-container ${settings.boxed && 'boxed'}`}>
         {navbar}
 
@@ -98,7 +106,7 @@ const BaseLayout = ({
                 </div>
               </header>
             )}
-            {children}
+            {pageComponent}
           </div>
         </main>
 

@@ -25,8 +25,7 @@ const Navbar = ({
     boxed,
     opened,
     className,
-    vertical: orientation === 'vertical',
-    horizontal: orientation !== 'vertical'
+    [orientation]: true
   });
 
   const navStyle: CSSProperties | null = minHeight ? { minHeight } : null;

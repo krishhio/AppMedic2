@@ -24,7 +24,7 @@ const Footer = ({ boxed, loaded, layout, breadcrumbs }: Props) => {
   return (
     <div className={footerClasses}>
       <div className='footer-wrap'>
-        <div className='row align-items-center'>
+        <div className='row align-items-center' style={{ height: '100%' }}>
           <div className='col-12 col-md-6 d-none d-md-block'>
             <Breadcrumbs layout={layout} breadcrumbs={breadcrumbs} />
           </div>
