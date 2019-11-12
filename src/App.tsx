@@ -12,7 +12,6 @@ type LogProps = {
 };
 
 const LogProps = (props) => {
-  useEffect(() => console.log(props), [props]);
   return (
     <>
       <Button>Btn</Button>
@@ -36,9 +35,9 @@ const App: React.FC = () => {
       </Route>
 
       <Route path='*'>
-        <HorizontalLayout>
+        <VerticalLayout>
           <div>Error content</div>
-        </HorizontalLayout>
+        </VerticalLayout>
       </Route>
     </Switch>
   );

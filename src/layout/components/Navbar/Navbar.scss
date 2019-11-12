@@ -103,7 +103,7 @@ $_color: var(--main-color);
       transition: transform 0.2s $animation;
       width: $vertical-navbar-width;
       will-change: transform, width;
-      z-index: 9997;
+      z-index: 997;
 
       .navbar-wrap {
         align-items: flex-start;
@@ -137,7 +137,7 @@ $_color: var(--main-color);
     width: $vertical-navbar-width;
     will-change: transform, width;
     -webkit-overflow-scrolling: touch;
-    z-index: 9997;
+    z-index: 997;
     @media #{$max991} {
       transform: translateX(-$vertical-navbar-width);
     }

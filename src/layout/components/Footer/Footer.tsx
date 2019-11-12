@@ -14,7 +14,7 @@ type Props = {
   openModal: () => void;
 };
 
-const Footer = ({ boxed, loaded, layout, breadcrumbs }: Props) => {
+const Footer = ({ boxed, loaded, layout, breadcrumbs, openModal }: Props) => {
   let footerClasses = classNames({
     footer: true,
     loaded: loaded,
@@ -32,7 +32,7 @@ const Footer = ({ boxed, loaded, layout, breadcrumbs }: Props) => {
           <div className='col-12 col-md-6 text-right'>
             <div className='d-flex align-items-center justify-content-center justify-content-md-end'>
               <span>Version 1.0.0</span>
-              <button className='no-style ml-2'>
+              <button className='no-style ml-2' onClick={openModal}>
                 <i
                   className='icofont icofont-ui-settings'
                   style={{ fontSize: 26, color: '#336cfb' }}

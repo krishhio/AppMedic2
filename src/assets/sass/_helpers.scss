@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   margin: -($module-rem / 2);
 
-  .tc-btn {
+  .ant-btn {
     margin: $module-rem / 2;
   }
 }
@@ -91,5 +91,13 @@
   }
   &.delay-09s {
     animation-delay: .9s;
+  }
+}
+
+.settings-actions {
+  @media only screen and (max-width: 576px) {
+    * {
+      width: 100%;
+    }
   }
 }

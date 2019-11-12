@@ -1,7 +1,8 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { Modal } from 'antd';
 
 import { IPageData } from '../../interfaces/page-data';
 import { IAppSettings } from '../../interfaces/settings';
@@ -21,6 +22,7 @@ import { IPatient } from '../../interfaces/patient';
 
 import './BaseLayout.scss';
 import Footer from '../components/Footer/Footer';
+import SettingsForm from '../components/Settings/SettingsForm';
 
 type StateProps = {
   pageData: IPageData;
@@ -55,6 +57,8 @@ const BaseLayout = ({
   children,
   ...dispatchProps
 }: Props) => {
+  const [showSettings, setShowSettings] = useState(false);
+
   const mainContentClasses = className({
     'main-content': true,
     loaded: pageData.loaded
@@ -82,6 +86,8 @@ const BaseLayout = ({
     ...dispatchProps,
     ...settings
   });
+
+  const toggleSettings = () => setShowSettings(!showSettings);
   return (
     <div className={`layout ${orientation}`}>
       <div className={`app-container ${settings.boxed && 'boxed'}`}>
@@ -115,8 +121,25 @@ const BaseLayout = ({
           layout={settings.layout}
           boxed={settings.boxed}
           loaded={pageData.loaded}
-          openModal={() => console.log()}
+          openModal={toggleSettings}
         />
+
+        <Modal
+          visible={showSettings}
+          onCancel={toggleSettings}
+          footer={null}
+          title={
+            <h3 className='m-0' style={{ opacity: 0.8 }}>
+              Settings
+            </h3>
+          }
+        >
+          <SettingsForm
+            settings={settings}
+            onResetSettings={console.log}
+            onUpdateSetting={console.log}
+          />
+        </Modal>
       </div>
     </div>
   );

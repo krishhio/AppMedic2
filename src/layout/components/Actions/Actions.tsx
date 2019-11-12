@@ -94,16 +94,21 @@ const Actions = () => {
         className='mr-3'
         overlay={notificationsMenu}
         trigger={['click']}
+        placement='bottomRight'
       >
         <Badge className='action-badge' count={3}>
           <span
             className='icon notification-icon icofont-notification'
-            style={{ fontSize: '24px' }}
+            style={{ fontSize: '22px', cursor: 'pointer' }}
           />
         </Badge>
       </Dropdown>
 
-      <Dropdown overlay={accountMenu} trigger={['click']}>
+      <Dropdown
+        overlay={accountMenu}
+        trigger={['click']}
+        placement='bottomRight'
+      >
         <div className='item'>
           <Avatar
             size={40}
