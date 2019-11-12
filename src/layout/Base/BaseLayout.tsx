@@ -13,7 +13,11 @@ import {
   resetPageData
 } from '../../redux/page-data/actions';
 
-import * as settingsActions from '../../redux/settings/actions';
+import {
+  toggleSidebar,
+  updateSettings,
+  resetSettings
+} from '../../redux/settings/actions';
 import * as patientActions from '../../redux/patients/actions';
 
 import className from '../../utils/classNames';
@@ -35,6 +39,8 @@ type DispatchProps = {
   onSidebarToggle: () => void;
   onPageSet: (data: IPageData) => void;
   onUpdatePage: (data: IPageData) => void;
+  onUpdateSettings: (settings: IAppSettings) => void;
+  onResetSettings: () => void;
 };
 
 type OwnProps = {
@@ -45,7 +51,7 @@ type OwnProps = {
   children: ReactElement;
 };
 
-type Props = DispatchProps & StateProps & OwnProps;
+type Props = OwnProps & DispatchProps & StateProps;
 
 const BaseLayout = ({
   nav,
@@ -136,8 +142,8 @@ const BaseLayout = ({
         >
           <SettingsForm
             settings={settings}
-            onResetSettings={console.log}
-            onUpdateSetting={console.log}
+            onResetSettings={dispatchProps.onResetSettings}
+            onUpdateSetting={dispatchProps.onUpdateSettings}
           />
         </Modal>
       </div>
@@ -152,10 +158,12 @@ const mapStateToProps = ({ patients, pageData, settings }) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  onPageSet: (data: IPageData) => dispatch(setPageData(data)),
-  onUpdatePage: (data: IPageData) => dispatch(updatePageDada(data)),
-  onSidebarToggle: () => dispatch(settingsActions.toggleSidebar()),
-  onPageReset: () => dispatch(resetPageData())
+  onPageReset: () => dispatch(resetPageData()),
+  onPageSet: data => dispatch(setPageData(data)),
+  onResetSettings: () => dispatch(resetSettings()),
+  onSidebarToggle: () => dispatch(toggleSidebar()),
+  onUpdatePage: data => dispatch(updatePageDada(data)),
+  onUpdateSettings: settings => dispatch(updateSettings(settings))
 });
 
 const ConnectedLayout: (props: OwnProps) => ReactElement = connect(

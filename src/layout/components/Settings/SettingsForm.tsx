@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useForm from 'react-hook-form';
 import { Form, Select, Switch, Button } from 'antd';
 
@@ -22,13 +22,14 @@ const SettingsForm = ({
   onUpdateSetting,
   layout = 'vertical'
 }: Props) => {
-  const { handleSubmit, setValue, reset, getValues } = useForm<IAppSettings>();
-
   const downloadLink = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    console.log(settings);
+  }, [settings]);
 
   const handleReset = () => {
     onResetSettings();
-    reset(DEFAULT_SETTINGS);
   };
 
   const handleDownload = () => {
@@ -41,28 +42,25 @@ const SettingsForm = ({
     downloadLink.current.click();
   };
 
+  const setValue = (name: string, value: any) => {
+    console.log({ name, value });
+    onUpdateSetting({ ...settings, [name]: value });
+  };
+
   const handleSideBgChange = ({ color }) => setValue('sidebarBg', color);
   const handleNavBgChange = ({ color }) => setValue('topbarBg', color);
-  const handleLayoutChange = (layout: string) => setValue('layout', layout);
-  const handleBoxedChange = (boxed: boolean) => {
-    console.log(getValues(), boxed);
-    setValue('boxed', boxed);
-    console.log(getValues());
-  };
+  const handleLayoutChange = (type: string) => setValue('layout', type);
+  const handleBoxedChange = (boxed: boolean) => setValue('boxed', boxed);
 
   const sidebarPickerLabel =
     layout === 'vertical' ? 'Sidebar background' : 'Second navbar background';
 
   return (
-    <Form
-      layout='vertical'
-      className='settings-form'
-      onChange={handleSubmit(console.log)}
-    >
+    <Form layout='vertical' className='settings-form'>
       <Form.Item label='Topbar background'>
         <ColorPicker
           onColorChange={handleNavBgChange}
-          color={settings.sidebarBg}
+          color={settings.topbarBg}
         />
       </Form.Item>
 

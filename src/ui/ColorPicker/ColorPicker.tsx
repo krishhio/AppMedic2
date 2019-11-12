@@ -36,7 +36,9 @@ const ColorPicker = ({ opened: pickerOpened, color, onColorChange }: Props) => {
   const handlePickerOpen = () => setOpened(true);
 
   const handleColorChange = color => {
-    onColorChange(getColor(color.hex));
+    const colorObj = getColor(color.hex);
+    console.log({ colorObj, color });
+    onColorChange(colorObj);
   };
 
   const handleClose = () => setOpened(false);
