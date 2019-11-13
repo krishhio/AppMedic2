@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import useForm from 'react-hook-form';
+import React, { useRef } from 'react';
+
 import { Form, Select, Switch, Button } from 'antd';
 
+import { history } from '../../../redux/store';
 import ColorPicker from '../../../ui/ColorPicker/ColorPicker';
-
 import { IAppSettings } from '../../../interfaces/settings';
-import { DEFAULT_SETTINGS } from '../../../redux/settings/settings';
 
 import './SettingsForm.scss';
 
@@ -13,20 +12,14 @@ type Props = {
   settings: IAppSettings;
   onResetSettings: () => void;
   onUpdateSetting: (settings: IAppSettings) => void;
-  layout?: 'vertical' | 'horizontal';
 };
 
 const SettingsForm = ({
   settings,
   onResetSettings,
-  onUpdateSetting,
-  layout = 'vertical'
+  onUpdateSetting
 }: Props) => {
   const downloadLink = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    console.log(settings);
-  }, [settings]);
 
   const handleReset = () => {
     onResetSettings();
@@ -43,17 +36,26 @@ const SettingsForm = ({
   };
 
   const setValue = (name: string, value: any) => {
-    console.log({ name, value });
     onUpdateSetting({ ...settings, [name]: value });
   };
 
-  const handleSideBgChange = ({ color }) => setValue('sidebarBg', color);
+  const handleLayoutChange = (type: string) => {
+    const currentRoute = history.location.pathname.split('/')[2];
+
+    history.push(`/${type}/${currentRoute}`);
+    setValue('layout', type);
+  };
+
+  const handleSideBgChange = ({ color, contrast }) =>
+    onUpdateSetting({ ...settings, sidebarBg: color, sidebarColor: contrast });
+
   const handleNavBgChange = ({ color }) => setValue('topbarBg', color);
-  const handleLayoutChange = (type: string) => setValue('layout', type);
   const handleBoxedChange = (boxed: boolean) => setValue('boxed', boxed);
 
   const sidebarPickerLabel =
-    layout === 'vertical' ? 'Sidebar background' : 'Second navbar background';
+    settings.layout === 'vertical'
+      ? 'Sidebar background'
+      : 'Second navbar background';
 
   return (
     <Form layout='vertical' className='settings-form'>

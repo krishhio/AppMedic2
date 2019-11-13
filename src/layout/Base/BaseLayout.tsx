@@ -27,6 +27,7 @@ import { IPatient } from '../../interfaces/patient';
 import './BaseLayout.scss';
 import Footer from '../components/Footer/Footer';
 import SettingsForm from '../components/Settings/SettingsForm';
+import { PageProps } from '../../interfaces/page';
 
 type StateProps = {
   pageData: IPageData;
@@ -35,10 +36,7 @@ type StateProps = {
 };
 
 type DispatchProps = {
-  onPageReset: () => void;
   onSidebarToggle: () => void;
-  onPageSet: (data: IPageData) => void;
-  onUpdatePage: (data: IPageData) => void;
   onUpdateSettings: (settings: IAppSettings) => void;
   onResetSettings: () => void;
 };
@@ -61,7 +59,9 @@ const BaseLayout = ({
   pageData,
   orientation,
   children,
-  ...dispatchProps
+  onUpdateSettings,
+  onResetSettings,
+  onSidebarToggle
 }: Props) => {
   const [showSettings, setShowSettings] = useState(false);
 
@@ -75,25 +75,28 @@ const BaseLayout = ({
     'ful-filled': pageData.fullFilled
   });
 
-  const navbar = nav && React.cloneElement(nav, { boxed: settings.boxed });
-
-  const sidebar =
-    sideNav && React.cloneElement(sideNav, { opened: settings.sidebarOpened });
-
-  const additionalNav =
-    topNav &&
-    React.cloneElement(topNav, {
-      ...settings,
-      opened: settings.sidebarOpened
+  const navbar =
+    nav &&
+    React.cloneElement(nav, {
+      boxed: settings.boxed,
+      background: settings.topbarBg,
+      loaded: pageData.loaded
     });
 
-  const pageComponent = React.cloneElement(children, {
-    ...pageData,
-    ...dispatchProps,
-    ...settings
-  });
+  const navProps = {
+    opened: settings.sidebarOpened,
+    background: settings.sidebarBg,
+    color: settings.sidebarColor,
+    boxed: settings.boxed,
+    loaded: pageData.loaded
+  };
+
+  const sidebar = sideNav && React.cloneElement(sideNav, navProps);
+
+  const additionalNav = topNav && React.cloneElement(topNav, navProps);
 
   const toggleSettings = () => setShowSettings(!showSettings);
+
   return (
     <div className={`layout ${orientation}`}>
       <div className={`app-container ${settings.boxed && 'boxed'}`}>
@@ -118,7 +121,7 @@ const BaseLayout = ({
                 </div>
               </header>
             )}
-            {pageComponent}
+            {children}
           </div>
         </main>
 
@@ -142,8 +145,8 @@ const BaseLayout = ({
         >
           <SettingsForm
             settings={settings}
-            onResetSettings={dispatchProps.onResetSettings}
-            onUpdateSetting={dispatchProps.onUpdateSettings}
+            onResetSettings={onResetSettings}
+            onUpdateSetting={onUpdateSettings}
           />
         </Modal>
       </div>
@@ -158,8 +161,6 @@ const mapStateToProps = ({ patients, pageData, settings }) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  onPageReset: () => dispatch(resetPageData()),
-  onPageSet: data => dispatch(setPageData(data)),
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
   onUpdatePage: data => dispatch(updatePageDada(data)),

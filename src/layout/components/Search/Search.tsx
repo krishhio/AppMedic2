@@ -16,7 +16,7 @@ type Props = {
 
 const Search = ({ data, layout = 'vertical' }: Props) => {
   const handleSelect = (value: SelectValue) => {
-    const route = `${layout}/${value}`;
+    const route = `/${layout}/${value}`;
     history.push(route);
   };
 
@@ -27,7 +27,10 @@ const Search = ({ data, layout = 'vertical' }: Props) => {
       dataSource={data}
       filterOption
     >
-      <Input placeholder='Type to search' suffix={<span className='icofont icofont-search' />} />
+      <Input
+        placeholder='Type to search'
+        suffix={<span className='icofont icofont-search' />}
+      />
     </AutoComplete>
   );
 };

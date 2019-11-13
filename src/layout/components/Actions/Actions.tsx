@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Avatar, Badge, Button, Dropdown, Menu } from 'antd';
 
 import './Actions.scss';
+import { INotification } from '../../../interfaces/notification';
 
 const accountItems = [
   { text: 'Edit account', icon: 'icofont-ui-home' },
@@ -12,7 +13,7 @@ const accountItems = [
   { text: 'Log Out', icon: 'icofont-logout' }
 ];
 
-const notificatoins = [
+const defaultNotifications = [
   {
     text: 'Sara Crouch liked your photo',
     icon: 'icofont-heart',
@@ -42,36 +43,57 @@ const notificatoins = [
 
 const homeRoute = 'vertical/default-dashboard';
 
-const Actions = () => {
+type Props = {
+  data?: INotification[];
+};
+
+const Actions = ({ data = defaultNotifications }: Props) => {
+  const [notifications, setNotifications] = useState<INotification[]>([]);
+
+  useEffect(() => {
+    setNotifications(data);
+  }, [data]);
+
+  const handleClearAll = () => setNotifications([]);
+
   const notificationsMenu = (
     <Menu className='action-menu' style={{ minWidth: '280px' }}>
       <span className='dropdown-header'>
         <h3 className='dropdown-title'>Notifications</h3>
 
-        <a className='text-danger'>Clear all</a>
+        <a onClick={handleClearAll} className='text-danger'>
+          Clear all
+        </a>
       </span>
 
-      {notificatoins.map((item, index) => (
-        <Menu.Item className='action-item' key={index}>
-          <NavLink className='d-flex w-100' to={homeRoute}>
-            <span className={`icon mr-3 ${item.icon}`} />
-            <span className='text'>
-              <span className='message'>{item.text}</span>
-              <span className='sub-text'>{item.time}</span>
-            </span>
-          </NavLink>
-        </Menu.Item>
-      ))}
+      {notifications.length &&
+        notifications.map((item, index) => (
+          <Menu.Item className='action-item' key={index}>
+            <NavLink className='d-flex w-100' to={homeRoute}>
+              <span className={`icon mr-3 ${item.icon}`} />
+              <span className='text'>
+                <span className='message'>{item.text}</span>
+                <span className='sub-text'>{item.time}</span>
+              </span>
+            </NavLink>
+          </Menu.Item>
+        ))}
 
-      <div className='dropdown-actions'>
-        <Button type='primary' className='w-100'>
-          View all notifications
-          <span
-            style={{ fontSize: '1.2rem' }}
-            className='icofont-calendar ml-3'
-          />
-        </Button>
-      </div>
+      {!notifications.length && (
+        <span className='empty-item'>No notifications</span>
+      )}
+
+      {notifications.length && (
+        <div className='dropdown-actions'>
+          <Button type='primary' className='w-100'>
+            View all notifications
+            <span
+              style={{ fontSize: '1.2rem' }}
+              className='icofont-calendar ml-3'
+            />
+          </Button>
+        </div>
+      )}
     </Menu>
   );
 
@@ -96,7 +118,7 @@ const Actions = () => {
         trigger={['click']}
         placement='bottomRight'
       >
-        <Badge className='action-badge' count={3}>
+        <Badge className='action-badge' count={notifications.length}>
           <span
             className='icon notification-icon icofont-notification'
             style={{ fontSize: '22px', cursor: 'pointer' }}

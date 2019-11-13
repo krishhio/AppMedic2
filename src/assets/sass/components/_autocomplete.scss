@@ -6,6 +6,9 @@ $_list-border-color: #fff;
 $_list-shadow: $shadow;
 
 .ant-select-auto-complete {
+  .ant-select-selection {
+    background: transparent;
+  }
   .ant-select-search__field__wrap {
     .ant-input {
       @include input();
@@ -18,15 +21,14 @@ $_list-shadow: $shadow;
   border: 1px solid $_list-border-color;
   box-shadow: $_list-shadow;
   border-radius: $_shape;
-  padding: ($_module-rem * 2) 0;
+  padding: ($_module-rem) 0;
   position: absolute;
   overflow: hidden;
   width: 100%;
 
   .ant-select-dropdown-menu {
-    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     &-item {
-      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
       &:hover,
       &-active,
       &-selected {

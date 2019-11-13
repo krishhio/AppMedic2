@@ -33,13 +33,9 @@ type Props = {
 const ColorPicker = ({ opened: pickerOpened, color, onColorChange }: Props) => {
   const [opened, setOpened] = useState<boolean>(pickerOpened);
 
-  const handlePickerOpen = () => setOpened(true);
+  const handleColorChange = color => onColorChange(getColor(color.hex));
 
-  const handleColorChange = color => {
-    const colorObj = getColor(color.hex);
-    console.log({ colorObj, color });
-    onColorChange(colorObj);
-  };
+  const handlePickerOpen = () => setOpened(true);
 
   const handleClose = () => setOpened(false);
 

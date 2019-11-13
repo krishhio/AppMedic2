@@ -3,26 +3,32 @@ import React from 'react';
 import Breadcrumbs from './Breadcrumbs';
 import classNames from '../../../utils/classNames';
 import { IBreadcrumb } from '../../../interfaces/page-data';
+import FooterLoader from './FooterLoader';
 
 import './Footer.scss';
 
 type Props = {
-  loaded: boolean;
+  loaded?: boolean;
   boxed: boolean;
   layout: string;
   breadcrumbs: IBreadcrumb[];
   openModal: () => void;
 };
 
-const Footer = ({ boxed, loaded, layout, breadcrumbs, openModal }: Props) => {
+const Footer = ({
+  boxed,
+  loaded = false,
+  layout,
+  breadcrumbs,
+  openModal
+}: Props) => {
   let footerClasses = classNames({
-    footer: true,
-    loaded: loaded,
-    boxed: boxed
+    loaded,
+    boxed
   });
 
   return (
-    <div className={footerClasses}>
+    <div className={`footer ${footerClasses}`}>
       <div className='footer-wrap'>
         <div className='row align-items-center' style={{ height: '100%' }}>
           <div className='col-12 col-md-6 d-none d-md-block'>
@@ -42,23 +48,7 @@ const Footer = ({ boxed, loaded, layout, breadcrumbs, openModal }: Props) => {
           </div>
         </div>
 
-        <div className='footer-skeleton'>
-          <div className='row align-items-center'>
-            <div className='col-12 col-md-6 d-none d-md-block'>
-              <ul className='page-breadcrumbs'>
-                <li className='item bg-1 animated-bg' />
-                <li className='item bg animated-bg' />
-              </ul>
-            </div>
-
-            <div className='col-12 col-md-6'>
-              <div className='info justify-content-center justify-content-md-end'>
-                <div className='version bg animated-bg' />
-                <div className='settings animated-bg' />
-              </div>
-            </div>
-          </div>
-        </div>
+        <FooterLoader />
       </div>
     </div>
   );

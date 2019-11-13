@@ -15,6 +15,7 @@ import Search from '../components/Search/Search';
 import './Horizontal.scss';
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import Actions from '../components/Actions/Actions';
+import NavLoader from "../components/Navbar/NavLoader";
 
 type Props = {
   children: any;

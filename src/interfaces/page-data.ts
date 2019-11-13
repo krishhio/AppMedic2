@@ -1,5 +1,5 @@
 export interface IPageData {
-  title: string;
+  title?: string;
   loaded?: boolean;
   breadcrumbs?: IBreadcrumb[];
   fullFilled?: boolean;
