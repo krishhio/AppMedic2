@@ -17,6 +17,7 @@ export const pageDataReducer = (
   state: IPageData = initialState,
   action: PageActionsTypes
 ) => {
+  console.log(action);
   switch (action.type) {
     case SET_PAGE_DATA:
       return { ...action.payload };

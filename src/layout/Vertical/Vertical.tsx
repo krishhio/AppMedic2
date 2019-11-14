@@ -17,7 +17,7 @@ import Search from '../components/Search/Search';
 import './Vertical.scss';
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import Actions from '../components/Actions/Actions';
-import NavLoader from '../components/Navbar/NavLoader';
+import AddPatient from "../components/Patients/AddPatient";
 
 type Props = {
   children: any;
@@ -76,6 +76,12 @@ const VerticalLayout = ({ children }: Props) => {
 
   const nav = (
     <Navbar orientation='horizontal'>
+      <button className='navbar-toggle d-lg-none'>
+        <span />
+        <span />
+        <span />
+      </button>
+
       <Search layout='vertical' data={searchData} />
 
       <Actions />
@@ -88,15 +94,7 @@ const VerticalLayout = ({ children }: Props) => {
 
       <Menu orientation='vertical' data={menuData} />
 
-      <div className='add-patient'>
-        <Button type='primary'>
-          <span
-            className='icofont icofont-plus mr-2'
-            style={{ fontSize: '1.3em' }}
-          />
-          Add patient
-        </Button>
-      </div>
+      <AddPatient />
 
       <Menu className='assistant-menu' orientation='vertical'>
         <NavLink

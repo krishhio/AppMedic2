@@ -2,11 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import { IAppSettings } from '../../interfaces/settings';
-import { IPageData } from '../../interfaces/page-data';
-import { IAppState } from '../../interfaces/app-state';
+import { IPageData } from '../../../interfaces/page-data';
 
-import { setPageData, updatePageDada } from '../../redux/page-data/actions';
+import { setPageData, updatePageDada } from '../../../redux/page-data/actions';
 
 type DispatchProps = {
   onSetPage?: (data: IPageData) => void;
@@ -22,13 +20,13 @@ type Props = DispatchProps & OwnProps;
 const Page = ({ children, onPageUpdate, onSetPage }: Props) => {
   const getData = async url => {
     const result = await axios.get(url);
-    onPageUpdate({ loaded: true, fullFilled: true });
+    onPageUpdate({ fullFilled: true });
     return result.data;
   };
 
   const setPageData = (data: IPageData) => {
-    const pageData = { ...data, loaded: true };
-    onSetPage(pageData);
+    const pageData = { ...data, fullFilled: true };
+    onPageUpdate(pageData);
 
     return () => {
       const resetPageData = {
@@ -36,11 +34,11 @@ const Page = ({ children, onPageUpdate, onSetPage }: Props) => {
         breadcrumbs: data.breadcrumbs
       };
 
-      onSetPage(resetPageData);
+      onPageUpdate(resetPageData);
     };
   };
 
-  return <>{React.cloneElement(children, { setPageData, getData })}</>;
+  return React.cloneElement(children, { setPageData, getData });
 };
 
 const mapDispatchToProps = dispatch => ({

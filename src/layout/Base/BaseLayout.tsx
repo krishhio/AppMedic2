@@ -8,12 +8,6 @@ import { IPageData } from '../../interfaces/page-data';
 import { IAppSettings } from '../../interfaces/settings';
 
 import {
-  updatePageDada,
-  setPageData,
-  resetPageData
-} from '../../redux/page-data/actions';
-
-import {
   toggleSidebar,
   updateSettings,
   resetSettings
@@ -107,7 +101,7 @@ const BaseLayout = ({
         {sidebar}
 
         <main className={mainContentClasses}>
-          {!pageData.loaded && (
+          {!pageData.fullFilled && (
             <div className='page-loader'>
               <i className='icofont-spinner-alt-4 rotate' />
             </div>
@@ -163,7 +157,6 @@ const mapStateToProps = ({ patients, pageData, settings }) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdatePage: data => dispatch(updatePageDada(data)),
   onUpdateSettings: settings => dispatch(updateSettings(settings))
 });
 

@@ -8,7 +8,7 @@ import HorizontalLayout from './layout/Horizontal/Horizontal';
 import { Button } from 'antd';
 
 import { defaultRoutes } from './routing';
-import Page from './layout/components/Page';
+import Page from './layout/components/Page/Page';
 
 const DefaultRoutes = ({ layout }) => (
   <Switch>

@@ -14,6 +14,7 @@ import { resetSettings, updateSettings } from '../../redux/settings/actions';
 const pageData: IPageData = {
   title: 'Settings',
   loaded: true,
+  fullFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

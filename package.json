@@ -49,7 +49,8 @@
     "htmlWhitespaceSensitivity": "ignore",
     "singleQuote": true,
     "jsxSingleQuote": true,
-    "jsxBracketSameLine": false
+    "jsxBracketSameLine": false,
+    "printWidth": 110
   },
   "devDependencies": {
     "@types/history": "^4.7.3",
