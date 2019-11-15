@@ -1,13 +1,13 @@
 export interface IPatient {
-  id: string;
+  id?: string;
   img: string | ArrayBuffer;
   name: string;
   number: string;
-  age: number;
+  age: number | string;
   gender: string;
   address: string;
-  status: string;
-  lastVisit: string;
+  status?: string;
+  lastVisit?: string;
 }
 
 export interface IPatientsState {

@@ -1,25 +1,5 @@
 @import '../variables';
-
-$_bg: (
-  default: rgba(#4a505c, 0.08),
-  hover: rgba(#4a505c, 0.08),
-  focus: #fff,
-  disabled: rgba(#ccc, 0.1)
-);
-
-$_border: (
-  default: rgba(#4a505c, 0.08),
-  hover: rgba(#4a505c, 0.08),
-  focus: rgba(#4a505c, 0.08),
-  disabled: rgba(#ccc, 0.5)
-);
-
-$_color: (
-  default: #4a505c,
-  hover: #4a505c,
-  focus: #4a505c,
-  disabled: #bdbdbd
-);
+@import "input";
 
 $_module-rem: $module-rem;
 $_fs: 1rem;
@@ -38,6 +18,7 @@ $_list-shadow: $shadow;
 .ant-select:not(.ant-select-auto-complete) {
   width: 100%;
   cursor: pointer;
+
   &.ant-select-focused {
     .ant-select-selection {
       @include input-focused;
@@ -45,7 +26,7 @@ $_list-shadow: $shadow;
   }
 
   .ant-select-selection {
-    @include input;
+    @include input();
     cursor: pointer;
   }
 

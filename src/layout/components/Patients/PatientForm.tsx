@@ -1,96 +1,81 @@
 import React, { FormEvent } from 'react';
-import { Button, Form, Select, Input } from 'antd';
+import { Button, Select, Input } from 'antd';
+import { useFormik } from 'formik';
+
 import { IPatient } from '../../../interfaces/patient';
-import { FormComponentProps } from 'antd/es/form';
+import ImageLoader from './ImageLoader';
 
-const { TextArea } = Input;
-
-type OwnProps = {
+type Props = {
   onAddPatient: (patient: IPatient) => void;
+  onCancel: () => void;
 };
 
-type Props = OwnProps & FormComponentProps;
+const PatientForm = ({ onAddPatient, onCancel }: Props) => {
+  const { handleSubmit, handleChange, values, setFieldValue } = useFormik<IPatient>({
+    initialValues: {
+      name: '',
+      address: '',
+      age: '',
+      number: '',
+      gender: '',
+      img: ''
+    },
+    onSubmit: onAddPatient
+  });
 
-const PatientForm = ({ onAddPatient, form }: Props) => {
-  const { getFieldDecorator } = form;
+  const handleGenderSelect = value => setFieldValue('gender', value);
 
-  const handleSubmit = (e: FormEvent) => {};
+  const handleAddPatient = () => {
+    onAddPatient(values);
+  };
 
   return (
-    <Form layout='vertical' onSubmit={handleSubmit} className='settings-form'>
-      <Form.Item>
-        {getFieldDecorator('name', {
-          rules: [
-            {
-              required: true,
-              message: <span className='error-message'>Please enter patient name</span>
-            },
-            {
-              min: 3,
-              message: <span className='error-message'>Name must be at least 3 characters long</span>
-            }
-          ]
-        })(<Input placeholder='Name' />)}
-      </Form.Item>
-
-      <Form.Item>
-        {getFieldDecorator('number', {
-          rules: [
-            {
-              required: true,
-              message: <span className='error-message'>Please enter patient phone number</span>
-            }
-          ]
-        })(<Input placeholder='Phone' type='phone' />)}
-      </Form.Item>
-
-      <div className='row'>
-        <div className='col-sm-6 col-12'>
-          <Form.Item>
-            {getFieldDecorator('age', {
-              rules: [
-                {
-                  required: true,
-                  message: <span className='error-message'>Please enter patient age</span>
-                }
-              ]
-            })(<Input placeholder='Age' type='number' />)}
-          </Form.Item>
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className='form-group'>
+          <ImageLoader />
         </div>
 
-        <div className='col-sm-6 col-12'>
-          <Form.Item>
-            {getFieldDecorator('gender', {
-              rules: [
-                {
-                  required: true,
-                  message: <span className='error-message'>Please select patient gender</span>
-                }
-              ]
-            })(
-              <Select>
-                <Select.Option value='male'>Male</Select.Option>
-                <Select.Option value='female'>Female</Select.Option>
+        <div className='form-group'>
+          <Input placeholder='Name' name='name' type='text' onChange={handleChange} />
+        </div>
+
+        <div className='form-group'>
+          <Input placeholder='Phone' name='number' type='phone' onChange={handleChange} />
+        </div>
+
+        <div className='row'>
+          <div className='col-sm-6 col-12'>
+            <div className='form-group'>
+              <Input placeholder='Age' name='age' type='number' onChange={handleChange} />
+            </div>
+          </div>
+          <div className='col-sm-6 col-12'>
+            <div className='form-group'>
+              <Select defaultValue={values.gender} onChange={handleGenderSelect}>
+                <Select.Option value='Male'>Male</Select.Option>
+                <Select.Option value='Female'>Female</Select.Option>
               </Select>
-            )}
-          </Form.Item>
+            </div>
+          </div>
         </div>
+
+        <div className='form-group'>
+          <Input placeholder='Address' name='address' type='text' onChange={handleChange} />
+        </div>
+      </form>
+
+      <div className='d-flex justify-content-between buttons-list settings-actions'>
+        <Button type='danger' onClick={onCancel}>
+          Cancel
+        </Button>
+
+        <Button onClick={handleAddPatient} type='primary' htmlType='submit'>
+          Add patient
+        </Button>
       </div>
-
-      <Form.Item>
-        {getFieldDecorator('address', {
-          rules: [
-            {
-              required: true,
-              message: <span className='error-message'>Please enter patient address</span>
-            }
-          ]
-        })(<TextArea placeholder='Address' rows={3} />)}
-      </Form.Item>
-
-      <Button htmlType='submit'>Add patient</Button>
-    </Form>
+    </>
   );
 };
 
-export default Form.create({ name: 'patients-form' })(PatientForm);
+export default PatientForm;

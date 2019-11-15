@@ -17,23 +17,16 @@ const AddPatient = ({ onAddPatient }: DispatchProps) => {
   return (
     <div className='add-patient'>
       <Button type='primary' onClick={handleClick}>
-        <span
-          className='icofont icofont-plus mr-2'
-          style={{ fontSize: '1.3em' }}
-        />
+        <span className='icofont icofont-plus mr-2' style={{ fontSize: '1.3em' }} />
         Add patient
       </Button>
       <Modal
         visible={visible}
         footer={null}
         onCancel={closeModal}
-        title={
-          <h3 className='m-0' style={{ opacity: 0.8 }}>
-            Add patient
-          </h3>
-        }
+        title={<h3 className='title'>Add patient</h3>}
       >
-        <PatientForm />
+        <PatientForm onCancel={closeModal} onAddPatient={console.log} />
       </Modal>
     </div>
   );

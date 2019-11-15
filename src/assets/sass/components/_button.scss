@@ -104,6 +104,7 @@ $_sm-lh: $_module-rem / $_sm-fs;
         color: map-get($_color, hover-color);
       }
       &.btn-outline {
+        background: transparent;
         border-color: map-get($_color, bg);
         color: map-get($_color, bg);
 
