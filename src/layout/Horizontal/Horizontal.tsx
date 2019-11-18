@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -15,13 +15,32 @@ import Search from '../components/Search/Search';
 import './Horizontal.scss';
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import Actions from '../components/Actions/Actions';
-import NavLoader from "../components/Navbar/NavLoader";
+import { Dispatch } from 'redux';
+import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
+import { connect } from 'react-redux';
+import { IPageData } from '../../interfaces/page-data';
+import { IPatient } from '../../interfaces/patient';
+import { IAppSettings } from '../../interfaces/settings';
 
-type Props = {
+type OwnProps = {
   children: any;
 };
 
-const HorizontalLayout = ({ children }: Props) => {
+type StateProps = {
+  pageData: IPageData;
+  patients: IPatient[];
+  settings: IAppSettings;
+};
+
+type DispatchProps = {
+  onSidebarToggle: () => void;
+  onUpdateSettings: (settings: IAppSettings) => void;
+  onResetSettings: () => void;
+};
+
+type Props = OwnProps & StateProps & DispatchProps;
+
+const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Props) => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
@@ -74,6 +93,12 @@ const HorizontalLayout = ({ children }: Props) => {
 
   const nav = (
     <Navbar orientation='horizontal'>
+      <button className='no-style navbar-toggle d-lg-none' onClick={onSidebarToggle}>
+        <span />
+        <span />
+        <span />
+      </button>
+
       <Logo src={LogoSvg} />
 
       <Search layout='vertical' data={searchData} />
@@ -84,7 +109,12 @@ const HorizontalLayout = ({ children }: Props) => {
 
   const additionalNav = (
     <Navbar minHeight={40} orientation='horizontal-vertical'>
-      <Menu orientation='horizontal' data={menuData} />
+      <Menu
+        onCloseSidebar={onSidebarToggle}
+        opened={settings.sidebarOpened}
+        orientation='horizontal'
+        data={menuData}
+      />
     </Navbar>
   );
 
@@ -97,4 +127,21 @@ const HorizontalLayout = ({ children }: Props) => {
   );
 };
 
-export default HorizontalLayout;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  onResetSettings: () => dispatch(resetSettings()),
+  onSidebarToggle: () => dispatch(toggleSidebar()),
+  onUpdateSettings: settings => dispatch(updateSettings(settings))
+});
+
+const mapStateToProps = ({ patients, pageData, settings }) => ({
+  settings,
+  pageData,
+  patients
+});
+
+const ConnectedLayout: (props: OwnProps) => ReactElement = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HorizontalLayout);
+
+export default ConnectedLayout;

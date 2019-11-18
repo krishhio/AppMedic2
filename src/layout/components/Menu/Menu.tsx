@@ -15,6 +15,8 @@ type MenuProps = {
   orientation?: 'vertical' | 'horizontal';
   data?: IMenuItem[];
   children?: any;
+  opened?: boolean;
+  onCloseSidebar?: () => void;
   className?: string;
 };
 
@@ -24,10 +26,9 @@ type RouterProps = {
 
 type Props = RouterProps & MenuProps | any;
 
-const haveActive = (sub: IMenuItemSub[], route: string) =>
-  !!sub.find(item => item.routing === route);
+const haveActive = (sub: IMenuItemSub[], route: string) => !!sub.find(item => item.routing === route);
 
-const Menu = ({ data, orientation, location, children, className }: Props) => {
+const Menu = ({ data, orientation, location, children, className, onCloseSidebar, opened }: Props) => {
   const [menu, setMenu] = useState<IMenuItem[]>([]);
 
   useEffect(() => {
@@ -49,6 +50,10 @@ const Menu = ({ data, orientation, location, children, className }: Props) => {
 
     setMenu(updatedMenu);
   }, [location, data]);
+
+  useEffect(() => {
+    onCloseSidebar && opened && onCloseSidebar();
+  }, [location]);
 
   const handleItemClick = (itemTitle: string) => {
     const updateMenu = [...menu];
@@ -90,13 +95,7 @@ const Menu = ({ data, orientation, location, children, className }: Props) => {
     }
 
     return (
-      <SimpleItem
-        key={i}
-        icon={item.icon}
-        layout={orientation}
-        title={item.title}
-        routing={item.routing}
-      />
+      <SimpleItem key={i} icon={item.icon} layout={orientation} title={item.title} routing={item.routing} />
     );
   });
 

@@ -7,11 +7,7 @@ import { Modal } from 'antd';
 import { IPageData } from '../../interfaces/page-data';
 import { IAppSettings } from '../../interfaces/settings';
 
-import {
-  toggleSidebar,
-  updateSettings,
-  resetSettings
-} from '../../redux/settings/actions';
+import { toggleSidebar, updateSettings, resetSettings } from '../../redux/settings/actions';
 import * as patientActions from '../../redux/patients/actions';
 
 import className from '../../utils/classNames';
@@ -54,8 +50,7 @@ const BaseLayout = ({
   orientation,
   children,
   onUpdateSettings,
-  onResetSettings,
-  onSidebarToggle
+  onResetSettings
 }: Props) => {
   const [showSettings, setShowSettings] = useState(false);
 
@@ -69,36 +64,16 @@ const BaseLayout = ({
     'ful-filled': pageData.fullFilled
   });
 
-  const navbar =
-    nav &&
-    React.cloneElement(nav, {
-      boxed: settings.boxed,
-      background: settings.topbarBg,
-      loaded: pageData.loaded
-    });
-
-  const navProps = {
-    opened: settings.sidebarOpened,
-    background: settings.sidebarBg,
-    color: settings.sidebarColor,
-    boxed: settings.boxed,
-    loaded: pageData.loaded
-  };
-
-  const sidebar = sideNav && React.cloneElement(sideNav, navProps);
-
-  const additionalNav = topNav && React.cloneElement(topNav, navProps);
-
   const toggleSettings = () => setShowSettings(!showSettings);
 
   return (
     <div className={`layout ${orientation}`}>
       <div className={`app-container ${settings.boxed && 'boxed'}`}>
-        {navbar}
+        {nav}
 
-        {additionalNav}
+        {topNav}
 
-        {sidebar}
+        {sideNav}
 
         <main className={mainContentClasses}>
           {!pageData.fullFilled && (

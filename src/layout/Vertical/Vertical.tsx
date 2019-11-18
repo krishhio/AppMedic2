@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 
 import axios from 'axios';
-import { Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import { DataSourceItemType } from 'antd/es/auto-complete';
@@ -17,13 +16,39 @@ import Search from '../components/Search/Search';
 import './Vertical.scss';
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import Actions from '../components/Actions/Actions';
-import AddPatient from "../components/Patients/AddPatient";
+import AddPatient from '../components/Patients/AddPatient';
+import { Dispatch } from 'redux';
+import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
+import { connect } from 'react-redux';
+import { IPageData } from '../../interfaces/page-data';
+import { IPatient } from '../../interfaces/patient';
+import { IAppSettings } from '../../interfaces/settings';
+import NavLoader from '../components/Navbar/NavLoader';
 
-type Props = {
+type OwnProps = {
   children: any;
 };
 
-const VerticalLayout = ({ children }: Props) => {
+type StateProps = {
+  pageData: IPageData;
+  patients: IPatient[];
+  settings: IAppSettings;
+};
+
+type DispatchProps = {
+  onSidebarToggle: () => void;
+  onUpdateSettings: (settings: IAppSettings) => void;
+  onResetSettings: () => void;
+};
+
+type Props = OwnProps & StateProps & DispatchProps;
+
+const VerticalLayout = ({
+  children,
+  onSidebarToggle,
+  settings,
+  pageData
+}: Props) => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
@@ -75,8 +100,13 @@ const VerticalLayout = ({ children }: Props) => {
   }, []);
 
   const nav = (
-    <Navbar orientation='horizontal'>
-      <button className='navbar-toggle d-lg-none'>
+    <Navbar
+      boxed={settings.boxed}
+      color={settings.topbarColor}
+      background={settings.topbarBg}
+      orientation='horizontal'
+    >
+      <button className='no-style navbar-toggle d-lg-none' onClick={onSidebarToggle}>
         <span />
         <span />
         <span />
@@ -85,40 +115,47 @@ const VerticalLayout = ({ children }: Props) => {
       <Search layout='vertical' data={searchData} />
 
       <Actions />
+
+      <NavLoader loaded={pageData.loaded} type={'top-bar'} />
     </Navbar>
   );
 
   const sideNav = (
-    <Navbar orientation='vertical'>
+    <Navbar
+      onClickOutside={onSidebarToggle}
+      opened={settings.sidebarOpened}
+      color={settings.sidebarColor}
+      background={settings.sidebarBg}
+      orientation='vertical'
+    >
       <Logo src={LogoSvg} />
 
-      <Menu orientation='vertical' data={menuData} />
+      <Menu
+        onCloseSidebar={onSidebarToggle}
+        opened={settings.sidebarOpened}
+        orientation='vertical'
+        data={menuData}
+      />
 
       <AddPatient />
 
       <Menu className='assistant-menu' orientation='vertical'>
-        <NavLink
-          className='link'
-          to='/vertical/settings'
-          activeClassName='active'
-          replace
-        >
+        <NavLink className='link' to='/vertical/settings' activeClassName='active' replace>
           <span className='link-icon icofont icofont-ui-settings' />
 
           <span className='link-text'>Settings</span>
         </NavLink>
 
-        <NavLink
-          className='link'
-          to='/vertical/default-dashboard'
-          activeClassName='active'
-          replace
-        >
+        <NavLink className='link' to='/vertical/default-dashboard' activeClassName='active' replace>
           <span className='link-icon icofont icofont-question-square' />
 
           <span className='link-text'>FAQ & Support</span>
         </NavLink>
+
+        {}
       </Menu>
+
+      <NavLoader loaded={pageData.loaded} type={'nav-bar'} />
     </Navbar>
   );
 
@@ -131,4 +168,21 @@ const VerticalLayout = ({ children }: Props) => {
   );
 };
 
-export default VerticalLayout;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  onResetSettings: () => dispatch(resetSettings()),
+  onSidebarToggle: () => dispatch(toggleSidebar()),
+  onUpdateSettings: settings => dispatch(updateSettings(settings))
+});
+
+const mapStateToProps = ({ patients, pageData, settings }) => ({
+  settings,
+  pageData,
+  patients
+});
+
+const ConnectedLayout: (props: OwnProps) => ReactElement = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VerticalLayout);
+
+export default ConnectedLayout;

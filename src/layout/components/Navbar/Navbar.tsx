@@ -1,9 +1,10 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode, useRef } from 'react';
 
 import classNames from '../../../utils/classNames';
 
 import './Navbar.scss';
 import NavLoader from './NavLoader';
+import useOutsideClick from '../../../Hooks/UseClickOutside';
 
 export type NavProps = {
   orientation: 'vertical' | 'horizontal' | 'horizontal-vertical';
@@ -12,9 +13,9 @@ export type NavProps = {
   boxed?: boolean;
   background?: string;
   color?: string;
-  loaded?: boolean;
   className?: string;
   children?: ReactNode;
+  onClickOutside?: () => void;
 };
 
 const Navbar = ({
@@ -23,11 +24,16 @@ const Navbar = ({
   orientation,
   children,
   className = '',
-  loaded,
   opened = false,
   color,
-  boxed = false
+  boxed = false,
+  onClickOutside
 }: NavProps) => {
+  const containerRef = useRef(null);
+
+  const handleClickOutside = () => (opened ? onClickOutside() : null);
+
+  useOutsideClick(containerRef, handleClickOutside);
   const navClasses = classNames({
     boxed,
     opened,
@@ -41,14 +47,9 @@ const Navbar = ({
     color
   };
 
-  const loaderType = orientation === 'horizontal' ? 'top-bar' : 'nav-bar';
-
   return (
-    <div className={`navbar ${navClasses}`} style={navStyle}>
-      <div className='navbar-wrap'>
-        {children}
-        <NavLoader loaded={loaded} type={loaderType} />
-      </div>
+    <div ref={containerRef} className={`navbar ${navClasses}`} style={navStyle}>
+      <div className='navbar-wrap'>{children}</div>
     </div>
   );
 };

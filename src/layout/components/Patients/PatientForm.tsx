@@ -1,4 +1,5 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
+
 import { Button, Select, Input } from 'antd';
 import { useFormik } from 'formik';
 
@@ -25,9 +26,7 @@ const PatientForm = ({ onAddPatient, onCancel }: Props) => {
 
   const handleGenderSelect = value => setFieldValue('gender', value);
 
-  const handleAddPatient = () => {
-    onAddPatient(values);
-  };
+  const handleAddPatient = () => onAddPatient(values);
 
   return (
     <>

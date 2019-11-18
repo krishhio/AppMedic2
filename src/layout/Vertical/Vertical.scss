@@ -47,3 +47,14 @@
     }
   }
 }
+
+.menu-overlay {
+  cursor: pointer;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: $vertical-navbar-width;
+  bottom: $module-rem * 6;
+  top: 0;
+  z-index: 999;
+}

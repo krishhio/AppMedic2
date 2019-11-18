@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { IPatient } from '../../../interfaces/patient';
 import { Button, Modal } from 'antd';
 import PatientForm from './PatientForm';
+import { Dispatch } from 'redux';
+import { resetSettings, toggleSidebar, updateSettings } from '../../../redux/settings/actions';
+import { addPatient } from '../../../redux/patients/actions';
+import { connect } from 'react-redux';
 
 type DispatchProps = {
   onAddPatient?: (patient: IPatient) => void;
@@ -13,6 +17,11 @@ const AddPatient = ({ onAddPatient }: DispatchProps) => {
   const handleClick = () => setVisible(!visible);
 
   const closeModal = () => setVisible(false);
+
+  const handleAddPatient = (patient: IPatient) => {
+    onAddPatient(patient);
+    closeModal();
+  };
 
   return (
     <div className='add-patient'>
@@ -26,10 +35,17 @@ const AddPatient = ({ onAddPatient }: DispatchProps) => {
         onCancel={closeModal}
         title={<h3 className='title'>Add patient</h3>}
       >
-        <PatientForm onCancel={closeModal} onAddPatient={console.log} />
+        <PatientForm onCancel={closeModal} onAddPatient={handleAddPatient} />
       </Modal>
     </div>
   );
 };
 
-export default AddPatient;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  onAddPatient: (patient: IPatient) => dispatch(addPatient(patient))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddPatient);
