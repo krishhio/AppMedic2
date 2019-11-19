@@ -1,17 +1,21 @@
 import {
   ADD_PATIENT,
   AddPatientAction,
-  CLOSE_MODAL_PATIENTS,
-  CloseModalAction,
   DELETE_PATIENT,
   DeletePatientAction,
   EDIT_PATIENT,
   EditPatientAction,
-  OPEN_MODAL_PATIENTS,
-  OpenModalAction
+  SET_PATIENTS,
+  SetPatientAction
 } from './types';
 
 import { IPatient } from '../../interfaces/patient';
+import axios from 'axios';
+
+export const setPatients = (patients: IPatient[]): SetPatientAction => ({
+  type: SET_PATIENTS,
+  payload: patients
+});
 
 export const addPatient = (patient: IPatient): AddPatientAction => ({
   type: ADD_PATIENT,
@@ -28,12 +32,14 @@ export const editPatient = (patient: IPatient): EditPatientAction => ({
   payload: patient
 });
 
-export const openPatientsModal = (): OpenModalAction => ({
-  type: OPEN_MODAL_PATIENTS
-});
-
-export const setPatient = (): CloseModalAction => ({
-  type: CLOSE_MODAL_PATIENTS
-});
-
-
+export const fetchPatients = (url: string) => {
+  return dispatch => {
+    axios
+      .get<IPatient[]>(url)
+      .then(res => res.data)
+      .then(data => {
+        dispatch(setPatients(data));
+      })
+      .catch(err => console.error('Server connections error'));
+  };
+};

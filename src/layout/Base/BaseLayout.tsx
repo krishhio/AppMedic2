@@ -1,14 +1,15 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
-import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+
 import { Modal } from 'antd';
 
 import { IPageData } from '../../interfaces/page-data';
 import { IAppSettings } from '../../interfaces/settings';
 
 import { toggleSidebar, updateSettings, resetSettings } from '../../redux/settings/actions';
-import * as patientActions from '../../redux/patients/actions';
+import { fetchPatients } from '../../redux/patients/actions';
 
 import className from '../../utils/classNames';
 
@@ -17,7 +18,8 @@ import { IPatient } from '../../interfaces/patient';
 import './BaseLayout.scss';
 import Footer from '../components/Footer/Footer';
 import SettingsForm from '../components/Settings/SettingsForm';
-import { PageProps } from '../../interfaces/page';
+
+const patientsUrl = './data/patients.json';
 
 type StateProps = {
   pageData: IPageData;
@@ -29,6 +31,7 @@ type DispatchProps = {
   onSidebarToggle: () => void;
   onUpdateSettings: (settings: IAppSettings) => void;
   onResetSettings: () => void;
+  onFetchPatients: (url) => void;
 };
 
 type OwnProps = {
@@ -50,9 +53,14 @@ const BaseLayout = ({
   orientation,
   children,
   onUpdateSettings,
-  onResetSettings
+  onResetSettings,
+  onFetchPatients
 }: Props) => {
   const [showSettings, setShowSettings] = useState(false);
+
+  useEffect(() => {
+    onFetchPatients(patientsUrl);
+  }, []);
 
   const mainContentClasses = className({
     'main-content': true,
@@ -129,7 +137,8 @@ const mapStateToProps = ({ patients, pageData, settings }) => ({
   patients
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => ({
+  onFetchPatients: (url: string) => dispatch(fetchPatients(url)),
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
   onUpdateSettings: settings => dispatch(updateSettings(settings))

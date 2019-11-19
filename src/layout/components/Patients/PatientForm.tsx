@@ -16,7 +16,7 @@ const PatientForm = ({ onAddPatient, onCancel }: Props) => {
     initialValues: {
       name: '',
       address: '',
-      age: '',
+      age: null,
       number: '',
       gender: '',
       img: ''

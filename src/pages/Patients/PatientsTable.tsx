@@ -13,17 +13,20 @@ const columns: ColumnProps<IPatient>[] = [
   {
     key: 'name',
     dataIndex: 'name',
-    title: 'Name'
+    title: 'Name',
+    sorter: (a, b) => (a.name > b.name ? 1 : -1)
   },
   {
     key: 'id',
     dataIndex: 'id',
-    title: 'ID'
+    title: 'ID',
+    sorter: (a, b) => (a.id > b.id ? 1 : -1)
   },
   {
     key: 'age',
     dataIndex: 'age',
-    title: 'Age'
+    title: 'Age',
+    sorter: (a, b) => a.age - b.age
   },
   {
     key: 'address',
@@ -43,19 +46,14 @@ const columns: ColumnProps<IPatient>[] = [
   {
     key: 'status',
     dataIndex: 'status',
-    title: 'Status'
+    title: 'Status',
+    sorter: (a, b) => (a.status > b.status ? 1 : -1)
   },
   {
     key: 'actions',
     dataIndex: 'actions',
     title: 'Actions'
-  },
-  {
-    key: 'name',
-    dataIndex: 'name',
-    title: 'Name'
-  },
-
+  }
 ];
 
 type Props = {
@@ -63,7 +61,7 @@ type Props = {
 };
 
 const PatientsTable = ({ patients }: Props) => {
-  return <Table dataSource={patients} columns={columns}/>;
+  return <Table rowKey="id" dataSource={patients} columns={columns} />;
 };
 
 export default PatientsTable;

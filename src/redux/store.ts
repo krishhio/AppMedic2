@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import { connectRouter } from 'connected-react-router';
 import { createHashHistory } from 'history';
@@ -20,4 +21,4 @@ const rootReducer = combineReducers({
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(thunk));
