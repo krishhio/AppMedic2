@@ -1,7 +1,8 @@
 import React from 'react';
-import {Avatar, Dropdown, Menu} from 'antd';
-import {NavLink} from "react-router-dom";
+import { Avatar, Dropdown, Menu } from 'antd';
+import { NavLink } from 'react-router-dom';
 
+import userAvatar from '../../../../public/content/user-40-2.jpg';
 const accountItems = [
   { text: 'Edit account', icon: 'icofont-ui-home' },
   { text: 'User profile', icon: 'icofont-ui-user' },
@@ -29,11 +30,7 @@ const SettingsDropdown = () => {
   return (
     <Dropdown overlay={accountMenu} trigger={['click']} placement='bottomRight'>
       <div className='item'>
-        <Avatar
-          size={40}
-          className='mr-1'
-          src={require('../../../assets/content/user-40-2.jpg')}
-        />
+        <Avatar size={40} className='mr-1' src={`${window.location.origin}/content/user-40-2.jpg`} />
         <span className='icofont-simple-down' />
       </div>
     </Dropdown>

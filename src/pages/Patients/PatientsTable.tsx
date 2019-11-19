@@ -1,14 +1,17 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Avatar, Table } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
 import { IPatient } from '../../interfaces/patient';
 
 const columns: ColumnProps<IPatient>[] = [
   {
-    key: 'photo',
+    key: 'img',
     title: 'Photo',
-    dataIndex: 'photo'
+    dataIndex: 'img',
+    render: img => {
+      return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
+    }
   },
   {
     key: 'name',
@@ -60,8 +63,6 @@ type Props = {
   patients: IPatient[];
 };
 
-const PatientsTable = ({ patients }: Props) => {
-  return <Table rowKey="id" dataSource={patients} columns={columns} />;
-};
+const PatientsTable = ({ patients }: Props) => <Table className='accent-header' rowKey='id' dataSource={patients} columns={columns} />;
 
 export default PatientsTable;
