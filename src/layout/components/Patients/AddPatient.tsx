@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { IPatient } from '../../../interfaces/patient';
-import { Button, Modal } from 'antd';
-import PatientForm from './PatientForm';
 import { Dispatch } from 'redux';
-import { resetSettings, toggleSidebar, updateSettings } from '../../../redux/settings/actions';
+
+import { Button, Modal } from 'antd';
+
+import { IPatient } from '../../../interfaces/patient';
+import PatientForm from './PatientForm';
+
 import { addPatient } from '../../../redux/patients/actions';
 import { connect } from 'react-redux';
 
@@ -35,7 +37,7 @@ const AddPatient = ({ onAddPatient }: DispatchProps) => {
         onCancel={closeModal}
         title={<h3 className='title'>Add patient</h3>}
       >
-        <PatientForm onCancel={closeModal} onAddPatient={handleAddPatient} />
+        <PatientForm onCancel={closeModal} onSubmit={handleAddPatient} />
       </Modal>
     </div>
   );

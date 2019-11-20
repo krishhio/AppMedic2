@@ -20,7 +20,9 @@ type Props = DispatchProps & OwnProps;
 const Page = ({ children, onPageUpdate, onSetPage }: Props) => {
   const getData = async url => {
     const result = await axios.get(url);
+
     onPageUpdate({ fullFilled: true });
+
     return result.data;
   };
 
@@ -30,8 +32,7 @@ const Page = ({ children, onPageUpdate, onSetPage }: Props) => {
 
     return () => {
       const resetPageData = {
-        fullFilled: false,
-        breadcrumbs: data.breadcrumbs
+        fullFilled: false
       };
 
       onPageUpdate(resetPageData);

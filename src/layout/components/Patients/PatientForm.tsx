@@ -6,14 +6,18 @@ import { useFormik } from 'formik';
 import { IPatient } from '../../../interfaces/patient';
 import ImageLoader from './ImageLoader';
 
+const { TextArea } = Input;
+
 type Props = {
-  onAddPatient: (patient: IPatient) => void;
+  onSubmit: (patient: IPatient) => void;
   onCancel: () => void;
+  patient?: IPatient;
+  submitText?: string;
 };
 
-const PatientForm = ({ onAddPatient, onCancel }: Props) => {
+const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
   const { handleSubmit, handleChange, values, setFieldValue } = useFormik<IPatient>({
-    initialValues: {
+    initialValues: patient || {
       name: '',
       address: '',
       age: null,
@@ -21,34 +25,57 @@ const PatientForm = ({ onAddPatient, onCancel }: Props) => {
       gender: '',
       img: ''
     },
-    onSubmit: onAddPatient
+    onSubmit: onSubmit
   });
 
   const handleGenderSelect = value => setFieldValue('gender', value);
+  const handleStatusSelect = value => setFieldValue('status', value);
 
-  const handleAddPatient = () => onAddPatient(values);
+  const handleAddPatient = () => {
+    onSubmit(values);
+    onCancel();
+  };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
-          <ImageLoader />
+          <ImageLoader src={`${window.location.origin}/${values.img}`} />
         </div>
 
         <div className='form-group'>
-          <Input placeholder='Name' name='name' type='text' onChange={handleChange} />
+          <Input
+            placeholder='Name'
+            name='name'
+            type='text'
+            defaultValue={values.name}
+            onChange={handleChange}
+          />
         </div>
 
         <div className='form-group'>
-          <Input placeholder='Phone' name='number' type='phone' onChange={handleChange} />
+          <Input
+            placeholder='Phone'
+            name='number'
+            type='phone'
+            defaultValue={values.number}
+            onChange={handleChange}
+          />
         </div>
 
         <div className='row'>
           <div className='col-sm-6 col-12'>
             <div className='form-group'>
-              <Input placeholder='Age' name='age' type='number' onChange={handleChange} />
+              <Input
+                placeholder='Age'
+                name='age'
+                type='number'
+                defaultValue={values.age}
+                onChange={handleChange}
+              />
             </div>
           </div>
+
           <div className='col-sm-6 col-12'>
             <div className='form-group'>
               <Select defaultValue={values.gender} onChange={handleGenderSelect}>
@@ -59,8 +86,23 @@ const PatientForm = ({ onAddPatient, onCancel }: Props) => {
           </div>
         </div>
 
+        {patient && (
+          <div className='form-group'>
+            <Select defaultValue={values.status} onChange={handleStatusSelect}>
+              <Select.Option value='Male'>Approved</Select.Option>
+              <Select.Option value='Female'>Pending</Select.Option>
+            </Select>
+          </div>
+        )}
+
         <div className='form-group'>
-          <Input placeholder='Address' name='address' type='text' onChange={handleChange} />
+          <TextArea
+            rows={3}
+            placeholder='Address'
+            name='address'
+            defaultValue={values.address}
+            onChange={handleChange}
+          />
         </div>
       </form>
 
@@ -70,7 +112,7 @@ const PatientForm = ({ onAddPatient, onCancel }: Props) => {
         </Button>
 
         <Button onClick={handleAddPatient} type='primary' htmlType='submit'>
-          Add patient
+          {  submitText || 'Add patient' }
         </Button>
       </div>
     </>

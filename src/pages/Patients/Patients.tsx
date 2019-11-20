@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -13,7 +13,6 @@ import PatientsTable from './PatientsTable';
 
 const pageData: IPageData = {
   title: 'Patients',
-  loaded: true,
   fullFilled: true,
   breadcrumbs: [
     {
@@ -27,7 +26,7 @@ const pageData: IPageData = {
 };
 
 type DispatchProps = {
-  updatePatient: (patient: IPatient) => void;
+  editPatient: (patient: IPatient) => void;
   deletePatient: (id: string) => void;
 };
 
@@ -37,12 +36,12 @@ type StateProps = {
 
 type Props = PageProps & DispatchProps & StateProps;
 
-const PatientsPage = ({ setPageData, patients, deletePatient, updatePatient }: Props) => {
-  setPageData(pageData);
+const PatientsPage = ({ setPageData, patients, deletePatient, editPatient }: Props) => {
+  useEffect(() => setPageData(pageData), []);
 
   return (
     <>
-      <PatientsTable patients={patients} />
+      <PatientsTable onDeletePatient={deletePatient} onEditPatient={editPatient} patients={patients} />
     </>
   );
 };

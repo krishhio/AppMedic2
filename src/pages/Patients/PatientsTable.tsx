@@ -1,68 +1,154 @@
-import React from 'react';
-import { Avatar, Table } from 'antd';
+import React, { useState } from 'react';
+import { Avatar, Table, Button, Modal, Tag } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
 import { IPatient } from '../../interfaces/patient';
 
-const columns: ColumnProps<IPatient>[] = [
-  {
-    key: 'img',
-    title: 'Photo',
-    dataIndex: 'img',
-    render: img => {
-      return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
-    }
-  },
-  {
-    key: 'name',
-    dataIndex: 'name',
-    title: 'Name',
-    sorter: (a, b) => (a.name > b.name ? 1 : -1)
-  },
-  {
-    key: 'id',
-    dataIndex: 'id',
-    title: 'ID',
-    sorter: (a, b) => (a.id > b.id ? 1 : -1)
-  },
-  {
-    key: 'age',
-    dataIndex: 'age',
-    title: 'Age',
-    sorter: (a, b) => a.age - b.age
-  },
-  {
-    key: 'address',
-    dataIndex: 'address',
-    title: 'Address'
-  },
-  {
-    key: 'number',
-    dataIndex: 'number',
-    title: 'Number'
-  },
-  {
-    key: 'visit',
-    dataIndex: 'visit',
-    title: 'Last visit'
-  },
-  {
-    key: 'status',
-    dataIndex: 'status',
-    title: 'Status',
-    sorter: (a, b) => (a.status > b.status ? 1 : -1)
-  },
-  {
-    key: 'actions',
-    dataIndex: 'actions',
-    title: 'Actions'
-  }
-];
+import { history } from '../../redux/store';
+import PatientForm from '../../layout/components/Patients/PatientForm';
 
 type Props = {
   patients: IPatient[];
+  onEditPatient: (patient: IPatient) => void;
+  onDeletePatient: (id: string) => void;
 };
 
-const PatientsTable = ({ patients }: Props) => <Table className='accent-header' rowKey='id' dataSource={patients} columns={columns} />;
+const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
+  const [patient, setPatient] = useState(null);
+  const [visibility, setVisibility] = useState(false);
+
+  const closeModal = () => setVisibility(false);
+
+  const handleDeletePatient = id => onDeletePatient(id);
+  const handleShowInfo = () => history.push('/vertical/info');
+  const handleEditPatient = (patient: IPatient) => {
+    setPatient(patient);
+    setVisibility(true);
+  };
+
+  const actions = (patient: IPatient) => (
+    <div className='buttons-list nowrap'>
+      <Button shape='circle' onClick={handleShowInfo}>
+        <span className='icofont icofont-external-link' />
+      </Button>
+      <Button onClick={handleEditPatient.bind({}, patient)} shape='circle' type='primary'>
+        <span className='icofont icofont-edit-alt' />
+      </Button>
+      <Button onClick={handleDeletePatient.bind({}, patient.id)} shape='circle' type='danger'>
+        <span className='icofont icofont-external-link' />
+      </Button>
+    </div>
+  );
+
+  const columns: ColumnProps<IPatient>[] = [
+    {
+      key: 'img',
+      title: 'Photo',
+      dataIndex: 'img',
+      render: img => {
+        return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
+      }
+    },
+    {
+      key: 'name',
+      dataIndex: 'name',
+      title: 'Name',
+      sorter: (a, b) => (a.name > b.name ? 1 : -1),
+      render: name => <strong>{name}</strong>
+    },
+    {
+      key: 'id',
+      dataIndex: 'id',
+      title: 'ID',
+      sorter: (a, b) => (a.id > b.id ? 1 : -1),
+      render: id => (
+        <span className='nowrap' style={{ color: '#a5a5a5' }}>
+          {id}
+        </span>
+      )
+    },
+    {
+      key: 'age',
+      dataIndex: 'age',
+      title: 'Age',
+      sorter: (a, b) => a.age - b.age,
+      render: age => (
+        <span className='nowrap' style={{ color: '#a5a5a5' }}>
+          {age}
+        </span>
+      )
+    },
+    {
+      key: 'address',
+      dataIndex: 'address',
+      title: 'Address'
+    },
+    {
+      key: 'number',
+      dataIndex: 'number',
+      title: 'Number',
+      render: phone => (
+        <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
+          <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
+          {phone}
+        </span>
+      )
+    },
+    {
+      key: 'visit',
+      dataIndex: 'lastVisit',
+      title: 'Last visit',
+      render: visit => (
+        <span className='nowrap' style={{ color: '#a5a5a5' }}>
+          {visit}
+        </span>
+      )
+    },
+    {
+      key: 'status',
+      dataIndex: 'status',
+      title: 'Status',
+      render: status => (
+        <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
+          {status}
+        </Tag>
+      ),
+      sorter: (a, b) => (a.status > b.status ? 1 : -1)
+    },
+    {
+      key: 'actions',
+      title: 'Actions',
+      render: actions
+    }
+  ];
+
+  const pagination = patients.length <= 10 ? false : {};
+
+  return (
+    <>
+      <Table
+        pagination={pagination}
+        className='accent-header'
+        rowKey='id'
+        dataSource={patients}
+        columns={columns}
+      />
+
+      <Modal
+        visible={visibility}
+        footer={null}
+        onCancel={closeModal}
+        title={<h3 className='title'>Add patient</h3>}
+      >
+        <PatientForm
+          submitText='Update patient'
+          onCancel={closeModal}
+          onSubmit={onEditPatient}
+          patient={patient}
+        />
+      </Modal>
+    </>
+  );
+};
 
 export default PatientsTable;

@@ -3,6 +3,7 @@ import { IRoute } from '../interfaces/routing';
 
 import SettingsPage from '../pages/Settings/Settings';
 import PatientsPage from '../pages/Patients/Patients';
+import DashboardPage from '../pages/Dashboard/Dashboard';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -12,5 +13,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'patients',
     component: PatientsPage
+  },
+  {
+    path: 'default-dashboard',
+    component: DashboardPage
   }
 ];

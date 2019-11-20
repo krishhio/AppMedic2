@@ -18,6 +18,7 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
 
   .ant-table {
     overflow: auto;
+    min-width: 820px;
     tr {
       th,
       td {
@@ -40,6 +41,7 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
       table tr th {
         border-radius: 0;
       }
+
       td + td {
         overflow: hidden;
         padding-top: $module-rem * 1.6;
@@ -49,11 +51,68 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
   }
 
   .ant-table-thead {
-    tr > th {
-      background-color: $_header-bg;
-      color: $_header-color;
-      position: relative;
-      height: 40px;
+    tr {
+      > th {
+        background-color: $_header-bg;
+        color: $_header-color;
+        position: relative;
+        height: 40px;
+      }
+
+      > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
+        background: accent-palette(600);
+      }
+
+      .ant-table-column-sorters {
+        align-items: center;
+        display: flex !important;
+      }
+
+      .ant-table-column-sorter-inner {
+        display: flex;
+        flex-direction: column;
+        margin-top: -0.05em !important;
+        justify-content: space-between;
+        .ant-table-column-sorter-up,
+        .ant-table-column-sorter-down {
+          font-family: 'IcoFont' !important;
+          speak: none;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 0.9rem;
+          font-variant: normal;
+          text-transform: none;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          line-height: 1;
+
+          &:before {
+            display: inline;
+            font-size: 0.9rem;
+          }
+
+          &.off {
+            color: #fbfbfb;
+          }
+          &.on {
+            color: main-palette(700) !important;
+          }
+
+          svg {
+            display: none;
+          }
+        }
+
+        .ant-table-column-sorter-up:before {
+          content: '\eab9' !important;
+          margin-bottom: $module-rem / 2;
+        }
+
+        .ant-table-column-sorter-down:before {
+          content: '\eab2' !important;
+        }
+      }
     }
   }
   .ant-table-tbody {
@@ -68,7 +127,7 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
       }
     }
   }
-  
+
   &.accent-header .ant-table .ant-table-thead {
     tr > th {
       background-color: accent-palette(500);

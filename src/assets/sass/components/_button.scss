@@ -73,8 +73,8 @@ $_sm-lh: $_module-rem / $_sm-fs;
 .ant-btn {
   background: main-palette(500);
   border-radius: $_shape;
+  border-color: main-palette(500);
   box-shadow: $_shadow;
-  background-clip: padding-box;
   color: main-contrast(500);
   cursor: pointer;
   font-family: $_ff;
@@ -94,18 +94,27 @@ $_sm-lh: $_module-rem / $_sm-fs;
   will-change: background, border, box-shadow, color, opacity;
   -webkit-appearance: none;
 
+  &:focus,
+  &:hover {
+    background: main-palette(500);
+    border-color: main-palette(500);
+    color: main-contrast(500);
+  }
+
   @each $_type, $_color in $_types {
     &.ant-btn-#{$_type} {
       background: map-get($_color, bg);
+      border-color: map-get($_color, bg);
       color: map-get($_color, color);
 
+      &:focus,
       &:hover {
         background: map-get($_color, hover-bg);
+        border-color: map-get($_color, hover-bg);
         color: map-get($_color, hover-color);
       }
       &.btn-outline {
         background: transparent;
-        border-color: map-get($_color, bg);
         color: map-get($_color, bg);
 
         &:hover,
@@ -124,7 +133,7 @@ $_sm-lh: $_module-rem / $_sm-fs;
 
   span {
     margin: 0 ($module-rem / 2);
-    min-height: #{$_fs * $_lh};
+    line-height: #{$_fs * $_lh};
     letter-spacing: 0.2px;
 
     &:empty {
@@ -161,7 +170,7 @@ $_sm-lh: $_module-rem / $_sm-fs;
     line-height: $_lg-lh;
 
     span {
-      min-height: #{$_lg-fs * $_lg-lh};
+      line-height: #{$_lg-fs * $_lg-lh};
     }
   }
   &.ant-btn-sm {
@@ -170,7 +179,7 @@ $_sm-lh: $_module-rem / $_sm-fs;
     line-height: $_sm-lh;
     height: 30px;
     span {
-      min-height: #{$_sm-fs * $_sm-lh};
+      line-height: #{$_sm-fs * $_sm-lh};
     }
   }
   &.ant-btn-dashed {
@@ -190,8 +199,12 @@ $_sm-lh: $_module-rem / $_sm-fs;
     }
   }
   &.ant-btn-circle {
-    height: 32px;
-    width: 32px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
     padding: 0 !important;
   }
   &.ant-btn-background-ghost {
