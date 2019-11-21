@@ -18,8 +18,8 @@ type OwnProps = {
 type Props = DispatchProps & OwnProps;
 
 const Page = ({ children, onPageUpdate, onSetPage }: Props) => {
-  const getData = async url => {
-    const result = await axios.get(url);
+  const getData = async function<T>(url) {
+    const result = await axios.get<T>(url);
 
     onPageUpdate({ fullFilled: true });
 

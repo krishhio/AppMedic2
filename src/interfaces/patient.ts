@@ -10,3 +10,13 @@ export interface IPatient {
   lastVisit?: string;
 }
 
+export interface IAppointment {
+  img: string;
+  name: string;
+  email: string;
+  number: string;
+  date: string;
+  fromTo: string;
+  doctor: string;
+  injury: string;
+}

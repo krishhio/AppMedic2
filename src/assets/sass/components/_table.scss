@@ -36,6 +36,16 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
       }
     }
 
+    .ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+      transform: scale(1);
+      z-index: 1;
+
+      > td {
+        border-color: transparent;
+        background: $_bg;
+      }
+    }
     .ant-table-expanded-row {
       overflow: hidden;
       table tr th {
@@ -55,12 +65,13 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
       > th {
         background-color: $_header-bg;
         color: $_header-color;
+        font-weight: 700;
         position: relative;
         height: 40px;
       }
 
       > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
-        background: accent-palette(600);
+        background: accent-palette(300);
       }
 
       .ant-table-column-sorters {
@@ -68,17 +79,19 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
         display: flex !important;
       }
 
-      .ant-table-column-sorter-inner {
+      .ant-table-column-sorter-inner,
+      .ant-table-column-sorter-inner-full {
         display: flex;
         flex-direction: column;
-        margin-top: -0.05em !important;
+        margin: 0 0 0 $module-rem !important;
         justify-content: space-between;
+
         .ant-table-column-sorter-up,
         .ant-table-column-sorter-down {
           font-family: 'IcoFont' !important;
           speak: none;
           font-style: normal;
-          font-weight: 400;
+          font-weight: 700;
           font-size: 0.9rem;
           font-variant: normal;
           text-transform: none;
@@ -93,10 +106,10 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
           }
 
           &.off {
-            color: #fbfbfb;
+            color: main-palette(500);
           }
           &.on {
-            color: main-palette(700) !important;
+            color: accent-palette(700) !important;
           }
 
           svg {

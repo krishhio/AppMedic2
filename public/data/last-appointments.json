@@ -1,6 +1,6 @@
 [
   {
-    "img": "/assets/content/user-40-1.jpg",
+    "img": "/content/user-40-1.jpg",
     "name": "Liam",
     "email": "liam@gmail.com",
     "number": "0126596578",
@@ -10,7 +10,7 @@
     "injury": "allergy"
   },
   {
-    "img": "/assets/content/user-40-2.jpg",
+    "img": "/content/user-40-2.jpg",
     "name": "Emma",
     "email": "emma@gmail.com",
     "number": "0126596452",
@@ -20,7 +20,7 @@
     "injury": "arthritis"
   },
   {
-    "img": "/assets/content/user-40-3.jpg",
+    "img": "/content/user-40-3.jpg",
     "name": "Olivia",
     "email": "olivia@gmail.com",
     "number": "0126598853",
@@ -30,7 +30,7 @@
     "injury": "depression"
   },
   {
-    "img": "/assets/content/user-40-4.jpg",
+    "img": "/content/user-40-4.jpg",
     "name": "Ava",
     "email": "ava@gmail.com",
     "number": "0126590443",
@@ -40,7 +40,7 @@
     "injury": "diarrhoea"
   },
   {
-    "img": "/assets/content/user-40-5.jpg",
+    "img": "/content/user-40-5.jpg",
     "name": "Noah",
     "email": "noah@gmail.com",
     "number": "0126598525",
@@ -50,7 +50,7 @@
     "injury": "dyslexia"
   },
   {
-    "img": "/assets/content/user-40-6.jpg",
+    "img": "/content/user-40-6.jpg",
     "name": "Isabella",
     "email": "isabella@gmail.com",
     "number": "0126599411",
@@ -60,7 +60,7 @@
     "injury": "flu"
   },
   {
-    "img": "/assets/content/user-40-7.jpg",
+    "img": "/content/user-40-7.jpg",
     "name": "Sophia",
     "email": "sophia@gmail.com",
     "number": "0126596284",
