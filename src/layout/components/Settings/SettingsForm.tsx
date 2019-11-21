@@ -14,12 +14,10 @@ type Props = {
   onUpdateSetting: (settings: IAppSettings) => void;
 };
 
-const SettingsForm = ({
-  settings,
-  onResetSettings,
-  onUpdateSetting
-}: Props) => {
+const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => {
   const downloadLink = useRef<HTMLAnchorElement>(null);
+
+  const layout = history.location.pathname.split('/')[1];
 
   const handleReset = () => {
     onResetSettings();
@@ -27,8 +25,7 @@ const SettingsForm = ({
 
   const handleDownload = () => {
     const settingsJSON = JSON.stringify(settings);
-    const dataStr =
-      'data:text/json;charset=utf-8,' + encodeURIComponent(settingsJSON);
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(settingsJSON);
 
     downloadLink.current.setAttribute('href', dataStr);
     downloadLink.current.setAttribute('download', 'settings.json');
@@ -53,28 +50,20 @@ const SettingsForm = ({
   const handleBoxedChange = (boxed: boolean) => setValue('boxed', boxed);
 
   const sidebarPickerLabel =
-    settings.layout === 'vertical'
-      ? 'Sidebar background'
-      : 'Second navbar background';
+    settings.layout === 'vertical' ? 'Sidebar background' : 'Second navbar background';
 
   return (
     <Form layout='vertical' className='settings-form'>
       <Form.Item label='Topbar background'>
-        <ColorPicker
-          onColorChange={handleNavBgChange}
-          color={settings.topbarBg}
-        />
+        <ColorPicker onColorChange={handleNavBgChange} color={settings.topbarBg} />
       </Form.Item>
 
       <Form.Item label={sidebarPickerLabel}>
-        <ColorPicker
-          onColorChange={handleSideBgChange}
-          color={settings.sidebarBg}
-        />
+        <ColorPicker onColorChange={handleSideBgChange} color={settings.sidebarBg} />
       </Form.Item>
 
       <Form.Item label='Layout'>
-        <Select onChange={handleLayoutChange} defaultValue={settings.layout}>
+        <Select onChange={handleLayoutChange} defaultValue={layout}>
           <Select.Option value={'vertical'}>Vertical</Select.Option>
 
           <Select.Option value={'horizontal'}>Horizontal</Select.Option>

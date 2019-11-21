@@ -57,10 +57,15 @@ const BaseLayout = ({
   onFetchPatients
 }: Props) => {
   const [showSettings, setShowSettings] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     onFetchPatients(patientsUrl);
   }, []);
+
+  const handleScroll = event => {
+    setScrolled(event.target.scrollTop > 0);
+  };
 
   const mainContentClasses = className({
     'main-content': true,
@@ -76,14 +81,14 @@ const BaseLayout = ({
 
   return (
     <div className={`layout ${orientation}`}>
-      <div className={`app-container ${settings.boxed && 'boxed'}`}>
+      <div className={`app-container ${settings.boxed && 'boxed'} ${scrolled && 'scrolled'}`}>
         {nav}
 
         {topNav}
 
         {sideNav}
 
-        <main className={mainContentClasses}>
+        <main onScroll={handleScroll} className={mainContentClasses}>
           {!pageData.fullFilled && (
             <div className='page-loader'>
               <i className='icofont-spinner-alt-4 rotate' />

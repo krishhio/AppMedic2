@@ -92,7 +92,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
   }, []);
 
   const nav = (
-    <Navbar orientation='horizontal'>
+    <Navbar orientation='horizontal' boxed={settings.boxed}>
       <button className='no-style navbar-toggle d-lg-none' onClick={onSidebarToggle}>
         <span />
         <span />
@@ -108,7 +108,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
   );
 
   const additionalNav = (
-    <Navbar minHeight={40} orientation='horizontal-vertical'>
+    <Navbar minHeight={40} orientation='horizontal-vertical' boxed={settings.boxed}>
       <Menu
         onCloseSidebar={onSidebarToggle}
         opened={settings.sidebarOpened}
