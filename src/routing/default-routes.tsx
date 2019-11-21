@@ -4,6 +4,7 @@ import { IRoute } from '../interfaces/routing';
 import SettingsPage from '../pages/Settings/Settings';
 import PatientsPage from '../pages/Patients/Patients';
 import DashboardPage from '../pages/Dashboard/Dashboard';
+import AppointmentsPage from '../pages/Appointments/Appointments';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -17,5 +18,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'default-dashboard',
     component: DashboardPage
+  },
+  {
+    path: 'appointments',
+    component: AppointmentsPage
   }
 ];

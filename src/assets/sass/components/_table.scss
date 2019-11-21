@@ -147,4 +147,9 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
       color: accent-contrast(500);
     }
   }
+
+  .ant-table-pagination.ant-pagination {
+    float: left;
+  }
 }
+

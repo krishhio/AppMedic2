@@ -134,3 +134,15 @@
 .form-group {
   margin: 0 0 ($module-rem * 2);
 }
+
+.page-action {
+  align-items: center;
+  bottom: $module-rem * 8;
+  display: flex;
+  height: 60px !important;
+  justify-content: center;
+  position: fixed;
+  right: $module-rem * 2;
+  width: 60px !important;
+  z-index: 997;
+}

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
 import { Card } from 'antd';
 
 import ReactEcharts from 'echarts-for-react';
 
-import AppointmentsTable from './AppointmentsTable';
+import AppointmentsTable from '../../layout/components/AppointmentsTable/AppointmentsTable';
 
 import hospitalOptions from './Charts/HospitalOptions';
 import { incomeInWeek, incomeInMonth } from './Charts/IncomeOptions';
@@ -31,12 +32,7 @@ const DashboardPage = ({ setPageData, getData }: PageProps) => {
   const [appointments, setAppointment] = useState<IAppointment[]>([]);
 
   useEffect(() => {
-    async function getPageData() {
-      const result = await getData<IAppointment[]>('./data/last-appointments.json');
-      setAppointment(result);
-    }
-
-    getPageData().catch(err => console.error(err || 'Server error'));
+    getData('./data/last-appointments.json', setAppointment)
   }, []);
 
   useEffect(() => setPageData(pageData), []);

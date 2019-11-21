@@ -35,7 +35,7 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
         <span className='icofont icofont-edit-alt' />
       </Button>
       <Button onClick={handleDeletePatient.bind({}, patient.id)} shape='circle' type='danger'>
-        <span className='icofont icofont-external-link' />
+        <span className='icofont icofont-ui-delete' />
       </Button>
     </div>
   );

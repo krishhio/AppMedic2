@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
+
+import { Avatar, Table } from 'antd';
 
 import { ColumnProps } from 'antd/es/table';
-import { IAppointment } from '../../interfaces/patient';
-import { Avatar, Table } from 'antd';
+import { IAppointment } from '../../../interfaces/patient';
 
 const columns: ColumnProps<IAppointment>[] = [
   {
@@ -63,15 +64,26 @@ const columns: ColumnProps<IAppointment>[] = [
     )
   },
   { key: 'doctor', title: 'Doctor', dataIndex: 'doctor' },
-  { key: 'condition', title: 'Injury/Condition', dataIndex: 'injury' }
+  { key: 'condition', title: 'Injury/Condition', dataIndex: 'injury' },
+  {}
 ];
 
 type Props = {
   data: IAppointment[];
+  actions?: (appointment: IAppointment) => ReactNode;
 };
 
-const AppointmentsTable = ({ data }: Props) => (
-  <Table rowKey='number' pagination={false} columns={columns} dataSource={data} />
-);
+const AppointmentsTable = ({ data, actions }: Props) => {
+  const pagination = data.length < 10 ? false : {};
+
+  const actionColumn: ColumnProps<IAppointment> = {
+    key: 'actions',
+    title: 'actions',
+    render: actions
+  };
+  const displayedColumns = actions ? [...columns, actionColumn] : columns;
+
+  return <Table rowKey='number' pagination={pagination} columns={displayedColumns} dataSource={data} />;
+};
 
 export default AppointmentsTable;
