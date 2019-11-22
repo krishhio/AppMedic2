@@ -74,13 +74,14 @@ type Props = {
 };
 
 const AppointmentsTable = ({ data, actions }: Props) => {
-  const pagination = data.length < 10 ? false : {};
+  const pagination = data.length <= 10 ? false : {};
 
   const actionColumn: ColumnProps<IAppointment> = {
     key: 'actions',
     title: 'actions',
     render: actions
   };
+
   const displayedColumns = actions ? [...columns, actionColumn] : columns;
 
   return <Table rowKey='number' pagination={pagination} columns={displayedColumns} dataSource={data} />;

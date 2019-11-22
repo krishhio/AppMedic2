@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-import { Button, Modal } from 'antd';
+import { Button } from 'antd';
 
 import { IAppointment } from '../../interfaces/patient';
 import { IPageData } from '../../interfaces/page-data';
 import { PageProps } from '../../interfaces/page';
 
 import PageAction from '../../layout/components/PageAction/PageAction';
-import AppointmentForm from './AppointmentForm';
 import AppointmentsTable from '../../layout/components/AppointmentsTable/AppointmentsTable';
 import EditAppointment from './EditAppointment';
+import AddAppointment from './AddAppointment';
 
 const pageData: IPageData = {
   title: 'Appointments',
@@ -21,14 +21,15 @@ const pageData: IPageData = {
       route: 'dashboard'
     },
     {
-      title: 'Patients'
+      title: 'Appointments'
     }
   ]
 };
 
 const AppointmentsPage = ({ getData, setPageData }: PageProps) => {
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState<IAppointment[]>([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [addingModalVisibility, setAddingModalVisibility] = useState(false);
 
   useEffect(() => {
     getData('./data/appointments.json', setAppointments);
@@ -36,19 +37,31 @@ const AppointmentsPage = ({ getData, setPageData }: PageProps) => {
 
   useEffect(() => setPageData(pageData), []);
 
-  const handleDelete = (appointment: IAppointment) => {};
+  const handleDelete = (appointment: IAppointment) => {
+    const newAppointments = appointments.filter(el => el !== appointment);
+    setAppointments(newAppointments);
+  };
 
-  const handleEdit = (appointment: IAppointment) => {};
+  const handleEdit = (appointment: IAppointment) => {
+    const editedAppointments = appointments.map(el => (el !== selectedAppointment ? el : appointment));
+    setAppointments(editedAppointments);
+    setSelectedAppointment(null);
+  };
 
-  const openAddingModal = () => {};
+  const openAddingModal = () => setAddingModalVisibility(true);
+
+  const addAppointment = (appointment: IAppointment) => {
+    setAppointments([...appointments, appointment]);
+    setAddingModalVisibility(false);
+  };
+
+  const closeAddingModal = () => setAddingModalVisibility(false);
 
   const openEditModal = (appointment: IAppointment) => setSelectedAppointment(appointment);
 
   const closeModal = () => {
     setSelectedAppointment(null);
   };
-
-  const addAppointment = (appointment: IAppointment) => setAppointments([...appointments, appointment]);
 
   const appointmentsActions = (appointment: IAppointment) => (
     <div className='buttons-list nowrap'>
@@ -67,7 +80,7 @@ const AppointmentsPage = ({ getData, setPageData }: PageProps) => {
 
       <PageAction onClick={openAddingModal} icon='icofont-stethoscope-alt' type={'primary'} />
 
-      
+      <AddAppointment onClose={closeAddingModal} visible={addingModalVisibility} onSubmit={addAppointment} />
 
       <EditAppointment
         appointment={selectedAppointment}

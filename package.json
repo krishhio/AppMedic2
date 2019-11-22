@@ -53,7 +53,7 @@
     "singleQuote": true,
     "jsxSingleQuote": true,
     "jsxBracketSameLine": false,
-    "printWidth": 110
+    "printWidth": 100
   },
   "devDependencies": {
     "@types/history": "^4.7.3",

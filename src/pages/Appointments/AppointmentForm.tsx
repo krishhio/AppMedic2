@@ -39,41 +39,53 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.name} name='name' onChange={handleChange} />
+          <Input defaultValue={values.name} placeholder='Name' name='name' onChange={handleChange} />
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.doctor} name='doctor' onChange={handleChange} />
+          <Input defaultValue={values.doctor} placeholder='Doctor' name='doctor' onChange={handleChange} />
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.email} name='email' type='email' onChange={handleChange} />
+          <Input
+            defaultValue={values.email}
+            placeholder='Email'
+            name='email'
+            type='email'
+            onChange={handleChange}
+          />
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.date} name='date' onChange={handleChange} />
+          <Input defaultValue={values.date} placeholder='Date' name='date' onChange={handleChange} />
         </div>
 
         <div className='row'>
           <div className='col-sm-12 col-md-6'>
             <div className='form-group'>
-              <Input defaultValue={from} name='from' onChange={handleChange} />
+              <Input defaultValue={from} placeholder='From' name='from' onChange={handleChange} />
             </div>
           </div>
 
           <div className='col-sm-12 col-md-6'>
             <div className='form-group'>
-              <Input defaultValue={to} name='to' onChange={handleChange} />
+              <Input defaultValue={to} placeholder='To' name='to' onChange={handleChange} />
             </div>
           </div>
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.number} name='number' type='phone' onChange={handleChange} />
+          <Input
+            defaultValue={values.number}
+            placeholder='Number'
+            name='number'
+            type='phone'
+            onChange={handleChange}
+          />
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.injury} name='injury' onChange={handleChange} />
+          <Input defaultValue={values.injury} placeholder='Injury' name='injury' onChange={handleChange} />
         </div>
       </form>
 
@@ -83,7 +95,7 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
         </Button>
 
         <Button onClick={handleAddAppointment} type='primary' htmlType='submit'>
-          { submitText || 'Add appointment' }
+          {submitText || 'Add appointment'}
         </Button>
       </div>
     </>
