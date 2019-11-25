@@ -1,11 +1,11 @@
-import React from 'react';
 import { IRoute } from '../interfaces/routing';
 
 import SettingsPage from '../pages/Settings/Settings';
-import PatientsPage from '../pages/Patients/Patients';
-import DashboardPage from '../pages/Dashboard/Dashboard';
-import AppointmentsPage from '../pages/Appointments/Appointments';
-import DoctorsPage from '../pages/Doctors/Doctors';
+import PatientsPage from '../pages/Dashboards/Patients/Patients';
+import DashboardPage from '../pages/Dashboards/Dashboard/Dashboard';
+import AppointmentsPage from '../pages/Dashboards/Appointments/Appointments';
+import DoctorsPage from '../pages/Dashboards/Doctors/Doctors';
+import AlertsPage from '../pages/components/Alerts/Alerts';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -27,5 +27,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'doctors',
     component: DoctorsPage
+  },
+  {
+    path: 'alerts',
+    component: AlertsPage
   }
 ];

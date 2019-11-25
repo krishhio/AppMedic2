@@ -1,14 +1,14 @@
 import React from 'react';
 
-import VerticalLayout from './layout/Vertical/Vertical';
-
-import './App.scss';
 import { Switch, Route, Redirect } from 'react-router-dom';
+
+import Page from './layout/components/Page/Page';
+import VerticalLayout from './layout/Vertical/Vertical';
 import HorizontalLayout from './layout/Horizontal/Horizontal';
-import { Button } from 'antd';
 
 import { defaultRoutes } from './routing';
-import Page from './layout/components/Page/Page';
+
+import './App.scss';
 
 const DefaultRoutes = ({ layout }) => (
   <Switch>

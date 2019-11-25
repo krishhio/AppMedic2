@@ -26,9 +26,18 @@ type RouterProps = {
 
 type Props = RouterProps & MenuProps | any;
 
-const haveActive = (sub: IMenuItemSub[], route: string) => !!sub.find(item => item.routing === route);
+const haveActive = (sub: IMenuItemSub[], route: string) =>
+  !!sub.find(item => item.routing === route);
 
-const Menu = ({ data, orientation, location, children, className, onCloseSidebar, opened }: Props) => {
+const Menu = ({
+  data,
+  orientation,
+  location,
+  children,
+  className,
+  onCloseSidebar,
+  opened
+}: Props) => {
   const [menu, setMenu] = useState<IMenuItem[]>([]);
 
   useEffect(() => {
@@ -53,7 +62,7 @@ const Menu = ({ data, orientation, location, children, className, onCloseSidebar
 
   useEffect(() => {
     onCloseSidebar && opened && onCloseSidebar();
-  }, [location]);
+  }, [location, onCloseSidebar, opened]);
 
   const handleItemClick = (itemTitle: string) => {
     const updateMenu = [...menu];
@@ -95,7 +104,13 @@ const Menu = ({ data, orientation, location, children, className, onCloseSidebar
     }
 
     return (
-      <SimpleItem key={i} icon={item.icon} layout={orientation} title={item.title} routing={item.routing} />
+      <SimpleItem
+        key={i}
+        icon={item.icon}
+        layout={orientation}
+        title={item.title}
+        routing={item.routing}
+      />
     );
   });
 

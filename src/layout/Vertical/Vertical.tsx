@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
@@ -43,12 +43,7 @@ type DispatchProps = {
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-const VerticalLayout = ({
-  children,
-  onSidebarToggle,
-  settings,
-  pageData
-}: Props) => {
+const VerticalLayout = ({ children, onSidebarToggle, settings, pageData }: Props) => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {

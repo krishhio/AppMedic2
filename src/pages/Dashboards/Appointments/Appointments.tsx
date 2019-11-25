@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import { Button } from 'antd';
 
-import { IAppointment } from '../../interfaces/patient';
-import { IPageData } from '../../interfaces/page-data';
-import { PageProps } from '../../interfaces/page';
+import { IAppointment } from '../../../interfaces/patient';
+import { IPageData } from '../../../interfaces/page-data';
+import { PageProps } from '../../../interfaces/page';
 
-import PageAction from '../../layout/components/PageAction/PageAction';
-import AppointmentsTable from '../../layout/components/AppointmentsTable/AppointmentsTable';
+import PageAction from '../../../layout/components/PageAction/PageAction';
+import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
 import EditAppointment from './EditAppointment';
 import AddAppointment from './AddAppointment';
 

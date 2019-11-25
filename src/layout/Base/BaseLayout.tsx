@@ -61,7 +61,7 @@ const BaseLayout = ({
 
   useEffect(() => {
     onFetchPatients(patientsUrl);
-  }, []);
+  }, [onFetchPatients]);
 
   const handleScroll = event => {
     setScrolled(event.target.scrollTop > 0);

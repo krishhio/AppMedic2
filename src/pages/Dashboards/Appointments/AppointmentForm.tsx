@@ -1,9 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { IAppointment } from '../../interfaces/patient';
+import { IAppointment } from '../../../interfaces/patient';
 
 import { Button, Input } from 'antd';
-import ImageLoader from '../../layout/components/Patients/ImageLoader';
+import ImageLoader from '../../../layout/components/Patients/ImageLoader';
 
 type Props = {
   appointment?: IAppointment;

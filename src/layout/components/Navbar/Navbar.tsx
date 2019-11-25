@@ -3,7 +3,6 @@ import React, { CSSProperties, ReactNode, useRef } from 'react';
 import classNames from '../../../utils/classNames';
 
 import './Navbar.scss';
-import NavLoader from './NavLoader';
 import useOutsideClick from '../../../Hooks/UseClickOutside';
 
 export type NavProps = {

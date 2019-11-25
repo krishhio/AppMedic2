@@ -4,15 +4,20 @@ import { Card } from 'antd';
 
 import ReactEcharts from 'echarts-for-react';
 
-import AppointmentsTable from '../../layout/components/AppointmentsTable/AppointmentsTable';
+import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
 
 import hospitalOptions from './Charts/HospitalOptions';
 import { incomeInWeek, incomeInMonth } from './Charts/IncomeOptions';
-import { patientsGenderOptions, departmentsOptions, patientsAgeOptions } from './Charts/PatientsOptions';
 
-import { PageProps } from '../../interfaces/page';
-import { IPageData } from '../../interfaces/page-data';
-import { IAppointment } from '../../interfaces/patient';
+import {
+  patientsGenderOptions,
+  departmentsOptions,
+  patientsAgeOptions
+} from './Charts/PatientsOptions';
+
+import { PageProps } from '../../../interfaces/page';
+import { IPageData } from '../../../interfaces/page-data';
+import { IAppointment } from '../../../interfaces/patient';
 
 const pageData: IPageData = {
   loaded: true,
@@ -32,10 +37,10 @@ const DashboardPage = ({ setPageData, getData }: PageProps) => {
   const [appointments, setAppointment] = useState<IAppointment[]>([]);
 
   useEffect(() => {
-    getData('./data/last-appointments.json', setAppointment)
-  }, []);
+    getData('./data/last-appointments.json', setAppointment);
+  }, [getData]);
 
-  useEffect(() => setPageData(pageData), []);
+  useEffect(() => setPageData(pageData), [setPageData]);
 
   return (
     <>
@@ -158,7 +163,10 @@ const DashboardPage = ({ setPageData, getData }: PageProps) => {
 
         <div className='col-12 col-md-4'>
           <Card title={'Patients gender'}>
-            <ReactEcharts className='chart-container container-h-300' option={patientsGenderOptions} />
+            <ReactEcharts
+              className='chart-container container-h-300'
+              option={patientsGenderOptions}
+            />
           </Card>
         </div>
 

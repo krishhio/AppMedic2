@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAppointment } from '../../interfaces/patient';
+import { IAppointment } from '../../../interfaces/patient';
 import AppointmentForm from './AppointmentForm';
 import { Modal } from 'antd';
 

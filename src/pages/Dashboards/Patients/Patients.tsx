@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { PageProps } from '../../interfaces/page';
+import { PageProps } from '../../../interfaces/page';
 
-import { IPatient } from '../../interfaces/patient';
-import { IAppState } from '../../interfaces/app-state';
-import { IPageData } from '../../interfaces/page-data';
+import { IPatient } from '../../../interfaces/patient';
+import { IAppState } from '../../../interfaces/app-state';
+import { IPageData } from '../../../interfaces/page-data';
 
 import PatientsTable from './PatientsTable';
-import { editPatient, deletePatient } from '../../redux/patients/actions';
+import { editPatient, deletePatient } from '../../../redux/patients/actions';
 
 const pageData: IPageData = {
   title: 'Patients',

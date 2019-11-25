@@ -1,9 +1,9 @@
 import React from 'react';
-import { IUser } from '../../interfaces/user';
+import { IUser } from '../../../interfaces/user';
 import { useFormik, Form, FieldArray, Field, Formik } from 'formik';
 import { Input, Select } from 'antd';
 
-import ImageLoader from '../../layout/components/Patients/ImageLoader';
+import ImageLoader from '../../../layout/components/Patients/ImageLoader';
 
 const { TextArea } = Input;
 
@@ -37,6 +37,7 @@ const initialValues = {
 };
 
 const DoctorForm = ({ onSubmit, onCancel }: Props) => {
+  const handleGenderSelect = () => {};
   return (
     <Formik
       initialValues={initialValues}

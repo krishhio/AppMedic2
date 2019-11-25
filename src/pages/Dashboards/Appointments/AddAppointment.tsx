@@ -1,10 +1,12 @@
 import React from 'react';
-import { IAppointment } from '../../interfaces/patient';
-import AppointmentForm from './AppointmentForm';
+
 import { Modal } from 'antd';
 
+import AppointmentForm from './AppointmentForm';
+import { IAppointment } from '../../../interfaces/patient';
+
 type Props = {
-  onSubmit: (IAppointment) => void;
+  onSubmit: (appointment: IAppointment) => void;
   visible: boolean;
   onClose: () => void;
 };
