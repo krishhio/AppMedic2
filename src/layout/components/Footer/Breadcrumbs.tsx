@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { IBreadcrumb } from '../../../interfaces/page-data';
+import { IBreadcrumb } from '../../../interfaces/page';
 
 type Props = {
   breadcrumbs: IBreadcrumb[];

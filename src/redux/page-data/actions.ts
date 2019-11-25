@@ -7,7 +7,7 @@ import {
   UpdatePageDataAction
 } from './types';
 
-import { IPageData } from '../../interfaces/page-data';
+import { IPageData } from '../../interfaces/page';
 
 export const setPageData = (data: IPageData): SetPageDataAction => ({
   type: SET_PAGE_DATA,

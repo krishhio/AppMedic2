@@ -4,7 +4,7 @@ import {
   UPDATE_PAGE_DATA,
   SET_PAGE_DATA
 } from './types';
-import { IPageData } from '../../interfaces/page-data';
+import { IPageData } from '../../interfaces/page';
 
 const initialState: IPageData = {
   title: '',

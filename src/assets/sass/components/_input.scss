@@ -89,12 +89,12 @@ $_padding-v-lg: $_module-rem * 1.5;
     opacity: 1;
   }
 
-  &:hover {
+  &:hover:not(.ant-input-disabled) {
     cursor: text;
     border-color: map_get($_border, hover);
     box-shadow: $_shadow-hover;
   }
-  &:focus {
+  &:focus:not(.ant-input-disabled) {
     @include input-focused;
   }
 
@@ -130,6 +130,10 @@ html {
 
   .ant-form-item-label {
     font-weight: 600;
+  }
+
+  .ant-input-affix-wrapper .ant-input:not(:first-child) {
+    padding-left: $module-rem * 4 !important;
   }
 
   .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {

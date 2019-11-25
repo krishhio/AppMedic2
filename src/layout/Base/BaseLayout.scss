@@ -17,11 +17,15 @@
       position: relative;
       transition: 0.2s padding 0s $animation;
       -webkit-overflow-scrolling: touch;
+
       .page-loader {
         align-items: center;
+        background: #fff;
         display: flex;
-        justify-content: center;
         height: 100%;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
       }
 
       .main-content-wrap {

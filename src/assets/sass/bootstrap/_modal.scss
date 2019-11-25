@@ -59,7 +59,7 @@
   outline: 0;
 }
 
-// Modal background
+// Modals background
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -74,7 +74,7 @@
   &.show { opacity: $modal-backdrop-opacity; }
 }
 
-// Modal header
+// Modals header
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
@@ -90,7 +90,7 @@
   line-height: $modal-title-line-height;
 }
 
-// Modal body
+// Modals body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;

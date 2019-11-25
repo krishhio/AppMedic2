@@ -1,4 +1,4 @@
-import { IPageData } from '../../interfaces/page-data';
+import { IPageData } from '../../interfaces/page';
 
 export const SET_PAGE_DATA = '[Base Page] Set';
 export const RESET_PAGE_DATA = '[Base PAge] Reset';

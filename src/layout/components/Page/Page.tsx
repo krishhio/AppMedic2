@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import { IPageData } from '../../../interfaces/page-data';
+import { IPageData } from '../../../interfaces/page';
 
 import { setPageData, updatePageDada } from '../../../redux/page-data/actions';
 

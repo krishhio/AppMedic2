@@ -1,6 +1,6 @@
 export interface IUser {
   name: string;
-  role: string;
+  role?: string;
   address: string;
   lastName?: string;
   img?: string | ArrayBuffer;

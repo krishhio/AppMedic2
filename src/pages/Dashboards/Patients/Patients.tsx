@@ -3,11 +3,9 @@ import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { PageProps } from '../../../interfaces/page';
-
 import { IPatient } from '../../../interfaces/patient';
 import { IAppState } from '../../../interfaces/app-state';
-import { IPageData } from '../../../interfaces/page-data';
+import { IPageData, PageProps } from '../../../interfaces/page';
 
 import PatientsTable from './PatientsTable';
 import { editPatient, deletePatient } from '../../../redux/patients/actions';

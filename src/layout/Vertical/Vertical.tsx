@@ -20,7 +20,7 @@ import AddPatient from '../components/Patients/AddPatient';
 import { Dispatch } from 'redux';
 import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
 import { connect } from 'react-redux';
-import { IPageData } from '../../interfaces/page-data';
+import { IPageData } from '../../interfaces/page';
 import { IPatient } from '../../interfaces/patient';
 import { IAppSettings } from '../../interfaces/settings';
 import NavLoader from '../components/Navbar/NavLoader';

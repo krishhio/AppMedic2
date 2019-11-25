@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { PageProps } from '../../interfaces/page';
-import { IPageData } from '../../interfaces/page-data';
+import { IAppState } from '../../interfaces/app-state';
 import { IAppSettings } from '../../interfaces/settings';
+import { IPageData, PageProps } from '../../interfaces/page';
 
 import SettingsForm from '../../layout/components/Settings/SettingsForm';
-
-import { IAppState } from '../../interfaces/app-state';
 
 import { resetSettings, updateSettings } from '../../redux/settings/actions';
 
 const pageData: IPageData = {
   title: 'Settings',
-  loaded: true,
   fullFilled: true,
   breadcrumbs: [
     {
@@ -37,12 +34,7 @@ type StateProps = {
 
 type Props = DispatchProps & StateProps & PageProps;
 
-const SettingsPage = ({
-  setPageData,
-  settings,
-  onResetSettings,
-  onUpdateSettings
-}: Props) => {
+const SettingsPage = ({ setPageData, settings, onResetSettings, onUpdateSettings }: Props) => {
   useEffect(() => setPageData(pageData), []);
 
   return (

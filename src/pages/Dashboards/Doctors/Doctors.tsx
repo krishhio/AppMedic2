@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import {  Modal } from 'antd';
+import { Modal } from 'antd';
 
 import { IUser } from '../../../interfaces/user';
-import { PageProps } from '../../../interfaces/page';
-import { IPageData } from '../../../interfaces/page-data';
+import { IPageData, PageProps } from '../../../interfaces/page';
 
 import Contact from '../../../layout/components/Doctor/Contact';
 import className from '../../../utils/classNames';
@@ -13,7 +12,6 @@ import DoctorForm from './DoctorForm';
 
 const pageData: IPageData = {
   title: 'Doctors',
-  loaded: true,
   fullFilled: false,
   breadcrumbs: [
     {

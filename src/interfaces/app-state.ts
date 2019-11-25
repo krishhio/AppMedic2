@@ -1,4 +1,4 @@
-import { IPageData } from './page-data';
+import { IPageData } from './page';
 import { IAppSettings } from './settings';
 import { IPatient } from './patient';
 

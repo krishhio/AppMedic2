@@ -5,7 +5,7 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { Modal } from 'antd';
 
-import { IPageData } from '../../interfaces/page-data';
+import { IPageData } from '../../interfaces/page';
 import { IAppSettings } from '../../interfaces/settings';
 
 import { toggleSidebar, updateSettings, resetSettings } from '../../redux/settings/actions';

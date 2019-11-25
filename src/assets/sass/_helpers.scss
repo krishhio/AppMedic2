@@ -131,6 +131,17 @@
   }
 }
 
+.elem-list {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -($module-rem / 2);
+
+  > * {
+    margin: $module-rem / 2;
+  }
+}
+
 .form-group {
   margin: 0 0 ($module-rem * 2);
 }

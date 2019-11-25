@@ -62,7 +62,7 @@ const Menu = ({
 
   useEffect(() => {
     onCloseSidebar && opened && onCloseSidebar();
-  }, [location, onCloseSidebar, opened]);
+  }, [location]);
 
   const handleItemClick = (itemTitle: string) => {
     const updateMenu = [...menu];

@@ -15,12 +15,10 @@ import {
   patientsAgeOptions
 } from './Charts/PatientsOptions';
 
-import { PageProps } from '../../../interfaces/page';
-import { IPageData } from '../../../interfaces/page-data';
 import { IAppointment } from '../../../interfaces/patient';
+import { PageProps, IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  loaded: true,
   fullFilled: false,
   breadcrumbs: [
     {

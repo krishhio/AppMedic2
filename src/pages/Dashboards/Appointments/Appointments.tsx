@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
 
 import { IAppointment } from '../../../interfaces/patient';
-import { IPageData } from '../../../interfaces/page-data';
-import { PageProps } from '../../../interfaces/page';
+import { IPageData, PageProps } from '../../../interfaces/page';
 
 import PageAction from '../../../layout/components/PageAction/PageAction';
 import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
@@ -13,7 +12,6 @@ import AddAppointment from './AddAppointment';
 
 const pageData: IPageData = {
   title: 'Appointments',
-  loaded: true,
   fullFilled: false,
   breadcrumbs: [
     {
@@ -43,7 +41,9 @@ const AppointmentsPage = ({ getData, setPageData }: PageProps) => {
   };
 
   const handleEdit = (appointment: IAppointment) => {
-    const editedAppointments = appointments.map(el => (el !== selectedAppointment ? el : appointment));
+    const editedAppointments = appointments.map(el =>
+      el !== selectedAppointment ? el : appointment
+    );
     setAppointments(editedAppointments);
     setSelectedAppointment(null);
   };
@@ -80,7 +80,11 @@ const AppointmentsPage = ({ getData, setPageData }: PageProps) => {
 
       <PageAction onClick={openAddingModal} icon='icofont-stethoscope-alt' type={'primary'} />
 
-      <AddAppointment onClose={closeAddingModal} visible={addingModalVisibility} onSubmit={addAppointment} />
+      <AddAppointment
+        onClose={closeAddingModal}
+        visible={addingModalVisibility}
+        onSubmit={addAppointment}
+      />
 
       <EditAppointment
         appointment={selectedAppointment}
