@@ -5,11 +5,11 @@ import PatientsPage from '../pages/Dashboards/Patients/Patients';
 import DashboardPage from '../pages/Dashboards/Dashboard/Dashboard';
 import AppointmentsPage from '../pages/Dashboards/Appointments/Appointments';
 import DoctorsPage from '../pages/Dashboards/Doctors/Doctors';
-import AlertsPage from '../pages/components/Alerts/AlertsPage';
-import AutocompletePage from '../pages/components/Autocomplete/AutocompletePage';
-import BadgesPage from '../pages/components/Badges/BadgesPage';
-import ContactsPage from '../pages/components/Contacts/ContactsPage';
-import InputsPage from '../pages/components/Inputs/InputsPage';
+import AlertsPage from '../ui/components/Alerts/AlertsPage';
+import AutocompletePage from '../ui/components/Autocomplete/AutocompletePage';
+import BadgesPage from '../ui/components/Badges/BadgesPage';
+import ContactsPage from '../ui/components/Contacts/ContactsPage';
+import InputsPage from '../ui/components/Inputs/InputsPage';
 
 export const defaultRoutes: IRoute[] = [
   {

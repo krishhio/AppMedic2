@@ -45,7 +45,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
 
   useEffect(() => {
     async function fetchMenuData() {
-      const result = await axios('./data/menu-horizontal.json');
+      const result = await axios('/data/menu-horizontal.json');
       setMenuData(result.data);
     }
 
@@ -56,7 +56,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
 
   useEffect(() => {
     async function fetchSearchData() {
-      const result = await axios('./data/menu.json');
+      const result = await axios('/data/menu.json');
       const data = result.data;
 
       const hasRouting = (item: IMenuItem) => !!item.routing;
