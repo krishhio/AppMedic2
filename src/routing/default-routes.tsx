@@ -10,6 +10,7 @@ import AutocompletePage from '../pages/components/Autocomplete/AutocompletePage'
 import BadgesPage from '../pages/components/Badges/BadgesPage';
 import ContactsPage from '../pages/components/Contacts/ContactsPage';
 import InputsPage from '../pages/components/Inputs/InputsPage';
+import RatingPage from '../pages/components/Ratings/Ratings';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -51,5 +52,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'inputs',
     component: InputsPage
+  },
+  {
+    path: 'ratings',
+    component: RatingPage
   }
 ];

@@ -37,7 +37,7 @@ $_width: $_module-rem * 4;
 .ant-switch {
   height: $_height;
   background: map-get($_bg, default);
-  border: $_border-width $_border-style map-get($_border, default);;
+  border: $_border-width $_border-style map-get($_border, default);
 
   &:hover {
     &:not(.ant-switch-checked),

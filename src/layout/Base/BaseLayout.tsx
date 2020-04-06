@@ -19,7 +19,7 @@ import './BaseLayout.scss';
 import Footer from '../components/Footer/Footer';
 import SettingsForm from '../components/Settings/SettingsForm';
 
-const patientsUrl = './data/patients.json';
+const patientsUrl = '/data/patients.json';
 
 type StateProps = {
   pageData: IPageData;

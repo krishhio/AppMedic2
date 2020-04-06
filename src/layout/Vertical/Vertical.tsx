@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import { Dispatch } from 'redux';
 
 import { DataSourceItemType } from 'antd/es/auto-complete';
 
@@ -12,18 +13,18 @@ import Navbar from '../components/Navbar/Navbar';
 import LogoSvg from './../../assets/img/logo.svg';
 import Menu from '../components/Menu/Menu';
 import Search from '../components/Search/Search';
+import NavLoader from '../components/Navbar/NavLoader';
 
-import './Vertical.scss';
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import Actions from '../components/Actions/Actions';
 import AddPatient from '../components/Patients/AddPatient';
-import { Dispatch } from 'redux';
-import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
 import { connect } from 'react-redux';
 import { IPageData } from '../../interfaces/page';
 import { IPatient } from '../../interfaces/patient';
 import { IAppSettings } from '../../interfaces/settings';
-import NavLoader from '../components/Navbar/NavLoader';
+import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
+
+import './Vertical.scss';
 
 type OwnProps = {
   children: any;
@@ -48,8 +49,9 @@ const VerticalLayout = ({ children, onSidebarToggle, settings, pageData }: Props
 
   useEffect(() => {
     async function fetchMenuData() {
-      const result = await axios('./data/menu.json');
+      const result = await axios('/data/menu.json');
       setMenuData(result.data);
+      console.log(result)
     }
 
     fetchMenuData().catch(err => console.log('Server Error', err));
@@ -59,7 +61,7 @@ const VerticalLayout = ({ children, onSidebarToggle, settings, pageData }: Props
 
   useEffect(() => {
     async function fetchSearchData() {
-      const result = await axios('./data/menu.json');
+      const result = await axios('/data/menu.json');
       const data = result.data;
 
       const hasRouting = (item: IMenuItem) => !!item.routing;
