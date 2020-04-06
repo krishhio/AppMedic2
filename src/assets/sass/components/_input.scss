@@ -4,19 +4,19 @@ $_bg: (
   default: #ebebeb,
   hover: #ebebeb,
   focus: #fff,
-  disabled: rgba(#ccc, 0.1)
+  disabled: rgba(#ccc, 0.1),
 );
 $_border: (
   default: #ebebeb,
   hover: #ebebeb,
   focus: accent-palette(500),
-  disabled: rgba(#ccc, 0.5)
+  disabled: rgba(#ccc, 0.5),
 );
 $_color: (
   default: main-palette(500),
   hover: main-palette(500),
   focus: main-palette(500),
-  disabled: #bdbdbd
+  disabled: #bdbdbd,
 );
 
 $_module-rem: $module-rem;
@@ -70,15 +70,14 @@ $_padding-v-lg: $_module-rem * 1.5;
 
 @mixin input {
   box-shadow: none;
-  border: $_border-width solid;
-  border-color: map_get($_border, default);
+  border: map_get($_border, default) $_border-width solid;
   background-color: map_get($_bg, default);
-  border-radius: $_shape;
+  height: (4 * $module);
+  padding: 0;
+  position: relative;
   color: map_get($_color, default);
   line-height: $_lh;
-  height: (4 * $module);
-  padding: 0 $_padding-h;
-  padding: 0 calc(#{$_padding-h} - 0.2em);
+  border-radius: $_shape;
   transition: background 0.2s $_animation, border 0.2s $_animation, box-shadow 0.2s $_animation,
     color 0.2s $_animation;
   will-change: background, border, box-shadow, color;
@@ -87,6 +86,22 @@ $_padding-v-lg: $_module-rem * 1.5;
   @include placeholder {
     color: #000;
     opacity: 1;
+  }
+
+  > *,
+  .ant-input-suffix,
+  .ant-input-prefix {
+    align-items: center;
+    display: flex;
+  }
+
+  > *,
+  input,
+  .ant-input-affix-wrapper {
+    border-radius: $_shape;
+    padding: 0 $_padding-h !important;
+    padding: 0 calc(#{$_padding-h} - 0.2em) !important;
+    height: 100%;
   }
 
   &:hover:not(.ant-input-disabled) {
@@ -117,8 +132,14 @@ $_padding-v-lg: $_module-rem * 1.5;
 }
 
 html {
-  .ant-input {
-    @include input;
+  .ant-form-item-control-input-content {
+    @include input();
+
+    input,
+    .ant-input-affix-wrapper {
+      background: transparent;
+      border: none;
+    }
   }
 
   textarea.ant-input {

@@ -1,7 +1,9 @@
 import React from 'react';
-import { IUser } from '../../../interfaces/user';
-import { useFormik, Form, FieldArray, Field, Formik } from 'formik';
+
+import { Form, Formik } from 'formik';
 import { Input, Select } from 'antd';
+
+import { IUser } from '../../../interfaces/user';
 
 import ImageLoader from '../../../layout/components/Patients/ImageLoader';
 
@@ -16,16 +18,16 @@ const initialValues = {
   social: [
     {
       icon: '',
-      link: ''
+      link: '',
     },
     {
       icon: '',
-      link: ''
+      link: '',
     },
     {
       icon: '',
-      link: ''
-    }
+      link: '',
+    },
   ],
   profileLink: '',
   role: '',
@@ -33,7 +35,7 @@ const initialValues = {
   lastName: '',
   img: '',
   gender: '',
-  address: ''
+  address: '',
 };
 
 const DoctorForm = ({ onSubmit, onCancel }: Props) => {

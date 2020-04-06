@@ -43,27 +43,35 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
       <div className='col-md-6 col-sm-12'>
         <Card title='Basic'>
           <div className='elem-list'>
-            <AutoComplete filterOption dataSource={dataSource} value={'USA'} />
-
-            <AutoComplete filterOption dataSource={dataSource} placeholder='With placeholder'>
-              <Input placeholder='With placeholder' />
-            </AutoComplete>
+            <AutoComplete filterOption options={dataSource} value={'USA'} />
+            <AutoComplete filterOption options={dataSource} placeholder='With placeholder' />
           </div>
         </Card>
 
         <Card title='Input sizes' className='mb-md-0'>
           <div className='elem-list'>
-            <AutoComplete dataSource={dataSource} filterOption>
-              <Input placeholder='Small input' className='custom' size='small' />
-            </AutoComplete>
+            <AutoComplete
+              options={dataSource}
+              filterOption
+              placeholder='Small input'
+              className='custom'
+              size='small'
+            />
 
-            <AutoComplete filterOption dataSource={dataSource}>
-              <Input placeholder='Default input' className='custom' />
-            </AutoComplete>
+            <AutoComplete
+              filterOption
+              options={dataSource}
+              placeholder='Default input'
+              className='custom'
+            />
 
-            <AutoComplete dataSource={dataSource} filterOption>
-              <Input placeholder='Large input' className='custom' size='large' />
-            </AutoComplete>
+            <AutoComplete
+              options={dataSource}
+              filterOption
+              placeholder='Large input'
+              className='custom'
+              size='large'
+            />
           </div>
         </Card>
       </div>
@@ -71,11 +79,11 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
       <div className='col-md-6 col-sm-12'>
         <Card title='With icons'>
           <div className='elem-list'>
-            <AutoComplete dataSource={dataSource} filterOption>
+            <AutoComplete options={dataSource} filterOption>
               <Input placeholder='Prefix icon' className='custom' prefix={<BookOutlined />} />
             </AutoComplete>
 
-            <AutoComplete dataSource={dataSource} filterOption>
+            <AutoComplete options={dataSource} filterOption>
               <Input placeholder='Suffix icon' className='custom' suffix={<EditOutlined />} />
             </AutoComplete>
           </div>
@@ -84,7 +92,7 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
         <Card title='Char limiting' className='mb-0'>
           <div className='elem-list'>
             <AutoComplete
-              dataSource={dataSource}
+              options={dataSource}
               filterOption
               onSearch={handleChange(10, setFirstLimit)}
             >
@@ -97,7 +105,7 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
             </AutoComplete>
 
             <AutoComplete
-              dataSource={dataSource}
+              options={dataSource}
               filterOption
               onSearch={handleChange(20, setSecondLimit)}
             >
@@ -110,7 +118,7 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
             </AutoComplete>
 
             <AutoComplete
-              dataSource={dataSource}
+              options={dataSource}
               filterOption
               onSearch={handleChange(10, setThirdLimit)}
             >
