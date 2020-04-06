@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+import { Card, Form, Input } from 'antd';
+import {
+  EditOutlined,
+  FontSizeOutlined,
+  InfoCircleOutlined,
+  PushpinOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+
 import { IPageData, PageProps } from '../../../interfaces/page';
-import { Card, Form, Icon, Input } from 'antd';
 
 const pageData: IPageData = {
   fullFilled: true,
@@ -9,16 +17,16 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Inputs'
-    }
-  ]
+      title: 'Inputs',
+    },
+  ],
 };
 
 const InputsPage = ({ setPageData }: PageProps) => {
@@ -28,7 +36,7 @@ const InputsPage = ({ setPageData }: PageProps) => {
   const [secondChar, setSecondChar] = useState(0);
   const [thirdChar, setThirdChar] = useState(0);
 
-  const handleChange = (maxCount: number, setter: (val) => void) => event => {
+  const handleChange = (maxCount: number, setter: (val) => void) => (event) => {
     const charLeft = maxCount - event.target.value.length;
     setter(charLeft);
   };
@@ -108,7 +116,7 @@ const InputsPage = ({ setPageData }: PageProps) => {
               <Input
                 defaultValue='With prefix'
                 placeholder='Enter your username'
-                prefix={<Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />}
+                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
               />
             </Form.Item>
 
@@ -116,7 +124,7 @@ const InputsPage = ({ setPageData }: PageProps) => {
               <Input
                 defaultValue='With suffix'
                 placeholder='Enter your username'
-                suffix={<Icon type='info-circle' style={{ color: 'rgba(0,0,0,.45)' }} />}
+                suffix={<InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />}
               />
             </Form.Item>
 
@@ -124,8 +132,8 @@ const InputsPage = ({ setPageData }: PageProps) => {
               <Input
                 placeholder='Enter your username'
                 defaultValue='Colored'
-                prefix={<Icon type='user' style={{ color: '#336cfb' }} />}
-                suffix={<Icon type='info-circle' style={{ color: '#336cfb' }} />}
+                prefix={<UserOutlined style={{ color: '#336cfb' }} />}
+                suffix={<InfoCircleOutlined style={{ color: '#336cfb' }} />}
               />
             </Form.Item>
           </Form>
@@ -140,7 +148,7 @@ const InputsPage = ({ setPageData }: PageProps) => {
                 placeholder='10 char limit'
                 maxLength={10}
                 onChange={handleChange(10, setFirstChar)}
-                prefix={<Icon type='font-size' />}
+                prefix={<FontSizeOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{firstChar || 0}</span>}
               />
             </Form.Item>
@@ -151,7 +159,7 @@ const InputsPage = ({ setPageData }: PageProps) => {
                 maxLength={20}
                 onChange={handleChange(20, setSecondChar)}
                 prefix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{secondChar || 0}</span>}
-                suffix={<Icon type='edit' />}
+                suffix={<EditOutlined />}
               />
             </Form.Item>
 
@@ -165,7 +173,7 @@ const InputsPage = ({ setPageData }: PageProps) => {
                     <span style={{ color: '#cd5447' }}>{thirdChar || 0}</span>
                   </>
                 }
-                suffix={<Icon type='pushpin' />}
+                suffix={<PushpinOutlined />}
               />
             </Form.Item>
           </Form>

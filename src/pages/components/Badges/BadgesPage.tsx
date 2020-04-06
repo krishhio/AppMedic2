@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
 
-import {Card, Icon, Tag} from 'antd';
+import { Card, Tag } from 'antd';
+import {
+  BugOutlined,
+  NotificationOutlined,
+  PaperClipOutlined,
+  ShoppingCartOutlined,
+  TagOutlined,
+} from '@ant-design/icons';
 
 import { IPageData, PageProps } from '../../../interfaces/page';
 
@@ -10,16 +17,16 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Badges'
-    }
-  ]
+      title: 'Badges',
+    },
+  ],
 };
 
 const BadgesPage = ({ setPageData }: PageProps) => {
@@ -43,11 +50,25 @@ const BadgesPage = ({ setPageData }: PageProps) => {
       <div className='col-md-6 col-sm-12'>
         <Card title='With Icons'>
           <div className='elem-list'>
-            <Tag color='#ed5564'><Icon type="bug" className='mr-2'/> Bugs</Tag>
-            <Tag color='#b7ce63'><Icon type="shopping-cart" className='mr-2' /> Cart</Tag>
-            <Tag color='#64B5F6'><Icon type="paper-clip" className='mr-2' /> Files</Tag>
-            <Tag color='#336cfb'>Notification <Icon type="notification" className='ml-2' /></Tag>
-            <Tag color='#E9D64A'><Icon type="tag"  className='mr-2'/> Label</Tag>
+            <Tag color='#ed5564'>
+              <BugOutlined className='mr-2' /> Bugs
+            </Tag>
+
+            <Tag color='#b7ce63'>
+              <ShoppingCartOutlined className='mr-2' /> Cart
+            </Tag>
+
+            <Tag color='#64B5F6'>
+              <PaperClipOutlined className='mr-2' /> Files
+            </Tag>
+
+            <Tag color='#336cfb'>
+              Notification <NotificationOutlined className='ml-2' />
+            </Tag>
+
+            <Tag color='#E9D64A'>
+              <TagOutlined className='mr-2' /> Label
+            </Tag>
           </div>
         </Card>
       </div>
@@ -55,7 +76,7 @@ const BadgesPage = ({ setPageData }: PageProps) => {
       <div className='col-md-6 col-sm-12'>
         <Card title='Size' className='mb-md-0'>
           <div className='elem-list'>
-            <Tag className='xs' >Extra small</Tag>
+            <Tag className='xs'>Extra small</Tag>
             <Tag className='sm'>Small</Tag>
             <Tag>Default</Tag>
             <Tag className='lg'>Large</Tag>

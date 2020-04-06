@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 
+import { Card, Rate } from 'antd';
+import { BulbOutlined, CheckOutlined, LikeOutlined } from '@ant-design/icons';
+
 import { IPageData, PageProps } from '../../../interfaces/page';
-import { Card, Icon, Rate } from 'antd';
 
 const pageData: IPageData = {
   fullFilled: true,
@@ -9,16 +11,16 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Rating'
-    }
-  ]
+      title: 'Rating',
+    },
+  ],
 };
 
 const RatingPage = ({ setPageData }: PageProps) => {
@@ -63,9 +65,9 @@ const RatingPage = ({ setPageData }: PageProps) => {
       <div className='col-md-6 col-sm-12'>
         <Card title='Custom items icons' className='mb-0'>
           <div className='elem-list d-flex flex-column'>
-            <Rate character={<Icon type='like' />} />
-            <Rate character={<Icon type='check' />} />
-            <Rate character={<Icon type='bulb' />} />
+            <Rate character={<LikeOutlined />} />
+            <Rate character={<CheckOutlined />} />
+            <Rate character={<BulbOutlined />} />
           </div>
         </Card>
       </div>
