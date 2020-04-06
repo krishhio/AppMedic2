@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { AutoComplete, Card, Icon, Input } from 'antd';
+import { AutoComplete, Card, Input } from 'antd';
+import { BookOutlined, EditOutlined, FileTextOutlined, FontSizeOutlined } from '@ant-design/icons';
 
 import { IPageData, PageProps } from '../../../interfaces/page';
 
@@ -9,16 +10,16 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Autocompletes'
-    }
-  ]
+      title: 'Autocompletes',
+    },
+  ],
 };
 
 const AutocompletePage = ({ setPageData, getData }: PageProps) => {
@@ -71,11 +72,11 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
         <Card title='With icons'>
           <div className='elem-list'>
             <AutoComplete dataSource={dataSource} filterOption>
-              <Input placeholder='Prefix icon' className='custom' prefix={<Icon type='book' />} />
+              <Input placeholder='Prefix icon' className='custom' prefix={<BookOutlined />} />
             </AutoComplete>
 
             <AutoComplete dataSource={dataSource} filterOption>
-              <Input placeholder='Suffix icon' className='custom' suffix={<Icon type='edit' />} />
+              <Input placeholder='Suffix icon' className='custom' suffix={<EditOutlined />} />
             </AutoComplete>
           </div>
         </Card>
@@ -90,7 +91,7 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
               <Input
                 placeholder='10 char limit'
                 maxLength={10}
-                prefix={<Icon type='font-size' />}
+                prefix={<FontSizeOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{firstLimit || 0}</span>}
               />
             </AutoComplete>
@@ -103,7 +104,7 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
               <Input
                 placeholder='20 char limit'
                 maxLength={20}
-                prefix={<Icon type='file-text' />}
+                prefix={<FileTextOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{secondLimit || 0}</span>}
               />
             </AutoComplete>
@@ -116,7 +117,7 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
               <Input
                 placeholder='30 char limit'
                 maxLength={30}
-                prefix={<Icon type='edit' />}
+                prefix={<EditOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{thirdLimit || 0}</span>}
               />
             </AutoComplete>
