@@ -5,38 +5,45 @@ $_list-bg: #fff;
 $_list-border-color: #fff;
 $_list-shadow: $shadow;
 
-.ant-select-auto-complete {
-  width: 100%;
+#root {
+  .ant-select-auto-complete {
+    width: 100%;
 
-  .ant-select-selection {
-    background: transparent;
-  }
-  .ant-select-search__field__wrap {
-    .ant-input {
+    .ant-select-selection {
+      background: transparent;
+    }
+
+    .ant-select-selector {
+      .ant-select-selection-search {
+        right: 0px !important;
+        left: 0px !important;
+      }
+
       @include input();
+      @include select-input();
     }
   }
 }
 
-  .ant-select-dropdown {
-    background: $_list-bg;
-    border: 1px solid $_list-border-color;
-    box-shadow: $_list-shadow;
-    border-radius: $_shape;
-    padding: ($_module-rem) 0;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
+.ant-select-dropdown {
+  background: $_list-bg;
+  border: 1px solid $_list-border-color;
+  box-shadow: $_list-shadow;
+  border-radius: $_shape;
+  padding: ($_module-rem) 0;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
 
-    .ant-select-dropdown-menu {
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-      &-item {
-        &:hover,
-        &-active,
-        &-selected {
-          background: rgba(#000, 0.01);
-          color: accent-palette(500);
-        }
+  .ant-select-dropdown-menu {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    &-item {
+      &:hover,
+      &-active,
+      &-selected {
+        background: rgba(#000, 0.01);
+        color: accent-palette(500);
       }
     }
   }
+}

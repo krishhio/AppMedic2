@@ -69,15 +69,16 @@ $_padding-v-lg: $_module-rem * 1.5;
 }
 
 @mixin input {
+  background-color: map_get($_bg, default);
   box-shadow: none;
   border: map_get($_border, default) $_border-width solid;
-  background-color: map_get($_bg, default);
+  border-radius: $_shape;
   height: (4 * $module);
-  padding: 0;
-  position: relative;
+  right: 0px !important;
+  left: 0px !important;
+  padding: 0 !important;
   color: map_get($_color, default);
   line-height: $_lh;
-  border-radius: $_shape;
   transition: background 0.2s $_animation, border 0.2s $_animation, box-shadow 0.2s $_animation,
     color 0.2s $_animation;
   will-change: background, border, box-shadow, color;
@@ -95,10 +96,15 @@ $_padding-v-lg: $_module-rem * 1.5;
     display: flex;
   }
 
-  > *,
+  .ant-input-suffix {
+    padding-left: $_padding-h;
+  }
+
+  > div,
   input,
   .ant-input-affix-wrapper {
-    border-radius: $_shape;
+    background: transparent !important;
+    border-radius: $_shape !important;
     padding: 0 $_padding-h !important;
     padding: 0 calc(#{$_padding-h} - 0.2em) !important;
     height: 100%;
@@ -109,6 +115,7 @@ $_padding-v-lg: $_module-rem * 1.5;
     border-color: map_get($_border, hover);
     box-shadow: $_shadow-hover;
   }
+
   &:focus:not(.ant-input-disabled) {
     @include input-focused;
   }
@@ -128,6 +135,27 @@ $_padding-v-lg: $_module-rem * 1.5;
     line-height: $_lh-lg;
     padding-top: $_padding-v-lg;
     padding-bottom: $_padding-v-lg;
+  }
+}
+
+@mixin select-input {
+  .ant-input-affix-wrapper .ant-input:not(:last-child) {
+    padding-left: $module-rem * 2 !important;
+  }
+
+  .ant-select-selection-placeholder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 $_padding-h !important;
+    padding: 0 calc(#{$_padding-h} - 0.2em) !important;
+  }
+
+  .ant-select-selection-search-input {
+    padding: 0 $_padding-h !important;
+    padding: 0 calc(#{$_padding-h} - 0.2em) !important;
   }
 }
 
