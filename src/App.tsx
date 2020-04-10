@@ -17,11 +17,7 @@ const DefaultRoutes = ({ layout }) => (
         key={index}
         path={`/${layout}/${route.path}`}
         exact={route.exact}
-        component={() => (
-          <Page>
-            <route.component />
-          </Page>
-        )}
+        component={() => <route.component />}
       />
     ))}
   </Switch>

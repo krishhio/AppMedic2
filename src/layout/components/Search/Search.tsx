@@ -3,14 +3,12 @@ import React from 'react';
 import { AutoComplete, Input } from 'antd';
 
 import { SelectValue } from 'antd/es/select';
-import { DataSourceItemType } from 'antd/es/auto-complete';
-
 import { history } from '../../../redux/store';
 
 import './Search.scss';
 
 type Props = {
-  data: DataSourceItemType[];
+  data: { value: string }[];
   layout: 'vertical' | 'horizontal';
 };
 
@@ -21,16 +19,8 @@ const Search = ({ data, layout = 'vertical' }: Props) => {
   };
 
   return (
-    <AutoComplete
-      className='app-search'
-      onSelect={handleSelect}
-      dataSource={data}
-      filterOption
-    >
-      <Input
-        placeholder='Type to search'
-        suffix={<span className='icofont icofont-search' />}
-      />
+    <AutoComplete className='app-search' onSelect={handleSelect} options={data} filterOption>
+      <Input placeholder='Type to search' suffix={<span className='icofont icofont-search' />} />
     </AutoComplete>
   );
 };

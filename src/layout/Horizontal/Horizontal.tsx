@@ -49,10 +49,10 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
       setMenuData(result.data);
     }
 
-    fetchMenuData().catch(err => console.log('Server Error', err));
+    fetchMenuData().catch((err) => console.log('Server Error', err));
   }, []);
 
-  const [searchData, setSearchData] = useState<DataSourceItemType[]>([]);
+  const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     async function fetchSearchData() {
@@ -64,12 +64,12 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
 
       const getOption = (item: IMenuItem | IMenuItemSub) => ({
         text: item.title,
-        value: item.routing
+        value: item.routing,
       });
 
       const setSubTitle = (itemTitle: string) => (subItem: IMenuItemSub) => ({
         ...subItem,
-        title: `${itemTitle} > ${subItem.title}`
+        title: `${itemTitle} > ${subItem.title}`,
       });
 
       const menuItems = data.filter(hasRouting);
@@ -78,7 +78,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
         .filter(hasSub)
         .map((item: IMenuItem) => ({
           ...item,
-          sub: item.sub.map(setSubTitle(item.title))
+          sub: item.sub.map(setSubTitle(item.title)),
         }))
         .map((item: IMenuItem) => item.sub)
         .flat();
@@ -88,7 +88,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
       setSearchData(searchOptions || []);
     }
 
-    fetchSearchData().catch(err => console.log('Server Error', err));
+    fetchSearchData().catch((err) => console.log('Server Error', err));
   }, []);
 
   const nav = (
@@ -130,13 +130,13 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdateSettings: settings => dispatch(updateSettings(settings))
+  onUpdateSettings: (settings) => dispatch(updateSettings(settings)),
 });
 
 const mapStateToProps = ({ patients, pageData, settings }) => ({
   settings,
   pageData,
-  patients
+  patients,
 });
 
 const ConnectedLayout: (props: OwnProps) => ReactElement = connect(

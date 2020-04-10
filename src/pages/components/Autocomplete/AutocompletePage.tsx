@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { AutoComplete, Card, Input } from 'antd';
 import { BookOutlined, EditOutlined, FileTextOutlined, FontSizeOutlined } from '@ant-design/icons';
 
-import { IPageData, PageProps } from '../../../interfaces/page';
+import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+
+import { IPageData } from '../../../interfaces/page';
+
+type Limit = [number, number, number];
 
 const pageData: IPageData = {
   title: 'Autocompletes',
@@ -22,17 +26,24 @@ const pageData: IPageData = {
   ],
 };
 
-const AutocompletePage = ({ setPageData, getData }: PageProps) => {
-  const [dataSource, setDataSource] = useState([]);
+const AutocompletePage = () => {
+  const dataSource = useFetchPageData('./data/autocomplete.json');
+  usePageData(pageData);
 
-  const [firstLimit, setFirstLimit] = useState(10);
-  const [secondLimit, setSecondLimit] = useState(20);
-  const [thirdLimit, setThirdLimit] = useState(30);
+  const [limits, setLimits] = useState<Limit>([0, 0, 0]);
+  const [first, second, third] = limits;
 
-  useEffect(() => setPageData(pageData), [setPageData]);
-  useEffect(() => {
-    getData('./data/autocomplete.json', setDataSource);
-  }, []);
+  function setFirst(newLimit) {
+    setLimits([newLimit, second, third]);
+  }
+
+  function setSecond(newLimit) {
+    setLimits([first, newLimit, third]);
+  }
+
+  function setThird(newLimit) {
+    setLimits([first, second, newLimit]);
+  }
 
   const handleChange = (maxCount: number, setter) => (value: string) => {
     setter(maxCount - value.length);
@@ -91,42 +102,30 @@ const AutocompletePage = ({ setPageData, getData }: PageProps) => {
 
         <Card title='Char limiting' className='mb-0'>
           <div className='elem-list'>
-            <AutoComplete
-              options={dataSource}
-              filterOption
-              onSearch={handleChange(10, setFirstLimit)}
-            >
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(10, setFirst)}>
               <Input
                 placeholder='10 char limit'
                 maxLength={10}
                 prefix={<FontSizeOutlined />}
-                suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{firstLimit || 0}</span>}
+                suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{first}</span>}
               />
             </AutoComplete>
 
-            <AutoComplete
-              options={dataSource}
-              filterOption
-              onSearch={handleChange(20, setSecondLimit)}
-            >
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(20, setSecond)}>
               <Input
                 placeholder='20 char limit'
                 maxLength={20}
                 prefix={<FileTextOutlined />}
-                suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{secondLimit || 0}</span>}
+                suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{second}</span>}
               />
             </AutoComplete>
 
-            <AutoComplete
-              options={dataSource}
-              filterOption
-              onSearch={handleChange(10, setThirdLimit)}
-            >
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(10, setThird)}>
               <Input
                 placeholder='30 char limit'
                 maxLength={30}
                 prefix={<EditOutlined />}
-                suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{thirdLimit || 0}</span>}
+                suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{third}</span>}
               />
             </AutoComplete>
           </div>
