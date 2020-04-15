@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Modal } from 'antd';
-
-import { IUser } from '../../../interfaces/user';
-import { IPageData, PageProps } from '../../../interfaces/page';
 
 import Contact from '../../../layout/components/Doctor/Contact';
 import className from '../../../utils/classNames';
 import PageAction from '../../../layout/components/PageAction/PageAction';
 import DoctorForm from './DoctorForm';
+
+import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+
+import { IUser } from '../../../interfaces/user';
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Doctors',
@@ -16,16 +18,17 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Doctors'
-    }
-  ]
+      title: 'Doctors',
+    },
+  ],
 };
 
-const DoctorsPage = ({ getData, setPageData }: PageProps) => {
-  const [doctors, setDoctors] = useState([]);
+const DoctorsPage = () => {
+  usePageData(pageData);
+  const [doctors, setDoctors] = useFetchPageData<IUser[]>('./data/doctors.json', []);
   const [addingDoctor, setAddingDoctor] = useState(false);
 
   const openModal = () => setAddingDoctor(true);
@@ -33,16 +36,10 @@ const DoctorsPage = ({ getData, setPageData }: PageProps) => {
 
   const addDoctor = (doctor: IUser) => setDoctors([...doctors, doctor]);
 
-  useEffect(() => {
-    getData('./data/doctors.json', setDoctors);
-  }, []);
-
-  useEffect(() => setPageData(pageData), []);
-
   const getClass = (index: number, length: number) =>
     className({
       'mb-0': index === length - 1,
-      'mb-md-0': index === length - 2 || index === length - 3
+      'mb-md-0': index === length - 2 || index === length - 3,
     });
 
   return (

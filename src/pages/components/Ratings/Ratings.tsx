@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Card, Rate } from 'antd';
 import { BulbOutlined, CheckOutlined, LikeOutlined } from '@ant-design/icons';
 
-import { IPageData, PageProps } from '../../../interfaces/page';
+import { usePageData } from '../../../Hooks/usePage';
+
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   fullFilled: true,
@@ -23,8 +25,8 @@ const pageData: IPageData = {
   ],
 };
 
-const RatingPage = ({ setPageData }: PageProps) => {
-  useEffect(() => setPageData(pageData), []);
+const RatingPage = () => {
+  usePageData(pageData);
 
   return (
     <div className='row'>

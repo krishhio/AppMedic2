@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Card, Form, Input } from 'antd';
 import {
@@ -9,7 +9,8 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 
-import { IPageData, PageProps } from '../../../interfaces/page';
+import { IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../../Hooks/usePage';
 
 const pageData: IPageData = {
   fullFilled: true,
@@ -29,8 +30,8 @@ const pageData: IPageData = {
   ],
 };
 
-const InputsPage = ({ setPageData }: PageProps) => {
-  useEffect(() => setPageData(pageData), [setPageData]);
+const InputsPage = () => {
+  usePageData(pageData);
 
   const [firstChar, setFirstChar] = useState(0);
   const [secondChar, setSecondChar] = useState(0);

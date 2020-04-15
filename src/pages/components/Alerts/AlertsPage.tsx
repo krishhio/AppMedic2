@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import { Alert, Card } from 'antd';
 
-import { PageProps, IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../../Hooks/usePage';
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Alerts',
@@ -10,20 +10,21 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Alerts'
-    }
-  ]
+      title: 'Alerts',
+    },
+  ],
 };
 
-const AlertsPage = ({ setPageData }: PageProps) => {
-  useEffect(() => setPageData(pageData), []);
+const AlertsPage = () => {
+  usePageData(pageData);
+
   return (
     <div className='row'>
       <div className='col-md-6 col-sm-12'>

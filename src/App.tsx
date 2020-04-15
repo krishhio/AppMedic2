@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Page from './layout/components/Page/Page';
 import VerticalLayout from './layout/Vertical/Vertical';
 import HorizontalLayout from './layout/Horizontal/Horizontal';
 

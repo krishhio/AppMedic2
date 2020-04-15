@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Card, Tag } from 'antd';
 import {
@@ -9,7 +9,8 @@ import {
   TagOutlined,
 } from '@ant-design/icons';
 
-import { IPageData, PageProps } from '../../../interfaces/page';
+import { IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../../Hooks/usePage';
 
 const pageData: IPageData = {
   fullFilled: true,
@@ -29,8 +30,8 @@ const pageData: IPageData = {
   ],
 };
 
-const BadgesPage = ({ setPageData }: PageProps) => {
-  useEffect(() => setPageData(pageData), [setPageData]);
+const BadgesPage = () => {
+  usePageData(pageData);
 
   return (
     <div className='row'>

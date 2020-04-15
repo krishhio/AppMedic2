@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+
+import Contact from '../../../layout/components/Doctor/Contact';
+import className from '../../../utils/classNames';
 
 import { IUser } from '../../../interfaces/user';
-import { PageProps, IPageData } from '../../../interfaces/page';
-
-import className from '../../../utils/classNames';
-import Contact from '../../../layout/components/Doctor/Contact';
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   fullFilled: false,
@@ -12,30 +14,26 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Contacts'
-    }
-  ]
+      title: 'Contacts',
+    },
+  ],
 };
 
-const ContactsPage = ({ setPageData, getData }: PageProps) => {
-  useEffect(() => setPageData(pageData), [setPageData]);
-
-  const [users, setUsers] = useState<IUser[]>([]);
-  useEffect(() => {
-    getData('data/contacts.json', setUsers);
-  }, []);
+const ContactsPage = () => {
+  const [users] = useFetchPageData<IUser[]>('data/contacts.json', []);
+  usePageData(pageData);
 
   const getClass = (index: number, length: number) =>
     className({
       'mb-0': index === length - 1,
-      'mb-md-0': index === length - 2 || index === length - 3
+      'mb-md-0': index === length - 2 || index === length - 3,
     });
 
   return (

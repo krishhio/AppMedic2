@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-import { IAppState } from '../../interfaces/app-state';
-import { IAppSettings } from '../../interfaces/settings';
-import { IPageData, PageProps } from '../../interfaces/page';
+import { connect } from 'react-redux';
 
 import SettingsForm from '../../layout/components/Settings/SettingsForm';
 
 import { resetSettings, updateSettings } from '../../redux/settings/actions';
+import { usePageData } from '../../Hooks/usePage';
+
+import { IAppState } from '../../interfaces/app-state';
+import { IPageData } from '../../interfaces/page';
+import { IAppSettings } from '../../interfaces/settings';
 
 const pageData: IPageData = {
   title: 'Settings',
@@ -15,12 +17,12 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Settings'
-    }
-  ]
+      title: 'Settings',
+    },
+  ],
 };
 
 type DispatchProps = {
@@ -32,10 +34,10 @@ type StateProps = {
   settings: IAppSettings;
 };
 
-type Props = DispatchProps & StateProps & PageProps;
+type Props = DispatchProps & StateProps;
 
-const SettingsPage = ({ setPageData, settings, onResetSettings, onUpdateSettings }: Props) => {
-  useEffect(() => setPageData(pageData), []);
+const SettingsPage = ({ settings, onResetSettings, onUpdateSettings }: Props) => {
+  usePageData(pageData);
 
   return (
     <div className='row'>
@@ -51,15 +53,12 @@ const SettingsPage = ({ setPageData, settings, onResetSettings, onUpdateSettings
 };
 
 const mapStateToProps = (state: IAppState) => ({
-  settings: state.settings
+  settings: state.settings,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onResetSettings: () => dispatch(resetSettings()),
-  onUpdateSettings: settings => dispatch(updateSettings(settings))
+  onUpdateSettings: (settings) => dispatch(updateSettings(settings)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SettingsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);

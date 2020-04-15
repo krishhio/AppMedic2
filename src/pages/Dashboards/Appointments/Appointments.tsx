@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Button } from 'antd';
-
-import { IAppointment } from '../../../interfaces/patient';
-import { IPageData, PageProps } from '../../../interfaces/page';
 
 import PageAction from '../../../layout/components/PageAction/PageAction';
 import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
 import EditAppointment from './EditAppointment';
 import AddAppointment from './AddAppointment';
+
+import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+
+import { IAppointment } from '../../../interfaces/patient';
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Appointments',
@@ -16,32 +18,31 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Appointments'
-    }
-  ]
+      title: 'Appointments',
+    },
+  ],
 };
 
-const AppointmentsPage = ({ getData, setPageData }: PageProps) => {
-  const [appointments, setAppointments] = useState<IAppointment[]>([]);
+const AppointmentsPage = () => {
+  const [appointments, setAppointments] = useFetchPageData<IAppointment[]>(
+    './data/appointments.json',
+    []
+  );
+  usePageData(pageData);
+
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [addingModalVisibility, setAddingModalVisibility] = useState(false);
 
-  useEffect(() => {
-    getData('./data/appointments.json', setAppointments);
-  }, []);
-
-  useEffect(() => setPageData(pageData), []);
-
   const handleDelete = (appointment: IAppointment) => {
-    const newAppointments = appointments.filter(el => el !== appointment);
+    const newAppointments = appointments.filter((el) => el !== appointment);
     setAppointments(newAppointments);
   };
 
   const handleEdit = (appointment: IAppointment) => {
-    const editedAppointments = appointments.map(el =>
+    const editedAppointments = appointments.map((el) =>
       el !== selectedAppointment ? el : appointment
     );
     setAppointments(editedAppointments);

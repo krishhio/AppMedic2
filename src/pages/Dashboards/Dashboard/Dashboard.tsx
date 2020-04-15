@@ -1,44 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Card } from 'antd';
 
 import ReactEcharts from 'echarts-for-react';
 
 import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
-
 import hospitalOptions from './Charts/HospitalOptions';
 import { incomeInWeek, incomeInMonth } from './Charts/IncomeOptions';
 
 import {
   patientsGenderOptions,
   departmentsOptions,
-  patientsAgeOptions
+  patientsAgeOptions,
 } from './Charts/PatientsOptions';
 
+import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+
 import { IAppointment } from '../../../interfaces/patient';
-import { PageProps, IPageData } from '../../../interfaces/page';
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   fullFilled: false,
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Patients'
-    }
-  ]
+      title: 'Patients',
+    },
+  ],
 };
 
-const DashboardPage = ({ setPageData, getData }: PageProps) => {
-  const [appointments, setAppointment] = useState<IAppointment[]>([]);
-
-  useEffect(() => {
-    getData('./data/last-appointments.json', setAppointment);
-  }, [getData]);
-
-  useEffect(() => setPageData(pageData), [setPageData]);
+const DashboardPage = () => {
+  const [appointments] = useFetchPageData<IAppointment[]>('./data/last-appointments.json', []);
+  usePageData(pageData);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AutoComplete, Card, Input } from 'antd';
 import { BookOutlined, EditOutlined, FileTextOutlined, FontSizeOutlined } from '@ant-design/icons';
@@ -6,6 +6,7 @@ import { BookOutlined, EditOutlined, FileTextOutlined, FontSizeOutlined } from '
 import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
 
 import { IPageData } from '../../../interfaces/page';
+import { IOption } from '../../../interfaces/option';
 
 type Limit = [number, number, number];
 
@@ -27,7 +28,7 @@ const pageData: IPageData = {
 };
 
 const AutocompletePage = () => {
-  const dataSource = useFetchPageData('./data/autocomplete.json');
+  const [dataSource] = useFetchPageData<IOption[]>('./data/autocomplete.json', []);
   usePageData(pageData);
 
   const [limits, setLimits] = useState<Limit>([0, 0, 0]);

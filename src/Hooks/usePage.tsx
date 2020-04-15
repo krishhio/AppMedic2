@@ -7,32 +7,28 @@ import { setPageData, updatePageDada } from '../redux/page-data/actions';
 
 import { IPageData } from '../interfaces/page';
 
-export const usePageData = (data: IPageData) => {
+export function usePageData(data: IPageData) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPageData(data));
+    dispatch(setPageData({ ...data, loaded: true }));
   }, [data]);
-};
+}
 
-export const useFetchPageData = (url: string) => {
-  const [data, setData] = useState(null);
+export function useFetchPageData<T>(url: string, initialState: T = null): [T, (data: T) => void] {
+  const [data, setData] = useState<T>(initialState);
   const dispatch = useDispatch();
 
   async function getData() {
     const result = await axios.get(url);
-
-    dispatch(updatePageDada({ fullFilled: true }));
+    dispatch(updatePageDada({ fullFilled: true, loaded: true }));
     setData(result.data);
   }
 
   useEffect(() => {
-    try {
-      getData();
-    } catch (e) {
-      console.log(e);
-    }
+    dispatch(updatePageDada({ fullFilled: false }));
+    getData().catch(console.error);
   }, [url]);
 
-  return data;
-};
+  return [data, setData];
+}

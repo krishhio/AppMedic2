@@ -9,8 +9,3 @@ export interface IBreadcrumb {
   title: string;
   route?: string;
 }
-
-export type PageProps = {
-  setPageData?: (data: IPageData) => void;
-  getData?: <T>(url: string, setter: (data: any) => void) => Promise<T>;
-};

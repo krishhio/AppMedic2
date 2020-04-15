@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { IPageData, PageProps } from '../../../interfaces/page';
+import { IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../../Hooks/usePage';
 
 const pageData: IPageData = {
   fullFilled: true,
@@ -8,18 +9,21 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard'
+      route: 'dashboard',
     },
     {
-      title: 'Modals'
-    }
-  ]
+      title: 'Modals',
+    },
+  ],
 };
 
-const ModalsPage = ({ setPageData }: PageProps) => {
+const ModalsPage = () => {
+  usePageData(pageData);
   return <></>;
 };
+
+export default ModalsPage;
