@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Card } from 'antd';
 
-import { usePageData } from '../../../Hooks/usePage';
+import { usePageData } from '../../../hooks/usePage';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {

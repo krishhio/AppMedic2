@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import SettingsForm from '../../layout/components/Settings/SettingsForm';
 
 import { resetSettings, updateSettings } from '../../redux/settings/actions';
-import { usePageData } from '../../Hooks/usePage';
+import { usePageData } from '../../hooks/usePage';
 
 import { IAppState } from '../../interfaces/app-state';
 import { IPageData } from '../../interfaces/page';

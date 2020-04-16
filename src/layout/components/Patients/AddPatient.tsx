@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 
 import PatientForm from './PatientForm';
-import { usePatients } from '../../../Hooks/usePatients';
+import { usePatients } from '../../../hooks/usePatients';
 
 import { IPatient } from '../../../interfaces/patient';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IPageData } from '../../../interfaces/page';
-import { usePageData } from '../../../Hooks/usePage';
+import { usePageData } from '../../../hooks/usePage';
 
 const pageData: IPageData = {
   fullFilled: true,

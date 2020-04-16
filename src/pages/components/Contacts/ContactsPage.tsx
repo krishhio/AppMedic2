@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import Contact from '../../../layout/components/Doctor/Contact';
 import className from '../../../utils/classNames';

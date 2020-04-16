@@ -7,7 +7,7 @@ import AppointmentsTable from '../../../layout/components/AppointmentsTable/Appo
 import EditAppointment from './EditAppointment';
 import AddAppointment from './AddAppointment';
 
-import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import { IAppointment } from '../../../interfaces/patient';
 import { IPageData } from '../../../interfaces/page';

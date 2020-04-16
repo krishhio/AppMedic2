@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AutoComplete, Card, Input } from 'antd';
 import { BookOutlined, EditOutlined, FileTextOutlined, FontSizeOutlined } from '@ant-design/icons';
 
-import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import { IPageData } from '../../../interfaces/page';
 import { IOption } from '../../../interfaces/option';

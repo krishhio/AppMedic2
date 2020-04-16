@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, Rate } from 'antd';
 import { BulbOutlined, CheckOutlined, LikeOutlined } from '@ant-design/icons';
 
-import { usePageData } from '../../../Hooks/usePage';
+import { usePageData } from '../../../hooks/usePage';
 
 import { IPageData } from '../../../interfaces/page';
 

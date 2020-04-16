@@ -7,7 +7,7 @@ import className from '../../../utils/classNames';
 import PageAction from '../../../layout/components/PageAction/PageAction';
 import DoctorForm from './DoctorForm';
 
-import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import { IUser } from '../../../interfaces/user';
 import { IPageData } from '../../../interfaces/page';

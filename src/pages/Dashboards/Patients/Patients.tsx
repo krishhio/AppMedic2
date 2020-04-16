@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { usePageData } from '../../../Hooks/usePage';
-import { usePatients } from '../../../Hooks/usePatients';
+import { usePageData } from '../../../hooks/usePage';
+import { usePatients } from '../../../hooks/usePatients';
 
 import PatientsTable from './PatientsTable';
 

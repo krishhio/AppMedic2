@@ -14,7 +14,7 @@ import {
   patientsAgeOptions,
 } from './Charts/PatientsOptions';
 
-import { useFetchPageData, usePageData } from '../../../Hooks/usePage';
+import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import { IAppointment } from '../../../interfaces/patient';
 import { IPageData } from '../../../interfaces/page';

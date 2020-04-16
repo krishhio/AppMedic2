@@ -3,7 +3,7 @@ import React, { CSSProperties, ReactNode, useRef } from 'react';
 import classNames from '../../../utils/classNames';
 
 import './Navbar.scss';
-import useOutsideClick from '../../../Hooks/useClickOutside';
+import useOutsideClick from '../../../hooks/useClickOutside';
 
 export type NavProps = {
   orientation: 'vertical' | 'horizontal' | 'horizontal-vertical';

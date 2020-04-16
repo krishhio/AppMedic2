@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 
 import { IPageData } from '../../../interfaces/page';
-import { usePageData } from '../../../Hooks/usePage';
+import { usePageData } from '../../../hooks/usePage';
 
 const pageData: IPageData = {
   fullFilled: true,

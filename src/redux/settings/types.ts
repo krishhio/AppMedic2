@@ -1,8 +1,8 @@
 import { IAppSettings } from '../../interfaces/settings';
 
-export const SET_SETTINGS = '[Settings] Set Settings';
-export const RESET_SETTINGS = '[Settings] Reset Settings';
-export const UPDATE_SETTINGS = '[Settings] Update Settings';
+export const SET_SETTINGS = '[settings] Set settings';
+export const RESET_SETTINGS = '[settings] Reset settings';
+export const UPDATE_SETTINGS = '[settings] Update settings';
 export const TOGGLE_SIDEBAR = '[User] Toggle Navbar';
 
 export interface SetSettingsAction {
