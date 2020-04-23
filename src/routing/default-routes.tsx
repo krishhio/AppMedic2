@@ -11,50 +11,60 @@ import BadgesPage from '../pages/components/Badges/BadgesPage';
 import ContactsPage from '../pages/components/Contacts/ContactsPage';
 import InputsPage from '../pages/components/Inputs/InputsPage';
 import RatingPage from '../pages/components/Ratings/Ratings';
+import ModalsPage from '../pages/components/Modals/ModalsPage';
+import SelectsPage from '../pages/components/Selects/Selects';
 
 export const defaultRoutes: IRoute[] = [
   {
     path: 'settings',
-    component: SettingsPage
+    component: SettingsPage,
   },
   {
     path: 'patients',
-    component: PatientsPage
+    component: PatientsPage,
   },
   {
     path: 'default-dashboard',
-    component: DashboardPage
+    component: DashboardPage,
   },
   {
     path: 'appointments',
-    component: AppointmentsPage
+    component: AppointmentsPage,
   },
   {
     path: 'doctors',
-    component: DoctorsPage
+    component: DoctorsPage,
   },
   {
     path: 'alerts',
-    component: AlertsPage
+    component: AlertsPage,
   },
   {
     path: 'autocompletes',
-    component: AutocompletePage
+    component: AutocompletePage,
   },
   {
     path: 'badges',
-    component: BadgesPage
+    component: BadgesPage,
   },
   {
     path: 'contacts',
-    component: ContactsPage
+    component: ContactsPage,
   },
   {
     path: 'inputs',
-    component: InputsPage
+    component: InputsPage,
   },
   {
     path: 'ratings',
-    component: RatingPage
-  }
+    component: RatingPage,
+  },
+  {
+    path: 'modal-windows',
+    component: ModalsPage,
+  },
+  {
+    path: 'selects',
+    component: SelectsPage,
+  },
 ];

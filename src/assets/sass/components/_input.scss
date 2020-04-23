@@ -46,6 +46,11 @@ $_lh-lg: $_module-rem * 2 / $_fs-lg;
 $_shape-lg: ($_shape * 1.5);
 $_padding-v-lg: $_module-rem * 1.5;
 
+@mixin input-padding {
+  padding: 0 $_padding-h !important;
+  padding: 0 calc(#{$_padding-h} - 0.2em) !important;
+}
+
 @mixin placeholder {
   ::-webkit-input-placeholder {
     @content;

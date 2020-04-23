@@ -1,5 +1,5 @@
 @import '../variables';
-@import "input";
+@import 'input';
 
 $_module-rem: $module-rem;
 $_fs: 1rem;
@@ -19,15 +19,23 @@ $_list-shadow: $shadow;
   width: 100%;
   cursor: pointer;
 
+  .ant-select-selector {
+    .ant-select-selection-search {
+      right: 0px !important;
+      left: 0px !important;
+    }
+
+    @include input();
+    @include select-input();
+  }
+
   &.ant-select-focused {
-    .ant-select-selection {
+    .ant-select-selection-search-input {
       @include input-focused;
     }
   }
 
-  .ant-select-selection {
-    @include input();
-    cursor: pointer;
+  .ant-select-selection-search-input {
   }
 
   &.ant-select-sm {

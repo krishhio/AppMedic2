@@ -7,12 +7,13 @@ import { setPageData, updatePageDada } from '../redux/page-data/actions';
 
 import { IPageData } from '../interfaces/page';
 
-export function usePageData(data: IPageData) {
+export function usePageData(pageData: IPageData) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPageData({ ...data, loaded: true }));
-  }, [data]);
+    console.log(pageData)
+    dispatch(setPageData({ ...pageData, loaded: true }));
+  }, [pageData]);
 }
 
 export function useFetchPageData<T>(url: string, initialState: T = null): [T, (data: T) => void] {
