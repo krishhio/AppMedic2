@@ -15,80 +15,12 @@ $_list-bg: #fff;
 $_list-border-color: #fff;
 $_list-shadow: $shadow;
 
-.ant-select:not(.ant-select-auto-complete) {
+.ant-select-single:not(.ant-select-customize-input),
+.ant-select {
   width: 100%;
-  cursor: pointer;
 
   .ant-select-selector {
-    .ant-select-selection-search {
-      right: 0px !important;
-      left: 0px !important;
-    }
-
     @include input();
-    @include select-input();
-  }
-
-  &.ant-select-focused {
-    .ant-select-selection-search-input {
-      @include input-focused;
-    }
-  }
-
-  .ant-select-selection-search-input {
-  }
-
-  &.ant-select-sm {
-    .ant-select-selection {
-      min-height: 32px;
-      font-size: 0.9 * $_fs;
-    }
-  }
-  &.ant-select-lg {
-    .ant-select-selection {
-      border-radius: $_shape * 1.5;
-      font-size: 1.1 * $_fs;
-      min-height: 50px;
-    }
-  }
-
-  .ant-select-selection {
-    .ant-select-selection__rendered {
-      align-items: center;
-      margin: 0;
-      display: flex;
-      height: 100%;
-      width: 100%;
-    }
-  }
-  .ant-select-selection__choice {
-    border-radius: $_shape;
-    background: rgba(74, 80, 92, 0.1);
-  }
-  .ant-select-selection__clear {
-    border-radius: 50%;
-    overflow: hidden;
-    font-size: 16px;
-    height: 16px;
-    width: 16px;
-
-    &:hover {
-      color: $error-color;
-    }
-  }
-}
-
-.ant-select-selection--multiple {
-  .ant-select-selection__rendered {
-    margin-bottom: 0;
-  }
-  .ant-select-selection__clear {
-    top: 18px;
-  }
-}
-
-.ant-select-search--inline {
-  .ant-select-search__field {
-    border-radius: $_shape;
+    @include input-padding();
   }
 }
