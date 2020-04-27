@@ -46,11 +46,6 @@ $_lh-lg: $_module-rem * 2 / $_fs-lg;
 $_shape-lg: ($_shape * 1.5);
 $_padding-v-lg: $_module-rem * 1.5;
 
-@mixin input-padding {
-  padding: 0 $_padding-h !important;
-  padding: 0 calc(#{$_padding-h} - 0.2em) !important;
-}
-
 @mixin placeholder {
   ::-webkit-input-placeholder {
     @content;
@@ -64,6 +59,29 @@ $_padding-v-lg: $_module-rem * 1.5;
   :-ms-input-placeholder {
     @content;
   }
+}
+
+@mixin input-sm {
+  border-radius: $_shape * 0.8;
+  font-size: $_fs-sm;
+  height: (3 * $module);
+  line-height: $_lh-sm;
+  padding-top: $_padding-v-sm;
+  padding-bottom: $_padding-v-sm;
+}
+
+@mixin input-lg {
+  border-radius: $_shape * 1.5;
+  font-size: $_fs-lg;
+  height: (5 * $module);
+  line-height: $_lh-lg;
+  padding-top: $_padding-v-lg;
+  padding-bottom: $_padding-v-lg;
+}
+
+@mixin input-padding {
+  padding: 0 $_padding-h !important;
+  padding: 0 calc(#{$_padding-h} - 0.2em) !important;
 }
 
 @mixin input-focused {
@@ -110,8 +128,6 @@ $_padding-v-lg: $_module-rem * 1.5;
   .ant-input-affix-wrapper {
     background: transparent !important;
     border-radius: $_shape !important;
-    padding: 0 $_padding-h !important;
-    padding: 0 calc(#{$_padding-h} - 0.2em) !important;
     height: 100%;
   }
 
@@ -126,20 +142,11 @@ $_padding-v-lg: $_module-rem * 1.5;
   }
 
   &.ant-input-sm {
-    border-radius: $_shape * 0.8;
-    font-size: $_fs-sm;
-    height: (3 * $module);
-    line-height: $_lh-sm;
-    padding-top: $_padding-v-sm;
-    padding-bottom: $_padding-v-sm;
+    @include input-sm();
   }
+
   &.ant-input-lg {
-    border-radius: $_shape * 1.5;
-    font-size: $_fs-lg;
-    height: (5 * $module);
-    line-height: $_lh-lg;
-    padding-top: $_padding-v-lg;
-    padding-bottom: $_padding-v-lg;
+    @include input-lg();
   }
 }
 

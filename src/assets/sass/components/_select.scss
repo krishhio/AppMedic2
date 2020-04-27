@@ -1,26 +1,35 @@
 @import '../variables';
 @import 'input';
 
-$_module-rem: $module-rem;
-$_fs: 1rem;
-$_lh: $_module-rem * 2 / $_fs;
-$_padding-h: $_module-rem * 2;
-$_padding-v: $_module-rem;
-$_error-color: $error-color;
-$_shape: 20px;
-$_animation: $animation;
-$_shadow-hover: $shadow-hover;
-$_list-height: $_module-rem * 21;
-$_list-bg: #fff;
-$_list-border-color: #fff;
-$_list-shadow: $shadow;
-
 .ant-select-single:not(.ant-select-customize-input),
+.ant-select-multiple,
 .ant-select {
   width: 100%;
+
+  &.ant-select-sm .ant-select-selector {
+    @include input-sm();
+  }
+
+  &.ant-select-lg .ant-select-selector {
+    @include input-lg();
+  }
 
   .ant-select-selector {
     @include input();
     @include input-padding();
+
+    input {
+      padding: 0 2px !important;
+    }
   }
+
+  &.ant-select-focused {
+    .ant-select-selector {
+      @include input-focused();
+    }
+  }
+}
+
+.ant-select-multiple .ant-select-selection-item {
+  background: rgba(#000, 0.1);
 }
