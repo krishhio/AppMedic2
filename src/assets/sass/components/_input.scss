@@ -176,11 +176,23 @@ $_padding-v-lg: $_module-rem * 1.5;
 }
 
 html {
-  .ant-form-item-control-input-content {
-    input,
-    .ant-input-affix-wrapper {
-      background: transparent;
-      border: none;
+  .ant-input {
+  }
+  .ant-form-item-control-input {
+    .ant-form-item-control-input-content {
+      > .ant-input,
+      .ant-input-affix-wrapper {
+        @include input();
+        @include input-padding();
+
+        .ant-input-prefix {
+          margin-right: -($module-rem * 2);
+        }
+      }
+
+      .ant-input-affix-wrapper-focused {
+        @include input-focused();
+      }
     }
   }
 
