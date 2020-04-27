@@ -13,6 +13,7 @@ import InputsPage from '../pages/components/Inputs/InputsPage';
 import RatingPage from '../pages/components/Ratings/Ratings';
 import ModalsPage from '../pages/components/Modals/ModalsPage';
 import SelectsPage from '../pages/components/Selects/Selects';
+import SwitchersPage from '../pages/components/Switchers/Switchers';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -66,5 +67,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'selects',
     component: SelectsPage,
+  },
+  {
+    path: 'switchers',
+    component: SwitchersPage,
   },
 ];

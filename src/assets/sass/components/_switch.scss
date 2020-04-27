@@ -4,25 +4,25 @@ $_bg: (
   default: #ebebeb,
   hover: #ebebeb,
   active: accent-palette(500),
-  disabled: rgba(#ccc, 0.1)
+  disabled: rgba(#ccc, 0.1),
 );
 $_border: (
   default: #ebebeb,
   hover: #ebebeb,
   active: accent-palette(500),
-  disabled: rgba(#ccc, 0.5)
+  disabled: rgba(#ccc, 0.5),
 );
 $_color: (
   default: main-palette(500),
   hover: accent-palette(500),
   active: accent-contrast(500),
-  disabled: #bdbdbd
+  disabled: #bdbdbd,
 );
 $_label-color: (
   default: inherit,
   hover: inherit,
   active: inherit,
-  disabled: #bdbdbd
+  disabled: #bdbdbd,
 );
 
 $_module-rem: $module-rem;
@@ -73,6 +73,12 @@ $_width: $_module-rem * 4;
         background: #8c8c8c;
       }
     }
+  }
+}
+
+.field-with-label {
+  .label {
+    margin-left: $module-rem;
   }
 }
 
