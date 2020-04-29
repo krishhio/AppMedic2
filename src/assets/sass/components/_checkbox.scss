@@ -1,0 +1,104 @@
+@import '../variables';
+
+$_size: $module-rem * 2;
+$_shape: 3px;
+
+$_bg: (
+  default: #ebebeb,
+  hover: #ebebeb,
+  active: accent-palette(500),
+  disabled: rgba(#ccc, 0.1),
+);
+$_border: (
+  default: #ebebeb,
+  hover: #ebebeb,
+  active: accent-palette(500),
+  disabled: rgba(#ccc, 0.5),
+);
+$_color: (
+  default: accent-palette(500),
+  hover: accent-palette(500),
+  active: accent-contrast(500),
+  disabled: #bdbdbd,
+);
+$_label-color: (
+  default: inherit,
+  hover: inherit,
+  active: inherit,
+  disabled: #bdbdbd,
+);
+
+.ant-checkbox-wrapper {
+  line-height: 30px;
+
+  .ant-checkbox {
+    height: $_size;
+    width: $_size;
+
+    &:focus {
+      .ant-checkbox-inner {
+        border-color: map_get($-border, active);
+      }
+    }
+    &:hover {
+      &:not(.ant-checkbox-indeterminate) {
+        .ant-checkbox-inner {
+          border-color: map_get($_border, hover);
+
+          &:after {
+            transform: rotate(45deg) scale(1) translate(-50%, -50%);
+          }
+        }
+      }
+    }
+    &.ant-checkbox-checked {
+      .ant-checkbox-inner {
+        background: map-get($_bg, active);
+        border-color: map_get($_border, active);
+
+        &:after {
+          border-color: map_get($_color, active);
+        }
+      }
+      &:after {
+        border-color: map_get($_color, default);
+      }
+    }
+    &.ant-checkbox-disabled {
+      .ant-checkbox-inner {
+        background-color: rgba(#000, 0.08);
+        border-color: rgba(#000, 0.08);
+
+        &:after {
+          border-color: #d8d8d8;
+        }
+      }
+    }
+
+    .ant-checkbox-inner {
+      background-clip: padding-box !important;
+      border-color: rgba(74, 80, 92, 0.1);
+      border-radius: $_shape;
+      height: $_size;
+      width: $_size;
+
+      &:after {
+        width: 7px;
+        height: 11px;
+      }
+    }
+    .ant-checkbox-input {
+      &:focus + .ant-checkbox-inner {
+        border-color: rgba(74, 80, 92, 0.1);
+      }
+    }
+  }
+}
+
+.ant-checkbox-indeterminate {
+  .ant-checkbox-inner {
+    &:after {
+      background: map-get($_bg, active);
+    }
+  }
+}

@@ -3,9 +3,9 @@ import React from 'react';
 import { Card, Rate } from 'antd';
 import { BulbOutlined, CheckOutlined, LikeOutlined } from '@ant-design/icons';
 
-import { usePageData } from '../../../hooks/usePage';
+import { usePageData } from '../../hooks/usePage';
 
-import { IPageData } from '../../../interfaces/page';
+import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   fullFilled: true,

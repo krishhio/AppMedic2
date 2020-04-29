@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Card, Select } from 'antd';
 
-import { usePageData } from '../../../hooks/usePage';
-import { IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
 
 const Option = Select.Option;
 

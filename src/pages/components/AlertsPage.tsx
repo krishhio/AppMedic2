@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert, Card } from 'antd';
 
-import { usePageData } from '../../../hooks/usePage';
-import { IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Alerts',

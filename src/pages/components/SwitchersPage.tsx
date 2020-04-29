@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { usePageData } from '../../../hooks/usePage';
+import { usePageData } from '../../hooks/usePage';
 
-import { IPageData } from '../../../interfaces/page';
+import { IPageData } from '../../interfaces/page';
 import { Button, Card, Switch } from 'antd';
 
 const pageData: IPageData = {

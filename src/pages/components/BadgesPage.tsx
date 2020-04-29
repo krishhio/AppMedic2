@@ -9,8 +9,8 @@ import {
   TagOutlined,
 } from '@ant-design/icons';
 
-import { IPageData } from '../../../interfaces/page';
-import { usePageData } from '../../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
+import { usePageData } from '../../hooks/usePage';
 
 const pageData: IPageData = {
   fullFilled: true,

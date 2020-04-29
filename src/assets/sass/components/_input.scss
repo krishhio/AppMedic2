@@ -153,10 +153,6 @@ $_padding-v-lg: $_module-rem * 1.5;
 @mixin select-input {
   .ant-input-affix-wrapper {
     border: none;
-
-    .ant-input:not(:last-child) {
-      padding-left: $module-rem * 2 !important;
-    }
   }
 
   .ant-select-selection-placeholder {
@@ -165,13 +161,12 @@ $_padding-v-lg: $_module-rem * 1.5;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 0 $_padding-h !important;
-    padding: 0 calc(#{$_padding-h} - 0.2em) !important;
+
+    @include input-padding();
   }
 
   .ant-select-selection-search-input {
-    padding: 0 $_padding-h !important;
-    padding: 0 calc(#{$_padding-h} - 0.2em) !important;
+    @include input-padding();
   }
 }
 
@@ -186,7 +181,7 @@ html {
         @include input-padding();
 
         .ant-input-prefix {
-          margin-right: -($module-rem * 2);
+          margin-right: -($module-rem * 3);
         }
       }
 

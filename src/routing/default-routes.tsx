@@ -5,15 +5,16 @@ import PatientsPage from '../pages/Dashboards/Patients/Patients';
 import DashboardPage from '../pages/Dashboards/Dashboard/Dashboard';
 import AppointmentsPage from '../pages/Dashboards/Appointments/Appointments';
 import DoctorsPage from '../pages/Dashboards/Doctors/Doctors';
-import AlertsPage from '../pages/components/Alerts/AlertsPage';
-import AutocompletePage from '../pages/components/Autocomplete/AutocompletePage';
-import BadgesPage from '../pages/components/Badges/BadgesPage';
-import ContactsPage from '../pages/components/Contacts/ContactsPage';
-import InputsPage from '../pages/components/Inputs/InputsPage';
-import RatingPage from '../pages/components/Ratings/Ratings';
-import ModalsPage from '../pages/components/Modals/ModalsPage';
-import SelectsPage from '../pages/components/Selects/Selects';
-import SwitchersPage from '../pages/components/Switchers/Switchers';
+import AlertsPage from '../pages/components/AlertsPage';
+import AutocompletePage from '../pages/components/AutocompletePage';
+import BadgesPage from '../pages/components/BadgesPage';
+import ContactsPage from '../pages/components/ContactsPage';
+import InputsPage from '../pages/components/InputsPage';
+import RatingPage from '../pages/components/RatingsPage';
+import ModalsPage from '../pages/components/ModalsPage';
+import SelectsPage from '../pages/components/SelectsPage';
+import SwitchersPage from '../pages/components/SwitchersPage';
+import CheckboxesPage from '../pages/components/CheckboxesPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -71,5 +72,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'switchers',
     component: SwitchersPage,
+  },
+  {
+    path: 'checkboxes',
+    component: CheckboxesPage,
   },
 ];

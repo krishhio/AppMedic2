@@ -21,6 +21,10 @@ $_list-shadow: $shadow;
 
       @include input();
       @include select-input();
+
+      .ant-input {
+        padding: 0 2px !important;
+      }
     }
   }
 }

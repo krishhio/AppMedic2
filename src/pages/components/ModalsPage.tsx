@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { Modal, Input, Button, Card, Tag } from 'antd';
 
-import { usePageData } from '../../../hooks/usePage';
-import { IPageData } from '../../../interfaces/page';
+import { usePageData } from '../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
 
 const modals = {
   basic: 'basic',
