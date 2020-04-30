@@ -1,6 +1,6 @@
 @import '../variables';
 
-$_size: $module-rem * 2;
+$_size: $module * 2;
 $_shape: 3px;
 
 $_bg: (
@@ -31,65 +31,24 @@ $_label-color: (
 .ant-checkbox-wrapper {
   line-height: 30px;
 
-  .ant-checkbox {
+  .ant-checkbox .ant-checkbox-inner {
     height: $_size;
     width: $_size;
+    border-radius: $_shape !important;
+  }
 
-    &:focus {
-      .ant-checkbox-inner {
-        border-color: map_get($-border, active);
-      }
-    }
-    &:hover {
-      &:not(.ant-checkbox-indeterminate) {
-        .ant-checkbox-inner {
-          border-color: map_get($_border, hover);
+  .ant-checkbox-inner:after {
+    height: 12px;
+    width: 7px;
+  }
 
-          &:after {
-            transform: rotate(45deg) scale(1) translate(-50%, -50%);
-          }
-        }
-      }
-    }
-    &.ant-checkbox-checked {
-      .ant-checkbox-inner {
-        background: map-get($_bg, active);
-        border-color: map_get($_border, active);
-
-        &:after {
-          border-color: map_get($_color, active);
-        }
-      }
-      &:after {
-        border-color: map_get($_color, default);
-      }
-    }
-    &.ant-checkbox-disabled {
-      .ant-checkbox-inner {
-        background-color: rgba(#000, 0.08);
-        border-color: rgba(#000, 0.08);
-
-        &:after {
-          border-color: #d8d8d8;
-        }
-      }
-    }
-
-    .ant-checkbox-inner {
-      background-clip: padding-box !important;
-      border-color: rgba(74, 80, 92, 0.1);
-      border-radius: $_shape;
-      height: $_size;
-      width: $_size;
-
-      &:after {
-        width: 7px;
-        height: 11px;
-      }
-    }
-    .ant-checkbox-input {
-      &:focus + .ant-checkbox-inner {
-        border-color: rgba(74, 80, 92, 0.1);
+  &:not(.ant-checkbox-wrapper-checked):hover {
+    .ant-checkbox {
+      .ant-checkbox-inner:after {
+        opacity: 1;
+        border-color: map_get($_bg, active);
+        transform: rotate(45deg) scale(1) translate(-50%, -50%);
+        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
       }
     }
   }
