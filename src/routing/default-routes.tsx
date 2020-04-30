@@ -15,6 +15,7 @@ import ModalsPage from '../pages/components/ModalsPage';
 import SelectsPage from '../pages/components/SelectsPage';
 import SwitchersPage from '../pages/components/SwitchersPage';
 import CheckboxesPage from '../pages/components/CheckboxesPage';
+import RadiosPage from '../pages/components/RadiosPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -76,5 +77,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'checkboxes',
     component: CheckboxesPage,
+  },
+  {
+    path: 'radio-buttons',
+    component: RadiosPage,
   },
 ];
