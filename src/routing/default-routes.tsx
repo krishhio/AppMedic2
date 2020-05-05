@@ -16,6 +16,7 @@ import SelectsPage from '../pages/components/SelectsPage';
 import SwitchersPage from '../pages/components/SwitchersPage';
 import CheckboxesPage from '../pages/components/CheckboxesPage';
 import RadiosPage from '../pages/components/RadiosPage';
+import TimelinePage from '../pages/components/TimlinesPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -81,5 +82,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'radio-buttons',
     component: RadiosPage,
+  },
+  {
+    path: 'v-timeline',
+    component: TimelinePage,
   },
 ];
