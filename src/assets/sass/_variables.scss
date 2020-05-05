@@ -57,29 +57,31 @@ $accent-palette: (
   A100: #ffffff,
   A200: #f4f6ff,
   A400: #c1caff,
-  A700: #a7b4ff,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000
-  )
+  A700: #a7b4ff
 );
+
+$accent-contrast: (
+  50: #000000,
+  100: #000000,
+  200: #000000,
+  300: #000000,
+  400: #000000,
+  500: #ffffff,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  A100: #000000,
+  A200: #000000,
+  A400: #000000,
+  A700: #000000
+);
+
 @function accent-palette($key: $accent-palette) {
   @return map-get($accent-palette, $key);
 }
 @function accent-contrast($key: $accent-palette) {
-  @return map-get(map-get($accent-palette, contrast), $key);
+  @return map-get($accent-contrast, $key);
 }
 
 :root {

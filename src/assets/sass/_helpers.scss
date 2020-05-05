@@ -157,3 +157,52 @@
   width: 60px !important;
   z-index: 997;
 }
+
+// Background color utils
+
+@each $value, $color in $accent-palette {
+  .bg-color-#{$value} {
+    background-color: $color;
+  }
+}
+
+$colors: (
+  danger: $error-color,
+  success: $success-color,
+  info: $info-color,
+  warning: $warning-color,
+  pink: #ed64a6,
+  indigo: #667eea,
+  blue: #4299e1,
+  teal: #38b2ac,
+  green: #48bb78,
+  yellow: #ecc94b,
+  orange: #ed8936,
+  red: #f56565
+);
+
+@each $value, $color in $colors {
+  .bg-color-#{$value} {
+    background-color: $color;
+  }
+}
+
+// Shape utils
+
+$shapes: (
+  none: 0,
+  sm: 0.125rem,
+  md: 0.375rem,
+  lg: 0.5rem,
+  full: 999px
+);
+
+@each $key, $value in $shapes {
+  .rounded-#{$key} {
+    border-radius: $value;
+  }
+}
+
+.rounded {
+  border-radius: $shape;
+}

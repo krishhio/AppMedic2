@@ -1,14 +1,14 @@
-@import './bootstrap';
+@import 'bootstrap';
 @import 'variables';
 
-@import './fonts';
+@import 'fonts';
 
-@import "components/components";
-@import './structure';
-@import './full-calendar';
-@import './helpers';
+@import 'components/components';
+@import 'structure';
+@import 'full-calendar';
+@import 'helpers';
 
 @import '../css/icofont.min';
-@import './simple-line-icons';
+@import 'simple-line-icons';
 
-@import './typography';
+@import 'typography';
