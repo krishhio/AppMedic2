@@ -17,74 +17,79 @@ import SwitchersPage from '../pages/components/SwitchersPage';
 import CheckboxesPage from '../pages/components/CheckboxesPage';
 import RadiosPage from '../pages/components/RadiosPage';
 import TimelinePage from '../pages/components/TimlinesPage';
+import CardsPage from '../pages/components/CardsPage';
 
 export const defaultRoutes: IRoute[] = [
   {
     path: 'settings',
-    component: SettingsPage,
+    component: SettingsPage
   },
   {
     path: 'patients',
-    component: PatientsPage,
+    component: PatientsPage
   },
   {
     path: 'default-dashboard',
-    component: DashboardPage,
+    component: DashboardPage
   },
   {
     path: 'appointments',
-    component: AppointmentsPage,
+    component: AppointmentsPage
   },
   {
     path: 'doctors',
-    component: DoctorsPage,
+    component: DoctorsPage
   },
   {
     path: 'alerts',
-    component: AlertsPage,
+    component: AlertsPage
   },
   {
     path: 'autocompletes',
-    component: AutocompletePage,
+    component: AutocompletePage
   },
   {
     path: 'badges',
-    component: BadgesPage,
+    component: BadgesPage
   },
   {
     path: 'contacts',
-    component: ContactsPage,
+    component: ContactsPage
   },
   {
     path: 'inputs',
-    component: InputsPage,
+    component: InputsPage
   },
   {
     path: 'ratings',
-    component: RatingPage,
+    component: RatingPage
   },
   {
     path: 'modal-windows',
-    component: ModalsPage,
+    component: ModalsPage
   },
   {
     path: 'selects',
-    component: SelectsPage,
+    component: SelectsPage
   },
   {
     path: 'switchers',
-    component: SwitchersPage,
+    component: SwitchersPage
   },
   {
     path: 'checkboxes',
-    component: CheckboxesPage,
+    component: CheckboxesPage
   },
   {
     path: 'radio-buttons',
-    component: RadiosPage,
+    component: RadiosPage
   },
   {
     path: 'v-timeline',
-    component: TimelinePage,
+    component: TimelinePage
   },
+  {
+    path: 'cards',
+    component: CardsPage
+  }
 ];
