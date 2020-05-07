@@ -1,6 +1,7 @@
 import { IRoute } from '../interfaces/routing';
 
 import SettingsPage from '../pages/settings/Settings';
+
 import PatientsPage from '../pages/Dashboards/Patients/Patients';
 import DashboardPage from '../pages/Dashboards/Dashboard/Dashboard';
 import AppointmentsPage from '../pages/Dashboards/Appointments/Appointments';

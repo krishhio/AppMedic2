@@ -8,10 +8,11 @@ import HorizontalLayout from './layout/Horizontal/Horizontal';
 import { defaultRoutes } from './routing';
 
 import './App.scss';
+import { sessionRoutes } from './routing/error-routes';
 
-const DefaultRoutes = ({ layout }) => (
+const RoutesSwitch = ({ routes, layout }) => (
   <Switch>
-    {defaultRoutes.map((route, index) => (
+    {routes.map((route, index) => (
       <Route
         key={index}
         path={`/${layout}/${route.path}`}
@@ -22,7 +23,11 @@ const DefaultRoutes = ({ layout }) => (
   </Switch>
 );
 
-const App: React.FC = () => {
+const DefaultRoutes = ({ layout }) => <RoutesSwitch routes={defaultRoutes} layout={layout} />;
+
+const SessionRoutes = () => <RoutesSwitch routes={sessionRoutes} layout='public' />;
+
+const App = () => {
   return (
     <Switch>
       <Route path='/horizontal'>
@@ -35,6 +40,10 @@ const App: React.FC = () => {
         <VerticalLayout>
           <DefaultRoutes layout='vertical' />
         </VerticalLayout>
+      </Route>
+
+      <Route path={['/pubic']}>
+        <SessionRoutes />
       </Route>
 
       <Route path='/'>
