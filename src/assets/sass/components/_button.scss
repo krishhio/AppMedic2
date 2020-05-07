@@ -13,17 +13,17 @@ $_types: (
     hover-bg: accent-palette(700),
     hover-color: accent-contrast(700)
   ),
-  success: (
-    bg: $success-color,
-    color: $success-contrast,
-    hover-bg: darken($success-color, 10%),
-    hover-color: darken($success-contrast, 10%)
+  dashed: (
+    bg: transparent,
+    color: main-palette(500),
+    hover-bg: main-palette(500),
+    hover-color: #fff
   ),
-  info: (
-    bg: $info-color,
-    color: $info-contrast,
-    hover-bg: darken($info-color, 10%),
-    hover-color: darken($info-contrast, 10%)
+  link: (
+    bg: transparent,
+    color: accent-palette(300),
+    hover-bg: transparent,
+    hover-color: accent-palette(500)
   ),
   warning: (
     bg: $warning-color,
@@ -86,9 +86,8 @@ $_sm-lh: $_module-rem / $_sm-fs;
   position: relative;
   text-align: center;
   touch-action: manipulation;
-  transition: background 0.2s $_transition, border 0.2s $_transition,
-    box-shadow 0.2s $_transition, color 0.2s $_transition,
-    opacity 0.2s $_transition;
+  transition: background 0.2s $_transition, border 0.2s $_transition, box-shadow 0.2s $_transition,
+    color 0.2s $_transition, opacity 0.2s $_transition;
   user-select: none;
   white-space: nowrap;
   will-change: background, border, box-shadow, color, opacity;
@@ -113,14 +112,15 @@ $_sm-lh: $_module-rem / $_sm-fs;
         border-color: map-get($_color, hover-bg);
         color: map-get($_color, hover-color);
       }
-      &.btn-outline {
+      &.ant-btn-background-ghost:not(.ant-btn-link):not(.ant-btn-dashed) {
         background: transparent;
+        box-shadow: none;
         color: map-get($_color, bg);
 
         &:hover,
         .active & {
-          background: map-get($_color, bg);
-          color: map-get($_color, color);
+          background: map-get($_color, bg) !important;
+          color: map-get($_color, color) !important;
         }
       }
     }
@@ -129,6 +129,22 @@ $_sm-lh: $_module-rem / $_sm-fs;
   &:hover {
     background: main-palette(700);
     color: main-contrast(500);
+  }
+
+  &.ant-btn-dashed {
+    border: 1px dashed map_get(map-get($_types, dashed), color);
+
+    &.ant-btn-background-ghost {
+      background: transparent;
+      box-shadow: none;
+      border: 1px dashed map_get(map-get($_types, dashed), color);
+      color: map_get(map-get($_types, dashed), color);
+
+      &:hover {
+        background: map_get(map-get($_types, dashed), color) !important;
+        color: #fff !important;
+      }
+    }
   }
 
   span {
@@ -154,7 +170,8 @@ $_sm-lh: $_module-rem / $_sm-fs;
     border: none;
   }
   &.ant-btn-link {
-    background: none;
+    background: none !important;
+    box-shadow: none !important;
 
     &:hover {
       background: none;
@@ -182,22 +199,7 @@ $_sm-lh: $_module-rem / $_sm-fs;
       line-height: #{$_sm-fs * $_sm-lh};
     }
   }
-  &.ant-btn-dashed {
-    border: 1px dashed inherit;
-  }
-  &.theme-button {
-    background: linear-gradient(250deg, #cd5447, #b3589c 65%, #9d5ce5);
-    border: none;
-    box-shadow: 5px 5px 20px 0 rgba(189, 16, 224, 0.4);
-    color: accent-palette(500);
 
-    &:hover {
-      background: linear-gradient(250deg, #cd5447, #b3589c 65%, #9d5ce5);
-      border: none;
-      box-shadow: 0 0 0 0 rgba(189, 16, 224, 0.4);
-      color: accent-palette(500);
-    }
-  }
   &.ant-btn-circle {
     align-items: center;
     justify-content: center;

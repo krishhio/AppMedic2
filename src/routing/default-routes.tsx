@@ -18,6 +18,7 @@ import CheckboxesPage from '../pages/components/CheckboxesPage';
 import RadiosPage from '../pages/components/RadiosPage';
 import TimelinePage from '../pages/components/TimlinesPage';
 import CardsPage from '../pages/components/CardsPage';
+import ButtonsPage from '../pages/components/ButtonsPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -91,5 +92,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'cards',
     component: CardsPage
+  },
+  {
+    path: 'buttons',
+    component: ButtonsPage
   }
 ];
