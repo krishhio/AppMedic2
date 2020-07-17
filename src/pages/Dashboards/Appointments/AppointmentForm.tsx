@@ -90,7 +90,7 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
       </form>
 
       <div className='d-flex justify-content-between buttons-list settings-actions'>
-        <Button type='danger' onClick={onCancel}>
+        <Button danger onClick={onCancel}>
           Cancel
         </Button>
 

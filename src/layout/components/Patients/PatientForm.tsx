@@ -28,8 +28,8 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
     onSubmit: onSubmit
   });
 
-  const handleGenderSelect = value => setFieldValue('gender', value);
-  const handleStatusSelect = value => setFieldValue('status', value);
+  const handleGenderSelect = (value) => setFieldValue('gender', value);
+  const handleStatusSelect = (value) => setFieldValue('status', value);
 
   const handleAddPatient = () => {
     onSubmit(values);
@@ -107,12 +107,12 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
       </form>
 
       <div className='d-flex justify-content-between buttons-list settings-actions'>
-        <Button type='danger' onClick={onCancel}>
+        <Button danger onClick={onCancel}>
           Cancel
         </Button>
 
         <Button onClick={handleAddPatient} type='primary' htmlType='submit'>
-          {  submitText || 'Add patient' }
+          {submitText || 'Add patient'}
         </Button>
       </div>
     </>

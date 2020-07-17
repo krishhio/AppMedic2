@@ -59,7 +59,7 @@ const ButtonsPage = () => {
           <Card title='Types'>
             <div className='elem-list'>
               <Button type='default'>Default</Button>
-              <Button type='danger'>Danger</Button>
+              <Button danger>Danger</Button>
               <Button type='dashed'>Dashed</Button>
               <Button type='link'>Link</Button>
               <Button type='primary'>Primary</Button>
@@ -73,7 +73,7 @@ const ButtonsPage = () => {
               <Button type='default' ghost>
                 Default
               </Button>
-              <Button type='danger' ghost>
+              <Button danger ghost>
                 Danger
               </Button>
               <Button type='dashed' ghost>
@@ -121,7 +121,7 @@ const ButtonsPage = () => {
               <Button disabled type='default'>
                 Default
               </Button>
-              <Button disabled type='danger'>
+              <Button disabled danger>
                 Danger
               </Button>
               <Button disabled type='dashed'>
@@ -143,7 +143,7 @@ const ButtonsPage = () => {
               <Button loading type='default'>
                 Default
               </Button>
-              <Button loading type='danger'>
+              <Button loading danger>
                 Danger
               </Button>
               <Button loading type='dashed'>
@@ -162,7 +162,7 @@ const ButtonsPage = () => {
           <Button type='primary' icon={<SearchOutlined />}>
             Search
           </Button>
-          <Button type='danger' icon={<DeleteOutlined />}>
+          <Button danger icon={<DeleteOutlined />}>
             Delete
           </Button>
           <Button icon={<PrinterOutlined />}>Print</Button>
@@ -171,7 +171,7 @@ const ButtonsPage = () => {
             Send
           </Button>
           <Button shape='circle' type='primary' icon={<SearchOutlined />} />
-          <Button shape='circle' type='danger' icon={<DeleteOutlined />} />
+          <Button shape='circle' danger icon={<DeleteOutlined />} />
           <Button shape='circle' icon={<SettingOutlined />} />
         </div>
       </Card>

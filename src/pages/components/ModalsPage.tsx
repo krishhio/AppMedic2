@@ -246,7 +246,7 @@ const ModalsPage = () => {
               visible={isOpened(modals.withCustomCloseBtn)}
               closable={false}
               title='Modal with custom close'
-              cancelButtonProps={{ type: 'danger' }}
+              cancelButtonProps={{ danger: true }}
               onCancel={closeModal}
             >
               <p>Text content ....</p>

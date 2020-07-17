@@ -69,7 +69,7 @@ const AppointmentsPage = () => {
       <Button onClick={openEditModal.bind({}, appointment)} shape='circle' type='primary'>
         <span className='icofont icofont-edit-alt' />
       </Button>
-      <Button onClick={handleDelete.bind({}, appointment)} shape='circle' type='danger'>
+      <Button onClick={handleDelete.bind({}, appointment)} shape='circle' danger>
         <span className='icofont icofont-ui-delete' />
       </Button>
     </div>

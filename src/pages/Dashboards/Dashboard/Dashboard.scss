@@ -23,6 +23,7 @@
   stroke-linecap: round;
   animation: am-moving-dashes 1s linear infinite;
 }
+
 @keyframes am-moving-dashes {
   100% {
     stroke-dashoffset: -31px;
@@ -60,6 +61,7 @@
   stroke-dashoffset: 0;
   animation: am-draw 40s;
 }
+
 @keyframes am-draw {
   0% {
     stroke-dashoffset: 500%;

@@ -4,7 +4,7 @@ import { Button } from 'antd';
 type Props = {
   icon: string;
   onClick: () => void;
-  type?: 'primary' | 'dashed' | 'danger';
+  type?: 'primary' | 'dashed' | 'text' | 'link' | 'ghost' | 'default';
 };
 
 const PageAction = ({ onClick, icon, type }: Props) => (

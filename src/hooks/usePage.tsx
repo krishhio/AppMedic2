@@ -11,7 +11,6 @@ export function usePageData(pageData: IPageData) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(pageData)
     dispatch(setPageData({ ...pageData, loaded: true }));
   }, [pageData]);
 }

@@ -75,7 +75,7 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
       </Form.Item>
 
       <div className='d-flex justify-content-between buttons-list settings-actions'>
-        <Button type='danger' onClick={handleReset}>
+        <Button danger onClick={handleReset}>
           Reset to default
         </Button>
 

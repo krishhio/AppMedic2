@@ -8,9 +8,7 @@ import { settingsReducer } from './settings/reducer';
 import { pageDataReducer } from './page-data/reducer';
 import { patientsReducer } from './patients/reducer';
 
-export const history = createHashHistory({
-  hashType: 'slash'
-});
+export const history = createHashHistory();
 
 const rootReducer = combineReducers({
   pageData: pageDataReducer,
