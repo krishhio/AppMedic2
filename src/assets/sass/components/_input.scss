@@ -171,11 +171,9 @@ $_padding-v-lg: $_module-rem * 1.5;
 }
 
 html {
-  .ant-input {
-  }
   .ant-form-item-control-input {
     .ant-form-item-control-input-content {
-      > .ant-input,
+      > .ant-input:not(textarea),
       .ant-input-affix-wrapper {
         @include input();
         @include input-padding();
