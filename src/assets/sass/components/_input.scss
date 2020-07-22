@@ -4,19 +4,19 @@ $_bg: (
   default: #ebebeb,
   hover: #ebebeb,
   focus: #fff,
-  disabled: rgba(#ccc, 0.1),
+  disabled: rgba(#ccc, 0.1)
 );
 $_border: (
   default: #ebebeb,
   hover: #ebebeb,
   focus: accent-palette(500),
-  disabled: rgba(#ccc, 0.5),
+  disabled: rgba(#ccc, 0.5)
 );
 $_color: (
   default: main-palette(500),
   hover: main-palette(500),
   focus: main-palette(500),
-  disabled: #bdbdbd,
+  disabled: #bdbdbd
 );
 
 $_module-rem: $module-rem;
@@ -82,6 +82,11 @@ $_padding-v-lg: $_module-rem * 1.5;
 @mixin input-padding {
   padding: 0 $_padding-h !important;
   padding: 0 calc(#{$_padding-h} - 0.2em) !important;
+}
+
+@mixin textarea-padding {
+  padding: $_padding-v $_padding-h !important;
+  padding: $_padding-v calc(#{$_padding-h} - 0.2em) !important;
 }
 
 @mixin input-focused {
@@ -170,22 +175,33 @@ $_padding-v-lg: $_module-rem * 1.5;
   }
 }
 
+@mixin input-box {
+  > .ant-input,
+  .ant-input-affix-wrapper {
+    @include input();
+    @include input-padding();
+
+    .ant-input-prefix {
+      margin-right: -($module-rem * 3);
+    }
+  }
+  .ant-input-affix-wrapper-focused {
+    @include input-focused();
+  }
+  > textarea.ant-input {
+    @include textarea-padding;
+    height: unset;
+  }
+}
+
 html {
+  .ant-input-affix-wrapper-textarea-with-clear-btn {
+    @include input-box;
+  }
+
   .ant-form-item-control-input {
     .ant-form-item-control-input-content {
-      > .ant-input:not(textarea),
-      .ant-input-affix-wrapper {
-        @include input();
-        @include input-padding();
-
-        .ant-input-prefix {
-          margin-right: -($module-rem * 3);
-        }
-      }
-
-      .ant-input-affix-wrapper-focused {
-        @include input-focused();
-      }
+      @include input-box;
     }
   }
 
