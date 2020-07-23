@@ -110,7 +110,7 @@ const DashboardPage = () => {
               </div>
 
               <div className='col-7'>
-                <h6 className='mt-0 mb-1'>Hospital Earning</h6>
+                <h6 className='mt-0 mb-1'>Earnings</h6>
                 <div className='count' style={{ fontSize: 20, color: '#336cfb' }}>
                   $5238
                 </div>

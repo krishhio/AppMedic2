@@ -20,7 +20,8 @@ import RadiosPage from '../pages/components/RadiosPage';
 import TimelinePage from '../pages/components/TimlinesPage';
 import CardsPage from '../pages/components/CardsPage';
 import ButtonsPage from '../pages/components/ButtonsPage';
-import TextareasPage from "../pages/components/TextAreaPage";
+import TextareasPage from '../pages/components/TextAreaPage';
+import DoctorProfilePage from '../pages/components/DoctorsProfilePage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -42,6 +43,10 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'doctors',
     component: DoctorsPage
+  },
+  {
+    path: 'doctor-profile',
+    component: DoctorProfilePage
   },
   {
     path: 'alerts',
@@ -101,6 +106,6 @@ export const defaultRoutes: IRoute[] = [
   },
   {
     path: 'textareas',
-    component: TextareasPage,
+    component: TextareasPage
   }
 ];

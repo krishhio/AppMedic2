@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { IPatient } from '../interfaces/patient';
 import { useDispatch, useSelector } from 'react-redux';
 
