@@ -1,8 +1,8 @@
 export interface IUser {
   name: string;
+  lastName?: string;
   role?: string;
   address: string;
-  lastName?: string;
   img?: string | ArrayBuffer;
   gender?: string;
   profileLink?: string;

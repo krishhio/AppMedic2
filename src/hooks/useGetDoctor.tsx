@@ -3,13 +3,8 @@ import { useEffect, useState } from 'react';
 import { IUser } from '../interfaces/user';
 import axios from 'axios';
 
-const EMPTY_DOCTOR: IUser = {
-  img: 'content/doctor-400-1.jpg',
-  name: 'Not Found',
-  role: '',
-  address: '',
-  profileLink: '',
-  social: []
+const EMPTY_DOCTOR: Partial<IUser> = {
+  img: 'content/doctor-400-1.jpg'
 };
 
 async function getDoctors() {
@@ -29,17 +24,19 @@ export function useGetDoctors(): IUser[] {
   return doctors;
 }
 
-export function useGetDoctor(name: string): IUser {
-  const [doctor, setDoctor] = useState(EMPTY_DOCTOR);
+export function useGetDoctor(name: string) {
+  const [doctor, setDoctor] = useState(null);
   const doctors = useGetDoctors();
 
   useEffect(() => {
+    if (doctors.length === 0) return;
+
     const newDoctor = doctors.find((doc) => doc.name === name);
 
     if (newDoctor === undefined) return;
 
     setDoctor(newDoctor);
-  }, [name]);
+  }, [name, doctors]);
 
-  return doctor;
+  return { doctor };
 }
