@@ -194,7 +194,7 @@ $colors: (
   }
 
   .hover-#{$value} {
-    transition: background-color .2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 
     &:hover {
       background-color: $color;
@@ -220,4 +220,14 @@ $shapes: (
 
 .rounded {
   border-radius: $shape;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  margin: (-$module-rem) 0;
+
+  > * {
+    margin: ($module-rem) 0;
+  }
 }

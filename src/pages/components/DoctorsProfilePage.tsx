@@ -9,7 +9,9 @@ import {
   MonitorOutlined,
   PlusOutlined,
   UserAddOutlined,
-  UserOutlined
+  UserOutlined,
+  MedicineBoxOutlined,
+  CalendarOutlined
 } from '@ant-design/icons/lib';
 
 import { IPageData } from '../../interfaces/page';
@@ -97,11 +99,16 @@ const Socials = ({ links }: SocialsProps) => {
   const [networks, setNetworks] = useState(links);
 
   const addNetwork = (link: IUserLink) => setNetworks([...networks, link]);
-  const removeNetwork = ({ link }) =>
-    setNetworks(networks.filter((network) => network.link !== link));
 
-  const NetworkLayout = ({ iconInput, linkInput, actionBtn = null, isOutside = false }) => (
-    <div className={` ${isOutside ? '' : 'py-2'} row`}>
+  const removeNetwork = (index) => {
+    const predicate = (_, _index) => _index !== index;
+    const filteredNetworks = networks.filter(predicate);
+
+    setNetworks(filteredNetworks);
+  };
+
+  const NetworkLayout = ({ iconInput, linkInput, actionBtn = null }) => (
+    <div className='row'>
       <div className='col'>
         <div className='row'>
           <div className='col-md-6 col-sm-12'>{iconInput}</div>
@@ -119,13 +126,14 @@ const Socials = ({ links }: SocialsProps) => {
 
     return (
       <NetworkLayout
-        isOutside={index === 0 || index === length - 1}
+        key={index}
         linkInput={<Input readOnly value={link} />}
         iconInput={<Input prefix={<span className={`icofont ${link}`} />} readOnly value={icon} />}
         actionBtn={
           <Button
             shape='circle'
             style={buttonStyle}
+            onClick={() => removeNetwork(index)}
             icon={<DeleteOutlined className='icon-error' />}
           />
         }
@@ -153,8 +161,12 @@ const Socials = ({ links }: SocialsProps) => {
 
   return (
     <>
-      <h5>Social networks</h5>
-      {links.map(SocialLink)}
+      {networks.length ? (
+        <div className='stack'>
+          <h5>Social networks</h5>
+          {networks.map(SocialLink)}
+        </div>
+      ) : null}
 
       <h5>Add social network</h5>
       <AddLink />
@@ -172,10 +184,11 @@ const DocTimeline = () => (
       }
     >
       <div className='d-flex flex-column'>
-        <span className='text-lg'>Appointment</span>
-        <span className='text-base text-color-100'>2m ago</span>
+        <h4 className='m-0'>New prescription</h4>
+        <span className='text-base text-color-100'>Now</span>
         <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate.
+          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
+          ut id elit.
         </span>
       </div>
     </Timeline.Item>
@@ -183,15 +196,48 @@ const DocTimeline = () => (
     <Timeline.Item
       dot={
         <div className='p-2 bg-color-pink rounded-full'>
+          <CalendarOutlined className='text-contrast-500' />
+        </div>
+      }
+    >
+      <div className='d-flex flex-column'>
+        <h4 className='m-0'>Appointment</h4>
+        <span className='text-base text-color-100'>2m ago</span>
+        <span className='text-base'>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+        </span>
+      </div>
+    </Timeline.Item>
+
+    <Timeline.Item
+      dot={
+        <div className='p-2 bg-color-red rounded-full'>
+          <MedicineBoxOutlined className='text-contrast-500' />
+        </div>
+      }
+    >
+      <div className='d-flex flex-column'>
+        <h4 className='m-0'>Medication</h4>
+        <span className='text-base text-color-100'>2h ago</span>
+        <span className='text-base'>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+        </span>
+      </div>
+    </Timeline.Item>
+
+    <Timeline.Item
+      dot={
+        <div className='p-2 bg-color-success rounded-full'>
           <ExperimentOutlined className='text-contrast-500' />
         </div>
       }
     >
       <div className='d-flex flex-column'>
-        <span className='text-lg'>Medication</span>
-        <span className='text-base text-color-100'>2h ago</span>
+        <h4 className='m-0'>Operation</h4>
+        <span className='text-base text-color-100'>15h ago</span>
         <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
+          ut id elit.
         </span>
       </div>
     </Timeline.Item>
@@ -204,7 +250,7 @@ const DocTimeline = () => (
       }
     >
       <div className='d-flex flex-column'>
-        <span className='text-lg'>New patient</span>
+        <h4 className='m-0'>New patient</h4>
         <span className='text-base text-color-100'>Jul 10</span>
         <span className='text-base'>Lorem ipsum dolor sit.</span>
       </div>
@@ -218,7 +264,7 @@ const DocTimeline = () => (
       }
     >
       <div className='d-flex flex-column'>
-        <span className='text-lg'>Examination</span>
+        <h4 className='m-0'>Examination</h4>
         <span className='text-base text-color-100'>Jul 1</span>
         <span className='text-base'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
@@ -245,8 +291,12 @@ const DoctorProfilePage = () => {
 
             <div className='info'>{doctor && <DoctorForm doctor={doctor} />}</div>
 
-            <div className='social-networks'>
+            <div className='social-networks stack'>
               <Socials links={doctor.social} />
+
+              <Button type='primary' style={{ width: '100%' }}>
+                Save changes
+              </Button>
             </div>
           </div>
 

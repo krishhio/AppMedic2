@@ -99,7 +99,10 @@ const patientsGenderOptions = {
           }
         }
       },
-      data: [{ value: 154, name: 'Female' }, { value: 173, name: 'Male' }],
+      data: [
+        { value: 154, name: 'Female' },
+        { value: 173, name: 'Male' }
+      ],
       itemStyle: pieStyle
     }
   ]

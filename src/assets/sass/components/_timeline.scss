@@ -1,0 +1,11 @@
+@import '../variables';
+
+.ant-timeline-item {
+  &.ant-timeline-item-right {
+    padding-right: $module-rem * 2;
+  }
+
+  &.ant-timeline-item-left {
+    padding-left: $module-rem * 2;
+  }
+}
