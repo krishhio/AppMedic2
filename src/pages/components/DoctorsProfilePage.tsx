@@ -131,7 +131,7 @@ const Socials = ({ links }: SocialsProps) => {
       <NetworkLayout
         key={index}
         linkInput={<Input readOnly value={link} />}
-        iconInput={<Input prefix={<span className={`icofont ${link}`} />} readOnly value={icon} />}
+        iconInput={<Input readOnly value={icon} />}
         actionBtn={
           <Button
             shape='circle'
