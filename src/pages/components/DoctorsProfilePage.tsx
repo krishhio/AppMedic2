@@ -14,12 +14,15 @@ import {
   CalendarOutlined
 } from '@ant-design/icons/lib';
 
+import ReactEcharts from 'echarts-for-react';
+
 import { IPageData } from '../../interfaces/page';
 
 import { usePageData } from '../../hooks/usePage';
 import { useGetDoctor } from '../../hooks/useGetDoctor';
 
 import { IUser, IUserLink } from '../../interfaces/user';
+import patientsOptions from '../chart-options/patients';
 
 const pageData: IPageData = {
   title: 'Doctor profile page',
@@ -284,7 +287,7 @@ const DoctorProfilePage = () => {
         <div className='row'>
           <div className='col-md-6 col-sm-12'>
             <div className='header'>
-              <Card title={<h5>Photo</h5>}>
+              <Card title={<h6 className='my-0'>Photo</h6>}>
                 <DoctorAvatar img={doctor.img} />
               </Card>
             </div>
@@ -307,7 +310,11 @@ const DoctorProfilePage = () => {
           </div>
         </div>
 
-        <div className='patients-graph'></div>
+        <div className='patients-graph'>
+          <Card title='Patients' className='mb-0'>
+            <ReactEcharts className='chart-container container-h-400' option={patientsOptions} />
+          </Card>
+        </div>
       </>
     )
   );
