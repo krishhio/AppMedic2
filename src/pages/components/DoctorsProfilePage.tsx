@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 
 import { Avatar, Button, Card, Form, Input, Select, Timeline } from 'antd';
 import {
+  DeleteOutlined,
   ExperimentOutlined,
   MonitorOutlined,
   PlusOutlined,
@@ -99,8 +100,8 @@ const Socials = ({ links }: SocialsProps) => {
   const removeNetwork = ({ link }) =>
     setNetworks(networks.filter((network) => network.link !== link));
 
-  const NetworkLayout = ({ iconInput, linkInput, actionBtn = null }) => (
-    <div className='row'>
+  const NetworkLayout = ({ iconInput, linkInput, actionBtn = null, isOutside = false }) => (
+    <div className={` ${isOutside ? '' : 'py-2'} row`}>
       <div className='col'>
         <div className='row'>
           <div className='col-md-6 col-sm-12'>{iconInput}</div>
@@ -113,20 +114,42 @@ const Socials = ({ links }: SocialsProps) => {
     </div>
   );
 
-  const SocialLink = ({ link, icon }: IUserLink) => (
-    <NetworkLayout
-      linkInput={<Input readOnly value={link} />}
-      iconInput={<Input prefix={<span className={`icofont ${link}`} />} readOnly value={icon} />}
-      actionBtn={<Button color='#000' shape='circle' icon={<PlusOutlined />} />}
-    />
-  );
+  const SocialLink = ({ link, icon }: IUserLink, index, { length }) => {
+    const buttonStyle = { background: 'white', border: 'none' };
 
-  const AddLink = () => (
-    <NetworkLayout
-      iconInput={<Input placeholder='Icon class' />}
-      linkInput={<Input placeholder='Link' />}
-    />
-  );
+    return (
+      <NetworkLayout
+        isOutside={index === 0 || index === length - 1}
+        linkInput={<Input readOnly value={link} />}
+        iconInput={<Input prefix={<span className={`icofont ${link}`} />} readOnly value={icon} />}
+        actionBtn={
+          <Button
+            shape='circle'
+            style={buttonStyle}
+            icon={<DeleteOutlined className='icon-error' />}
+          />
+        }
+      />
+    );
+  };
+
+  const AddLink = () => {
+    const buttonStyle = { background: 'white', border: 'none' };
+
+    return (
+      <NetworkLayout
+        iconInput={<Input placeholder='Icon class' />}
+        linkInput={<Input placeholder='Link' />}
+        actionBtn={
+          <Button
+            shape='circle'
+            style={buttonStyle}
+            icon={<PlusOutlined className='icon-blue' />}
+          />
+        }
+      />
+    );
+  };
 
   return (
     <>
