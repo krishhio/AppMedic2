@@ -4,14 +4,12 @@ import { Avatar, Button } from 'antd';
 
 type Props = {
   src?: string;
-  size: number;
+  size?: number;
 };
 
-const ImageLoader = ({ src }: Props) => {
+const ImageLoader = ({ src, size = 40 }: Props) => {
   const [img, setImg] = useState<string>(null);
   const input = useRef<HTMLInputElement>(null);
-
-  const icon = <span className='icofont icofont-ui-user' />;
 
   const handleClick = () => input.current.click();
 
@@ -26,11 +24,13 @@ const ImageLoader = ({ src }: Props) => {
     reader.readAsDataURL(file);
   };
 
+  const icon = <span className='icofont icofont-ui-user ml-2' />;
+
   return (
     <>
       <input ref={input} onChange={handleLoad} type='file' style={{ display: 'none' }} />
-      <div className='d-flex'>
-        <Avatar src={img || src} size={40} className='mr-3' />
+      <div className='d-flex align-items-center'>
+        <Avatar src={img || src} size={size} className='mr-4' />
 
         <Button type={'primary'} className='btn-outline' onClick={handleClick}>
           Select image {icon}

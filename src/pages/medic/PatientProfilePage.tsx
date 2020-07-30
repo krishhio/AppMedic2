@@ -4,12 +4,11 @@ import { Card, Form, Input, Select } from 'antd';
 import { useFormik } from 'formik';
 
 import { IPageData } from '../../interfaces/page';
-import { IPatient } from '../../interfaces/patient';
 
 import { usePageData } from '../../hooks/usePage';
 import { useGetPatient } from '../../hooks/useGetPatient';
 
-import ChangeAvatar from '../../layout/components/Avatar/Avatar';
+import ImageLoader from '../../layout/components/Patients/ImageLoader';
 
 const pageData: IPageData = {
   title: 'Patient profile page',
@@ -24,7 +23,7 @@ const pageData: IPageData = {
       route: 'dashboard'
     },
     {
-      title: 'Dr.Sophie'
+      title: 'Liam Jouns'
     }
   ]
 };
@@ -97,7 +96,7 @@ const PatientProfilePage = () => {
           <div className='col-md-6 col-sm-12'>
             <div className='header'>
               <Card title={<h6 className='my-0'>Photo</h6>}>
-                <ChangeAvatar img={patient.img as string} />
+                <ImageLoader src={patient.img as string} size={100} />
               </Card>
             </div>
 
@@ -108,6 +107,8 @@ const PatientProfilePage = () => {
             <Card></Card>
           </div>
         </div>
+
+        <div className='patients-table'></div>
       </>
     )
   );

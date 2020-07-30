@@ -19,8 +19,8 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
 
   const closeModal = () => setVisibility(false);
 
-  const handleDeletePatient = id => onDeletePatient(id);
-  const handleShowInfo = () => history.push('/vertical/info');
+  const handleShowInfo = () => history.push('/vertical/patient-profile');
+  const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
     setVisibility(true);
@@ -45,7 +45,7 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
       key: 'img',
       title: 'Photo',
       dataIndex: 'img',
-      render: img => {
+      render: (img) => {
         return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
       }
     },
@@ -54,14 +54,14 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
       dataIndex: 'name',
       title: 'Name',
       sorter: (a, b) => (a.name > b.name ? 1 : -1),
-      render: name => <strong>{name}</strong>
+      render: (name) => <strong>{name}</strong>
     },
     {
       key: 'id',
       dataIndex: 'id',
       title: 'ID',
       sorter: (a, b) => (a.id > b.id ? 1 : -1),
-      render: id => (
+      render: (id) => (
         <span className='nowrap' style={{ color: '#a5a5a5' }}>
           {id}
         </span>
@@ -72,7 +72,7 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
       dataIndex: 'age',
       title: 'Age',
       sorter: (a, b) => a.age - b.age,
-      render: age => (
+      render: (age) => (
         <span className='nowrap' style={{ color: '#a5a5a5' }}>
           {age}
         </span>
@@ -81,13 +81,14 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
     {
       key: 'address',
       dataIndex: 'address',
-      title: 'Address'
+      title: 'Address',
+      render: (address) => <span style={{ minWidth: 200, display: 'block' }}>{address}</span>
     },
     {
       key: 'number',
       dataIndex: 'number',
       title: 'Number',
-      render: phone => (
+      render: (phone) => (
         <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
           <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
           {phone}
@@ -98,7 +99,7 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
       key: 'visit',
       dataIndex: 'lastVisit',
       title: 'Last visit',
-      render: visit => (
+      render: (visit) => (
         <span className='nowrap' style={{ color: '#a5a5a5' }}>
           {visit}
         </span>
@@ -108,7 +109,7 @@ const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
       key: 'status',
       dataIndex: 'status',
       title: 'Status',
-      render: status => (
+      render: (status) => (
         <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
           {status}
         </Tag>
