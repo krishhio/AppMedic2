@@ -67,7 +67,6 @@ const BillingTable = ({ billings, pagination = false, type = 'none' }: Props) =>
 
   return (
     <Table
-      scroll={{ x: '100vw' }}
       className={tableClass}
       pagination={pagination}
       rowKey='billNo'
