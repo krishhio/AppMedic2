@@ -1,8 +1,9 @@
 export interface IPatient {
   id?: string;
-  img: string | ArrayBuffer;
+  img?: string | ArrayBuffer;
   name: string;
   number: string;
+  phone?: string;
   age: number;
   gender: string;
   address: string;

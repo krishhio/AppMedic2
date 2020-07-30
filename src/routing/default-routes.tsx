@@ -21,7 +21,7 @@ import TimelinePage from '../pages/components/TimlinesPage';
 import CardsPage from '../pages/components/CardsPage';
 import ButtonsPage from '../pages/components/ButtonsPage';
 import TextareasPage from '../pages/components/TextAreaPage';
-import DoctorProfilePage from '../pages/components/DoctorsProfilePage';
+import DoctorProfilePage from '../pages/medic/DoctorsProfilePage';
 
 export const defaultRoutes: IRoute[] = [
   {

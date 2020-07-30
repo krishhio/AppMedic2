@@ -23,6 +23,7 @@ import { useGetDoctor } from '../../hooks/useGetDoctor';
 
 import { IUser, IUserLink } from '../../interfaces/user';
 import patientsOptions from '../chart-options/patients';
+import ChangeAvatar from "../../layout/components/Avatar/Avatar";
 
 const pageData: IPageData = {
   title: 'Doctor profile page',
@@ -47,17 +48,6 @@ const Option = Select.Option;
 
 type SocialsProps = { links?: IUserLink[] };
 type DoctorFormProps = { doctor: Partial<IUser> };
-type DoctorAvatarProps = { img: string; onChange?: () => void };
-
-const DoctorAvatar = ({ img, onChange }: DoctorAvatarProps) => (
-  <div className='d-flex align-items-center'>
-    <Avatar src={img as string} size={100} className='mr-5' />
-
-    <Button onClick={onChange} icon={<UserOutlined />} type='primary'>
-      Change photo
-    </Button>
-  </div>
-);
 
 const DoctorForm = ({ doctor }: DoctorFormProps) => {
   const { handleSubmit, handleChange, values } = useFormik({
@@ -288,7 +278,7 @@ const DoctorProfilePage = () => {
           <div className='col-md-6 col-sm-12'>
             <div className='header'>
               <Card title={<h6 className='my-0'>Photo</h6>}>
-                <DoctorAvatar img={doctor.img} />
+                <ChangeAvatar img={doctor.img} />
               </Card>
             </div>
 

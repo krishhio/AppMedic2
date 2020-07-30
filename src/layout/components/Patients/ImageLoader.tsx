@@ -4,6 +4,7 @@ import { Avatar, Button } from 'antd';
 
 type Props = {
   src?: string;
+  size: number;
 };
 
 const ImageLoader = ({ src }: Props) => {
