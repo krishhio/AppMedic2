@@ -8,6 +8,11 @@ async function getBillings() {
   return result.data as IBilling[];
 }
 
+async function getPayments() {
+  const result = await axios.get('./data/payments.json');
+  return result.data as IBilling[];
+}
+
 export function useGetBillings(): IBilling[] {
   const [billings, setBillings] = useState<IBilling[]>([]);
 
@@ -18,4 +23,16 @@ export function useGetBillings(): IBilling[] {
   }, []);
 
   return billings;
+}
+
+export function useGetPayments(): [IBilling[], React.Dispatch<any>] {
+  const [payments, setPayments] = useState<IBilling[]>([]);
+
+  useEffect(() => {
+    getPayments().then((data) => {
+      setPayments(data);
+    });
+  }, []);
+
+  return [payments, setPayments];
 }

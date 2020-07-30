@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Card, Timeline, Button } from 'antd';
+import { Card, Timeline } from 'antd';
 
 import { usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';

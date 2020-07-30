@@ -1,7 +1,7 @@
 import React from 'react';
-import { ColumnProps } from 'antd/es/table';
+import { ColumnProps, TableProps } from 'antd/es/table';
 import { IBilling } from '../../interfaces/patient';
-import { Table } from 'antd';
+import { Table, Pagination } from 'antd';
 
 const columns: ColumnProps<IBilling>[] = [
   {
@@ -51,11 +51,25 @@ const columns: ColumnProps<IBilling>[] = [
   }
 ];
 
-const BillingTable = ({ billings }) => {
+type Props = {
+  billings: IBilling[];
+  pagination?: TableProps<any>['pagination'];
+  type?: 'accent' | 'none';
+};
+
+const tableClasses = {
+  accent: 'accent-header',
+  none: ''
+};
+
+const BillingTable = ({ billings, pagination = false, type = 'none' }: Props) => {
+  const tableClass = tableClasses[type];
+
   return (
     <Table
-      className='accent-header'
-      pagination={false}
+      scroll={{ x: '100vw' }}
+      className={tableClass}
+      pagination={pagination}
       rowKey='billNo'
       dataSource={billings}
       columns={columns}

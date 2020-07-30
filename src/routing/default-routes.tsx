@@ -23,6 +23,7 @@ import ButtonsPage from '../pages/components/ButtonsPage';
 import TextareasPage from '../pages/components/TextAreaPage';
 import DoctorProfilePage from '../pages/medic/DoctorsProfilePage';
 import PatientProfilePage from '../pages/medic/PatientProfilePage';
+import Payments from '../pages/Dashboards/Payments/Payments';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -112,5 +113,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'patient-profile',
     component: PatientProfilePage
+  },
+  {
+    path: 'payments',
+    component: Payments
   }
 ];
