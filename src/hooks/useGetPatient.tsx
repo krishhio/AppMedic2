@@ -13,7 +13,7 @@ async function getPatients() {
 }
 
 export function useGetPatients(): IPatient[] {
-  const [doctors, setPatients] = useState([]);
+  const [patients, setPatients] = useState<IPatient[]>([]);
 
   useEffect(() => {
     getPatients().then((data) => {
@@ -21,7 +21,7 @@ export function useGetPatients(): IPatient[] {
     });
   }, []);
 
-  return doctors;
+  return patients;
 }
 
 export function useGetPatient(name: string) {
@@ -30,7 +30,6 @@ export function useGetPatient(name: string) {
 
   useEffect(() => {
     if (patients.length === 0) return;
-    console.log(patients)
     const newPatient = patients.find((doc) => doc.name === name);
 
     if (newPatient === undefined) return;

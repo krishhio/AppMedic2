@@ -9,11 +9,15 @@ import PatientForm from '../../../layout/components/Patients/PatientForm';
 
 type Props = {
   patients: IPatient[];
-  onEditPatient: (patient: IPatient) => void;
-  onDeletePatient: (id: string) => void;
+  onEditPatient?: (patient: IPatient) => void;
+  onDeletePatient?: (id: string) => void;
 };
 
-const PatientsTable = ({ patients, onDeletePatient, onEditPatient }: Props) => {
+const PatientsTable = ({
+  patients,
+  onEditPatient = () => null,
+  onDeletePatient = () => null,
+}: Props) => {
   const [patient, setPatient] = useState(null);
   const [visibility, setVisibility] = useState(false);
 

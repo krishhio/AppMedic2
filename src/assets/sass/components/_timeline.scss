@@ -1,11 +1,16 @@
 @import '../variables';
 
 .ant-timeline-item {
+  &:not(:last-child) {
+    padding-bottom: $module-rem * 5.25;
+  }
+
   &.ant-timeline-item-right {
     padding-right: $module-rem * 2;
+    padding-left: $module-rem;
   }
 
   &.ant-timeline-item-left {
-    padding-left: $module-rem * 2;
+    padding-right: $module-rem;
   }
 }

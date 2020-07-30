@@ -3,7 +3,7 @@ export interface IPatient {
   img?: string | ArrayBuffer;
   profileImg?: string | ArrayBuffer;
   name: string;
-  fullName?: 'string'
+  fullName?: 'string';
   number: string;
   phone?: string;
   age: number;
@@ -22,4 +22,15 @@ export interface IAppointment {
   fromTo: string;
   doctor: string;
   injury: string;
+}
+
+export interface IBilling {
+  billNo: number;
+  billDate: string;
+  patient: string;
+  doctor: string;
+  charges: number;
+  tax: number;
+  discount: number;
+  total: number;
 }
