@@ -1,7 +1,9 @@
 [
   {
     "img": "/content/user-40-1.jpg",
+    "profileImg": "/content/user-400-1.jpg",
     "name": "Liam",
+    "fullName": "Liam Jouns",
     "id": "10021",
     "age": "42",
     "address": "71 Pilgrim Avenue Chevy Chase, MD 20815",

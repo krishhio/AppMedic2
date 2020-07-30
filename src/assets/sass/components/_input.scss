@@ -165,7 +165,7 @@ $_padding-v-lg: $_module-rem * 1.5;
     @include input-lg();
   }
 
-  &:read-only {
+  &:read-only:not(.ant-select-selector) {
     background-color: hsla(0, 0%, 80%, 0.1);
     border-color: hsla(0, 0%, 80%, 0.5);
     box-shadow: none !important;

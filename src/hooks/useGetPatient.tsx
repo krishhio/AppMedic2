@@ -30,7 +30,7 @@ export function useGetPatient(name: string) {
 
   useEffect(() => {
     if (patients.length === 0) return;
-
+    console.log(patients)
     const newPatient = patients.find((doc) => doc.name === name);
 
     if (newPatient === undefined) return;

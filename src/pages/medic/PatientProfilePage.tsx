@@ -40,7 +40,7 @@ const ProfileForm = ({ patient }) => {
   return (
     <Form layout='vertical'>
       <FormItem label='Full name'>
-        <Input defaultValue={values.name} placeholder='Full name' />
+        <Input defaultValue={values.fullName} placeholder='Full name' />
       </FormItem>
 
       <FormItem label='id'>
@@ -86,9 +86,9 @@ const ProfileForm = ({ patient }) => {
 };
 
 const PatientProfilePage = () => {
-  const { patient } = useGetPatient('Liam Jouns');
+  const { patient } = useGetPatient('Liam');
   usePageData(pageData);
-
+  console.log(patient);
   return (
     patient && (
       <>
@@ -96,7 +96,7 @@ const PatientProfilePage = () => {
           <div className='col-md-6 col-sm-12'>
             <div className='header'>
               <Card title={<h6 className='my-0'>Photo</h6>}>
-                <ImageLoader src={patient.img as string} size={100} />
+                <ImageLoader src={patient.profileImg as string} size={100} />
               </Card>
             </div>
 
