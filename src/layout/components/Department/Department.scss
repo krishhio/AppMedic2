@@ -1,0 +1,12 @@
+@import '../../../assets/sass/variables';
+
+.department {
+  .team {
+    flex-wrap: wrap;
+
+    .tc-avatar {
+      box-shadow: $shadow;
+      margin-right: -10px;
+    }
+  }
+}
