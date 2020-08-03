@@ -22,9 +22,9 @@ import { usePageData } from '../../hooks/usePage';
 import { useGetDoctor } from '../../hooks/useGetDoctor';
 
 import { IUser, IUserLink } from '../../interfaces/user';
+
 import patientsOptions from '../chart-options/patients';
-import ChangeAvatar from "../../layout/components/Avatar/Avatar";
-import ImageLoader from "../../layout/components/Patients/ImageLoader";
+import ImageLoader from '../../layout/components/Patients/ImageLoader';
 
 const pageData: IPageData = {
   title: 'Doctor profile page',
@@ -279,7 +279,7 @@ const DoctorProfilePage = () => {
           <div className='col-md-6 col-sm-12'>
             <div className='header'>
               <Card title={<h6 className='my-0'>Photo</h6>}>
-                <ImageLoader src={doctor.img} size={100}/>
+                <ImageLoader src={doctor.img} size={100} />
               </Card>
             </div>
 

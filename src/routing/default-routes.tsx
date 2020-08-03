@@ -24,6 +24,7 @@ import TextareasPage from '../pages/components/TextAreaPage';
 import DoctorProfilePage from '../pages/medic/DoctorsProfilePage';
 import PatientProfilePage from '../pages/medic/PatientProfilePage';
 import Payments from '../pages/Dashboards/Payments/Payments';
+import Departments from '../pages/medic/Departments';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -117,5 +118,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'payments',
     component: Payments
+  },
+  {
+    path: 'departments',
+    component: Departments
   }
 ];

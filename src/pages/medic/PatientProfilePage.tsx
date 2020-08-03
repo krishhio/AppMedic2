@@ -10,7 +10,7 @@ import { useGetPatient, useGetPatients } from '../../hooks/useGetPatient';
 
 import ImageLoader from '../../layout/components/Patients/ImageLoader';
 import PatientsTable from '../Dashboards/Patients/PatientsTable';
-import BillingTable from './billing-table';
+import BillingTable from './components/billing-table';
 import { useGetBillings } from '../../hooks/useGetBillings';
 
 const pageData: IPageData = {

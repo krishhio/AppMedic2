@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColumnProps, TableProps } from 'antd/es/table';
-import { IBilling } from '../../interfaces/patient';
+import { IBilling } from '../../../interfaces/patient';
 import { Table, Pagination } from 'antd';
 
 const columns: ColumnProps<IBilling>[] = [

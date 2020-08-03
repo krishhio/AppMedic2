@@ -1,27 +1,33 @@
 import React from 'react';
 import { Avatar, Button, Card } from 'antd';
 import { FileDoneOutlined, PlusOutlined } from '@ant-design/icons/lib';
+import { IDepartment } from '../../../interfaces/patient';
 
-type Props = { dep: any };
+import './Department.scss';
 
-const Department = ({ dep }: Props) => (
+type Props = { department: IDepartment; className?: string };
+
+const Department = ({ department, className = '' }: Props) => (
   <>
-    <Card className='department'>
-      <h3 className='h4 mt-0'>{dep.title}</h3>
+    <Card
+      className={`department ${className}`}
+      cover={<img alt={`${department.title} avatar`} src={department.img} />}
+    >
+      <h3 className='h4 mt-0'>{department.title}</h3>
 
       <div className='team d-flex align-items-center mb-4'>
         <strong className='mr-3'>Team:</strong>
 
-        {dep.team.map((src) => (
-          <Avatar src={src} />
+        {department.team.map((src) => (
+          <Avatar className='avatar' src={src} />
         ))}
-        <Button shape='circle' icon={<PlusOutlined />} />
+        <Button shape='circle' type='primary' icon={<PlusOutlined />} />
       </div>
 
-      <p>{dep.desc}</p>
+      <p>{department.desc}</p>
 
       <div className='button-box pb-2'>
-        <Button>
+        <Button type='primary'>
           More <FileDoneOutlined className='ml-2' />
         </Button>
       </div>

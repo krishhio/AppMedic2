@@ -34,3 +34,10 @@ export interface IBilling {
   discount: number;
   total: number;
 }
+
+export interface IDepartment {
+  img: string;
+  title: string;
+  desc: string;
+  team: string[];
+}

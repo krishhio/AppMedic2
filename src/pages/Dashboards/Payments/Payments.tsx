@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import BillingTable from '../../medic/billing-table';
+import BillingTable from '../../medic/components/billing-table';
 import { useGetPayments } from '../../../hooks/useGetBillings';
 
 import { IPageData } from '../../../interfaces/page';
