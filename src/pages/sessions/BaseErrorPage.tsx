@@ -4,9 +4,10 @@ import PublicLayout from '../../layout/Public/Public';
 type Props = {
   msg: string;
   title: string;
+  subTitle?: string;
   action: ReactNode;
-  img: ReactElement;
-  bg: ReactElement;
+  img?: ReactNode;
+  bg: string;
 };
 
 const BaseErrorPage = ({ msg, title, action, bg, img }: Props) => (

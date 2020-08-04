@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
-type Props = { children: ReactNode };
+type Props = { children: ReactNode; bgImg?: string };
 
-const PublicLayout = ({ children }: Props) => {
+const PublicLayout = ({ children, bgImg }: Props) => {
   return (
     <>
       <div className='public-layout'>
