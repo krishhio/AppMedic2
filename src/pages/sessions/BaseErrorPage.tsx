@@ -2,17 +2,18 @@ import React, { ReactElement, ReactNode } from 'react';
 import PublicLayout from '../../layout/Public/Public';
 
 type Props = {
-  msg: string;
-  title: string;
-  subTitle?: string;
+  msg?: string;
+  title: string | ReactNode;
+  subTitle?: string | ReactNode;
   action: ReactNode;
   img?: ReactNode;
   bg: string;
 };
 
-const BaseErrorPage = ({ msg, title, action, bg, img }: Props) => (
-  <PublicLayout>
-    <h1>{title}</h1>
+const BaseErrorPage = ({ msg, title, action, bg, subTitle }: Props) => (
+  <PublicLayout bgImg={bg}>
+    {typeof title === 'string' ? <h1 className='align-middle'>{title}</h1> : title}
+    {subTitle ? subTitle : null}
     <p>{msg}</p>
 
     {action}

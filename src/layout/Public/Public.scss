@@ -1,0 +1,37 @@
+@import '../../assets/sass/variables';
+
+.public-layout {
+  background-size: cover;
+  display: block;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
+
+  .content-box {
+    background: #fff;
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    min-height: 100%;
+
+    .content-header {
+      padding-top: $module-rem * 2;
+    }
+
+    .content-body {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: $module-rem ($module-rem * 4);
+      width: 100%;
+
+      > * {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

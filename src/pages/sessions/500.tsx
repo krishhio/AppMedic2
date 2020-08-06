@@ -1,17 +1,16 @@
+import BaseErrorPage from './BaseErrorPage';
+import { Button } from 'antd';
+import { HomeFilled } from '@ant-design/icons/lib';
+import { Link } from 'react-router-dom';
 import React from 'react';
 
-import { Button } from 'antd';
-import { Link } from 'react-router-dom';
-
-import BaseErrorPage from './BaseErrorPage';
-import { HomeFilled } from '@ant-design/icons/lib';
-
-const NotFound = () => (
+const InternalError = () => (
   <BaseErrorPage
     subTitle={
-      <h6 className='text-md text-center'>Sorry! The page you were looking for doesn't exist.</h6>
+      <h6 className='text-md text-center'>Oopps. There was an error, please try again later.</h6>
     }
-    bg={`${window.origin}/content/404-page.jpg`}
+    msg='The server encountered an internal server error and was unable to complete your request.'
+    bg={`${window.origin}/content/500-page.jpg`}
     action={
       <Button
         type='primary'
@@ -25,11 +24,11 @@ const NotFound = () => (
     }
     title={
       <h1 style={{ fontSize: '6rem' }} className='text-color-300 text-center'>
-        <i className='icofont-radio-active color-error mr-2' />
-        404
+        <i className='icofont-exclamation-tringle  color-error mr-2' />
+        500
       </h1>
     }
   />
 );
 
-export default NotFound;
+export default InternalError;
