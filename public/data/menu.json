@@ -261,6 +261,16 @@
         "title": "Sign up",
         "routing": "sign-up",
         "layout": "public"
+      },
+      {
+        "title": "404",
+        "routing": "page-404",
+        "layout": "public"
+      },
+      {
+        "title": "500",
+        "routing": "page-500",
+        "layout": "public"
       }
     ]
   }

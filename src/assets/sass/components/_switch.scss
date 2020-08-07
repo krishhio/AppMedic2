@@ -4,25 +4,25 @@ $_bg: (
   default: #ebebeb,
   hover: #ebebeb,
   active: accent-palette(500),
-  disabled: rgba(#ccc, 0.1),
+  disabled: rgba(#ccc, 0.1)
 );
 $_border: (
   default: #ebebeb,
   hover: #ebebeb,
   active: accent-palette(500),
-  disabled: rgba(#ccc, 0.5),
+  disabled: rgba(#ccc, 0.5)
 );
 $_color: (
   default: main-palette(500),
   hover: accent-palette(500),
   active: accent-contrast(500),
-  disabled: #bdbdbd,
+  disabled: #bdbdbd
 );
 $_label-color: (
   default: inherit,
   hover: inherit,
   active: inherit,
-  disabled: #bdbdbd,
+  disabled: #bdbdbd
 );
 
 $_module-rem: $module-rem;
@@ -31,7 +31,7 @@ $_border-width: 1px;
 $_fs: 1rem;
 $_shape: 500px;
 $_animation: $animation;
-$_height: $_module-rem * 2;
+$_height: $_module-rem * 2.2;
 $_width: $_module-rem * 4;
 
 .ant-switch {
@@ -48,20 +48,17 @@ $_width: $_module-rem * 4;
       }
     }
   }
-  &:after {
-    background: main-palette(500);
-    top: 2px;
-    left: 2px;
-    height: 14px;
-    width: 14px;
+  .ant-switch-handle {
+    height: 16px;
+    width: 16px;
   }
   &.ant-switch-checked {
     background: map-get($_bg, active);
     border-color: map-get($_border, active);
 
-    &:after {
+    &.ant-switch-handle {
       background: map-get($_bg, default) !important;
-      left: calc(100% - 2px);
+      left: calc(100% - 16px - 2px);
       right: 2px;
     }
 
