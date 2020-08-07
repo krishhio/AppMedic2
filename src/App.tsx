@@ -23,17 +23,14 @@ const RoutesSwitch = ({ routes, layout }) => (
     ))}
 
     <Route path='*'>
-      <NotFound />
+      <Redirect to='/public/page-404'/>
     </Route>
   </Switch>
 );
 
 const DefaultRoutes = ({ layout }) => <RoutesSwitch routes={defaultRoutes} layout={layout} />;
 
-const SessionRoutes = () => {
-  console.log(sessionRoutes);
-  return <RoutesSwitch routes={sessionRoutes} layout='public' />;
-};
+const SessionRoutes = () => <RoutesSwitch routes={sessionRoutes} layout='public' />;
 
 const App = () => {
   return (
