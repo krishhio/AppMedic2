@@ -14,8 +14,6 @@ $_animation: $animation;
 $_shadow: 0 0 10px rgba(#000, 0.12);
 
 .ant-table-wrapper {
-  overflow-x: hidden;
-
   .ant-table {
     overflow: auto;
     min-width: 820px;

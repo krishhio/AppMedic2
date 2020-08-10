@@ -167,6 +167,7 @@
 }
 
 $colors: (
+  black: main-palette(900),
   error: $error-color,
   success: $success-color,
   info: $info-color,
@@ -178,6 +179,7 @@ $colors: (
   green: #48bb78,
   yellow: #ecc94b,
   orange: #ed8936,
+  gray: main-palette(300),
   white: #fff,
   red: #f56565
 );
