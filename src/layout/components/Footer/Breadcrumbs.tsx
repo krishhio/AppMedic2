@@ -9,8 +9,8 @@ type Props = {
   layout: string;
 };
 
-const Breadcrumbs = ({ breadcrumbs, layout }: Props) => {
-  const breadcrumbList = breadcrumbs && breadcrumbs.map((item: IBreadcrumb, index) => (
+const Breadcrumbs = ({ breadcrumbs = [], layout }: Props) => {
+  const breadcrumbList = breadcrumbs.map((item: IBreadcrumb, index) => (
     <li className='item' key={index}>
       {item.route ? (
         <NavLink to={`${layout}/${item.route}`}>{item.title}</NavLink>
@@ -18,9 +18,7 @@ const Breadcrumbs = ({ breadcrumbs, layout }: Props) => {
         <span>{item.title}</span>
       )}
 
-      { index < breadcrumbs.length - 1  && (
-        <i className='separator icofont icofont-thin-right' />
-      )}
+      {index < breadcrumbs.length - 1 && <i className='separator icofont icofont-thin-right' />}
     </li>
   ));
 

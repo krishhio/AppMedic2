@@ -17,11 +17,11 @@ const pageDate: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'UI Kit ',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'Buttons'

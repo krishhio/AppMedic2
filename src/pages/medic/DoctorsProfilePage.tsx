@@ -32,11 +32,11 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Medicine',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'Doctors',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'Dr.Sophie'

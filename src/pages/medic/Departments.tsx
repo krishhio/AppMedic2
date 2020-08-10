@@ -12,7 +12,7 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Medicine',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'Departments'
@@ -39,12 +39,8 @@ const Departments = () => {
   return (
     <div className='row'>
       {departments.map((dep, i) => (
-        <div className='col-md-4 col-sm-12'>
-          <Department
-            className={`white-bg ${depClass(i, departments.length)}`}
-            department={dep}
-            key={i}
-          />
+        <div className='col-md-4 col-sm-12' key={i}>
+          <Department department={dep} className={`white-bg ${depClass(i, departments.length)}`} />
         </div>
       ))}
     </div>

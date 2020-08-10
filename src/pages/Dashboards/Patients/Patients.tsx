@@ -13,7 +13,7 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'dashboard',
+      route: 'default-dashboard',
     },
     {
       title: 'Patients',

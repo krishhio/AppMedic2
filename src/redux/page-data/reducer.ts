@@ -5,7 +5,7 @@ const initialState: IPageData = {
   title: '',
   loaded: true,
   fullFilled: false,
-  breadcrumbs: [{ route: 'dashboard', title: 'Home' }, { title: 'Dashboard' }],
+  breadcrumbs: [{ route: 'default-dashboard', title: 'Home' }, { title: 'Dashboard' }],
 };
 
 export const pageDataReducer = (state: IPageData = initialState, action: PageActionsTypes) => {

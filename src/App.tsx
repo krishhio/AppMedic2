@@ -23,7 +23,7 @@ const RoutesSwitch = ({ routes, layout }) => (
     ))}
 
     <Route path='*'>
-      <Redirect to='/public/page-404'/>
+      <Redirect to='/public/page-404' />
     </Route>
   </Switch>
 );

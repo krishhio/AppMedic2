@@ -18,8 +18,8 @@ const Department = ({ department, className = '' }: Props) => (
       <div className='team d-flex align-items-center mb-4'>
         <strong className='mr-3'>Team:</strong>
 
-        {department.team.map((src) => (
-          <Avatar className='avatar' src={src} />
+        {department.team.map((src, i) => (
+          <Avatar className='avatar' src={src} key={i} />
         ))}
         <Button shape='circle' type='primary' icon={<PlusOutlined />} />
       </div>

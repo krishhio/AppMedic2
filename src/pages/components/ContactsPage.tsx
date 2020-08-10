@@ -14,11 +14,11 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'dashboard',
+      route: 'default-dashboard',
     },
     {
       title: 'Components',
-      route: 'dashboard',
+      route: 'default-dashboard',
     },
     {
       title: 'Contacts',
