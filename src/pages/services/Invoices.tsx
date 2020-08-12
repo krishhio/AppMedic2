@@ -4,13 +4,13 @@ import { Card } from 'antd';
 
 import InvoicesTable from './InvoicesTable';
 
-import { usePageData } from '../../hooks/usePage';
+import { useFetchPageData, usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
-import { useGetInvoices } from '../../hooks/useGetInvoices';
 
 const pageData: IPageData = {
   title: 'Invoices',
-  fullFilled: true,
+  fullFilled: false,
+  loaded: false,
   breadcrumbs: [
     {
       title: 'Apps',
@@ -52,7 +52,7 @@ const SummaryCard = () => (
 );
 
 const Invoices = () => {
-  const invoices = useGetInvoices();
+  const [invoices] = useFetchPageData('./data/invoices.json');
   usePageData(pageData);
 
   return (

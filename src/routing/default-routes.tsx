@@ -26,6 +26,7 @@ import PatientProfilePage from '../pages/medic/PatientProfilePage';
 import Payments from '../pages/Dashboards/Payments/Payments';
 import Departments from '../pages/medic/Departments';
 import Invoices from '../pages/services/Invoices';
+import Invoice from '../pages/services/Invoice';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -127,5 +128,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'invoices',
     component: Invoices
+  },
+  {
+    path: 'invoice',
+    component: Invoice
   }
 ];

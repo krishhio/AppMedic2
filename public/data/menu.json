@@ -47,11 +47,11 @@
   },
   {
     "title": "UI Kit",
-    "groupTitle" : true
+    "groupTitle": true
   },
   {
     "title": "Components",
-    "sub" : [
+    "sub": [
       {
         "title": "Alerts",
         "routing": "alerts"
@@ -69,24 +69,24 @@
         "routing": "buttons"
       },
       {
-        "title" : "Cards",
+        "title": "Cards",
         "routing": "cards"
       },
       {
-        "title" : "Checkboxes",
+        "title": "Checkboxes",
         "routing": "checkboxes"
       },
       {
-        "title" : "Contacts",
+        "title": "Contacts",
         "routing": "contacts"
       },
       {
-        "title" : "Inputs",
+        "title": "Inputs",
         "routing": "inputs"
       },
       {
-        "title" : "Modal windows",
-        "routing" : "modal-windows"
+        "title": "Modal windows",
+        "routing": "modal-windows"
       },
       {
         "title": "Radio buttons",
@@ -101,7 +101,7 @@
         "routing": "selects"
       },
       {
-        "title" : "Switchers",
+        "title": "Switchers",
         "routing": "switchers"
       },
       {
@@ -185,17 +185,8 @@
     "title": "Charts",
     "sub": [
       {
-        "title": "Ng2 charts",
-        "routing": "ng2-charts"
-      },
-      {
-        "title": "Ngx charts",
-        "routing": "ngx-charts"
-      }
-      ,
-      {
-        "title": "Ngx echarts",
-        "routing": "ngx-echarts"
+        "title": "Echarts",
+        "routing": "echarts"
       }
     ]
   },
@@ -223,6 +214,10 @@
   {
     "title": "Service pages",
     "sub": [
+      {
+        "title": "Invoice",
+        "routing": "invoice"
+      },
       {
         "title": "Invoices",
         "routing": "invoices"
