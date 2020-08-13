@@ -1,10 +1,13 @@
 import React from 'react';
-import { useFetchPageData, usePageData } from '../../hooks/usePage';
-import { IPageData } from '../../interfaces/page';
+
 import { Button, Card, Table } from 'antd';
-import { IInvoice, IInvoiceRecord } from '../../interfaces/invoice';
 import { PrinterOutlined } from '@ant-design/icons/lib';
+
+import { useFetchPageData, usePageData } from '../../hooks/usePage';
 import { useGetInvoice } from '../../hooks/useGetInvoices';
+
+import { IPageData } from '../../interfaces/page';
+import { IInvoice, IInvoiceRecord } from '../../interfaces/invoice';
 
 const pageData: IPageData = {
   title: 'Invoice',

@@ -38,6 +38,8 @@ html {
     border: none;
     margin-bottom: $module-rem * 2;
 
+
+    &.with-shadow,
     &.custom-bg-color {
       box-shadow: $_shadow;
       padding: $_v-padding $_h-padding;
