@@ -8,7 +8,7 @@ import { useFetchPageData, usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'Invoices',
+  title: 'InvoicesPage',
   fullFilled: false,
   loaded: false,
   breadcrumbs: [
@@ -21,7 +21,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Invoices'
+      title: 'InvoicesPage'
     }
   ]
 };
@@ -51,7 +51,7 @@ const SummaryCard = () => (
   </Card>
 );
 
-const Invoices = () => {
+const InvoicesPage = () => {
   const [invoices] = useFetchPageData('./data/invoices.json');
   usePageData(pageData);
 
@@ -72,4 +72,4 @@ const Invoices = () => {
   );
 };
 
-export default Invoices;
+export default InvoicesPage;

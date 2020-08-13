@@ -20,10 +20,10 @@ export interface IInvoice {
   invoiceDate: string;
   dueTo: string;
 
-  records: IInvoiceRecord[];
+  records?: IInvoiceRecord[];
 
-  total: number;
-  vat: number;
+  total?: number;
+  vat?: number;
 }
 
 export interface IInvoiceRecord {

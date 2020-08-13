@@ -234,6 +234,7 @@ $shapes: (
   margin: (-$module-rem) 0;
 
   > * {
-    margin: ($module-rem) 0;
+    margin-top: $module-rem;
+    margin-bottom: $module-rem;
   }
 }
