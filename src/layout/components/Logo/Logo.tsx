@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 import './Logo.scss';
 
@@ -7,18 +7,13 @@ type Props = {
   width?: number | string;
   height?: number | string;
   alt?: string;
+  style?: CSSProperties;
 };
 
-const Logo = ({ alt = '', height = 'auto', width = 'auto', src }: Props) => {
+const Logo = ({ alt = '', height = 'auto', width = 'auto', src, style = {} }: Props) => {
   return (
-    <div className='logo'>
-      <img
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className='logo-img'
-      />
+    <div className='logo' style={style}>
+      <img src={src} alt={alt} width={width} height={height} className='logo-img' />
     </div>
   );
 };

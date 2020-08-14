@@ -28,6 +28,7 @@ import Departments from '../pages/medic/Departments';
 import InvoicesPage from '../pages/services/InvoicesPage';
 import InvoicePage from '../pages/services/InvoicePage';
 import PricingPage from '../pages/services/PricingPage';
+import EventsTimelinePage from '../pages/services/EventsTimeline/EventsTimeline';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -137,5 +138,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'pricing',
     component: PricingPage
+  },
+  {
+    path: 'events-timeline',
+    component: EventsTimelinePage
   }
 ];
