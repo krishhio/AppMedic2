@@ -29,6 +29,7 @@ import InvoicesPage from '../pages/services/InvoicesPage';
 import InvoicePage from '../pages/services/InvoicePage';
 import PricingPage from '../pages/services/PricingPage';
 import EventsTimelinePage from '../pages/services/EventsTimeline/EventsTimeline';
+import UserProfilePage from '../pages/services/UserProfilePage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -142,5 +143,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'events-timeline',
     component: EventsTimelinePage
+  },
+  {
+    path: 'user-profile',
+    component: UserProfilePage
   }
 ];

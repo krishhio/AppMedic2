@@ -9,7 +9,6 @@ export interface IUser {
   social?: IUserLink[];
 }
 
-
 export interface IUserLink {
   icon: string;
   link: string;
