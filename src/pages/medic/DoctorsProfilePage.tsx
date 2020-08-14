@@ -52,8 +52,8 @@ type DoctorFormProps = { doctor: Partial<IUser> };
 
 const DoctorForm = ({ doctor }: DoctorFormProps) => {
   const { handleSubmit, handleChange, values } = useFormik({
-    initialValues: { ...doctor },
-    onSubmit: (values) => console.log(values)
+    onSubmit: (values) => console.log(values),
+    initialValues: { ...doctor }
   });
 
   return (

@@ -3,10 +3,6 @@ import { useEffect, useState } from 'react';
 import { IUser } from '../interfaces/user';
 import axios from 'axios';
 
-const EMPTY_DOCTOR: Partial<IUser> = {
-  img: 'content/doctor-400-1.jpg'
-};
-
 async function getDoctors() {
   const result = await axios.get('./data/doctors.json');
   return result.data as IUser[];
