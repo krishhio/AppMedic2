@@ -2,25 +2,27 @@ import React, { ReactElement, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-import { DataSourceItemType } from 'antd/es/auto-complete';
-
 import BaseLayout from '../Base/BaseLayout';
 
 import Logo from '../components/Logo/Logo';
-import Navbar from '../components/Navbar/Navbar';
-import LogoSvg from './../../assets/img/logo.svg';
 import Menu from '../components/Menu/Menu';
+import Navbar from '../components/Navbar/Navbar';
 import Search from '../components/Search/Search';
 
-import './Horizontal.scss';
-import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
-import Actions from '../components/Actions/Actions';
+import LogoSvg from './../../assets/img/logo.svg';
+
 import { Dispatch } from 'redux';
-import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
 import { connect } from 'react-redux';
+import Actions from '../components/Actions/Actions';
+import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
+
+import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
+
 import { IPageData } from '../../interfaces/page';
 import { IPatient } from '../../interfaces/patient';
 import { IAppSettings } from '../../interfaces/settings';
+
+import './Horizontal.scss';
 
 type OwnProps = {
   children: any;
@@ -64,12 +66,12 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
 
       const getOption = (item: IMenuItem | IMenuItemSub) => ({
         text: item.title,
-        value: item.routing,
+        value: item.routing
       });
 
       const setSubTitle = (itemTitle: string) => (subItem: IMenuItemSub) => ({
         ...subItem,
-        title: `${itemTitle} > ${subItem.title}`,
+        title: `${itemTitle} > ${subItem.title}`
       });
 
       const menuItems = data.filter(hasRouting);
@@ -78,7 +80,7 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
         .filter(hasSub)
         .map((item: IMenuItem) => ({
           ...item,
-          sub: item.sub.map(setSubTitle(item.title)),
+          sub: item.sub.map(setSubTitle(item.title))
         }))
         .map((item: IMenuItem) => item.sub)
         .flat();
@@ -130,13 +132,13 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdateSettings: (settings) => dispatch(updateSettings(settings)),
+  onUpdateSettings: (settings) => dispatch(updateSettings(settings))
 });
 
 const mapStateToProps = ({ patients, pageData, settings }) => ({
   settings,
   pageData,
-  patients,
+  patients
 });
 
 const ConnectedLayout: (props: OwnProps) => ReactElement = connect(

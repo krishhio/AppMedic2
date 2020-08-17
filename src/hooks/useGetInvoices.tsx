@@ -8,7 +8,7 @@ async function getInvoices() {
   return result.data as IInvoicePreview[];
 }
 
-async function getInvoiceRecords(id: number = 0) {
+export async function getInvoiceRecords(id: number = 0) {
   const result = await axios.get('./data/invoice.json');
   return result.data as IInvoiceRecord[];
 }

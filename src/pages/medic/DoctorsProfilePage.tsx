@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useFormik } from 'formik';
 
-import { Avatar, Button, Card, Form, Input, Select, Timeline } from 'antd';
+import { Button, Card, Form, Input, Select, Timeline } from 'antd';
 import {
   DeleteOutlined,
   ExperimentOutlined,

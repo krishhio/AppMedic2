@@ -3,7 +3,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { IBreadcrumb } from '../../../interfaces/page';
-import ReactEchartsCore from 'echarts-for-react/lib/core';
 
 type Props = {
   breadcrumbs: IBreadcrumb[];

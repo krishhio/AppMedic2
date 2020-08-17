@@ -6,12 +6,11 @@ import { useFormik } from 'formik';
 import { IPageData } from '../../interfaces/page';
 
 import { usePageData } from '../../hooks/usePage';
-import { useGetPatient, useGetPatients } from '../../hooks/useGetPatient';
+import { useGetPatient } from '../../hooks/useGetPatient';
+import { useGetBillings } from '../../hooks/useGetBillings';
 
 import ImageLoader from '../../layout/components/Patients/ImageLoader';
-import PatientsTable from '../Dashboards/Patients/PatientsTable';
 import BillingTable from './components/billing-table';
-import { useGetBillings } from '../../hooks/useGetBillings';
 
 const pageData: IPageData = {
   title: 'Patient profile page',
@@ -35,7 +34,7 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 const ProfileForm = ({ patient }) => {
-  const { values, handleSubmit } = useFormik({
+  const { values } = useFormik({
     initialValues: { ...patient },
     onSubmit: (val) => console.log(val)
   });

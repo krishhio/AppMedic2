@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Button, Form, Input, Switch } from 'antd';
-import { PlusOutlined } from '@ant-design/icons/lib';
 
 import PublicLayout from '../../layout/Public/Public';
 import { Link } from 'react-router-dom';

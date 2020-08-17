@@ -83,7 +83,7 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
           Download settings
         </Button>
       </div>
-      <a ref={downloadLink} style={{ display: 'none' }} />
+      <a href='#' ref={downloadLink} style={{ display: 'none' }} />
     </Form>
   );
 };

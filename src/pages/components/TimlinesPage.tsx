@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Card, Timeline } from 'antd';
-
-import { usePageData } from '../../hooks/usePage';
-import { IPageData } from '../../interfaces/page';
 import {
   ExperimentOutlined,
   MonitorOutlined,
   UserAddOutlined,
   UserOutlined
 } from '@ant-design/icons/lib';
+
+import { usePageData } from '../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Timelines',
@@ -31,8 +31,6 @@ const pageData: IPageData = {
 
 const TimelinePage = () => {
   usePageData(pageData);
-
-  const [reverse, setReverse] = useState(false);
 
   return (
     <>

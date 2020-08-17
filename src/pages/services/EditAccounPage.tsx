@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
+
 import { useFormik } from 'formik';
 import { Button, Divider, Form, Input, Select } from 'antd';
 
@@ -9,7 +10,6 @@ import { useGetUser } from '../../hooks/useGetUser';
 
 import { IPageData } from '../../interfaces/page';
 import { IPatient } from '../../interfaces/patient';
-import { SelectValue } from 'antd/es/select';
 
 const pageData: IPageData = {
   title: 'Edit account',

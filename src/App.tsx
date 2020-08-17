@@ -2,14 +2,16 @@ import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import NotFound from './pages/sessions/404';
-
 import VerticalLayout from './layout/Vertical/Vertical';
 import HorizontalLayout from './layout/Horizontal/Horizontal';
 
-import { defaultRoutes, sessionRoutes } from './routing';
+import { defaultRoutes } from './routing';
 
 import './App.scss';
+
+import { sessionRoutes } from './routing/session-routes';
+
+import NotFound from './pages/sessions/404';
 
 const RoutesSwitch = ({ routes, layout }) => (
   <Switch>
