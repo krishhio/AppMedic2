@@ -31,6 +31,7 @@ import PricingPage from '../pages/services/PricingPage';
 import EventsTimelinePage from '../pages/services/EventsTimeline/EventsTimeline';
 import UserProfilePage from '../pages/services/UserProfilePage';
 import EditAccountPage from '../pages/services/EditAccounPage';
+import EventsCalendarPage from '../pages/services/EventsCalendarPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -152,5 +153,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'edit-account',
     component: EditAccountPage
+  },
+  {
+    path: 'events-calendar',
+    component: EventsCalendarPage
   }
 ];

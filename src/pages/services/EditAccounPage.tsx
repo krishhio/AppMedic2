@@ -21,7 +21,7 @@ const pageData: IPageData = {
     },
     {
       title: 'User Pages ',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'Edit Account'

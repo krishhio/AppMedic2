@@ -13,7 +13,7 @@ const pageData: IPageData = {
     },
     {
       title: 'Service Pages ',
-      route: 'dashboard'
+      route: 'default-dashboard'
     },
     {
       title: 'User Profile'
