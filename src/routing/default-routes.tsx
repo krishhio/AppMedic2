@@ -2,10 +2,10 @@ import { IRoute } from '../interfaces/routing';
 
 import SettingsPage from '../pages/settings/Settings';
 
-import PatientsPage from '../pages/Dashboards/Patients/Patients';
-import DashboardPage from '../pages/Dashboards/Dashboard/Dashboard';
-import AppointmentsPage from '../pages/Dashboards/Appointments/Appointments';
-import DoctorsPage from '../pages/Dashboards/Doctors/Doctors';
+import PatientsPage from '../pages/dashboards/Patients/Patients';
+import DashboardPage from '../pages/dashboards/Dashboard/Dashboard';
+import AppointmentsPage from '../pages/dashboards/Appointments/Appointments';
+import DoctorsPage from '../pages/dashboards/Doctors/Doctors';
 import AlertsPage from '../pages/components/AlertsPage';
 import AutocompletePage from '../pages/components/AutocompletePage';
 import BadgesPage from '../pages/components/BadgesPage';
@@ -23,7 +23,7 @@ import ButtonsPage from '../pages/components/ButtonsPage';
 import TextareasPage from '../pages/components/TextAreaPage';
 import DoctorProfilePage from '../pages/medic/DoctorsProfilePage';
 import PatientProfilePage from '../pages/medic/PatientProfilePage';
-import Payments from '../pages/Dashboards/Payments/Payments';
+import Payments from '../pages/dashboards/Payments/Payments';
 import Departments from '../pages/medic/Departments';
 import InvoicesPage from '../pages/services/InvoicesPage';
 import InvoicePage from '../pages/services/InvoicePage';
@@ -34,6 +34,8 @@ import EditAccountPage from '../pages/services/EditAccounPage';
 import EventsCalendarPage from '../pages/services/EventsCalendarPage';
 import EchartsPage from '../pages/charts/Echarts/EchartsPage';
 import TypographyPage from '../pages/typography/TypographyPage';
+import RechartsPage from "../pages/charts/Recharts/Rechart";
+import ChartJsPage from "../pages/charts/ChartJs/ChartJs";
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -163,6 +165,14 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'echarts',
     component: EchartsPage
+  },
+  {
+    path: 'recharts',
+    component: RechartsPage
+  },
+  {
+    path: 'chart-js',
+    component: ChartJsPage
   },
   {
     path: 'typography',

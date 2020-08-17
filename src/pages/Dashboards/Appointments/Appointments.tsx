@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 import { Button } from 'antd';
 
-import PageAction from '../../../layout/components/PageAction/PageAction';
 import EditAppointment from './EditAppointment';
 import AddAppointment from './AddAppointment';
-
 import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
+
+import PageAction from '../../../layout/components/PageAction/PageAction';
 import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import { IAppointment } from '../../../interfaces/patient';
@@ -18,20 +18,20 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Appointments',
-    },
-  ],
+      title: 'Appointments'
+    }
+  ]
 };
 
 const AppointmentsPage = () => {
+  usePageData(pageData);
   const [appointments, setAppointments] = useFetchPageData<IAppointment[]>(
     './data/appointments.json',
     []
   );
-  usePageData(pageData);
 
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [addingModalVisibility, setAddingModalVisibility] = useState(false);
