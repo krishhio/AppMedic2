@@ -32,6 +32,8 @@ import EventsTimelinePage from '../pages/services/EventsTimeline/EventsTimeline'
 import UserProfilePage from '../pages/services/UserProfilePage';
 import EditAccountPage from '../pages/services/EditAccounPage';
 import EventsCalendarPage from '../pages/services/EventsCalendarPage';
+import EchartsPage from '../pages/charts/Echarts/EchartsPage';
+import TypographyPage from '../pages/typography/TypographyPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -157,5 +159,13 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'events-calendar',
     component: EventsCalendarPage
+  },
+  {
+    path: 'echarts',
+    component: EchartsPage
+  },
+  {
+    path: 'typography',
+    component: TypographyPage
   }
 ];

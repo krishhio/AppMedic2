@@ -6,12 +6,13 @@ import ReactEcharts from 'echarts-for-react';
 
 import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
 import hospitalOptions from './Charts/HospitalOptions';
+
 import { incomeInWeek, incomeInMonth } from './Charts/IncomeOptions';
 
 import {
   patientsGenderOptions,
   departmentsOptions,
-  patientsAgeOptions,
+  patientsAgeOptions
 } from './Charts/PatientsOptions';
 
 import { useFetchPageData, usePageData } from '../../../hooks/usePage';
@@ -24,12 +25,12 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Patients',
-    },
-  ],
+      title: 'Patients'
+    }
+  ]
 };
 
 const DashboardPage = () => {
