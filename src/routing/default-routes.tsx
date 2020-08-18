@@ -34,8 +34,11 @@ import EditAccountPage from '../pages/services/EditAccounPage';
 import EventsCalendarPage from '../pages/services/EventsCalendarPage';
 import EchartsPage from '../pages/charts/Echarts/EchartsPage';
 import TypographyPage from '../pages/typography/TypographyPage';
-import RechartsPage from "../pages/charts/Recharts/Rechart";
-import ChartJsPage from "../pages/charts/ChartJs/ChartJs";
+import RechartsPage from '../pages/charts/Recharts/Rechart';
+import ChartJsPage from '../pages/charts/ChartJs/ChartJs';
+import GoogleMapsPage from '../pages/maps/GoogleMapPage';
+import PageVectorMaps from '../pages/maps/VectorMapsPage';
+import WorldMapPage from "../pages/maps/WorldMapPage";
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -177,5 +180,17 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'typography',
     component: TypographyPage
+  },
+  {
+    path: 'google-map',
+    component: GoogleMapsPage
+  },
+  {
+    path: 'vector-map',
+    component: PageVectorMaps
+  },
+  {
+    path: 'world-map',
+    component: WorldMapPage
   }
 ];

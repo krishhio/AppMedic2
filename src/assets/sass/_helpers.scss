@@ -1,3 +1,5 @@
+@import 'variables';
+
 .accent-palette {
   color: accent-palette(500);
 }
@@ -237,5 +239,20 @@ $shapes: (
   > * {
     margin-top: $module-rem;
     margin-bottom: $module-rem;
+  }
+}
+
+.full-height-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: calc(100vh - (#{$footer-height} + #{$module-rem * 6} + #{$module-rem * 12}));
+  width: calc(100% - #{$module-rem * 4});
+  position: absolute;
+
+  @media only screen and (max-width: 768px) {
+    height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 6}));
   }
 }

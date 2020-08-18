@@ -1,0 +1,46 @@
+import React from 'react';
+
+import GoogleMapReact from 'google-map-react';
+
+import { usePageData } from '../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
+import { apiKey } from './apiKey';
+
+const centerCoord = {
+  lat: 51.678418,
+  lng: 7.809007
+};
+
+const pageData: IPageData = {
+  title: 'Google map',
+  loaded: true,
+  breadcrumbs: [
+    {
+      title: 'Home',
+      route: 'dashboard'
+    },
+    {
+      title: 'UI Kit ',
+      route: 'dashboard'
+    },
+    {
+      title: 'Google Maps'
+    }
+  ]
+};
+
+const GoogleMapsPage = () => {
+  usePageData(pageData);
+
+  return (
+    <div className='full-height-page'>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: apiKey }}
+        defaultCenter={centerCoord}
+        defaultZoom={15}
+      />
+    </div>
+  );
+};
+
+export default GoogleMapsPage;

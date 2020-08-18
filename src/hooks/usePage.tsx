@@ -15,7 +15,11 @@ export function usePageData(pageData: IPageData) {
   }, [pageData, dispatch]);
 }
 
-export function useFetchPageData<T>(url: string, initialState: T = null): [T, (data: T) => void] {
+export function useFetchPageData<T>(
+  url: string,
+  initialState: T = null,
+  callback?: (T) => any
+): [T, (data: T) => void] {
   const [data, setData] = useState<T>(initialState);
   const dispatch = useDispatch();
 
@@ -23,12 +27,20 @@ export function useFetchPageData<T>(url: string, initialState: T = null): [T, (d
     console.log('[GET DATA]');
     const result = await axios.get(url);
     dispatch(updatePageDada({ fullFilled: true, loaded: true }));
-    setData(result.data);
+    return result.data;
   }
 
   useEffect(() => {
     dispatch(updatePageDada({ fullFilled: false }));
-    getData().catch(console.error);
+    getData()
+      .then((data) => {
+        if (callback) {
+          callback(data);
+        }
+
+        setData(data);
+      })
+      .catch(console.error);
   }, [url, dispatch]);
 
   return [data, setData];

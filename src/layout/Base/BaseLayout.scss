@@ -84,6 +84,7 @@
     &.boxed {
       .main-content {
         .main-content-wrap {
+          position: relative;
           max-width: $boxed-width;
           max-width: var(--boxed-width);
         }

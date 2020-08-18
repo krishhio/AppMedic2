@@ -206,8 +206,8 @@
         "routing": "google-map"
       },
       {
-        "title": "Leaflet map",
-        "routing": "leaflet-map"
+        "title": "Vector map",
+        "routing": "vector-map"
       },
       {
         "title": "World map",
