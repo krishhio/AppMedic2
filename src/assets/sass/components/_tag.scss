@@ -55,10 +55,8 @@ $_types: (
 
 .ant-tag {
   align-items: center;
-  background: main-palette(500);
   border: 1px solid transparent;
   border-radius: $_shape;
-  color: main-contrast(500);
   display: inline-flex;
   font-size: $_fz;
   line-height: $_lh;

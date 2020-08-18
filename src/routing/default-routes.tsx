@@ -40,6 +40,7 @@ import GoogleMapsPage from '../pages/maps/GoogleMapPage';
 import PageVectorMaps from '../pages/maps/VectorMapsPage';
 import WorldMapPage from '../pages/maps/WorldMapPage';
 import TablesPage from '../pages/tables/TablesPage';
+import FormElementsPage from "../pages/forms/ElementsPage";
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -197,5 +198,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'tables',
     component: TablesPage
+  },
+  {
+    path: 'form-elements',
+    component: FormElementsPage
   }
 ];
