@@ -13,6 +13,16 @@ $_shape: $shape;
 $_animation: $animation;
 $_shadow: 0 0 10px rgba(#000, 0.12);
 
+.ant-table-expanded-row .ant-table {
+  margin-top: 0 !important;
+  margin-bottom: $module-rem !important;
+  margin-left: $module-rem !important;
+}
+
+.ant-table-cell-fix-left {
+
+}
+
 .ant-table-wrapper {
   .ant-table {
     overflow: auto;

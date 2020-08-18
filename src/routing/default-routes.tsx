@@ -38,7 +38,8 @@ import RechartsPage from '../pages/charts/Recharts/Rechart';
 import ChartJsPage from '../pages/charts/ChartJs/ChartJs';
 import GoogleMapsPage from '../pages/maps/GoogleMapPage';
 import PageVectorMaps from '../pages/maps/VectorMapsPage';
-import WorldMapPage from "../pages/maps/WorldMapPage";
+import WorldMapPage from '../pages/maps/WorldMapPage';
+import TablesPage from '../pages/tables/TablesPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -192,5 +193,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'world-map',
     component: WorldMapPage
+  },
+  {
+    path: 'tables',
+    component: TablesPage
   }
 ];

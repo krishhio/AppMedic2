@@ -137,32 +137,7 @@
   },
   {
     "title": "Tables",
-    "sub": [
-      {
-        "title": "Simple",
-        "routing": "simple-table"
-      },
-      {
-        "title": "Sorting",
-        "routing": "sorting-table"
-      },
-      {
-        "title": "Search",
-        "routing": "search-table"
-      },
-      {
-        "title": "Filtering",
-        "routing": "filtering-table"
-      },
-      {
-        "title": "Pagination",
-        "routing": "pagination-table"
-      },
-      {
-        "title": "Search pagination",
-        "routing": "search-pagination-table"
-      }
-    ]
+    "routing": "tables"
   },
   {
     "title": "Forms",
