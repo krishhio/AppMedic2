@@ -40,7 +40,9 @@ import GoogleMapsPage from '../pages/maps/GoogleMapPage';
 import PageVectorMaps from '../pages/maps/VectorMapsPage';
 import WorldMapPage from '../pages/maps/WorldMapPage';
 import TablesPage from '../pages/tables/TablesPage';
-import FormElementsPage from "../pages/forms/ElementsPage";
+import FormElementsPage from '../pages/forms/FormElementsPage';
+import FormLayoutsPage from '../pages/forms/FormLayoutsPage';
+import FormValidationPage from '../pages/forms/FormValidationPage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -202,5 +204,13 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'form-elements',
     component: FormElementsPage
+  },
+  {
+    path: 'form-layouts',
+    component: FormLayoutsPage
+  },
+  {
+    path: 'form-validation',
+    component: FormValidationPage
   }
 ];

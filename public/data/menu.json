@@ -148,7 +148,7 @@
       },
       {
         "title": "Layout",
-        "routing": "form-layout"
+        "routing": "form-layouts"
       },
       {
         "title": "Validation",

@@ -164,14 +164,14 @@ $_padding-v-lg: $_module-rem * 1.5;
   &.ant-input-lg {
     @include input-lg();
   }
+}
 
-  &:read-only:not(.ant-select-selector):not(.ant-input-password) {
-    background-color: hsla(0, 0%, 80%, 0.1);
-    border-color: hsla(0, 0%, 80%, 0.5);
-    box-shadow: none !important;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
+.ant-input-affix-wrapper-readonly {
+  background-color: hsla(0, 0%, 80%, 0.1);
+  border-color: hsla(0, 0%, 80%, 0.5);
+  box-shadow: none !important;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 @mixin select-input {
