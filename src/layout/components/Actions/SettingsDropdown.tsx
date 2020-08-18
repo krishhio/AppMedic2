@@ -10,14 +10,14 @@ const accountItems = [
   { text: 'Log Out', icon: 'icofont-logout' }
 ];
 
-const homeRoute = 'vertical/default-dashboard';
+const homeRoute = '/vertical/default-dashboard';
 
 const SettingsDropdown = () => {
   const accountMenu = (
     <Menu style={{ minWidth: '180px' }}>
       {accountItems.map((item, index) => (
         <Menu.Item className='action-item' key={index}>
-          <NavLink className='d-flex w-100' to={homeRoute}>
+          <NavLink className='d-flex w-100' to={homeRoute} replace>
             <span className={`icon mr-3 ${item.icon}`} />
             <span className='text'>{item.text}</span>
           </NavLink>
