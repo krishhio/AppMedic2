@@ -95,12 +95,18 @@ const FormElementsPage = () => {
       <Card title='Selects'>
         <div className='row'>
           <div className='col-md-6 col-sm-12'>
-            <Select defaultValue='lucy' placeholder='Select a person' optionFilterProp='children'>
+            <Select
+              defaultValue='lucy'
+              placeholder='Select a person'
+              optionFilterProp='children'
+              className='mb-2 mb-md-0'
+            >
               <Option value='jack'>Jack</Option>
               <Option value='lucy'>Lucy</Option>
               <Option value='tom'>Tom</Option>
             </Select>
           </div>
+
           <div className='col-md-6 col-sm-12'>
             <Select
               defaultValue={['lucy']}
@@ -131,13 +137,16 @@ const FormElementsPage = () => {
       <Card title='Autocompletes'>
         <div className='row'>
           <div className='col-md-6 col-sm-12'>
-            <AutoComplete dataSource={dataSource} onSearch={handleSearch}>
-              <Input placeholder='input here' />
-            </AutoComplete>
+            <AutoComplete
+              options={dataSource}
+              placeholder='Input here'
+              onSearch={handleSearch}
+              className='mb-2 mb-md-0'
+            />
           </div>
           <div className='col-md-6 col-sm-12'>
-            <AutoComplete dataSource={dataSource} onSearch={handleSearch}>
-              <Input placeholder='input here' className='custom' prefix={<BookOutlined />} />
+            <AutoComplete options={dataSource} onSearch={handleSearch}>
+              <Input placeholder='Input here' className='custom' suffix={<BookOutlined />} />
             </AutoComplete>
           </div>
         </div>

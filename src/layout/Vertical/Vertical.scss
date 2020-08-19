@@ -7,6 +7,12 @@
       padding-left: 0;
     }
 
+    .app-search {
+      @media #{$max543} {
+        display: none;
+      }
+    }
+
     .navbar.horizontal {
       .navbar-skeleton {
         .sk-logo {
@@ -21,6 +27,7 @@
         left: 0;
       }
     }
+
     &.scrolled {
       .navbar.horizontal {
         box-shadow: 4px 3px 4px rgba(#000, 0.05);
@@ -31,10 +38,11 @@
 
   .assistant-menu {
     margin-top: auto;
+
     .menu-item .item-link {
       color: #000;
-      opacity: .3;
-      transition: opacity .2s ease-in-out;
+      opacity: 0.3;
+      transition: opacity 0.2s ease-in-out;
 
       .link-icon {
         opacity: 1;

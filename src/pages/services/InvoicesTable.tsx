@@ -60,6 +60,6 @@ const columnsConfig: ColumnProps<IInvoicePreview>[] = [
   }
 ];
 
-const InvoicesTable = ({ invoices }) => <Table columns={columnsConfig} dataSource={invoices} />;
+const InvoicesTable = ({ invoices }) => <Table rowKey='icon' columns={columnsConfig} dataSource={invoices} />;
 
 export default InvoicesTable;

@@ -1,8 +1,12 @@
 @import '../../../assets/sass/variables';
 
 .app-search {
-  width: 50%;
+  width: 40%;
   max-width: 25rem;
+
+  @media #{$max767} {
+    max-width: 20rem !important;
+  }
 
   .ant-input-affix-wrapper .ant-input-suffix {
     right: $module-rem * 2.5;

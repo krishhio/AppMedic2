@@ -122,12 +122,12 @@
         "routing": "icons-options"
       },
       {
-        "title": "Icofont icons",
-        "routing": "icons-if"
+        "title": "Ant icons",
+        "routing": "ant-icons"
       },
       {
-        "title": "Simple line icons",
-        "routing": "icons-sli"
+        "title": "Icofont",
+        "routing": "icons-ic"
       }
     ]
   },

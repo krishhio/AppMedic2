@@ -113,8 +113,6 @@ $_padding-v-lg: $_module-rem * 1.5;
   border: map_get($_border, default) $_border-width solid;
   border-radius: $_shape;
   height: (4 * $module);
-  right: 0px !important;
-  left: 0px !important;
   padding: 0 !important;
   color: map_get($_color, default);
   line-height: $_lh;

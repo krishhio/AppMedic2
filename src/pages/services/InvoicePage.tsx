@@ -142,7 +142,7 @@ const InvoiceTable = ({ records = [] }) => {
     }
   ];
 
-  return <Table pagination={{ hideOnSinglePage: true }} columns={columns} dataSource={records} />;
+  return <Table rowKey='num' pagination={{ hideOnSinglePage: true }} columns={columns} dataSource={records} />;
 };
 
 const InvoicePage = () => {

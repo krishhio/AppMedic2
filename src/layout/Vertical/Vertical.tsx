@@ -69,12 +69,12 @@ const VerticalLayout = ({ children, onSidebarToggle, settings, pageData }: Props
 
       const getOption = (item: IMenuItem | IMenuItemSub) => ({
         text: item.title,
-        value: item.routing,
+        value: item.routing
       });
 
       const setSubTitle = (itemTitle: string) => (subItem: IMenuItemSub) => ({
         ...subItem,
-        title: `${itemTitle} > ${subItem.title}`,
+        title: `${itemTitle} > ${subItem.title}`
       });
 
       const menuItems = data.filter(hasRouting);
@@ -83,7 +83,7 @@ const VerticalLayout = ({ children, onSidebarToggle, settings, pageData }: Props
         .filter(hasSub)
         .map((item: IMenuItem) => ({
           ...item,
-          sub: item.sub.map(setSubTitle(item.title)),
+          sub: item.sub.map(setSubTitle(item.title))
         }))
         .map((item: IMenuItem) => item.sub)
         .flat();
@@ -168,13 +168,13 @@ const VerticalLayout = ({ children, onSidebarToggle, settings, pageData }: Props
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdateSettings: (settings) => dispatch(updateSettings(settings)),
+  onUpdateSettings: (settings) => dispatch(updateSettings(settings))
 });
 
 const mapStateToProps = ({ patients, pageData, settings }) => ({
   settings,
   pageData,
-  patients,
+  patients
 });
 
 const ConnectedLayout: (props: OwnProps) => ReactElement = connect(

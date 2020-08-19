@@ -24,7 +24,6 @@ export function useFetchPageData<T>(
   const dispatch = useDispatch();
 
   async function getData() {
-    console.log('[GET DATA]');
     const result = await axios.get(url);
     dispatch(updatePageDada({ fullFilled: true, loaded: true }));
     return result.data;

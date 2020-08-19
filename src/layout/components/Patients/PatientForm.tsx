@@ -97,7 +97,7 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
 
         <div className='form-group'>
           <TextArea
-            rows={3}
+            rows={4}
             placeholder='Address'
             name='address'
             defaultValue={values.address}
