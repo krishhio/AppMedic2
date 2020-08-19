@@ -6,8 +6,6 @@ import { useFormik } from 'formik';
 import { IPatient } from '../../../interfaces/patient';
 import ImageLoader from './ImageLoader';
 
-const { TextArea } = Input;
-
 type Props = {
   onSubmit: (patient: IPatient) => void;
   onCancel: () => void;
@@ -96,12 +94,11 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
         )}
 
         <div className='form-group'>
-          <TextArea
-            rows={4}
-            placeholder='Address'
+          <Input
             name='address'
-            defaultValue={values.address}
+            placeholder='Address'
             onChange={handleChange}
+            defaultValue={values.address}
           />
         </div>
       </form>
