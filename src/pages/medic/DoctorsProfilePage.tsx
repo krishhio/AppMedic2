@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useFormik } from 'formik';
 
 import { Button, Card, Form, Input, Select, Timeline } from 'antd';
 import {
-  DeleteOutlined,
   ExperimentOutlined,
   MonitorOutlined,
-  PlusOutlined,
   UserAddOutlined,
   UserOutlined,
   MedicineBoxOutlined,
@@ -16,15 +14,16 @@ import {
 
 import ReactEcharts from 'echarts-for-react';
 
-import { IPageData } from '../../interfaces/page';
-
 import { usePageData } from '../../hooks/usePage';
 import { useGetDoctor } from '../../hooks/useGetDoctor';
 
-import { IUser, IUserLink } from '../../interfaces/user';
+import ImageLoader from '../../layout/components/Patients/ImageLoader';
+import Socials from '../../layout/components/Socials/Socials';
 
 import patientsOptions from '../chart-options/patients';
-import ImageLoader from '../../layout/components/Patients/ImageLoader';
+
+import { IPageData } from '../../interfaces/page';
+import { IUser } from '../../interfaces/user';
 
 const pageData: IPageData = {
   title: 'Doctor profile page',
@@ -47,11 +46,10 @@ const pageData: IPageData = {
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-type SocialsProps = { links?: IUserLink[] };
 type DoctorFormProps = { doctor: Partial<IUser> };
 
 const DoctorForm = ({ doctor }: DoctorFormProps) => {
-  const { handleSubmit, handleChange, values } = useFormik({
+  const { values } = useFormik({
     onSubmit: (values) => console.log(values),
     initialValues: { ...doctor }
   });
@@ -86,85 +84,6 @@ const DoctorForm = ({ doctor }: DoctorFormProps) => {
         <Input.TextArea rows={4} defaultValue={values.address} placeholder='Address' />
       </FormItem>
     </Form>
-  );
-};
-
-const Socials = ({ links }: SocialsProps) => {
-  const [networks, setNetworks] = useState(links);
-
-  const addNetwork = (link: IUserLink) => setNetworks([...networks, link]);
-
-  const removeNetwork = (index) => {
-    const predicate = (_, _index) => _index !== index;
-    const filteredNetworks = networks.filter(predicate);
-
-    setNetworks(filteredNetworks);
-  };
-
-  const NetworkLayout = ({ iconInput, linkInput, actionBtn = null }) => (
-    <div className='row'>
-      <div className='col'>
-        <div className='row'>
-          <div className='col-md-6 col-sm-12'>{iconInput}</div>
-
-          <div className='col-md-6 col-sm-12'>{linkInput}</div>
-        </div>
-      </div>
-
-      <div className='col-auto'>{actionBtn}</div>
-    </div>
-  );
-
-  const SocialLink = ({ link, icon }: IUserLink, index, { length }) => {
-    const buttonStyle = { background: 'white', border: 'none' };
-
-    return (
-      <NetworkLayout
-        key={index}
-        linkInput={<Input readOnly value={link} />}
-        iconInput={<Input readOnly value={icon} />}
-        actionBtn={
-          <Button
-            shape='circle'
-            style={buttonStyle}
-            onClick={() => removeNetwork(index)}
-            icon={<DeleteOutlined className='icon-error' />}
-          />
-        }
-      />
-    );
-  };
-
-  const AddLink = () => {
-    const buttonStyle = { background: 'white', border: 'none' };
-
-    return (
-      <NetworkLayout
-        iconInput={<Input placeholder='Icon class' />}
-        linkInput={<Input placeholder='Link' />}
-        actionBtn={
-          <Button
-            shape='circle'
-            style={buttonStyle}
-            icon={<PlusOutlined className='icon-blue' />}
-          />
-        }
-      />
-    );
-  };
-
-  return (
-    <>
-      {networks.length ? (
-        <div className='stack'>
-          <h5>Social networks</h5>
-          {networks.map(SocialLink)}
-        </div>
-      ) : null}
-
-      <h5>Add social network</h5>
-      <AddLink />
-    </>
   );
 };
 

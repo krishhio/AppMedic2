@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import { Modal } from 'antd';
 
-import Contact from '../../../layout/components/Doctor/Contact';
 import className from '../../../utils/classNames';
+
+import Contact from '../../../layout/components/Doctor/Contact';
 import PageAction from '../../../layout/components/PageAction/PageAction';
 import DoctorForm from './DoctorForm';
 
@@ -18,12 +19,12 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Doctors',
-    },
-  ],
+      title: 'Doctors'
+    }
+  ]
 };
 
 const DoctorsPage = () => {
@@ -39,7 +40,7 @@ const DoctorsPage = () => {
   const getClass = (index: number, length: number) =>
     className({
       'mb-0': index === length - 1,
-      'mb-md-0': index === length - 2 || index === length - 3,
+      'mb-md-0': index === length - 2 || index === length - 3
     });
 
   return (

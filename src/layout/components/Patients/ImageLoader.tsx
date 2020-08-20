@@ -5,9 +5,10 @@ import { Avatar, Button } from 'antd';
 type Props = {
   src?: string;
   size?: number;
+  onLoad?: (img) => void;
 };
 
-const ImageLoader = ({ src, size = 40 }: Props) => {
+const ImageLoader = ({ src, size = 40, onLoad }: Props) => {
   const [img, setImg] = useState<string>(null);
   const input = useRef<HTMLInputElement>(null);
 
@@ -18,7 +19,11 @@ const ImageLoader = ({ src, size = 40 }: Props) => {
     let reader: FileReader = new FileReader();
 
     reader.onloadend = () => {
-      setImg(reader.result as string);
+      const result = reader.result as string;
+      if (onLoad) {
+        onLoad(result);
+      }
+      setImg(result);
     };
 
     reader.readAsDataURL(file);

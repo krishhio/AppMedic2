@@ -12,7 +12,12 @@ type Props = {
   submitText?: string;
 };
 
-const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props) => {
+const AppointmentForm = ({
+  appointment,
+  onSubmit,
+  onCancel,
+  submitText = 'Add Appointment'
+}: Props) => {
   const { handleChange, values } = useFormik<IAppointment>({
     initialValues: appointment || {
       date: '',
@@ -22,14 +27,18 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
       img: '',
       injury: '',
       name: '',
-      number: ''
+      number: '',
+      from: '',
+      to: ''
     },
     onSubmit
   });
 
   const [from, to] = values.fromTo.split('-');
 
-  const handleAddAppointment = () => onSubmit(values);
+  const handleSubmit = () => {
+    onSubmit({ ...values, fromTo: `${values.from} - ${values.to}` });
+  };
 
   return (
     <>
@@ -39,11 +48,21 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.name} placeholder='Name' name='name' onChange={handleChange} />
+          <Input
+            defaultValue={values.name}
+            placeholder='Name'
+            name='name'
+            onChange={handleChange}
+          />
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.doctor} placeholder='Doctor' name='doctor' onChange={handleChange} />
+          <Input
+            defaultValue={values.doctor}
+            placeholder='Doctor'
+            name='doctor'
+            onChange={handleChange}
+          />
         </div>
 
         <div className='form-group'>
@@ -57,7 +76,12 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.date} placeholder='Date' name='date' onChange={handleChange} />
+          <Input
+            defaultValue={values.date}
+            placeholder='Date'
+            name='date'
+            onChange={handleChange}
+          />
         </div>
 
         <div className='row'>
@@ -85,7 +109,12 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
         </div>
 
         <div className='form-group'>
-          <Input defaultValue={values.injury} placeholder='Injury' name='injury' onChange={handleChange} />
+          <Input
+            defaultValue={values.injury}
+            placeholder='Injury'
+            name='injury'
+            onChange={handleChange}
+          />
         </div>
       </form>
 
@@ -94,8 +123,8 @@ const AppointmentForm = ({ appointment, onSubmit, onCancel, submitText }: Props)
           Cancel
         </Button>
 
-        <Button onClick={handleAddAppointment} type='primary' htmlType='submit'>
-          {submitText || 'Add appointment'}
+        <Button onClick={handleSubmit} type='primary' htmlType='submit'>
+          {submitText}
         </Button>
       </div>
     </>

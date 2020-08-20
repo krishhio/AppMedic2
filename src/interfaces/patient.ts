@@ -23,6 +23,8 @@ export interface IAppointment {
   fromTo: string;
   doctor: string;
   injury: string;
+  from: string;
+  to: string;
 }
 
 export interface IBilling {

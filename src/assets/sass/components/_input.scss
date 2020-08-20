@@ -112,6 +112,8 @@ $_padding-v-lg: $_module-rem * 1.5;
   box-shadow: none;
   border: map_get($_border, default) $_border-width solid;
   border-radius: $_shape;
+  display: flex;
+  flex: 1;
   height: (4 * $module);
   color: map_get($_color, default);
   line-height: $_lh;
@@ -163,9 +165,10 @@ $_padding-v-lg: $_module-rem * 1.5;
   }
 }
 
+.readonly,
 .ant-input-affix-wrapper-readonly {
-  background-color: hsla(0, 0%, 80%, 0.1);
-  border-color: hsla(0, 0%, 80%, 0.5);
+  background-color: hsla(0, 0%, 80%, 0.1) !important;
+  border-color: hsla(0, 0%, 80%, 0.5) !important;
   box-shadow: none !important;
   pointer-events: none;
   cursor: not-allowed;

@@ -21,6 +21,11 @@ $_list-shadow: $shadow;
 
       @include input();
       @include select-input();
+
+      .ant-select-selection-placeholder {
+        transform: translateY(-50%);
+        top: 50%;
+      }
     }
   }
 }

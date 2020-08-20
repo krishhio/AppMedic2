@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 
 import { Avatar, Table } from 'antd';
 
@@ -10,7 +10,7 @@ const columns: ColumnProps<IAppointment>[] = [
     key: 'img',
     title: 'Photo',
     dataIndex: 'img',
-    render: img => {
+    render: (img) => {
       return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
     }
   },
@@ -19,14 +19,14 @@ const columns: ColumnProps<IAppointment>[] = [
     dataIndex: 'name',
     title: 'Name',
     sorter: (a, b) => (a.name > b.name ? 1 : -1),
-    render: name => <strong>{name}</strong>
+    render: (name) => <strong>{name}</strong>
   },
   {
     key: 'email',
     dataIndex: 'email',
     title: 'Email',
     sorter: (a, b) => (a.email > b.email ? 1 : -1),
-    render: email => (
+    render: (email) => (
       <span className='nowrap' style={{ color: '#336cfb' }}>
         <span className='icofont icofont-ui-email mr-1' style={{ fontSize: 16 }} />
         {email}
@@ -37,7 +37,7 @@ const columns: ColumnProps<IAppointment>[] = [
     key: 'data',
     dataIndex: 'date',
     title: 'Date',
-    render: date => (
+    render: (date) => (
       <span className='nowrap' style={{ color: '#a5a5a5' }}>
         {date}
       </span>
@@ -45,8 +45,8 @@ const columns: ColumnProps<IAppointment>[] = [
   },
   {
     key: 'visit',
-    title: 'Last visit',
-    render: appointment => (
+    title: 'Visit time',
+    render: (appointment) => (
       <span className='nowrap' style={{ color: '#a5a5a5' }}>
         {appointment.fromTo}
       </span>
@@ -56,7 +56,7 @@ const columns: ColumnProps<IAppointment>[] = [
     key: 'number',
     dataIndex: 'number',
     title: 'Number',
-    render: phone => (
+    render: (phone) => (
       <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
         <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
         {phone}
@@ -74,8 +74,6 @@ type Props = {
 };
 
 const AppointmentsTable = ({ data, actions }: Props) => {
-  const pagination = data.length <= 10 ? false : {};
-
   const actionColumn: ColumnProps<IAppointment> = {
     key: 'actions',
     title: 'actions',
@@ -84,7 +82,14 @@ const AppointmentsTable = ({ data, actions }: Props) => {
 
   const displayedColumns = actions ? [...columns, actionColumn] : columns;
 
-  return <Table rowKey='number' pagination={pagination} columns={displayedColumns} dataSource={data} />;
+  return (
+    <Table
+      rowKey='number'
+      dataSource={data}
+      columns={displayedColumns}
+      pagination={{ hideOnSinglePage: true }}
+    />
+  );
 };
 
 export default AppointmentsTable;

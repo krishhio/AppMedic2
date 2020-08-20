@@ -4,7 +4,7 @@ import SettingsPage from '../pages/settings/Settings';
 
 import PatientsPage from '../pages/dashboards/Patients/Patients';
 import DashboardPage from '../pages/dashboards/Dashboard/Dashboard';
-import AppointmentsPage from '../pages/dashboards/Appointments/Appointments';
+import AppointmentsPage from '../pages/dashboards/Appointments/AppointmentsPage';
 import DoctorsPage from '../pages/dashboards/Doctors/Doctors';
 import AlertsPage from '../pages/components/AlertsPage';
 import AutocompletePage from '../pages/components/AutocompletePage';
@@ -44,8 +44,8 @@ import FormElementsPage from '../pages/forms/FormElementsPage';
 import FormLayoutsPage from '../pages/forms/FormLayoutsPage';
 import FormValidationPage from '../pages/forms/FormValidationPage';
 import AntdIconsPage from '../pages/icons/AntdIconsPage';
-import IconsOptionsPage from "../pages/icons/IconsOptionsPage";
-import IcofontIconsPage from "../pages/icons/IcofontIconsPage";
+import IconsOptionsPage from '../pages/icons/IconsOptionsPage';
+import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
 
 export const defaultRoutes: IRoute[] = [
   {

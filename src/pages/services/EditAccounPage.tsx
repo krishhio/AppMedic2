@@ -131,18 +131,14 @@ const AccountForm = ({ user }) => {
         </Select>
       </FormItem>
 
-      <div className='row'>
-        <div className='col-md-6 col-sm-12'>
-          <Button type='primary' disabled={!hasChanged} onClick={() => handleSubmit()}>
-            Save changes
-          </Button>
-        </div>
+      <div className='elem-list justify-content-between'>
+        <Button type='primary' disabled={!hasChanged} onClick={() => handleSubmit()}>
+          Save changes
+        </Button>
 
-        <div className='col-md-6 col-sm-12 text-right'>
-          <Button ghost danger className='ml-auto'>
-            Delete account
-          </Button>
-        </div>
+        <Button ghost danger className='ml-auto'>
+          Delete account
+        </Button>
       </div>
     </Form>
   );

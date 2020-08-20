@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Form, Formik } from 'formik';
-import { Input, Select } from 'antd';
+import { useFormik } from 'formik';
+import { Form, Button, Input, Select, AutoComplete, Divider } from 'antd';
 
-import { IUser } from '../../../interfaces/user';
-
+import Socials from '../../../layout/components/Socials/Socials';
 import ImageLoader from '../../../layout/components/Patients/ImageLoader';
 
-const { TextArea } = Input;
+import { useFetch } from '../../../hooks/useFetch';
+import { IUser } from '../../../interfaces/user';
 
 type Props = {
   onSubmit: (doctor: IUser) => void;
@@ -17,93 +17,132 @@ type Props = {
 const initialValues = {
   social: [
     {
-      icon: '',
-      link: '',
+      icon: 'icofont-instagram',
+      link: '#'
     },
     {
-      icon: '',
-      link: '',
+      icon: 'icofont-facebook',
+      link: '#'
     },
     {
-      icon: '',
-      link: '',
-    },
+      icon: 'icofont-twitter',
+      link: '#'
+    }
   ],
   profileLink: '',
   role: '',
   name: '',
   lastName: '',
   img: '',
-  gender: '',
-  address: '',
+  gender: null,
+  address: ''
 };
 
 const DoctorForm = ({ onSubmit, onCancel }: Props) => {
-  const handleGenderSelect = () => {};
+  const [roles] = useFetch<{ value: string }[]>('./data/doctors-specialists.json', []);
+  const { values, handleChange, setValues } = useFormik({
+    initialValues,
+    onSubmit: (values) => {
+      console.log('submitting');
+      onSubmit(values);
+    }
+  });
+
+  const handleGenderSelect = (gender) => {
+    setValues({ ...values, gender });
+  };
+
+  const handleRoleSelect = (role) => {
+    setValues({ ...values, role });
+  };
+
+  const handleImgLoad = (img) => {
+    setValues({ ...values, img });
+  };
+
+  const handleSubmit = () => {
+    onSubmit(values);
+    onCancel();
+  };
+
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      render={({ values, handleChange }) => (
-        <Form>
-          <div className='form-group'>
-            <ImageLoader src={`${window.location.origin}/${values.img}`} />
-          </div>
+    <>
+      <Form>
+        <div className='form-group'>
+          <ImageLoader onLoad={handleImgLoad} src={`${window.location.origin}/${values.img}`} />
+        </div>
 
-          <div className='form-group'>
-            <Input
-              name='name'
-              type='text'
-              placeholder='First name'
-              onChange={handleChange}
-              defaultValue={values.name}
-            />
-          </div>
+        <div className='form-group'>
+          <Input
+            name='name'
+            type='text'
+            placeholder='First name'
+            onChange={handleChange}
+            defaultValue={values.name}
+          />
+        </div>
 
-          <div className='form-group'>
-            <Input
-              type='text'
-              name='lastName'
-              placeholder='Last name'
-              onChange={handleChange}
-              defaultValue={values.lastName}
-            />
-          </div>
+        <div className='form-group'>
+          <Input
+            type='text'
+            name='lastName'
+            placeholder='Last name'
+            onChange={handleChange}
+            defaultValue={values.lastName}
+          />
+        </div>
 
-          <div className='row'>
-            <div className='col-sm-6 col-12'>
-              <div className='form-group'>
-                <Input
-                  placeholder='Speciality'
-                  name='role'
-                  type='text'
-                  defaultValue={values.role}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className='col-sm-6 col-12'>
-              <div className='form-group'>
-                <Select defaultValue={values.gender} onChange={handleGenderSelect}>
-                  <Select.Option value='Male'>Male</Select.Option>
-                  <Select.Option value='Female'>Female</Select.Option>
-                </Select>
-              </div>
+        <div className='row'>
+          <div className='col-sm-6 col-12'>
+            <div className='form-group'>
+              <AutoComplete
+                filterOption
+                options={roles}
+                placeholder='Speciality'
+                onChange={handleRoleSelect}
+                defaultValue={values.role}
+              />
             </div>
           </div>
 
-          <div className='form-group'>
-            <Input
-              name='address'
-              placeholder='Address'
-              onChange={handleChange}
-              defaultValue={values.address}
-            />
+          <div className='col-sm-6 col-12'>
+            <div className='form-group'>
+              <Select
+                placeholder='Gender'
+                defaultValue={values.gender}
+                onChange={handleGenderSelect}
+              >
+                <Select.Option value='Male'>Male</Select.Option>
+                <Select.Option value='Female'>Female</Select.Option>
+              </Select>
+            </div>
           </div>
-        </Form>
-      )}
-    />
+        </div>
+
+        <div className='form-group'>
+          <Input
+            name='address'
+            placeholder='Address'
+            onChange={handleChange}
+            defaultValue={values.address}
+          />
+        </div>
+
+        <Divider />
+
+        <Socials links={values.social} />
+
+        <div className='d-flex justify-content-between buttons-list settings-actions mt-4'>
+          <Button danger onClick={onCancel}>
+            Cancel
+          </Button>
+
+          <Button onClick={handleSubmit} htmlType='submit' type='primary'>
+            Add Doctor
+          </Button>
+        </div>
+      </Form>
+    </>
   );
 };
 
