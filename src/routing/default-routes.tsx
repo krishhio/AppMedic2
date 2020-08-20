@@ -43,6 +43,9 @@ import TablesPage from '../pages/tables/TablesPage';
 import FormElementsPage from '../pages/forms/FormElementsPage';
 import FormLayoutsPage from '../pages/forms/FormLayoutsPage';
 import FormValidationPage from '../pages/forms/FormValidationPage';
+import AntdIconsPage from '../pages/icons/AntdIconsPage';
+import IconsOptionsPage from "../pages/icons/IconsOptionsPage";
+import IcofontIconsPage from "../pages/icons/IcofontIconsPage";
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -212,5 +215,17 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'form-validation',
     component: FormValidationPage
+  },
+  {
+    path: 'antd-icons',
+    component: AntdIconsPage
+  },
+  {
+    path: 'icons-options',
+    component: IconsOptionsPage
+  },
+  {
+    path: 'icofont-icons',
+    component: IcofontIconsPage
   }
 ];
