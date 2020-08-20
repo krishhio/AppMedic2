@@ -113,7 +113,6 @@ $_padding-v-lg: $_module-rem * 1.5;
   border: map_get($_border, default) $_border-width solid;
   border-radius: $_shape;
   height: (4 * $module);
-  padding: 0 !important;
   color: map_get($_color, default);
   line-height: $_lh;
   transition: background 0.2s $_animation, border 0.2s $_animation, box-shadow 0.2s $_animation,
@@ -234,6 +233,12 @@ html {
     input.ant-input {
       @include default-input;
     }
+  }
+
+  .ant-select-selector,
+  .ant-input-affix-wrapper-textarea-with-clear-btn {
+    padding: 0 !important;
+    height: unset;
   }
 
   .ant-form-item-control-input {

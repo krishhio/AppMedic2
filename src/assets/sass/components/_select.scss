@@ -33,3 +33,20 @@
 .ant-select-multiple .ant-select-selection-item {
   background: rgba(#000, 0.1);
 }
+
+.ant-select {
+  .ant-select-clear {
+    background-color: #ebebeb !important;
+    color: rgba(#000, .35);
+    transition: background-color .2s ease-in-out;
+  }
+
+  &-open {
+    .ant-select-clear {
+      background-color: #fff !important;
+      color: rgba(#000, .35);
+    }
+  }
+}
+
+

@@ -52,21 +52,21 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
 
           <div className='form-group'>
             <Input
-              placeholder='First name'
               name='name'
               type='text'
-              defaultValue={values.name}
+              placeholder='First name'
               onChange={handleChange}
+              defaultValue={values.name}
             />
           </div>
 
           <div className='form-group'>
             <Input
-              placeholder='Last name'
-              name='lastName'
               type='text'
-              defaultValue={values.lastName}
+              name='lastName'
+              placeholder='Last name'
               onChange={handleChange}
+              defaultValue={values.lastName}
             />
           </div>
 
@@ -94,12 +94,11 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
           </div>
 
           <div className='form-group'>
-            <TextArea
-              rows={3}
-              placeholder='Address'
+            <Input
               name='address'
-              defaultValue={values.address}
+              placeholder='Address'
               onChange={handleChange}
+              defaultValue={values.address}
             />
           </div>
         </Form>
