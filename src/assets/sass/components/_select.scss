@@ -18,6 +18,8 @@
     @include input();
     @include input-padding();
 
+    padding: 0 !important;
+
     input {
       padding: 0 2px !important;
     }
