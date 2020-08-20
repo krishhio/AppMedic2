@@ -32,7 +32,7 @@ const IcofontIconsPage = () => {
       <div className='elem-list'>
         {icons.map((icon) => (
           <IconWrap style='simple' key={icon}>
-            <span key={icon} className={icon} style={{ fontSize: 20 }} />
+            <span key={icon} className={icon} style={{ fontSize: 28 }} />
           </IconWrap>
         ))}
       </div>
