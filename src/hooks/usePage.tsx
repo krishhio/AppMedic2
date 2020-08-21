@@ -25,17 +25,18 @@ export function useFetchPageData<T>(
 
   async function getData() {
     const result = await axios.get(url);
-    dispatch(updatePageDada({ fullFilled: true, loaded: true }));
     return result.data;
   }
 
   useEffect(() => {
-    dispatch(updatePageDada({ fullFilled: false }));
+    dispatch(updatePageDada({ fulFilled: false }));
     getData()
       .then((data) => {
         if (callback) {
           callback(data);
         }
+
+        setTimeout(() => dispatch(updatePageDada({ fulFilled: true, loaded: true })), 500);
 
         setData(data);
       })

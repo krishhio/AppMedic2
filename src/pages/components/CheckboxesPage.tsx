@@ -6,7 +6,7 @@ import { usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
-  fullFilled: true,
+  fulFilled: true,
   title: 'Checkboxes',
   breadcrumbs: [
     {

@@ -9,7 +9,7 @@ import { IUser } from '../../interfaces/user';
 import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
-  fullFilled: false,
+  fulFilled: false,
   title: 'Contacts',
   breadcrumbs: [
     {

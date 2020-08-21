@@ -7,7 +7,7 @@ import { useGetPricing } from '../../hooks/useGetPricing';
 
 const pageData: IPageData = {
   title: 'Pricing',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Apps',

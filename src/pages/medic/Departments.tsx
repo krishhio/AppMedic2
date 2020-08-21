@@ -1,14 +1,14 @@
 import React from 'react';
 import { IPageData } from '../../interfaces/page';
 
-import { usePageData } from '../../hooks/usePage';
-import { useGetDepartments } from '../../hooks/useGetDepartments';
-
 import Department from '../../layout/components/Department/Department';
+
+import { useFetchPageData, usePageData } from '../../hooks/usePage';
+import { IDepartment } from '../../interfaces/patient';
 
 const pageData: IPageData = {
   title: 'Departments',
-  fullFilled: true,
+  fulFilled: false,
   breadcrumbs: [
     {
       title: 'Medicine',
@@ -21,7 +21,7 @@ const pageData: IPageData = {
 };
 
 const Departments = () => {
-  const [departments] = useGetDepartments();
+  const [departments] = useFetchPageData<IDepartment[]>('./data/departments.json', []);
   usePageData(pageData);
 
   const depClass = (i, length) => {

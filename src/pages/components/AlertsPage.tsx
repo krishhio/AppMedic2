@@ -6,7 +6,7 @@ import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Alerts',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'UI Kit',

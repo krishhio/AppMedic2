@@ -27,7 +27,7 @@ import { IUser } from '../../interfaces/user';
 
 const pageData: IPageData = {
   title: 'Doctor profile page',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Medicine',

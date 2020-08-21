@@ -63,18 +63,18 @@ const BaseLayout = ({
     onFetchPatients(patientsUrl);
   }, [onFetchPatients]);
 
-  const handleScroll = event => {
+  const handleScroll = (event) => {
     setScrolled(event.target.scrollTop > 0);
   };
 
   const mainContentClasses = className({
     'main-content': true,
-    loaded: pageData.loaded
+    loaded: pageData.loaded,
+    'fulfilled': pageData.fulFilled
   });
 
   const mainContentWrapClasses = className({
-    'main-content-wrap': true,
-    'ful-filled': pageData.fullFilled
+    'main-content-wrap': true
   });
 
   const toggleSettings = () => setShowSettings(!showSettings);
@@ -89,11 +89,9 @@ const BaseLayout = ({
         {sideNav}
 
         <main onScroll={handleScroll} className={mainContentClasses}>
-          {!pageData.fullFilled && (
-            <div className='page-loader'>
-              <i className='icofont-spinner-alt-4 rotate' />
-            </div>
-          )}
+          <div className='page-loader'>
+            <i className='icofont-spinner-alt-4 rotate' />
+          </div>
 
           <div className={mainContentWrapClasses}>
             {pageData && !!pageData.title && (
@@ -146,7 +144,7 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => ({
   onFetchPatients: (url: string) => dispatch(fetchPatients(url)),
   onResetSettings: () => dispatch(resetSettings()),
   onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdateSettings: settings => dispatch(updateSettings(settings))
+  onUpdateSettings: (settings) => dispatch(updateSettings(settings))
 });
 
 const ConnectedLayout: (props: OwnProps) => ReactElement = connect(

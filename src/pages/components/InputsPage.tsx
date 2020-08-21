@@ -13,7 +13,7 @@ import { IPageData } from '../../interfaces/page';
 import { usePageData } from '../../hooks/usePage';
 
 const pageData: IPageData = {
-  fullFilled: true,
+  fulFilled: true,
   title: 'Inputs',
   breadcrumbs: [
     {

@@ -13,7 +13,7 @@ import { IAppSettings } from '../../interfaces/settings';
 
 const pageData: IPageData = {
   title: 'Settings',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

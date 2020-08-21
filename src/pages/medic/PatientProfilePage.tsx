@@ -14,7 +14,7 @@ import BillingTable from './components/billing-table';
 
 const pageData: IPageData = {
   title: 'Patient profile page',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Medicine',

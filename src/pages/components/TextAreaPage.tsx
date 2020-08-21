@@ -8,7 +8,7 @@ import { usePageData } from '../../hooks/usePage';
 const TextArea = Input.TextArea;
 
 const pageData: IPageData = {
-  fullFilled: true,
+  fulFilled: true,
   title: 'Text Area',
   breadcrumbs: [
     {

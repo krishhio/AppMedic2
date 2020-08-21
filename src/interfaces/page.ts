@@ -2,7 +2,7 @@ export interface IPageData {
   title?: string;
   loaded?: boolean;
   breadcrumbs?: IBreadcrumb[];
-  fullFilled?: boolean;
+  fulFilled?: boolean;
 }
 
 export interface IBreadcrumb {

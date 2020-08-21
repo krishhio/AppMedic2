@@ -11,7 +11,7 @@ import { IInvoice, IInvoiceRecord } from '../../interfaces/invoice';
 
 const pageData: IPageData = {
   title: 'Invoice',
-  fullFilled: true,
+  fulFilled: false,
   breadcrumbs: [
     {
       title: 'Apps',
@@ -146,7 +146,7 @@ const InvoiceTable = ({ records = [] }) => {
 };
 
 const InvoicePage = () => {
-  const [records = []] = useFetchPageData<IInvoiceRecord[]>('./data/invoice.json');
+  const [records] = useFetchPageData<IInvoiceRecord[]>('./data/invoice.json', []);
   const invoice = useGetInvoice();
 
   usePageData(pageData);

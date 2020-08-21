@@ -9,7 +9,7 @@ import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'InvoicesPage',
-  fullFilled: false,
+  fulFilled: false,
   loaded: false,
   breadcrumbs: [
     {
