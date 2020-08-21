@@ -19,7 +19,7 @@ const formItemLayout = {
 
 const pageData: IPageData = {
   title: 'Form layouts',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

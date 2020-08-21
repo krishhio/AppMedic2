@@ -9,16 +9,16 @@ import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Patients',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Patients',
-    },
-  ],
+      title: 'Patients'
+    }
+  ]
 };
 
 const PatientsPage = () => {

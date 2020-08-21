@@ -10,7 +10,7 @@ import { worldMapOptions } from './worldMapOptions';
 
 const pageData: IPageData = {
   title: 'World map',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

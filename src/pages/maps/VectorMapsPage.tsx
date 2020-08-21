@@ -7,7 +7,7 @@ import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Vector map',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

@@ -21,7 +21,7 @@ const radioStyle = {
 
 const pageData: IPageData = {
   title: 'Radio buttons',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

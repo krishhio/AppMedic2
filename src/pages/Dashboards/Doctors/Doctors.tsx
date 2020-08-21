@@ -15,7 +15,7 @@ import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Doctors',
-  fullFilled: false,
+  fulFilled: false,
   breadcrumbs: [
     {
       title: 'Home',

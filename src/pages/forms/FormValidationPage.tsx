@@ -6,7 +6,6 @@ import { Rule } from 'antd/es/form';
 import { usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 import {
-  CommentOutlined,
   IdcardOutlined,
   LockOutlined,
   MailOutlined,
@@ -145,7 +144,7 @@ const FormWithMessages = () => {
 
 const pageData: IPageData = {
   title: 'Form validation',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

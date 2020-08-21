@@ -19,7 +19,7 @@ import { BarChartOutlined } from '@ant-design/icons/lib';
 
 const pageData: IPageData = {
   title: 'Echarts',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

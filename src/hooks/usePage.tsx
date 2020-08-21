@@ -29,7 +29,6 @@ export function useFetchPageData<T>(
   }
 
   useEffect(() => {
-    dispatch(updatePageDada({ fulFilled: false }));
     getData()
       .then((data) => {
         if (callback) {

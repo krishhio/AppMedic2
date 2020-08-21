@@ -9,7 +9,7 @@ const Option = Select.Option;
 
 const pageData: IPageData = {
   title: 'Selects',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

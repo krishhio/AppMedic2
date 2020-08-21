@@ -13,7 +13,7 @@ const icons = getIconTuple(iconsList);
 
 const pageData: IPageData = {
   title: 'Icons',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

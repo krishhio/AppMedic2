@@ -17,7 +17,7 @@ import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Chart js',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

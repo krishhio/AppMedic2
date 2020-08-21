@@ -16,7 +16,7 @@ import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Events timeline',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

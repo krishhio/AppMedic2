@@ -24,7 +24,6 @@ const modals = {
 
 const pageData: IPageData = {
   fulFilled: true,
-  loaded: true,
   title: 'Modals',
   breadcrumbs: [
     {

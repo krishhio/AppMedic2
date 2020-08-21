@@ -15,7 +15,7 @@ import { usePageData } from '../../hooks/usePage';
 
 const pageData: IPageData = {
   title: 'Tables',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

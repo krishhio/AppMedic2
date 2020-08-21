@@ -21,7 +21,7 @@ import { IAppointment } from '../../../interfaces/patient';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  fullFilled: false,
+  fulFilled: false,
   breadcrumbs: [
     {
       title: 'Home',

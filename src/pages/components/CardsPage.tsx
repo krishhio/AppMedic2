@@ -47,7 +47,7 @@ const contentListNoTitle = {
 
 const pageData: IPageData = {
   title: 'Cards',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'UI Kit',

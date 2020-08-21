@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 
 const pageData: IPageData = {
   title: 'Payments',
-  fullFilled: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

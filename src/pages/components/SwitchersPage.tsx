@@ -7,7 +7,7 @@ import { Button, Card, Switch } from 'antd';
 
 const pageData: IPageData = {
   title: 'Switchers',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

@@ -35,7 +35,7 @@ const iconTypes = [
 
 const pageData: IPageData = {
   title: 'Icons options',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

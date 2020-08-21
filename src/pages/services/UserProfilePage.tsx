@@ -5,7 +5,7 @@ import { Avatar, Button, Card, Rate, Tag, Timeline } from 'antd';
 
 const pageData: IPageData = {
   title: 'User Profile',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

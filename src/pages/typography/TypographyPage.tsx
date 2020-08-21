@@ -6,7 +6,7 @@ import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Typography',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

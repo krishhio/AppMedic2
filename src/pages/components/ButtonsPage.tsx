@@ -13,7 +13,7 @@ import {
 
 const pageDate: IPageData = {
   title: 'Buttons',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',
@@ -79,7 +79,7 @@ const ButtonsPage = () => {
               <Button type='dashed' ghost>
                 Dashed
               </Button>
-              <Button type='link' ghost>
+              <Button ghost>
                 Link
               </Button>
               <Button type='primary' ghost>

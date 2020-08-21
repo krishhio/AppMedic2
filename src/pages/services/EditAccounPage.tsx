@@ -13,7 +13,7 @@ import { IPatient } from '../../interfaces/patient';
 
 const pageData: IPageData = {
   title: 'Edit account',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

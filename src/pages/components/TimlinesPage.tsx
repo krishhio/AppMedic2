@@ -13,7 +13,7 @@ import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Timelines',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

@@ -19,7 +19,7 @@ import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Recharts',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',

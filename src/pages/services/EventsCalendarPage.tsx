@@ -15,7 +15,7 @@ const headerOptions = {
 
 const pageData: IPageData = {
   title: 'Event calendar',
-  loaded: true,
+  fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',
