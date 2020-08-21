@@ -4,7 +4,6 @@ import { IPageData } from '../../interfaces/page';
 const initialState: IPageData = {
   title: '',
   fulFilled: true,
-  fulFilled: false,
   breadcrumbs: [{ route: 'default-dashboard', title: 'Home' }, { title: 'Dashboard' }],
 };
 

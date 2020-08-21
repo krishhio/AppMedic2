@@ -79,9 +79,6 @@ const ButtonsPage = () => {
               <Button type='dashed' ghost>
                 Dashed
               </Button>
-              <Button ghost>
-                Link
-              </Button>
               <Button type='primary' ghost>
                 Primary
               </Button>

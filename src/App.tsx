@@ -5,21 +5,18 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import VerticalLayout from './layout/Vertical/Vertical';
 import HorizontalLayout from './layout/Horizontal/Horizontal';
 
-import { defaultRoutes } from './routing';
+import NotFound from './pages/sessions/404';
+import { defaultRoutes, sessionRoutes } from './routing';
 
 import './App.scss';
 
-import { sessionRoutes } from './routing/session-routes';
-
-import NotFound from './pages/sessions/404';
-
-const RoutesSwitch = ({ routes, layout }) => (
+const Routes = ({ routes, layout = '' }) => (
   <Switch>
     {routes.map((route, index) => (
       <Route
         key={index}
         exact={route.exact}
-        path={`/${layout}/${route.path}`}
+        path={layout.length > 0 ? `/${layout}/${route.path}` : `/${route.path}\``}
         component={() => <route.component />}
       />
     ))}
@@ -30,9 +27,9 @@ const RoutesSwitch = ({ routes, layout }) => (
   </Switch>
 );
 
-const DefaultRoutes = ({ layout }) => <RoutesSwitch routes={defaultRoutes} layout={layout} />;
+const DefaultRoutes = ({ layout }) => <Routes routes={defaultRoutes} layout={layout} />;
 
-const SessionRoutes = () => <RoutesSwitch routes={sessionRoutes} layout='public' />;
+const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
 
 const App = () => {
   return (

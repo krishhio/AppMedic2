@@ -35,7 +35,7 @@ export function useFetchPageData<T>(
           callback(data);
         }
 
-        setTimeout(() => dispatch(updatePageDada({ fulFilled: true, loaded: true })), 500);
+        setTimeout(() => dispatch(updatePageDada({ fulFilled: true, loaded: true })), 300);
 
         setData(data);
       })

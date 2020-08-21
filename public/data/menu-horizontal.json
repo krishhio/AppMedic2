@@ -30,7 +30,7 @@
   },
   {
     "title": "Components",
-    "sub" : [
+    "sub": [
       {
         "title": "Alerts",
         "routing": "alerts"
@@ -48,24 +48,24 @@
         "routing": "buttons"
       },
       {
-        "title" : "Cards",
+        "title": "Cards",
         "routing": "cards"
       },
       {
-        "title" : "Checkboxes",
+        "title": "Checkboxes",
         "routing": "checkboxes"
       },
       {
-        "title" : "Contacts",
+        "title": "Contacts",
         "routing": "contacts"
       },
       {
-        "title" : "Inputs",
+        "title": "Inputs",
         "routing": "inputs"
       },
       {
-        "title" : "Modal windows",
-        "routing" : "modal-windows"
+        "title": "Modal windows",
+        "routing": "modal-windows"
       },
       {
         "title": "Radio buttons",
@@ -80,7 +80,7 @@
         "routing": "selects"
       },
       {
-        "title" : "Switcher",
+        "title": "Switcher",
         "routing": "switchers"
       },
       {
@@ -105,39 +105,18 @@
         "routing": "icons-options"
       },
       {
-        "title": "Icofont icons",
-        "routing": "icons-if"
+        "title": "Antd icons",
+        "routing": "antd-icons"
       },
       {
-        "title": "Simple line icons",
-        "routing": "icons-sli"
+        "title": "Icofont",
+        "routing": "icofont-icons"
       }
     ]
   },
   {
     "title": "Tables",
-    "sub": [
-      {
-        "title": "Simple",
-        "routing": "simple-table"
-      },
-      {
-        "title": "Sorting",
-        "routing": "sorting-table"
-      },
-      {
-        "title": "Search",
-        "routing": "search-table"
-      },
-      {
-        "title": "Filtering",
-        "routing": "filtering-table"
-      },
-      {
-        "title": "Pagination",
-        "routing": "pagination-table"
-      }
-    ]
+    "routing": "tables"
   },
   {
     "title": "Forms",
@@ -160,17 +139,16 @@
     "title": "Charts",
     "sub": [
       {
-        "title": "Ng2 charts",
-        "routing": "ng2-charts"
+        "title": "Echarts",
+        "routing": "echarts"
       },
       {
-        "title": "Ngx charts",
-        "routing": "ngx-charts"
-      }
-      ,
+        "title": "Recharts",
+        "routing": "recharts"
+      },
       {
-        "title": "Ngx echarts",
-        "routing": "ngx-echarts"
+        "title": "ChartJs",
+        "routing": "chart-js"
       }
     ]
   },
@@ -182,8 +160,8 @@
         "routing": "google-map"
       },
       {
-        "title": "Leaflet map",
-        "routing": "leaflet-map"
+        "title": "Vector map",
+        "routing": "vector-map"
       },
       {
         "title": "World map",
@@ -194,6 +172,30 @@
   {
     "title": "Service pages",
     "sub": [
+      {
+        "title": "Sign in",
+        "routing": "sign-in",
+        "layout": "public"
+      },
+      {
+        "title": "Sign up",
+        "routing": "sign-up",
+        "layout": "public"
+      },
+      {
+        "title": "404",
+        "routing": "page-404",
+        "layout": "public"
+      },
+      {
+        "title": "500",
+        "routing": "page-500",
+        "layout": "public"
+      },
+      {
+        "title": "Invoice",
+        "routing": "invoice"
+      },
       {
         "title": "Invoices",
         "routing": "invoices"
@@ -217,16 +219,6 @@
       {
         "title": "Events calendar",
         "routing": "events-calendar"
-      },
-      {
-        "title": "Sign in",
-        "routing": "sign-in",
-        "layout": "public"
-      },
-      {
-        "title": "Sign up",
-        "routing": "sign-up",
-        "layout": "public"
       }
     ]
   }

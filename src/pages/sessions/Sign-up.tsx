@@ -35,7 +35,9 @@ const SignUp = () => {
         type='primary'
         icon={<span className='icofont icofont-plus mr-2' style={{ fontSize: '1.2rem' }} />}
       >
-        Register
+        <Link style={{ color: 'white' }} to='/'>
+          Register
+        </Link>
       </Button>
       <br />
 

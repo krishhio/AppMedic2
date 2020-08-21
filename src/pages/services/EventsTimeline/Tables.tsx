@@ -59,7 +59,7 @@ const lastPayments = [
   }
 ];
 
-const renderClient = ({ date, client }) => (
+const renderClient = ({ client }) => (
   <div className='d-flex align-items-center'>
     <Avatar className='mr-4' src={window.location.origin + client.img} size={36} />
     <div className='name'>
@@ -110,6 +110,7 @@ const paymentColumns: ColumnProps<any>[] = [
 
 export const LastClients = () => (
   <Table
+    rowKey='patient'
     style={{ minWidth: '200px' }}
     pagination={{ hideOnSinglePage: true }}
     columns={clientColumns}
@@ -118,6 +119,7 @@ export const LastClients = () => (
 );
 export const LastPayments = () => (
   <Table
+    rowKey='date'
     columns={paymentColumns}
     dataSource={lastPayments}
     style={{ minWidth: '200px' }}

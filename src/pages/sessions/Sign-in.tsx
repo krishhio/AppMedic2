@@ -29,7 +29,9 @@ const SignIn = () => {
       </Form>
 
       <Button type='primary' icon={<LoginOutlined style={{ fontSize: '1.3rem' }} />}>
-        Login
+        <Link style={{ color: 'white' }} to='/'>
+          Login
+        </Link>
       </Button>
       <br />
       <p className='mb-0'>
