@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import VerticalLayout from './layout/Vertical/Vertical';
-import HorizontalLayout from './layout/Horizontal/Horizontal';
+import VerticalLayout from './layout/vertical/Vertical';
+import HorizontalLayout from './layout/horizontal/Horizontal';
 
 import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';

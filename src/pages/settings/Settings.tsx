@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import SettingsForm from '../../layout/components/Settings/SettingsForm';
+import SettingsForm from '../../layout/components/settings/SettingsForm';
 
 import { resetSettings, updateSettings } from '../../redux/settings/actions';
 import { usePageData } from '../../hooks/usePage';

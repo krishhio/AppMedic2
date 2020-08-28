@@ -4,16 +4,16 @@ import { Card } from 'antd';
 
 import ReactEcharts from 'echarts-for-react';
 
-import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
-import hospitalOptions from './Charts/HospitalOptions';
+import AppointmentsTable from '../../../layout/components/appointmentsTable/AppointmentsTable';
+import hospitalOptions from './charts/hospital-options';
 
-import { incomeInWeek, incomeInMonth } from './Charts/IncomeOptions';
+import { incomeInWeek, incomeInMonth } from './charts/income-options';
 
 import {
   patientsGenderOptions,
   departmentsOptions,
   patientsAgeOptions
-} from './Charts/PatientsOptions';
+} from './charts/patients-options';
 
 import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
@@ -28,7 +28,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Patients'
+      title: 'patients'
     }
   ]
 };
@@ -151,13 +151,13 @@ const DashboardPage = () => {
 
       <div className='row'>
         <div className='col-12 col-md-4'>
-          <Card title={'Patients age'}>
+          <Card title={'patients age'}>
             <ReactEcharts className='chart-container container-h-300' option={patientsAgeOptions} />
           </Card>
         </div>
 
         <div className='col-12 col-md-4'>
-          <Card title={'Patients gender'}>
+          <Card title={'patients gender'}>
             <ReactEcharts
               className='chart-container container-h-300'
               option={patientsGenderOptions}

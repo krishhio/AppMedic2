@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { IAppointment } from '../../../interfaces/patient';
 
 import { Button, Input } from 'antd';
-import ImageLoader from '../../../layout/components/Patients/ImageLoader';
+import ImageLoader from '../../../layout/components/patients/ImageLoader';
 
 type Props = {
   appointment?: IAppointment;

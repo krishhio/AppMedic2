@@ -5,7 +5,7 @@ import { ColumnProps } from 'antd/es/table';
 import { IPatient } from '../../../interfaces/patient';
 
 import { history } from '../../../redux/store';
-import PatientForm from '../../../layout/components/Patients/PatientForm';
+import PatientForm from '../../../layout/components/patients/PatientForm';
 
 type Props = {
   patients: IPatient[];

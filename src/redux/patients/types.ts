@@ -1,9 +1,9 @@
 import { IPatient } from '../../interfaces/patient';
 
-export const SET_PATIENTS = '[Patients] Set';
-export const ADD_PATIENT = '[Patients] Add';
-export const EDIT_PATIENT = '[Patients] Edit';
-export const DELETE_PATIENT = '[Patients] Delete';
+export const SET_PATIENTS = '[patients] Set';
+export const ADD_PATIENT = '[patients] Add';
+export const EDIT_PATIENT = '[patients] Edit';
+export const DELETE_PATIENT = '[patients] Delete';
 
 export interface SetPatientAction {
   type: typeof SET_PATIENTS;

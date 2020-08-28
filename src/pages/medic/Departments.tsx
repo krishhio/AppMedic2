@@ -1,7 +1,7 @@
 import React from 'react';
 import { IPageData } from '../../interfaces/page';
 
-import Department from '../../layout/components/Department/Department';
+import Department from '../../layout/components/department/Department';
 
 import { useFetchPageData, usePageData } from '../../hooks/usePage';
 import { IDepartment } from '../../interfaces/patient';

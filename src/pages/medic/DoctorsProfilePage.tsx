@@ -17,8 +17,8 @@ import ReactEcharts from 'echarts-for-react';
 import { usePageData } from '../../hooks/usePage';
 import { useGetDoctor } from '../../hooks/useGetDoctor';
 
-import ImageLoader from '../../layout/components/Patients/ImageLoader';
-import Socials from '../../layout/components/Socials/Socials';
+import ImageLoader from '../../layout/components/patients/ImageLoader';
+import Socials from '../../layout/components/socials/Socials';
 
 import patientsOptions from '../chart-options/patients';
 
@@ -26,7 +26,7 @@ import { IPageData } from '../../interfaces/page';
 import { IUser } from '../../interfaces/user';
 
 const pageData: IPageData = {
-  title: 'Doctor profile page',
+  title: 'doctor profile page',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -34,7 +34,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Doctors',
+      title: 'doctors',
       route: 'default-dashboard'
     },
     {

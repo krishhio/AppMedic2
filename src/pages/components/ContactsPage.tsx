@@ -2,8 +2,8 @@ import React from 'react';
 
 import { useFetchPageData, usePageData } from '../../hooks/usePage';
 
-import Contact from '../../layout/components/Doctor/Contact';
-import className from '../../utils/classNames';
+import Contact from '../../layout/components/doctor/Contact';
+import className from '../../utils/class-names';
 
 import { IUser } from '../../interfaces/user';
 import { IPageData } from '../../interfaces/page';

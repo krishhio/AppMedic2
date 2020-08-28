@@ -7,7 +7,7 @@ export default {
     }
   },
   legend: {
-    data: ['Patients 2020']
+    data: ['patients 2020']
   },
   grid: {
     left: 30,
@@ -31,7 +31,7 @@ export default {
         label: {
           formatter: function (params) {
             return (
-              'Patients ' +
+              'patients ' +
               params.value +
               (params.seriesData.length ? '：' + params.seriesData[0].data : '')
             );
@@ -68,7 +68,7 @@ export default {
         label: {
           formatter: function (params) {
             return (
-              'Patients ' +
+              'patients ' +
               params.value +
               (params.seriesData.length ? '：' + params.seriesData[0].data : '')
             );
@@ -98,7 +98,7 @@ export default {
   ],
   series: [
     {
-      name: 'Patients 2020',
+      name: 'patients 2020',
       type: 'line',
       xAxisIndex: 1,
       smooth: true,

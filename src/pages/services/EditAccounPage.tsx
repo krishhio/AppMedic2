@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { useFormik } from 'formik';
 import { Button, Divider, Form, Input, Select } from 'antd';
 
-import ImageLoader from '../../layout/components/Patients/ImageLoader';
+import ImageLoader from '../../layout/components/patients/ImageLoader';
 
 import { usePageData } from '../../hooks/usePage';
 import { useGetUser } from '../../hooks/useGetUser';

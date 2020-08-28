@@ -3,8 +3,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Input, Select, AutoComplete, Divider } from 'antd';
 
-import Socials from '../../../layout/components/Socials/Socials';
-import ImageLoader from '../../../layout/components/Patients/ImageLoader';
+import Socials from '../../../layout/components/socials/Socials';
+import ImageLoader from '../../../layout/components/patients/ImageLoader';
 
 import { useFetch } from '../../../hooks/useFetch';
 import { IUser } from '../../../interfaces/user';

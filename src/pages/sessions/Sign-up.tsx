@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, Form, Input, Switch } from 'antd';
 
-import PublicLayout from '../../layout/Public/Public';
+import PublicLayout from '../../layout/public/Public';
 import { Link } from 'react-router-dom';
 
 const { Item } = Form;

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { Modal } from 'antd';
 
-import className from '../../../utils/classNames';
+import className from '../../../utils/class-names';
 
-import Contact from '../../../layout/components/Doctor/Contact';
-import PageAction from '../../../layout/components/PageAction/PageAction';
+import Contact from '../../../layout/components/doctor/Contact';
+import PageAction from '../../../layout/components/page-action/PageAction';
 import DoctorForm from './DoctorForm';
 
 import { useFetchPageData, usePageData } from '../../../hooks/usePage';
@@ -14,7 +14,7 @@ import { IUser } from '../../../interfaces/user';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'Doctors',
+  title: 'doctors',
   fulFilled: false,
   breadcrumbs: [
     {
@@ -22,7 +22,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Doctors'
+      title: 'doctors'
     }
   ]
 };

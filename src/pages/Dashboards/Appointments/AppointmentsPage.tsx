@@ -4,16 +4,16 @@ import { Button } from 'antd';
 
 import EditAppointment from './EditAppointment';
 import AddAppointment from './AddAppointment';
-import AppointmentsTable from '../../../layout/components/AppointmentsTable/AppointmentsTable';
+import AppointmentsTable from '../../../layout/components/appointmentsTable/AppointmentsTable';
 
-import PageAction from '../../../layout/components/PageAction/PageAction';
+import PageAction from '../../../layout/components/page-action/PageAction';
 import { useFetchPageData, usePageData } from '../../../hooks/usePage';
 
 import { IAppointment } from '../../../interfaces/patient';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'Appointments',
+  title: 'appointments',
   fulFilled: false,
   breadcrumbs: [
     {
@@ -21,7 +21,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Appointments'
+      title: 'appointments'
     }
   ]
 };

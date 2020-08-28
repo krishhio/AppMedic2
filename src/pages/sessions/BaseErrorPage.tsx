@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import PublicLayout from '../../layout/Public/Public';
+import PublicLayout from '../../layout/public/Public';
 
 type Props = {
   msg?: string;

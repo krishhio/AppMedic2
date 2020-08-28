@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import BillingTable from '../../medic/components/billing-table';
+import BillingTable from '../../medic/components/BillingTable';
 import { useGetPayments } from '../../../hooks/useGetBillings';
 
 import { IPageData } from '../../../interfaces/page';
 import { usePageData } from '../../../hooks/usePage';
-import PageAction from '../../../layout/components/PageAction/PageAction';
+import PageAction from '../../../layout/components/page-action/PageAction';
 import { Button, Form, Input, Modal } from 'antd';
 import { useFormik } from 'formik';
 

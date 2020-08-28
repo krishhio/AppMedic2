@@ -9,8 +9,8 @@ import { usePageData } from '../../hooks/usePage';
 import { useGetPatient } from '../../hooks/useGetPatient';
 import { useGetBillings } from '../../hooks/useGetBillings';
 
-import ImageLoader from '../../layout/components/Patients/ImageLoader';
-import BillingTable from './components/billing-table';
+import ImageLoader from '../../layout/components/patients/ImageLoader';
+import BillingTable from './components/BillingTable';
 
 const pageData: IPageData = {
   title: 'Patient profile page',
@@ -21,7 +21,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Doctors',
+      title: 'doctors',
       route: 'default-dashboard'
     },
     {
