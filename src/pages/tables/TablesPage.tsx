@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card } from 'antd';
 
-import CollSpan from './tables/CollSpan';
-import TableSize from './tables/TableSize';
-import Selection from './tables/Selection';
-import Operations from './tables/Operations';
-import NestedTable from './tables/NestedTable';
-import FilterReset from './tables/FilterReset';
-import CustomOptions from './tables/CustomOptions';
-import FilterAndSorting from './tables/FilterAndSorting';
+import CollSpan from './CollSpan';
+import TableSize from './TableSize';
+import Selection from './Selection';
+import Operations from './Operations';
+import NestedTable from './NestedTable';
+import FilterReset from './FilterReset';
+import CustomOptions from './CustomOptions';
+import FilterAndSorting from './FilterAndSorting';
 
 import { IPageData } from '../../interfaces/page';
 import { usePageData } from '../../hooks/usePage';
