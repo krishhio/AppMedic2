@@ -18,7 +18,7 @@ import { IPageData } from '../../../interfaces/page';
 import { BarChartOutlined } from '@ant-design/icons/lib';
 
 const pageData: IPageData = {
-  title: 'Echarts',
+  title: 'echarts',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -30,7 +30,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Echarts'
+      title: 'echarts'
     }
   ]
 };
