@@ -6,14 +6,14 @@ import { Table } from 'antd';
 const InvoiceStatus = ({ status }: Pick<IInvoicePreview, 'status'>) => {
   if (status === 'Paid')
     return (
-      <span className='color-green'>
+      <span className='color-green nowrap'>
         <i className='icofont icofont-check-circled mr-2' />
         Paid
       </span>
     );
 
   return (
-    <span className='color-error'>
+    <span className='color-error nowrap'>
       <i className='icofont icofont-close-circled mr-2' />
       Un-Paid
     </span>
@@ -36,7 +36,7 @@ const columnsConfig: ColumnProps<IInvoicePreview>[] = [
       return curent.date > next.date ? 1 : -1;
     },
     render: ({ date }) => (
-      <span className='text-muted'>
+      <span className='text-muted nowrap'>
         <i className='icofont-clock-time' />
         <span className='text-muted ml-2'>{date}</span>
       </span>
@@ -55,11 +55,13 @@ const columnsConfig: ColumnProps<IInvoicePreview>[] = [
   {
     key: 'amount',
     title: 'Amount',
-    dataIndex: 'amount',
+    render: ({ amount }) => <span className='text-right'>{amount}</span>,
     sorter: (cur, next) => (cur.amount > next.amount ? 1 : -1)
   }
 ];
 
-const InvoicesTable = ({ invoices }) => <Table rowKey='icon' columns={columnsConfig} dataSource={invoices} />;
+const InvoicesTable = ({ invoices }) => (
+  <Table rowKey='icon' columns={columnsConfig} dataSource={invoices} />
+);
 
 export default InvoicesTable;

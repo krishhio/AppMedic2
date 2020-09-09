@@ -19,15 +19,15 @@ const pageData: IPageData = {
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Apps',
       route: 'default-dashboard'
     },
     {
-      title: 'Service Pages ',
+      title: 'Service pages',
       route: 'default-dashboard'
     },
     {
-      title: 'Events Timeline'
+      title: 'Events timeline'
     }
   ]
 };

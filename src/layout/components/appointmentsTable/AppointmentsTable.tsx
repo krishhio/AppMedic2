@@ -5,14 +5,21 @@ import { Avatar, Table } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 import { IAppointment } from '../../../interfaces/patient';
 
+const AppointmentImg = ({ img }) => {
+  return (
+    <Avatar
+      size={40}
+      src={img.startsWith('data:image') ? img : `${window.location.origin}/${img}`}
+    />
+  );
+};
+
 const columns: ColumnProps<IAppointment>[] = [
   {
     key: 'img',
     title: 'Photo',
     dataIndex: 'img',
-    render: (img) => {
-      return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
-    }
+    render: (img) => <AppointmentImg img={img} />
   },
   {
     key: 'name',
@@ -63,7 +70,7 @@ const columns: ColumnProps<IAppointment>[] = [
       </span>
     )
   },
-  { key: 'doctor', title: 'doctor', dataIndex: 'doctor' },
+  { key: 'doctor', title: 'Doctor', dataIndex: 'doctor' },
   { key: 'condition', title: 'Injury/Condition', dataIndex: 'injury' },
   {}
 ];
@@ -76,7 +83,7 @@ type Props = {
 const AppointmentsTable = ({ data, actions }: Props) => {
   const actionColumn: ColumnProps<IAppointment> = {
     key: 'actions',
-    title: 'actions',
+    title: 'Actions',
     render: actions
   };
 

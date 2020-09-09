@@ -17,8 +17,9 @@ type Props = {
 
 const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => {
   const downloadLink = useRef<HTMLAnchorElement>(null);
+  const { boxed, sidebarBg, topbarBg } = settings;
 
-  const layout = history.location.pathname.split('/')[1];
+  const layoutUrl = history.location.pathname.split('/')[1];
 
   const handleReset = () => {
     onResetSettings();
@@ -51,20 +52,20 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
   const handleBoxedChange = (boxed: boolean) => setValue('boxed', boxed);
 
   const sidebarPickerLabel =
-    settings.layout === 'vertical' ? 'Sidebar background' : 'Second navbar background';
+    layoutUrl === 'vertical' ? 'Sidebar background' : 'Second navbar background';
 
   return (
     <Form layout='vertical' className='settings-form'>
       <Form.Item label='Topbar background'>
-        <ColorPicker onColorChange={handleNavBgChange} color={settings.topbarBg} />
+        <ColorPicker onColorChange={handleNavBgChange} color={topbarBg} />
       </Form.Item>
 
       <Form.Item label={sidebarPickerLabel}>
-        <ColorPicker onColorChange={handleSideBgChange} color={settings.sidebarBg} />
+        <ColorPicker onColorChange={handleSideBgChange} color={sidebarBg} />
       </Form.Item>
 
       <Form.Item label='Layout'>
-        <Select onChange={handleLayoutChange} defaultValue={layout}>
+        <Select onChange={handleLayoutChange} defaultValue={layoutUrl}>
           <Select.Option value={'vertical'}>Vertical</Select.Option>
 
           <Select.Option value={'horizontal'}>Horizontal</Select.Option>
@@ -72,7 +73,7 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
       </Form.Item>
 
       <Form.Item label='Boxed'>
-        <Switch onChange={handleBoxedChange} defaultChecked={settings.boxed} />
+        <Switch onChange={handleBoxedChange} checked={boxed} />
       </Form.Item>
 
       <div className='d-flex justify-content-between buttons-list settings-actions'>

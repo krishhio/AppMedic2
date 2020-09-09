@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import SettingsForm from '../../layout/components/settings/SettingsForm';
 
@@ -9,7 +9,6 @@ import { usePageData } from '../../hooks/usePage';
 
 import { IAppState } from '../../interfaces/app-state';
 import { IPageData } from '../../interfaces/page';
-import { IAppSettings } from '../../interfaces/settings';
 
 const pageData: IPageData = {
   title: 'Settings',
@@ -17,27 +16,27 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Settings',
-    },
-  ],
+      title: 'Settings'
+    }
+  ]
 };
 
-type DispatchProps = {
-  onUpdateSettings: (settings: IAppSettings) => void;
-  onResetSettings: () => void;
-};
+const SettingsPage = () => {
+  const settings = useSelector((state: IAppState) => state.settings);
+  const dispatch = useDispatch();
 
-type StateProps = {
-  settings: IAppSettings;
-};
-
-type Props = DispatchProps & StateProps;
-
-const SettingsPage = ({ settings, onResetSettings, onUpdateSettings }: Props) => {
   usePageData(pageData);
+
+  const onResetSettings = () => {
+    dispatch(resetSettings());
+  };
+
+  const onUpdateSettings = (settings) => {
+    dispatch(updateSettings(settings));
+  };
 
   return (
     <div className='row'>
@@ -52,13 +51,4 @@ const SettingsPage = ({ settings, onResetSettings, onUpdateSettings }: Props) =>
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
-  settings: state.settings,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onResetSettings: () => dispatch(resetSettings()),
-  onUpdateSettings: (settings) => dispatch(updateSettings(settings)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);
+export default SettingsPage;

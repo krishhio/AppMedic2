@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 
-import BillingTable from '../../medic/components/BillingTable';
-import { useGetPayments } from '../../../hooks/useGetBillings';
-
-import { IPageData } from '../../../interfaces/page';
-import { usePageData } from '../../../hooks/usePage';
-import PageAction from '../../../layout/components/page-action/PageAction';
 import { Button, Form, Input, Modal } from 'antd';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
+import BillingTable from '../../medic/components/BillingTable';
+import PageAction from '../../../layout/components/page-action/PageAction';
+
+import { hasErrorFactory } from '../../../utils/hasError';
+import { useGetPayments } from '../../../hooks/useGetBillings';
+import { usePageData } from '../../../hooks/usePage';
+
+import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
   title: 'Payments',
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Medicine',
       route: 'default-dashboard'
     },
     {
@@ -25,54 +29,128 @@ const pageData: IPageData = {
 
 const Item = Form.Item;
 
+const paymentScheme = Yup.object({
+  billNo: Yup.string().required(),
+  patient: Yup.string().required(),
+  doctor: Yup.string().required(),
+  billDate: Yup.string().required(),
+  charges: Yup.string().required(),
+  tax: Yup.string().required(),
+  discount: Yup.string().required(),
+  total: Yup.string().required()
+});
+
 const PaymentForm = ({ onSubmit, onClose }) => {
-  const { handleSubmit, handleChange } = useFormik({
+  const { handleSubmit, handleChange, isValid, errors, resetForm, touched, handleBlur } = useFormik<
+    any
+  >({
     initialValues: {},
-    onSubmit: (values) => onSubmit(values)
+    initialErrors: { empty: null },
+    validationSchema: paymentScheme,
+    onSubmit: (values) => {
+      onSubmit(values);
+      resetForm();
+    }
   });
+
+  const hasError = hasErrorFactory(touched, errors);
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
 
   return (
     <>
       <Form layout='vertical'>
         <Item>
-          <Input name='billNo' placeholder='Bill NO' onChange={handleChange} />
+          <Input
+            type='number'
+            name='billNo'
+            placeholder='Bill NO'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('billNo')}
+          />
         </Item>
 
         <Item>
-          <Input name='patient' placeholder='Patient' onChange={handleChange} />
+          <Input
+            name='patient'
+            placeholder='Patient'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('patient')}
+          />
         </Item>
 
         <Item>
-          <Input name='doctor' placeholder='Doctor' onChange={handleChange} />
+          <Input
+            name='doctor'
+            placeholder='Doctor'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('doctor')}
+          />
         </Item>
 
         <Item>
-          <Input name='billDate' placeholder='Date' onChange={handleChange} />
+          <Input
+            name='billDate'
+            placeholder='Date'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('billDate')}
+          />
         </Item>
 
         <Item>
-          <Input name='charges' placeholder='Charges' onChange={handleChange} />
+          <Input
+            name='charges'
+            placeholder='Charges'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('charges')}
+          />
         </Item>
 
         <Item>
-          <Input name='tax' placeholder='Tax' onChange={handleChange} />
+          <Input
+            name='tax'
+            placeholder='Tax'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('tax')}
+          />
         </Item>
 
         <Item>
-          <Input name='discount' placeholder='Discount' onChange={handleChange} />
+          <Input
+            name='discount'
+            placeholder='Discount'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('discount')}
+          />
         </Item>
 
         <Item>
-          <Input name='total' placeholder='Total' onChange={handleChange} />
+          <Input
+            name='total'
+            placeholder='Total'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className={hasError('total')}
+          />
         </Item>
       </Form>
 
       <div className='modal-footer d-flex justify-content-between mt-3'>
-        <Button danger onClick={onClose}>
+        <Button danger onClick={handleClose}>
           Cancel
         </Button>
 
-        <Button type='primary' onClick={() => handleSubmit()}>
+        <Button htmlType='submit' disabled={!isValid} type='primary' onClick={() => handleSubmit()}>
           Add
         </Button>
       </div>

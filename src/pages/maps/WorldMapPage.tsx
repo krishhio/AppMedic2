@@ -9,7 +9,6 @@ import { IPageData } from '../../interfaces/page';
 import { worldMapOptions } from './worldMapOptions';
 
 const pageData: IPageData = {
-  title: 'World map',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -40,7 +39,7 @@ const WorldMapPage = () => {
   }
 
   return (
-    <div className='full-height-page'>
+    <div className='full-height-page p-4'>
       {mapOptions ? (
         <ReactEcharts
           option={mapOptions}

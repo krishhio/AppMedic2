@@ -3,10 +3,6 @@ import { useEffect, useState } from 'react';
 import { IPatient } from '../interfaces/patient';
 import axios from 'axios';
 
-const EMPTY_PATIENT: Partial<IPatient> = {
-  img: 'content/doctor-400-1.jpg'
-};
-
 async function getPatients() {
   const result = await axios.get('./data/patients.json');
   return result.data as IPatient[];

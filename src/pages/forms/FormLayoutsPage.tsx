@@ -145,34 +145,40 @@ const FormLayoutsPage = () => {
       </div>
 
       <Card title='Inline' className='mb-0'>
-        <Form layout='inline' style={{ width: '100%' }}>
-          <div className='elem-list'>
-            <Form.Item>
-              <Input
-                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder='First name'
-              />
-            </Form.Item>
+        <Form>
+          <div className='row'>
+            <div className='col-md-3 col-sm-12'>
+              <Form.Item>
+                <Input
+                  prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  placeholder='First name'
+                />
+              </Form.Item>
+            </div>
+            <div className='col-md-3 col-sm-12'>
+              <Form.Item>
+                <Input
+                  prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  placeholder='Last name'
+                />
+              </Form.Item>
+            </div>
+            <div className='col-md-3 col-sm-12'>
+              <Form.Item>
+                <Input
+                  prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  placeholder='Password'
+                />
+              </Form.Item>
+            </div>
 
-            <Form.Item>
-              <Input
-                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder='Last name'
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Input
-                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder='Password'
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button type='primary' htmlType='submit'>
-                Log in
-              </Button>
-            </Form.Item>
+            <div className='col-md-3 col-sm-12'>
+              <Form.Item>
+                <Button block type='primary' htmlType='submit'>
+                  Log in
+                </Button>
+              </Form.Item>
+            </div>
           </div>
         </Form>
       </Card>

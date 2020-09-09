@@ -6,6 +6,10 @@
 .ant-select {
   width: 100%;
 
+  &.has-error .ant-select-selector {
+    border-color: $error-color;
+  }
+
   &.ant-select-sm .ant-select-selector {
     @include input-sm();
   }
@@ -16,20 +20,28 @@
 
   .ant-select-selector {
     @include input();
-    @include input-padding();
 
     padding: 0 !important;
 
     .ant-select-selection-placeholder {
       position: absolute;
       transform: translateY(-50%);
+      padding: 0 2px !important;
       top: 50%;
+    }
+
+    .ant-select-selection-search {
+      left: $module-rem * 2;
+
+      > input {
+        margin-left: 0 !important;
+      }
     }
 
     .ant-select-selection-placeholder,
     .ant-select-selection-item {
-      right: 25px;
-      left: 25px;
+      right: $module-rem * 2;
+      left: $module-rem * 2;
     }
 
     input {
@@ -61,4 +73,13 @@
       color: rgba(#000, 0.35);
     }
   }
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-search {
+  left: $module-rem * 2;
+  right: $module-rem * 2.5;
+}
+
+.ant-select-item {
+  padding: ($module-rem / 2) ($module-rem * 2);
 }

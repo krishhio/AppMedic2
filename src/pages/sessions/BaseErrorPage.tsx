@@ -11,10 +11,10 @@ type Props = {
 };
 
 const BaseErrorPage = ({ msg, title, action, bg, subTitle }: Props) => (
-  <PublicLayout bgImg={bg}>
+  <PublicLayout transparent bgImg={bg}>
     {typeof title === 'string' ? <h1 className='align-middle'>{title}</h1> : title}
     {subTitle ? subTitle : null}
-    <p>{msg}</p>
+    <p className='text-center'>{msg}</p>
 
     {action}
   </PublicLayout>

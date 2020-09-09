@@ -1,6 +1,8 @@
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { Avatar, Button } from 'antd';
+
+const anonymousImg = `${window.origin}/content/anonymous-400.jpg`;
 
 type Props = {
   src?: string;
@@ -8,9 +10,18 @@ type Props = {
   onLoad?: (img) => void;
 };
 
-const ImageLoader = ({ src, size = 40, onLoad }: Props) => {
-  const [img, setImg] = useState<string>(null);
+const ImageLoader = ({ src, size = 40, onLoad = () => null }: Props) => {
   const input = useRef<HTMLInputElement>(null);
+  const [img, setImg] = useState<string>(anonymousImg);
+
+  useEffect(() => {
+    if (!src) {
+      onLoad(img);
+    }
+    return () => {
+      setImg(null);
+    };
+  }, []);
 
   const handleClick = () => input.current.click();
 
@@ -35,7 +46,7 @@ const ImageLoader = ({ src, size = 40, onLoad }: Props) => {
     <>
       <input ref={input} onChange={handleLoad} type='file' style={{ display: 'none' }} />
       <div className='d-flex align-items-center'>
-        <Avatar src={img || src} size={size} className='mr-4' />
+        <Avatar src={src || img} size={size} className='mr-4' />
 
         <Button type={'primary'} className='btn-outline' onClick={handleClick}>
           Select image {icon}

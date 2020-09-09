@@ -7,7 +7,7 @@
   }
 
   .ant-modal-header {
-    padding: $module-rem * 2;
+    padding: ($module-rem * 2) ($module-rem * 2) 0;
 
     .title {
       margin: $module-rem / 2;
@@ -16,7 +16,7 @@
   }
 
   .ant-modal-body {
-    padding: ($module-rem * 1.5) ($module-rem * 2) ($module-rem * 2);
+    padding: ($module-rem * 2);
   }
 
   .ant-modal-footer {

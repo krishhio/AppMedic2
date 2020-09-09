@@ -13,10 +13,25 @@ type Props = {
   onDeletePatient?: (id: string) => void;
 };
 
+type PatientsImgProps = {
+  img: string;
+};
+
+const PatientImg = ({ img }: PatientsImgProps) => {
+  const isData = img.startsWith('data:image');
+  const isWithPath = img.startsWith('http');
+
+  if (isData || isWithPath) {
+    return <Avatar size={40} src={img} />;
+  }
+
+  return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
+};
+
 const PatientsTable = ({
   patients,
   onEditPatient = () => null,
-  onDeletePatient = () => null,
+  onDeletePatient = () => null
 }: Props) => {
   const [patient, setPatient] = useState(null);
   const [visibility, setVisibility] = useState(false);
@@ -49,9 +64,7 @@ const PatientsTable = ({
       key: 'img',
       title: 'Photo',
       dataIndex: 'img',
-      render: (img) => {
-        return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
-      }
+      render: (img) => <PatientImg img={img} />
     },
     {
       key: 'name',

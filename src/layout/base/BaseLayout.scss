@@ -29,7 +29,7 @@
         z-index: 10;
       }
 
-      &.fulfilled .page-loader{
+      &.fulfilled .app-loader {
         display: none;
       }
 
@@ -49,6 +49,7 @@
             font-size: 2rem;
             margin: 0 0 ($module-rem * 2);
           }
+
           .page-breadcrumbs {
             color: rgba(main-palette(500), 0.5);
             font-size: 0.8rem;

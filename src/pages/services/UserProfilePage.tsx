@@ -4,19 +4,19 @@ import { usePageData } from '../../hooks/usePage';
 import { Avatar, Button, Card, Rate, Tag, Timeline } from 'antd';
 
 const pageData: IPageData = {
-  title: 'User Profile',
+  title: 'User profile',
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Apps',
       route: 'default-dashboard'
     },
     {
-      title: 'Service Pages ',
+      title: 'Service pages',
       route: 'default-dashboard'
     },
     {
-      title: 'User Profile'
+      title: 'User profile'
     }
   ]
 };

@@ -15,16 +15,16 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
       title: 'Components',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Autocompletes',
-    },
-  ],
+      title: 'Autocompletes'
+    }
+  ]
 };
 
 const AutocompletePage = () => {
@@ -65,8 +65,8 @@ const AutocompletePage = () => {
             <AutoComplete
               options={dataSource}
               filterOption
-              placeholder='Small input'
               className='custom'
+              placeholder='Small input'
               size='small'
             />
 
@@ -121,7 +121,7 @@ const AutocompletePage = () => {
               />
             </AutoComplete>
 
-            <AutoComplete options={dataSource} filterOption onSearch={handleChange(10, setThird)}>
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(30, setThird)}>
               <Input
                 placeholder='30 char limit'
                 maxLength={30}

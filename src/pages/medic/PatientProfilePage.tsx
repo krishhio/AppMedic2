@@ -21,7 +21,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'doctors',
+      title: 'Doctors',
       route: 'default-dashboard'
     },
     {
@@ -36,7 +36,7 @@ const Option = Select.Option;
 const ProfileForm = ({ patient }) => {
   const { values } = useFormik({
     initialValues: { ...patient },
-    onSubmit: (val) => console.log(val)
+    onSubmit: () => null
   });
 
   return (
@@ -86,6 +86,7 @@ const ProfileForm = ({ patient }) => {
     </Form>
   );
 };
+
 const PatientTimeline = () => (
   <Timeline mode='left'>
     <Timeline.Item color='red'>
@@ -160,6 +161,7 @@ const PatientTimeline = () => (
     </Timeline.Item>
   </Timeline>
 );
+
 const PatientProfilePage = () => {
   const { patient } = useGetPatient('Liam');
   const billings = useGetBillings();
@@ -169,7 +171,7 @@ const PatientProfilePage = () => {
   return (
     patient && (
       <>
-        <div className='row'>
+        <div className='row mb-4'>
           <div className='col-md-6 col-sm-12'>
             <div className='header'>
               <Card title={<h6 className='my-0'>Photo</h6>}>
@@ -190,7 +192,9 @@ const PatientProfilePage = () => {
           </div>
         </div>
 
-        <BillingTable billings={billings} />
+        <Card title='Billings' className='mb-0'>
+          <BillingTable billings={billings} />
+        </Card>
       </>
     )
   );

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -11,38 +11,23 @@ import Search from '../components/search/Search';
 
 import LogoSvg from './../../assets/img/logo.svg';
 
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
 import Actions from '../components/actions/Actions';
-import { resetSettings, toggleSidebar, updateSettings } from '../../redux/settings/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleSidebar } from '../../redux/settings/actions';
 
 import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
-
-import { IPageData } from '../../interfaces/page';
-import { IPatient } from '../../interfaces/patient';
-import { IAppSettings } from '../../interfaces/settings';
+import { IAppState } from '../../interfaces/app-state';
 
 import './Horizontal.scss';
 
-type OwnProps = {
+type Props = {
   children: any;
 };
 
-type StateProps = {
-  pageData: IPageData;
-  patients: IPatient[];
-  settings: IAppSettings;
-};
+const HorizontalLayout = ({ children }: Props) => {
+  const settings = useSelector((state: IAppState) => state.settings);
+  const dispatch = useDispatch();
 
-type DispatchProps = {
-  onSidebarToggle: () => void;
-  onUpdateSettings: (settings: IAppSettings) => void;
-  onResetSettings: () => void;
-};
-
-type Props = OwnProps & StateProps & DispatchProps;
-
-const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Props) => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
@@ -93,8 +78,15 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
     fetchSearchData().catch((err) => console.log('Server Error', err));
   }, []);
 
+  const onSidebarToggle = () => dispatch(toggleSidebar());
+
   const nav = (
-    <Navbar orientation='horizontal' boxed={settings.boxed}>
+    <Navbar
+      orientation='horizontal'
+      color={settings.topbarColor}
+      background={settings.topbarBg}
+      boxed={settings.boxed}
+    >
       <button className='no-style navbar-toggle d-lg-none' onClick={onSidebarToggle}>
         <span />
         <span />
@@ -110,7 +102,13 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
   );
 
   const additionalNav = (
-    <Navbar minHeight={40} orientation='horizontal-vertical' boxed={settings.boxed}>
+    <Navbar
+      minHeight={40}
+      boxed={settings.boxed}
+      color={settings.sidebarColor}
+      background={settings.sidebarBg}
+      orientation='horizontal-vertical'
+    >
       <Menu
         onCloseSidebar={onSidebarToggle}
         opened={settings.sidebarOpened}
@@ -129,21 +127,4 @@ const HorizontalLayout = ({ children, onSidebarToggle, settings, pageData }: Pro
   );
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  onResetSettings: () => dispatch(resetSettings()),
-  onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdateSettings: (settings) => dispatch(updateSettings(settings))
-});
-
-const mapStateToProps = ({ patients, pageData, settings }) => ({
-  settings,
-  pageData,
-  patients
-});
-
-const ConnectedLayout: (props: OwnProps) => ReactElement = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HorizontalLayout);
-
-export default ConnectedLayout;
+export default HorizontalLayout;

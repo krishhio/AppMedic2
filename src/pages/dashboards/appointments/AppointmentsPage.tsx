@@ -13,15 +13,15 @@ import { IAppointment } from '../../../interfaces/patient';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'appointments',
+  title: 'Appointments',
   fulFilled: false,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Medicine',
       route: 'default-dashboard'
     },
     {
-      title: 'appointments'
+      title: 'Appointments'
     }
   ]
 };

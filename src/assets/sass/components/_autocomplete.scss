@@ -5,6 +5,26 @@ $_list-bg: #fff;
 $_list-border-color: #fff;
 $_list-shadow: $shadow;
 
+@mixin select-input {
+  .ant-input-affix-wrapper {
+    border: none;
+  }
+
+  .ant-select-selection-placeholder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    @include input-padding();
+  }
+
+  .ant-select-selection-search-input {
+    @include input-padding();
+  }
+}
+
 #root {
   .ant-select-auto-complete {
     width: 100%;

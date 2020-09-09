@@ -5,8 +5,8 @@ const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
-    render: text => (
-      <a onClick={e => e.preventDefault()} href='#'>
+    render: (text) => (
+      <a onClick={(e) => e.preventDefault()} href='#'>
         {text}
       </a>
     )
@@ -47,13 +47,9 @@ const data = [
   }
 ];
 
-// rowSelection object indicates the need for row selection
 const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  getCheckboxProps: record => ({
-    disabled: record.name === 'Disabled User', // Column configuration not to be checked
+  getCheckboxProps: (record) => ({
+    disabled: record.name === 'Disabled User',
     name: record.name
   })
 };

@@ -7,29 +7,33 @@ $_bg: (
   default: #ebebeb,
   hover: #ebebeb,
   active: accent-palette(500),
-  disabled: rgba(#ccc, 0.1),
+  disabled: rgba(#ccc, 0.1)
 );
 $_border: (
   default: #ebebeb,
   hover: #ebebeb,
   active: accent-palette(500),
-  disabled: rgba(#ccc, 0.5),
+  disabled: rgba(#ccc, 0.5)
 );
 $_color: (
   default: accent-palette(500),
   hover: accent-palette(500),
   active: accent-contrast(500),
-  disabled: #bdbdbd,
+  disabled: #bdbdbd
 );
 $_label-color: (
   default: inherit,
   hover: inherit,
   active: inherit,
-  disabled: #bdbdbd,
+  disabled: #bdbdbd
 );
 
 .ant-checkbox-wrapper {
   line-height: 30px;
+
+  &.ant-checkbox-wrapper-disabled {
+    pointer-events: none;
+  }
 
   .ant-checkbox .ant-checkbox-inner {
     height: $_size;

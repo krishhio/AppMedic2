@@ -14,15 +14,15 @@ import { IUser } from '../../../interfaces/user';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'doctors',
+  title: 'Doctors',
   fulFilled: false,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Medicine',
       route: 'default-dashboard'
     },
     {
-      title: 'doctors'
+      title: 'Doctors'
     }
   ]
 };

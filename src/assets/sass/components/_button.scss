@@ -70,13 +70,46 @@ $_sm-padding: ($_module-rem) ($_module-rem / 2);
 $_sm-fs: ($_fs * 0.8);
 $_sm-lh: $_module-rem / $_sm-fs;
 
+.ant-btn[class*='bg'] {
+  border: none !important;
+  position: relative;
+
+  > span {
+    z-index: 2;
+  }
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    opacity: 0;
+    background: #000;
+    border-radius: $shape;
+    transition: opacity 0.2s ease-in-out;
+
+    z-index: -1;
+  }
+
+  &:hover:after {
+    opacity: 0.1;
+  }
+}
+
 .ant-btn {
+  align-items: center;
   background: main-palette(500);
   border-radius: $_shape;
   border-color: main-palette(500);
   box-shadow: $_shadow;
   color: main-contrast(500);
+  display: inline-flex;
   cursor: pointer;
+  justify-content: center;
   font-family: $_ff;
   font-size: $_fs;
   font-weight: $_fw;
@@ -204,8 +237,8 @@ $_sm-lh: $_module-rem / $_sm-fs;
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 34px;
-    width: 34px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     padding: 0 !important;
   }

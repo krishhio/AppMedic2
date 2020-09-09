@@ -31,13 +31,15 @@ $_border-width: 1px;
 $_fs: 1rem;
 $_shape: 500px;
 $_animation: $animation;
-$_height: $_module-rem * 2.2;
+$_height: $_module-rem * 2;
 $_width: $_module-rem * 4;
 
 .ant-switch {
   height: $_height;
   background: map-get($_bg, default);
   border: $_border-width $_border-style map-get($_border, default);
+  width: $_width;
+  min-width: $_width;
 
   &:hover {
     &:not(.ant-switch-checked),
@@ -48,17 +50,22 @@ $_width: $_module-rem * 4;
       }
     }
   }
+  &:focus {
+    box-shadow: none;
+  }
+
   .ant-switch-handle {
-    height: 16px;
-    width: 16px;
+    top: 50%;
+    height: $_height / 1.6;
+    width: $_height / 1.6;
+    transform: translateY(-50%);
   }
   &.ant-switch-checked {
     background: map-get($_bg, active);
     border-color: map-get($_border, active);
 
-    &.ant-switch-handle {
-      background: map-get($_bg, default) !important;
-      left: calc(100% - 16px - 2px);
+    .ant-switch-handle {
+      left: calc(100% - 12.5px - 2px) !important;
       right: 2px;
     }
 

@@ -30,6 +30,7 @@ const AddPatient = () => {
         visible={visible}
         footer={null}
         onCancel={closeModal}
+        destroyOnClose
         title={<h3 className='title'>Add patient</h3>}
       >
         <PatientForm onCancel={closeModal} onSubmit={handleAddPatient} />

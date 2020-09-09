@@ -142,6 +142,14 @@
   > * {
     margin: $module-rem / 2;
   }
+
+  &.large {
+    margin: -$module-rem;
+
+    > * {
+      margin: $module-rem;
+    }
+  }
 }
 
 .form-group {
@@ -179,7 +187,7 @@ $colors: (
   indigo: #667eea,
   blue: #4299e1,
   teal: #38b2ac,
-  green: #48bb78,
+  green: #00c896,
   yellow: #ecc94b,
   orange: #ed8936,
   gray: main-palette(300),
@@ -248,11 +256,29 @@ $shapes: (
   justify-content: center;
   flex-direction: column;
 
-  height: calc(100vh - (#{$footer-height} + #{$module-rem * 6} + #{$module-rem * 12}));
-  width: calc(100% - #{$module-rem * 4});
-  position: absolute;
+  position: fixed;
+  top: $module-rem * 6;
+  bottom: $footer-height;
+  right: 0;
+
+  height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 4}));
+  width: 100%;
 
   @media only screen and (max-width: 768px) {
     height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 6}));
+  }
+
+  .vertical & {
+    right: 0;
+    width: calc(100% - #{$vertical-navbar-width});
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .horizontal & {
+    top: $module-rem * 10;
+    height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 9}));
   }
 }

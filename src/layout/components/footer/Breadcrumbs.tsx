@@ -13,7 +13,7 @@ const Breadcrumb = ({ route, title, layout }) => {
   return (
     <li className='item'>
       {route ? (
-        <NavLink replace to={`/${layout}/${route}`}>
+        <NavLink className='link' replace to={`/${layout}/${route}`}>
           {title}
         </NavLink>
       ) : (
@@ -27,7 +27,11 @@ const Breadcrumbs = ({ breadcrumbs = [], layout }: Props) => {
   const breadcrumbList = breadcrumbs.map(({ title, route }: IBreadcrumb, index) => (
     <React.Fragment key={index}>
       <Breadcrumb title={title} route={route} layout={layout} />
-      {index < breadcrumbs.length - 1 && <i className='separator icofont icofont-thin-right' />}
+      {index < breadcrumbs.length - 1 && (
+        <li>
+          <i className='separator icofont icofont-thin-right' />
+        </li>
+      )}
     </React.Fragment>
   ));
 

@@ -14,24 +14,30 @@ $_animation: $animation;
 $_shadow: 0 0 10px rgba(#000, 0.12);
 
 .ant-table-expanded-row .ant-table {
-  margin-top: 0 !important;
-  margin-bottom: $module-rem !important;
-  margin-left: $module-rem !important;
-}
-
-.ant-table-cell-fix-left {
-
+  margin: 0 !important;
 }
 
 .ant-table-wrapper {
+  .ant-table-container {
+    border-radius: 0;
+  }
+
+  table {
+    border-radius: 0;
+  }
+
   .ant-table {
     overflow: auto;
+    border-radius: 0;
 
     tr {
+      transition: box-shadow 0.2s ease-in-out;
+
       th,
       td {
         border: 0;
         border-bottom: $_td-border-width solid $_td-border-color;
+        border-radius: 0 !important;
         padding: $_module-rem;
         line-height: 20px;
 
@@ -54,8 +60,14 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
         background: $_bg;
       }
     }
+
     .ant-table-expanded-row {
       overflow: hidden;
+
+      > td {
+        padding: 0 !important;
+      }
+
       table tr th {
         border-radius: 0;
       }
