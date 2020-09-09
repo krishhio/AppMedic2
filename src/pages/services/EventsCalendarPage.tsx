@@ -14,19 +14,19 @@ const headerOptions = {
 };
 
 const pageData: IPageData = {
-  title: 'Event calendar',
+  title: 'Events calendar',
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Apps',
       route: 'default-dashboard'
     },
     {
-      title: 'User Pages ',
+      title: 'Service pages',
       route: 'default-dashboard'
     },
     {
-      title: 'Event Calendar'
+      title: 'Events calendar'
     }
   ]
 };
@@ -57,6 +57,7 @@ const EventsCalendarPage = () => {
     },
     {
       title: 'Appointment',
+      color: '#f56565',
       start: setDate(1, -1),
       end: setDate(1, 3),
       desc:
@@ -64,8 +65,9 @@ const EventsCalendarPage = () => {
     },
     {
       title: 'Appointment',
-      color: '#48bb78',
+      color: '#4299e1',
       start: setDate(1),
+      classNames: ['event-pink'],
       end: setDate(1, 3),
       desc:
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
@@ -151,6 +153,7 @@ const EventsCalendarPage = () => {
           headerToolbar={headerOptions}
           initialView='dayGridMonth'
           plugins={[dayGridPlugin]}
+          dayMaxEvents={true}
           weekends
         />
       </Card>

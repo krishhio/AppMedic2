@@ -33,7 +33,6 @@ const FilterReset = () => {
   const [sortedInfo, setSorters] = useState<any>({});
 
   const handleChange = (pagination, filters, sorter) => {
-    console.log('Various parameters', pagination, filters, sorter);
     setFilters(filters);
     setSorters(sorter);
   };

@@ -76,7 +76,7 @@ const CardsPage = () => {
 
   return (
     <>
-      <h4 className='section-title'>Simple cards</h4>
+      <h4 className='section-title mt-0'>Simple cards</h4>
 
       <div className='row'>
         <div className='col-md-6 col-sm-12'>

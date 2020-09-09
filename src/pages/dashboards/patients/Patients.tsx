@@ -8,15 +8,15 @@ import PatientsTable from './PatientsTable';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'patients',
+  title: 'Patients',
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Medicine',
       route: 'default-dashboard'
     },
     {
-      title: 'patients'
+      title: 'Patients'
     }
   ]
 };

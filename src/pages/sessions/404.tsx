@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { HomeFilled } from '@ant-design/icons/lib';
 
 import BaseErrorPage from './BaseErrorPage';
-import { HomeFilled } from '@ant-design/icons/lib';
+import { navigateHome } from '../../utils/naviagate-home';
 
 const NotFound = () => (
   <BaseErrorPage
@@ -15,17 +15,16 @@ const NotFound = () => (
     action={
       <Button
         type='primary'
+        onClick={navigateHome}
         style={{ width: 'auto' }}
-        icon={<HomeFilled className='mr-3' style={{ fontSize: '1.3em' }} />}
+        icon={<HomeFilled className='ml-0 mr-2' style={{ fontSize: '1em' }} />}
       >
-        <Link style={{ color: 'white' }} to='/'>
-          Back to Home
-        </Link>
+        Back to home
       </Button>
     }
     title={
-      <h1 style={{ fontSize: '6rem' }} className='text-color-300 text-center'>
-        <i className='icofont-radio-active color-error mr-2' />
+      <h1 style={{ fontSize: '6rem' }} className='text-color-300 text-center mb-2'>
+        <i className='icofont-radio-active color-error mr-2' style={{ opacity: 0.5 }} />
         404
       </h1>
     }

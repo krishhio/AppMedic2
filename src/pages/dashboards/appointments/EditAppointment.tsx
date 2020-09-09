@@ -15,6 +15,7 @@ const EditAppointment = ({ appointment, visible, onClose, onEdited }: Props) => 
     <Modal
       visible={visible}
       onCancel={onClose}
+      destroyOnClose
       footer={null}
       title={<h3 className='title'>Edit appointment</h3>}
     >

@@ -2,10 +2,12 @@ import React from 'react';
 
 import { useFormik } from 'formik';
 import { Form, Button, Input, Select, AutoComplete, Divider } from 'antd';
+import * as Yup from 'yup';
 
 import Socials from '../../../layout/components/socials/Socials';
 import ImageLoader from '../../../layout/components/patients/ImageLoader';
 
+import { hasErrorFactory } from '../../../utils/hasError';
 import { useFetch } from '../../../hooks/useFetch';
 import { IUser } from '../../../interfaces/user';
 
@@ -14,7 +16,22 @@ type Props = {
   onCancel: () => void;
 };
 
+const doctorScheme = Yup.object({
+  role: Yup.string().required(),
+  name: Yup.string().required(),
+  lastName: Yup.string().required(),
+  img: Yup.string().required(),
+  gender: Yup.string().required(),
+  address: Yup.string().required()
+});
+
 const initialValues = {
+  role: null,
+  name: null,
+  lastName: null,
+  img: null,
+  gender: null,
+  address: null,
   social: [
     {
       icon: 'icofont-instagram',
@@ -28,22 +45,27 @@ const initialValues = {
       icon: 'icofont-twitter',
       link: '#'
     }
-  ],
-  profileLink: '',
-  role: '',
-  name: '',
-  lastName: '',
-  img: '',
-  gender: null,
-  address: ''
+  ]
 };
 
 const DoctorForm = ({ onSubmit, onCancel }: Props) => {
   const [roles] = useFetch<{ value: string }[]>('./data/doctors-specialists.json', []);
-  const { values, handleChange, setValues } = useFormik({
+  const {
+    setFieldTouched,
+    handleChange,
+    handleBlur,
+    values,
+    setValues,
+    isValid,
+    errors,
+    resetForm,
+    touched
+  } = useFormik({
     initialValues,
+    validationSchema: doctorScheme,
+    validateOnMount: true,
+    initialErrors: { name: null },
     onSubmit: (values) => {
-      console.log('submitting');
       onSubmit(values);
     }
   });
@@ -60,16 +82,25 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
     setValues({ ...values, img });
   };
 
+  const handleCancel = () => {
+    resetForm();
+    onCancel();
+  };
+
   const handleSubmit = () => {
+    if (!isValid) return;
+
     onSubmit(values);
     onCancel();
   };
+
+  const hasError = hasErrorFactory(touched, errors);
 
   return (
     <>
       <Form>
         <div className='form-group'>
-          <ImageLoader onLoad={handleImgLoad} src={`${window.location.origin}/${values.img}`} />
+          <ImageLoader onLoad={handleImgLoad} src={values.img} />
         </div>
 
         <div className='form-group'>
@@ -78,7 +109,9 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
             type='text'
             placeholder='First name'
             onChange={handleChange}
+            onBlur={handleBlur}
             defaultValue={values.name}
+            className={hasError('name')}
           />
         </div>
 
@@ -88,7 +121,9 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
             name='lastName'
             placeholder='Last name'
             onChange={handleChange}
+            onBlur={handleBlur}
             defaultValue={values.lastName}
+            className={hasError('lastName')}
           />
         </div>
 
@@ -98,10 +133,16 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
               <AutoComplete
                 filterOption
                 options={roles}
-                placeholder='Speciality'
-                onChange={handleRoleSelect}
                 defaultValue={values.role}
-              />
+                className={hasError('role')}
+              >
+                <Input
+                  name='role'
+                  onChange={handleRoleSelect}
+                  onBlur={handleBlur}
+                  placeholder='Speciality'
+                />
+              </AutoComplete>
             </div>
           </div>
 
@@ -109,8 +150,10 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
             <div className='form-group'>
               <Select
                 placeholder='Gender'
-                defaultValue={values.gender}
                 onChange={handleGenderSelect}
+                defaultValue={values.gender}
+                className={hasError('gender')}
+                onBlur={() => setFieldTouched('gender')}
               >
                 <Select.Option value='Male'>Male</Select.Option>
                 <Select.Option value='Female'>Female</Select.Option>
@@ -123,8 +166,10 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
           <Input
             name='address'
             placeholder='Address'
+            onBlur={handleBlur}
             onChange={handleChange}
             defaultValue={values.address}
+            className={hasError('address')}
           />
         </div>
 
@@ -133,11 +178,11 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
         <Socials links={values.social} />
 
         <div className='d-flex justify-content-between buttons-list settings-actions mt-4'>
-          <Button danger onClick={onCancel}>
+          <Button danger onClick={handleCancel}>
             Cancel
           </Button>
 
-          <Button onClick={handleSubmit} htmlType='submit' type='primary'>
+          <Button disabled={!isValid} onClick={handleSubmit} htmlType='submit' type='primary'>
             Add Doctor
           </Button>
         </div>

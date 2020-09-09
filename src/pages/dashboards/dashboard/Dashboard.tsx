@@ -24,11 +24,11 @@ const pageData: IPageData = {
   fulFilled: false,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'Dashboards',
       route: 'default-dashboard'
     },
     {
-      title: 'patients'
+      title: 'Default'
     }
   ]
 };
@@ -41,7 +41,7 @@ const DashboardPage = () => {
     <>
       <div className='row'>
         <div className='col-12 col-md-6 col-xl-3'>
-          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated custom-bg-color'>
+          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated with-shadow'>
             <div className='row'>
               <div className='col-5'>
                 <span
@@ -52,7 +52,7 @@ const DashboardPage = () => {
 
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>Appointments</h6>
-                <div className='count' style={{ fontSize: 20, color: '#336cfb' }}>
+                <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
                   213
                 </div>
               </div>
@@ -61,7 +61,7 @@ const DashboardPage = () => {
         </div>
 
         <div className='col-12 col-md-6 col-xl-3'>
-          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated custom-bg-color'>
+          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated with-shadow'>
             <div className='row'>
               <div className='col-5'>
                 <span
@@ -72,7 +72,7 @@ const DashboardPage = () => {
 
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>New patients</h6>
-                <div className='count' style={{ fontSize: 20, color: '#336cfb' }}>
+                <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
                   213
                 </div>
               </div>
@@ -81,7 +81,7 @@ const DashboardPage = () => {
         </div>
 
         <div className='col-12 col-md-6 col-xl-3'>
-          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated custom-bg-color'>
+          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated with-shadow'>
             <div className='row'>
               <div className='col-5'>
                 <span
@@ -91,8 +91,8 @@ const DashboardPage = () => {
               </div>
 
               <div className='col-7'>
-                <h6 className='mt-0 mb-1'>Operation</h6>
-                <div className='count' style={{ fontSize: 20, color: '#336cfb' }}>
+                <h6 className='mt-0 mb-1'>Operations</h6>
+                <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
                   23
                 </div>
               </div>
@@ -101,7 +101,7 @@ const DashboardPage = () => {
         </div>
 
         <div className='col-12 col-md-6 col-xl-3'>
-          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated custom-bg-color'>
+          <Card style={{ background: 'rgba(251, 251, 251)' }} className='animated with-shadow'>
             <div className='row'>
               <div className='col-5'>
                 <span
@@ -112,7 +112,7 @@ const DashboardPage = () => {
 
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>Earnings</h6>
-                <div className='count' style={{ fontSize: 20, color: '#336cfb' }}>
+                <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
                   $5238
                 </div>
               </div>

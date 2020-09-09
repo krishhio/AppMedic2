@@ -13,23 +13,23 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
       title: 'UI Kit ',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Selects',
-    },
-  ],
+      title: 'Selects'
+    }
+  ]
 };
 
 const SelectsPage = () => {
   usePageData(pageData);
 
   const optionFilter = (input, option) =>
-    option.props.children.toString().toLowerCase().indexOf(input.toLowerCase()) >= 0;
+    option.children.toString().toLowerCase().indexOf(input.toLowerCase()) >= 0;
 
   return (
     <>

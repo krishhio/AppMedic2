@@ -8,7 +8,7 @@ import { useFetchPageData, usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'InvoicesPage',
+  title: 'Invoices',
   fulFilled: false,
   loaded: false,
   breadcrumbs: [
@@ -21,13 +21,13 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'InvoicesPage'
+      title: 'Invoices'
     }
   ]
 };
 
 const InfoSection = () => (
-  <p className='color-gray text-base mb-4'>
+  <p className='text-base mb-4' style={{ color: 'rgb(165, 165, 165)' }}>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, dolorem excepturi facilis magni
     necessitatibus perspiciatis repellendus sunt veniam? A ad architecto aspernatur cupiditate
     dignissimos distinctio earum, eligendi eum iusto laboriosam maxime minima necessitatibus nemo
@@ -36,16 +36,20 @@ const InfoSection = () => (
 );
 
 const SummaryCard = () => (
-  <Card className='bg-color-black'>
-    <div className='d-md-flex flex-wrap justify-content-between align-items-center d-sm-block'>
-      <div className='text-center px-4 py-2'>
-        <h5 className='color-white m-0 text-base'>Amount received</h5>
-        <h4 className='text-bold color-green m-0'>$35,570</h4>
+  <Card style={{ background: 'rgb(31, 32, 34)', marginBottom: '40px' }} className='custom-bg'>
+    <div className='row text-center'>
+      <div className='col-6'>
+        <span className='color-white m-0 text-base'>Amount received</span>
+        <h5 style={{ lineHeight: 1.4 }} className='text-bold color-green m-0'>
+          $35,570
+        </h5>
       </div>
 
-      <div className='text-center px-4 py-2'>
-        <h5 className='color-white m-0 text-base'>Amount pending</h5>
-        <h4 className='text-bold color-red m-0'>$2,540</h4>
+      <div className='col-6'>
+        <span className='color-white m-0 text-base'>Amount pending</span>
+        <h5 style={{ lineHeight: 1.4 }} className='text-bold color-red m-0'>
+          $2,540
+        </h5>
       </div>
     </div>
   </Card>

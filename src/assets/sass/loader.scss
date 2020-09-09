@@ -38,7 +38,7 @@ $bounce_height: 60px;
         display: inline-block;
         height: 95px;
         position: relative;
-        animation: bounce .5s alternate infinite ease-in;
+        animation: bounce 0.5s alternate infinite ease-in;
         width: $width;
 
         &:before {
@@ -53,6 +53,7 @@ $bounce_height: 60px;
           width: $width;
         }
       }
+
       .text {
         display: flex;
         color: main-palette(500);

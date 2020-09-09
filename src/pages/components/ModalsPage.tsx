@@ -7,7 +7,7 @@ import { IPageData } from '../../interfaces/page';
 
 const modals = {
   basic: 'basic',
-  withText: 'withText',
+  multiplex: 'multiplex',
   withHeader: 'withHeader',
   withCustomHeader: 'withCustomHeader',
   withFooter: 'withFooter',
@@ -19,7 +19,7 @@ const modals = {
   withOverlayWithoutClose: 'withOverlayWithoutClose',
   withCustomWidth: 'withCustomWidth',
   withFullWidth: 'withFullWidth',
-  withCustomHeight: 'withCustomHeight',
+  withCustomHeight: 'withCustomHeight'
 };
 
 const pageData: IPageData = {
@@ -28,16 +28,16 @@ const pageData: IPageData = {
   breadcrumbs: [
     {
       title: 'UI Kit',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
       title: 'Components',
-      route: 'default-dashboard',
+      route: 'default-dashboard'
     },
     {
-      title: 'Modals',
-    },
-  ],
+      title: 'Modals'
+    }
+  ]
 };
 
 const ModalsPage = () => {
@@ -60,263 +60,302 @@ const ModalsPage = () => {
 
   return (
     <>
-      <div className='row'>
-        <div className='col-sm-12 col-md-6'>
-          <Card title='Custom content'>
-            <div className='elem-list'>
-              <Button type='primary' onClick={openModal(modals.withText)}>
-                With text
-              </Button>
+      <Card title='Simple'>
+        <Button onClick={openModal(modals.basic)}>Open modal</Button>
+      </Card>
 
-              <Button type='primary' onClick={openModal(modals.withHeader)}>
-                With header
-              </Button>
+      <Card title='Custom content'>
+        <div className='elem-list'>
+          <Button onClick={openModal(modals.multiplex)}>Multiplex body</Button>
 
-              <Button type='primary' onClick={openModal(modals.withCustomHeader)}>
-                With custom header
-              </Button>
+          <Button onClick={openModal(modals.withHeader)}>With header</Button>
 
-              <Button type='primary' onClick={openModal(modals.withFooter)}>
-                With custom footer
-              </Button>
-            </div>
-            <Modal
-              visible={isOpened(modals.withText)}
-              footer={null}
-              closable={false}
-              title={null}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-            </Modal>
+          <Button onClick={openModal(modals.withCustomHeader)}>With custom header</Button>
 
-            <Modal
-              visible={isOpened(modals.withHeader)}
-              footer={null}
-              closable={false}
-              title='Modal with header'
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-
-            <Modal
-              visible={isOpened(modals.withCustomHeader)}
-              footer={null}
-              closable={false}
-              title={
-                <>
-                  <span>Modal with custom header</span> <Tag color='red'>New</Tag>
-                </>
-              }
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-
-            <Modal
-              visible={isOpened(modals.withFooter)}
-              closable={false}
-              title={null}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-          </Card>
-
-          <Card title='Overlay' className='mb-md-0'>
-            <div className='elem-list'>
-              <Button type='primary' onClick={openModal(modals.withDefaultOverlay)}>
-                Default overlay
-              </Button>
-
-              <Button type='primary' onClick={openModal(modals.withNoOverlay)}>
-                Without overlay
-              </Button>
-
-              <Button type='primary' onClick={openModal(modals.withOverlayWithoutClose)}>
-                overlay without close
-              </Button>
-            </div>
-
-            <Modal
-              visible={isOpened(modals.withDefaultOverlay)}
-              title='Modal with default overlay'
-              closable={false}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-
-            <Modal
-              visible={isOpened(modals.withNoOverlay)}
-              footer={null}
-              mask={false}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-
-            <Modal
-              visible={isOpened(modals.withOverlayWithoutClose)}
-              closable={true}
-              maskClosable={false}
-              title='Overlay withount close'
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-          </Card>
+          <Button onClick={openModal(modals.withFooter)}>With custom footer</Button>
         </div>
 
-        <div className='col-sm-12 col-md-6'>
-          <Card title='Close options'>
-            <div className='elem-list'>
-              <Button type='primary' onClick={openModal(modals.withOverlayClose)}>
-                With overlay close
-              </Button>
+        <Modal
+          visible={isOpened(modals.basic)}
+          footer={null}
+          closable={false}
+          title={null}
+          onCancel={closeModal}
+        >
+          Modal window text content
+        </Modal>
 
-              <Button type='primary' onClick={openModal(modals.withCloseBtn)}>
-                With close btn
-              </Button>
+        <Modal
+          visible={isOpened(modals.multiplex)}
+          footer={null}
+          closable={false}
+          title={null}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
 
-              <Button type='primary' onClick={openModal(modals.withCustomCloseBtn)}>
-                With custom close btn
-              </Button>
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withHeader)}
+          footer={null}
+          closable={false}
+          title={<h3 className='m-0'>Modal with header</h3>}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withCustomHeader)}
+          footer={null}
+          closable={false}
+          title={
+            <div className='d-flex align-items-center'>
+              <h3 className='m-0'>Modal with custom header</h3>
+              <Tag className='ml-2' color='#e9e165'>
+                New
+              </Tag>
             </div>
+          }
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
 
-            <Modal
-              visible={isOpened(modals.withOverlayClose)}
-              footer={null}
-              closable={false}
-              title={'Modal with overlay close'}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
+          <Input placeholder='Subscribe' />
+        </Modal>
 
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-
-            <Modal
-              visible={isOpened(modals.withCloseBtn)}
-              footer={null}
-              closable={true}
-              title='Modal with close btn'
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-
-            <Modal
-              visible={isOpened(modals.withCustomCloseBtn)}
-              closable={false}
-              title='Modal with custom close'
-              cancelButtonProps={{ danger: true }}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-          </Card>
-
-          <Card title='Width & height' className='mb-0'>
-            <div className='elem-list'>
-              <Button type='primary' onClick={openModal(modals.withCustomWidth)}>
-                Custom width
-              </Button>
-
-              <Button type='primary' onClick={openModal(modals.withFullWidth)}>
-                Full width
-              </Button>
-
-              <Button type='primary' onClick={openModal(modals.withCustomHeight)}>
-                With custom height
-              </Button>
+        <Modal
+          visible={isOpened(modals.withFooter)}
+          closable={false}
+          title={null}
+          onCancel={closeModal}
+          footer={
+            <div className='modal-footer text-left'>
+              <span>Modal footer</span>
             </div>
-            <Modal
-              visible={isOpened(modals.withCustomWidth)}
-              footer={null}
-              width='50%'
-              closable={false}
-              title={null}
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
+          }
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
 
-              <Input placeholder={'Subscribe'} />
-            </Modal>
+          <Input placeholder='Subscribe' />
+        </Modal>
+      </Card>
 
-            <Modal
-              visible={isOpened(modals.withFullWidth)}
-              footer={null}
-              closable={false}
-              width='95%'
-              title='Modal with header'
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
+      <Card title='Close options'>
+        <div className='elem-list'>
+          <Button onClick={openModal(modals.withOverlayClose)}>With overlay close</Button>
 
-              <Input placeholder={'Subscribe'} />
-            </Modal>
+          <Button onClick={openModal(modals.withCloseBtn)}>With close btn</Button>
 
-            <Modal
-              visible={isOpened(modals.withCustomHeight)}
-              footer={null}
-              closable={false}
-              bodyStyle={{ height: 500, maxHeight: '100%', overflow: 'auto' }}
-              title='Modal with custom height'
-              onCancel={closeModal}
-            >
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-              <p>Text content ....</p>
-
-              <Input placeholder={'Subscribe'} />
-            </Modal>
-          </Card>
+          <Button onClick={openModal(modals.withCustomCloseBtn)}>With custom close btn</Button>
         </div>
-      </div>
+
+        <Modal
+          visible={isOpened(modals.withOverlayClose)}
+          footer={null}
+          closable={false}
+          title={<h3 className='m-0'>Modal with overlay close</h3>}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withCloseBtn)}
+          footer={null}
+          closable={true}
+          title={<h3 className='m-0'>Modal with close btn</h3>}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withCustomCloseBtn)}
+          closable={false}
+          title={<h3 className='m-0'>Modal with custom close</h3>}
+          onCancel={closeModal}
+          footer={
+            <div className='modal-footer d-flex justify-content-between'>
+              <Button danger key='back' onClick={closeModal}>
+                Close
+              </Button>
+
+              <Button className='bg-color-success' key='submit' type='primary'>
+                Submit
+              </Button>
+            </div>
+          }
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+      </Card>
+
+      <Card title='Overlay'>
+        <div className='elem-list'>
+          <Button onClick={openModal(modals.withDefaultOverlay)}>Default overlay</Button>
+
+          <Button onClick={openModal(modals.withNoOverlay)}>Without overlay</Button>
+
+          <Button onClick={openModal(modals.withOverlayWithoutClose)}>Overlay without close</Button>
+        </div>
+
+        <Modal
+          visible={isOpened(modals.withDefaultOverlay)}
+          title={<h3 className='m-0'>Modal with default overlay</h3>}
+          closable={false}
+          onCancel={closeModal}
+          footer={null}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withNoOverlay)}
+          footer={null}
+          mask={false}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withOverlayWithoutClose)}
+          closable={true}
+          maskClosable={false}
+          title={<h3 className='m-0'>Overlay withount close</h3>}
+          onCancel={closeModal}
+          footer={null}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+      </Card>
+
+      <Card title='Width & height' className='mb-0'>
+        <div className='elem-list'>
+          <Button onClick={openModal(modals.withCustomWidth)}>Custom width</Button>
+
+          <Button onClick={openModal(modals.withFullWidth)}>Full width</Button>
+
+          <Button onClick={openModal(modals.withCustomHeight)}>With custom height</Button>
+        </div>
+        <Modal
+          visible={isOpened(modals.withCustomWidth)}
+          footer={null}
+          width='50%'
+          closable={false}
+          title={null}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withFullWidth)}
+          closable={false}
+          width='95%'
+          title={<h3 className='m-0'>Modal with header</h3>}
+          onCancel={closeModal}
+          footer={
+            <div className='modal-footer d-flex justify-content-between'>
+              <Button danger key='back' onClick={closeModal}>
+                Close
+              </Button>
+
+              <Button className='bg-color-success' key='submit' type='primary'>
+                Submit
+              </Button>
+            </div>
+          }
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+
+        <Modal
+          visible={isOpened(modals.withCustomHeight)}
+          footer={null}
+          closable={false}
+          bodyStyle={{ height: 500, maxHeight: '100%', overflow: 'auto' }}
+          title={<h3 className='m-0'>Modal with custom height</h3>}
+          onCancel={closeModal}
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eum eveniet fugiat fugit
+            illum, natus porro possimus quisquam soluta vitae. Aperiam molestias quae quaerat
+            quibusdam rerum voluptates! Aspernatur, magnam quas?
+          </p>
+
+          <Input placeholder='Subscribe' />
+        </Modal>
+      </Card>
     </>
   );
 };

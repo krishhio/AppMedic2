@@ -91,6 +91,7 @@ const clientColumns: ColumnProps<any>[] = [
   {
     key: 'date',
     title: 'Date',
+    className: 'text-right',
     render: renderDate
   }
 ];
@@ -104,19 +105,21 @@ const paymentColumns: ColumnProps<any>[] = [
   {
     key: 'amount',
     title: 'Amount',
+    className: 'text-right',
     render: renderPayment
   }
 ];
 
 export const LastClients = () => (
   <Table
-    rowKey='patient'
+    rowKey='date'
     style={{ minWidth: '200px' }}
     pagination={{ hideOnSinglePage: true }}
     columns={clientColumns}
     dataSource={lastClients}
   />
 );
+
 export const LastPayments = () => (
   <Table
     rowKey='date'

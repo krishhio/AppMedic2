@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table } from 'antd';
-import { ColumnProps } from 'antd/es/table';
 
 const columns: any = [
   {
@@ -90,11 +89,7 @@ const data = [
 ];
 
 const FilterAndSorting = () => {
-  const onChange = (pagination, filters, sorter) => {
-    console.log('params', pagination, filters, sorter);
-  };
-
-  return <Table pagination={false} columns={columns} dataSource={data} onChange={onChange} />;
+  return <Table pagination={false} columns={columns} dataSource={data} />;
 };
 
 export default FilterAndSorting;

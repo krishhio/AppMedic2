@@ -8,4 +8,8 @@ $_color: (
 
 .ant-rate {
   color: map-get($_color, active);
+
+  &.ant-rate-disabled .ant-rate-star {
+    pointer-events: none;
+  }
 }

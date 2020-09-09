@@ -18,7 +18,7 @@ import { usePageData } from '../../../hooks/usePage';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'recharts',
+  title: 'Recharts',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -30,7 +30,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'recharts'
+      title: 'Recharts'
     }
   ]
 };

@@ -10,7 +10,6 @@ import { IPageData } from '../../interfaces/page';
 import { IInvoice, IInvoiceRecord } from '../../interfaces/invoice';
 
 const pageData: IPageData = {
-  title: 'Invoice',
   fulFilled: false,
   breadcrumbs: [
     {
@@ -22,7 +21,11 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Invoices'
+      title: 'Invoices',
+      route: 'invoices'
+    },
+    {
+      title: 'Invoice'
     }
   ]
 };
@@ -106,22 +109,7 @@ const InvoiceTable = ({ records = [] }) => {
       title: 'GROUP NAME',
       dataIndex: 'groupName',
       key: 'group',
-      render: (name) =>
-        name !== 'total' ? (
-          name
-        ) : (
-          <div className='d-flex flex-column'>
-            <div className='mb-2'>
-              <span className='w-50 mr-4'>Subtotal</span>
-              <span>${invoiceTotal}</span>
-            </div>
-
-            <div>
-              <span className='w-50 mr-4'>Vat</span>
-              <span>${vat}</span>
-            </div>
-          </div>
-        )
+      render: (name) => (name !== 'total' ? name : null)
     },
     {
       title: 'QUANTITY',
@@ -132,7 +120,7 @@ const InvoiceTable = ({ records = [] }) => {
       title: 'COST',
       dataIndex: 'cost',
       key: 'cost',
-      render: (cost) => (cost !== 'total' ? '$' + cost : 'Total')
+      render: (cost) => (cost !== 'total' ? '$' + cost : null)
     },
     {
       title: 'Total',
@@ -142,7 +130,14 @@ const InvoiceTable = ({ records = [] }) => {
     }
   ];
 
-  return <Table rowKey='num' pagination={{ hideOnSinglePage: true }} columns={columns} dataSource={records} />;
+  return (
+    <Table
+      rowKey='num'
+      pagination={{ hideOnSinglePage: true }}
+      columns={columns}
+      dataSource={records}
+    />
+  );
 };
 
 const InvoicePage = () => {

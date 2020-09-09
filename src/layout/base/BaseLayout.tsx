@@ -70,7 +70,7 @@ const BaseLayout = ({
   const mainContentClasses = className({
     'main-content': true,
     loaded: pageData.loaded,
-    'fulfilled': pageData.fulFilled
+    fulfilled: pageData.fulFilled
   });
 
   const mainContentWrapClasses = className({
@@ -89,16 +89,14 @@ const BaseLayout = ({
         {sideNav}
 
         <main onScroll={handleScroll} className={mainContentClasses}>
-          <div className='page-loader'>
+          <div className='app-loader'>
             <i className='icofont-spinner-alt-4 rotate' />
           </div>
 
           <div className={mainContentWrapClasses}>
             {pageData && !!pageData.title && (
               <header className='page-header'>
-                <div className='left'>
-                  <h1 className='page-title'>{pageData.title}</h1>
-                </div>
+                <h1 className='page-title'>{pageData.title}</h1>
               </header>
             )}
             {children}

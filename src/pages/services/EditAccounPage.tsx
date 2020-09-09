@@ -32,8 +32,12 @@ const pageData: IPageData = {
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-const UserAvatar = ({ src }) => {
-  return <ImageLoader src={src} size={100} />;
+const UserAvatar = ({ src, className = null }) => {
+  return (
+    <div className={`avatar-wrapper ${className}`}>
+      <ImageLoader src={src} size={100} />
+    </div>
+  );
 };
 
 const AccountForm = ({ user }) => {
@@ -132,8 +136,8 @@ const AccountForm = ({ user }) => {
       </FormItem>
 
       <div className='elem-list justify-content-between'>
-        <Button type='primary' disabled={!hasChanged} onClick={() => handleSubmit()}>
-          Save changes
+        <Button disabled={!hasChanged} className='bg-color-success' onClick={() => handleSubmit()}>
+          <span className='text-color-500'>Save changes</span>
         </Button>
 
         <Button ghost danger className='ml-auto'>
@@ -196,7 +200,7 @@ const EditAccountPage = () => {
   usePageData(pageData);
   return (
     <div className='stack' style={{ maxWidth: 690, margin: '0 auto' }}>
-      <UserAvatar src={user.img} />
+      <UserAvatar className='mt-0' src={user.img} />
       <AccountForm user={user} />
 
       <Divider />

@@ -2,9 +2,12 @@ import React from 'react';
 
 import { Button, Select, Input } from 'antd';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
+import ImageLoader from './ImageLoader';
 
 import { IPatient } from '../../../interfaces/patient';
-import ImageLoader from './ImageLoader';
+import { hasErrorFactory } from '../../../utils/hasError';
 
 type Props = {
   onSubmit: (patient: IPatient) => void;
@@ -13,32 +16,73 @@ type Props = {
   submitText?: string;
 };
 
-const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
-  const { handleSubmit, handleChange, values, setFieldValue } = useFormik<IPatient>({
-    initialValues: patient || {
-      name: '',
-      address: '',
-      age: null,
-      number: '',
-      gender: '',
-      img: ''
-    },
-    onSubmit: onSubmit
+const defaultSubmitText = 'Add patient';
+const emptyPatient = {
+  name: null,
+  address: null,
+  status: null,
+  age: null,
+  number: null,
+  gender: null,
+  img: null
+};
+
+const patientScheme = Yup.object({
+  name: Yup.string().required(),
+  address: Yup.string().required(),
+  status: Yup.string().required(),
+  age: Yup.string().required(),
+  number: Yup.string().required(),
+  gender: Yup.string().required(),
+  img: Yup.string().required()
+});
+
+const PatientForm = ({
+  submitText = defaultSubmitText,
+  patient = emptyPatient,
+  onSubmit,
+  onCancel
+}: Props) => {
+  const {
+    setFieldTouched,
+    setFieldValue,
+    handleChange,
+    handleSubmit,
+    setValues,
+    handleBlur,
+    resetForm,
+    touched,
+    values,
+    errors,
+    isValid
+  } = useFormik<IPatient>({
+    validationSchema: patientScheme,
+    initialValues: patient,
+    onSubmit: (values) => {
+      onSubmit(values);
+      onCancel();
+    }
   });
 
   const handleGenderSelect = (value) => setFieldValue('gender', value);
   const handleStatusSelect = (value) => setFieldValue('status', value);
 
-  const handleAddPatient = () => {
-    onSubmit(values);
+  const hasError = hasErrorFactory(touched, errors);
+
+  const handleCancel = () => {
+    resetForm();
     onCancel();
+  };
+
+  const handleImageLoad = (img) => {
+    setValues({ ...values, img });
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
-          <ImageLoader src={`${window.location.origin}/${values.img}`} />
+          <ImageLoader onLoad={handleImageLoad} src={values.img as string} />
         </div>
 
         <div className='form-group'>
@@ -46,8 +90,10 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
             placeholder='Name'
             name='name'
             type='text'
-            defaultValue={values.name}
+            onBlur={handleBlur}
             onChange={handleChange}
+            defaultValue={values.name}
+            className={hasError('name')}
           />
         </div>
 
@@ -56,8 +102,10 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
             placeholder='Phone'
             name='number'
             type='phone'
-            defaultValue={values.number}
+            onBlur={handleBlur}
             onChange={handleChange}
+            defaultValue={values.number}
+            className={hasError('number')}
           />
         </div>
 
@@ -65,18 +113,26 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
           <div className='col-sm-6 col-12'>
             <div className='form-group'>
               <Input
-                placeholder='Age'
                 name='age'
                 type='number'
-                defaultValue={values.age}
+                placeholder='Age'
+                onBlur={handleBlur}
                 onChange={handleChange}
+                defaultValue={values.age}
+                className={hasError('age')}
               />
             </div>
           </div>
 
           <div className='col-sm-6 col-12'>
             <div className='form-group'>
-              <Select defaultValue={values.gender} onChange={handleGenderSelect}>
+              <Select
+                placeholder='Gender'
+                defaultValue={values.gender}
+                onChange={handleGenderSelect}
+                className={hasError('gender')}
+                onBlur={() => setFieldTouched('gender')}
+              >
                 <Select.Option value='Male'>Male</Select.Option>
                 <Select.Option value='Female'>Female</Select.Option>
               </Select>
@@ -84,34 +140,40 @@ const PatientForm = ({ onSubmit, onCancel, patient, submitText }: Props) => {
           </div>
         </div>
 
-        {patient && (
-          <div className='form-group'>
-            <Select defaultValue={values.status} onChange={handleStatusSelect}>
-              <Select.Option value='Male'>Approved</Select.Option>
-              <Select.Option value='Female'>Pending</Select.Option>
-            </Select>
-          </div>
-        )}
+        <div className='form-group'>
+          <Select
+            placeholder='Status'
+            defaultValue={values.status}
+            onChange={handleStatusSelect}
+            className={hasError('status')}
+            onBlur={() => setFieldTouched('status')}
+          >
+            <Select.Option value='Approved'>Approved</Select.Option>
+            <Select.Option value='Pending'>Pending</Select.Option>
+          </Select>
+        </div>
 
         <div className='form-group'>
           <Input
             name='address'
             placeholder='Address'
+            onBlur={handleBlur}
             onChange={handleChange}
             defaultValue={values.address}
+            className={hasError('address')}
           />
         </div>
+
+        <div className='d-flex justify-content-between buttons-list settings-actions'>
+          <Button danger onClick={handleCancel}>
+            Cancel
+          </Button>
+
+          <Button disabled={!isValid} type='primary' htmlType='submit'>
+            {submitText}
+          </Button>
+        </div>
       </form>
-
-      <div className='d-flex justify-content-between buttons-list settings-actions'>
-        <Button danger onClick={onCancel}>
-          Cancel
-        </Button>
-
-        <Button onClick={handleAddPatient} type='primary' htmlType='submit'>
-          {submitText || 'Add patient'}
-        </Button>
-      </div>
     </>
   );
 };

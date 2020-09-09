@@ -6,7 +6,6 @@ import { usePageData, useFetchPageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'Vector map',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -33,7 +32,7 @@ const PageVectorMaps = () => {
   console.log(world);
   return (
     <>
-      <div className='full-height-page'>
+      <div className='full-height-page p-4'>
         <VectorMap style={{ maxHeight: '100%' }} {...world} />
       </div>
     </>

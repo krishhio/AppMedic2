@@ -3,25 +3,28 @@ import { IPatient } from '../../interfaces/patient';
 
 const initialState: IPatient[] = [];
 
-// Reducer function
-export function patientsReducer(state: IPatient[] = initialState, action: PatientsActions): IPatient[] {
+export function patientsReducer(
+  state: IPatient[] = initialState,
+  action: PatientsActions
+): IPatient[] {
   switch (action.type) {
     case SET_PATIENTS: {
       return [...action.payload];
     }
 
     case EDIT_PATIENT: {
-      const editedPatients = state.map(el => (el.id !== action.payload.id ? el : action.payload));
+      const editedPatients = state.map((el) => (el.id !== action.payload.id ? el : action.payload));
 
       return [...editedPatients];
     }
 
     case ADD_PATIENT: {
-      return [...state, action.payload];
+      const id = getNewId(state);
+      return [...state, { ...action.payload, id }];
     }
 
     case DELETE_PATIENT: {
-      const patients = state.filter(el => el.id !== action.id);
+      const patients = state.filter((el) => el.id !== action.id);
       return [...patients];
     }
 
@@ -29,4 +32,12 @@ export function patientsReducer(state: IPatient[] = initialState, action: Patien
       return state;
     }
   }
+}
+
+function getNewId(patients: IPatient[]) {
+  return patients
+    .map((patient) => patient.id)
+    .map((id) => parseInt(id))
+    .reduce((largest, id) => Math.max(largest, id + 1), -1)
+    .toString();
 }

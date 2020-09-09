@@ -1,0 +1,13 @@
+@import '../variables';
+
+.ant-form-item {
+  margin-bottom: $module-rem * 2;
+
+  &.ant-form-item-with-help {
+    margin: 0;
+  }
+
+  .ant-form-item-explain {
+    min-height: $module-rem * 2 !important;
+  }
+}

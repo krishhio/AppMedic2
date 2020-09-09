@@ -19,7 +19,7 @@ export const OurTimeline = () => {
       <Timeline className='ml-4'>
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-indigo rounded-full'>
+            <div className='timeline-head bg-color-indigo'>
               <UserOutlined className='text-contrast-500' />
             </div>
           }
@@ -35,7 +35,7 @@ export const OurTimeline = () => {
 
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-pink rounded-full'>
+            <div className='timeline-head bg-color-pink'>
               <ExperimentOutlined className='text-contrast-500' />
             </div>
           }
@@ -52,7 +52,7 @@ export const OurTimeline = () => {
 
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-green rounded-full'>
+            <div className='timeline-head bg-color-green'>
               <AlertOutlined className='text-contrast-500' />
             </div>
           }
@@ -68,7 +68,7 @@ export const OurTimeline = () => {
 
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-blue rounded-full'>
+            <div className='timeline-head bg-color-blue'>
               <MedicineBoxOutlined className='text-contrast-500' />
             </div>
           }
@@ -90,7 +90,7 @@ export const OurTimeline = () => {
       <Timeline className='ml-4'>
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-yellow rounded-full'>
+            <div className='timeline-head bg-color-yellow'>
               <UserAddOutlined className='text-contrast-500' />
             </div>
           }
@@ -104,7 +104,7 @@ export const OurTimeline = () => {
 
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-teal rounded-full'>
+            <div className='timeline-head bg-color-teal'>
               <MonitorOutlined className='text-contrast-500' />
             </div>
           }
@@ -121,7 +121,7 @@ export const OurTimeline = () => {
 
         <Timeline.Item
           dot={
-            <div className='p-2 bg-color-orange rounded-full'>
+            <div className='timeline-head bg-color-orange'>
               <UsergroupAddOutlined className='text-contrast-500' />
             </div>
           }

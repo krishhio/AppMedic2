@@ -12,7 +12,6 @@ const centerCoord = {
 };
 
 const pageData: IPageData = {
-  title: 'Google map',
   fulFilled: true,
   breadcrumbs: [
     {

@@ -21,13 +21,14 @@ const columns: ColumnProps<IBilling>[] = [
   },
   {
     key: 'doctor',
-    title: 'doctor',
+    title: 'Doctor',
     sorter: (a, b) => a.doctor.localeCompare(b.doctor),
     render: ({ doctor }) => <span className='text-left'>{doctor}</span>
   },
   {
     key: 'billDate',
-    title: 'Patient',
+    title: 'Date',
+    className: 'nowrap',
     sorter: (a, b) => a.billDate.localeCompare(b.billDate),
     render: ({ billDate }) => <span className='text-align-left text-color-200'>{billDate}</span>
   },

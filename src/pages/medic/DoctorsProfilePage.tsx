@@ -34,7 +34,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'doctors',
+      title: 'Doctors',
       route: 'default-dashboard'
     },
     {
@@ -50,7 +50,7 @@ type DoctorFormProps = { doctor: Partial<IUser> };
 
 const DoctorForm = ({ doctor }: DoctorFormProps) => {
   const { values } = useFormik({
-    onSubmit: (values) => console.log(values),
+    onSubmit: () => null,
     initialValues: { ...doctor }
   });
 

@@ -1,5 +1,5 @@
 export const DEFAULT_SETTINGS = {
-  boxed: true,// boolean
+  boxed: true,
   loaded: false,
   layout: 'vertical',// horizontal | vertical
   sidebarBg: '#FBFBFB',// string
