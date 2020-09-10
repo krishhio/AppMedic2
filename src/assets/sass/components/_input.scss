@@ -260,8 +260,9 @@ html {
   }
 
   textarea.ant-input {
-    padding: $_area-padding-v $_area-padding-h;
+    @include textarea-padding;
   }
+
   .ant-cascader-picker-clear {
     border-radius: 50%;
   }

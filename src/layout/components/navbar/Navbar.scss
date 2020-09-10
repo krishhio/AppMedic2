@@ -11,7 +11,7 @@
   transition: box-shadow 0.2s $animation;
   will-change: box-shadow;
   width: 100%;
-  z-index: 9997;
+  z-index: 997;
 
   .navbar-wrap {
     align-items: center;
@@ -134,7 +134,7 @@
     width: $vertical-navbar-width;
     will-change: transform, width;
     -webkit-overflow-scrolling: touch;
-    z-index: 9998;
+    z-index: 998;
 
     @media #{$max991} {
       transform: translateX(-$vertical-navbar-width);

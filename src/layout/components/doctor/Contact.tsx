@@ -12,10 +12,10 @@ type OwnProps = {
 
 type Props = IUser & OwnProps;
 
-const Contact = ({ address, img, name, role, social, profileLink, className }: Props) => {
+const Contact = ({ address, img, name, role, social, className }: Props) => {
   const handleGoToProfile = () => {
     const layout = history.location.pathname.split('/')[1];
-    history.push(`/${layout}/${profileLink}`);
+    history.push(`/${layout}/doctor-profile`);
   };
 
   return (

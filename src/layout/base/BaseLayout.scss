@@ -74,6 +74,7 @@
       top: 0;
       visibility: hidden;
       width: 100%;
+      z-index: 990;
 
       &.show {
         @media #{$max991} {
