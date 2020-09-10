@@ -16,7 +16,7 @@ import { usePageData } from '../../../hooks/usePage';
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {
-  title: 'Chart js',
+  title: 'ChartJs',
   fulFilled: true,
   breadcrumbs: [
     {

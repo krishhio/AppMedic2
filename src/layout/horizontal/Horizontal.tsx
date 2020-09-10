@@ -12,10 +12,10 @@ import Search from '../components/search/Search';
 import LogoSvg from './../../assets/img/logo.svg';
 
 import Actions from '../components/actions/Actions';
+import { useSearchData } from '../../hooks/useSearchData';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../redux/settings/actions';
 
-import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 import { IAppState } from '../../interfaces/app-state';
 
 import './Horizontal.scss';
@@ -25,9 +25,10 @@ type Props = {
 };
 
 const HorizontalLayout = ({ children }: Props) => {
-  const settings = useSelector((state: IAppState) => state.settings);
   const dispatch = useDispatch();
 
+  const settings = useSelector((state: IAppState) => state.settings);
+  const searchData = useSearchData();
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
@@ -37,45 +38,6 @@ const HorizontalLayout = ({ children }: Props) => {
     }
 
     fetchMenuData().catch((err) => console.log('Server Error', err));
-  }, []);
-
-  const [searchData, setSearchData] = useState([]);
-
-  useEffect(() => {
-    async function fetchSearchData() {
-      const result = await axios('/data/menu.json');
-      const data = result.data;
-
-      const hasRouting = (item: IMenuItem) => !!item.routing;
-      const hasSub = (item: IMenuItem) => !!item.sub;
-
-      const getOption = (item: IMenuItem | IMenuItemSub) => ({
-        text: item.title,
-        value: item.routing
-      });
-
-      const setSubTitle = (itemTitle: string) => (subItem: IMenuItemSub) => ({
-        ...subItem,
-        title: `${itemTitle} > ${subItem.title}`
-      });
-
-      const menuItems = data.filter(hasRouting);
-
-      const menuItemsWithSub = data
-        .filter(hasSub)
-        .map((item: IMenuItem) => ({
-          ...item,
-          sub: item.sub.map(setSubTitle(item.title))
-        }))
-        .map((item: IMenuItem) => item.sub)
-        .flat();
-
-      const searchOptions = [...menuItems, ...menuItemsWithSub].map(getOption);
-
-      setSearchData(searchOptions || []);
-    }
-
-    fetchSearchData().catch((err) => console.log('Server Error', err));
   }, []);
 
   const onSidebarToggle = () => dispatch(toggleSidebar());

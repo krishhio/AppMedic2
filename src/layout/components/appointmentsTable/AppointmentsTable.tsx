@@ -6,12 +6,14 @@ import { ColumnProps } from 'antd/es/table';
 import { IAppointment } from '../../../interfaces/patient';
 
 const AppointmentImg = ({ img }) => {
-  return (
-    <Avatar
-      size={40}
-      src={img.startsWith('data:image') ? img : `${window.location.origin}/${img}`}
-    />
-  );
+  const isData = img.startsWith('data:image');
+  const isWithPath = img.startsWith('http');
+
+  if (isData || isWithPath) {
+    return <Avatar size={40} src={img} />;
+  }
+
+  return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
 };
 
 const columns: ColumnProps<IAppointment>[] = [

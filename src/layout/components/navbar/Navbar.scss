@@ -1,6 +1,5 @@
 @import '../../../assets/sass/variables';
 
-
 .navbar {
   $_bg: #fff;
   $_color: $main-color;
@@ -12,6 +11,7 @@
   transition: box-shadow 0.2s $animation;
   will-change: box-shadow;
   width: 100%;
+  z-index: 9997;
 
   .navbar-wrap {
     align-items: center;
@@ -134,7 +134,8 @@
     width: $vertical-navbar-width;
     will-change: transform, width;
     -webkit-overflow-scrolling: touch;
-    z-index: 997;
+    z-index: 9998;
+
     @media #{$max991} {
       transform: translateX(-$vertical-navbar-width);
     }

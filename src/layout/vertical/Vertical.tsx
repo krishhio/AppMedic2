@@ -17,10 +17,10 @@ import AddPatient from '../components/patients/AddPatient';
 import Actions from '../components/actions/Actions';
 import { toggleSidebar } from '../../redux/settings/actions';
 
+import { useSearchData } from '../../hooks/useSearchData';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { IAppState } from '../../interfaces/app-state';
-import { IMenuItem, IMenuItemSub } from '../../interfaces/main-menu';
 
 import './Vertical.scss';
 
@@ -34,6 +34,8 @@ const VerticalLayout = ({ children }: Props) => {
   const settings = useSelector((state: IAppState) => state.settings);
   const pageData = useSelector((state: IAppState) => state.pageData);
 
+  const searchData = useSearchData();
+
   const onSidebarToggle = () => dispatch(toggleSidebar());
 
   const [menuData, setMenuData] = useState([]);
@@ -45,45 +47,6 @@ const VerticalLayout = ({ children }: Props) => {
     }
 
     fetchMenuData().catch((err) => console.log('Server Error', err));
-  }, []);
-
-  const [searchData, setSearchData] = useState([]);
-
-  useEffect(() => {
-    async function fetchSearchData() {
-      const result = await axios('/data/menu.json');
-      const data = result.data;
-
-      const hasRouting = (item: IMenuItem) => !!item.routing;
-      const hasSub = (item: IMenuItem) => !!item.sub;
-
-      const getOption = (item: IMenuItem | IMenuItemSub) => ({
-        text: item.title,
-        value: item.routing
-      });
-
-      const setSubTitle = (itemTitle: string) => (subItem: IMenuItemSub) => ({
-        ...subItem,
-        title: `${itemTitle} > ${subItem.title}`
-      });
-
-      const menuItems = data.filter(hasRouting);
-
-      const menuItemsWithSub = data
-        .filter(hasSub)
-        .map((item: IMenuItem) => ({
-          ...item,
-          sub: item.sub.map(setSubTitle(item.title))
-        }))
-        .map((item: IMenuItem) => item.sub)
-        .flat();
-
-      const searchOptions = [...menuItems, ...menuItemsWithSub].map(getOption);
-
-      setSearchData(searchOptions || []);
-    }
-
-    fetchSearchData().catch((err) => console.log('Server Error', err));
   }, []);
 
   const nav = (

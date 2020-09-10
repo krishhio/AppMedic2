@@ -11,6 +11,8 @@ import { hasErrorFactory } from '../../../utils/hasError';
 import { useFetch } from '../../../hooks/useFetch';
 import { IUser } from '../../../interfaces/user';
 
+const { TextArea } = Input;
+
 type Props = {
   onSubmit: (doctor: IUser) => void;
   onCancel: () => void;
@@ -58,7 +60,6 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
     setValues,
     isValid,
     errors,
-    resetForm,
     touched
   } = useFormik({
     initialValues,
@@ -83,7 +84,6 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
   };
 
   const handleCancel = () => {
-    resetForm();
     onCancel();
   };
 
@@ -133,16 +133,11 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
               <AutoComplete
                 filterOption
                 options={roles}
-                defaultValue={values.role}
+                placeholder='Speciality'
+                onSelect={handleRoleSelect}
+                onBlur={handleBlur}
                 className={hasError('role')}
-              >
-                <Input
-                  name='role'
-                  onChange={handleRoleSelect}
-                  onBlur={handleBlur}
-                  placeholder='Speciality'
-                />
-              </AutoComplete>
+              />
             </div>
           </div>
 
@@ -162,16 +157,15 @@ const DoctorForm = ({ onSubmit, onCancel }: Props) => {
           </div>
         </div>
 
-        <div className='form-group'>
-          <Input
-            name='address'
-            placeholder='Address'
-            onBlur={handleBlur}
-            onChange={handleChange}
-            defaultValue={values.address}
-            className={hasError('address')}
-          />
-        </div>
+        <TextArea
+          rows={3}
+          name='address'
+          placeholder='Address'
+          onBlur={handleBlur}
+          onChange={handleChange}
+          defaultValue={values.address}
+          className={hasError('address')}
+        />
 
         <Divider />
 

@@ -52,7 +52,7 @@ const AppointmentsPage = () => {
   const openAddingModal = () => setAddingModalVisibility(true);
 
   const addAppointment = (appointment: IAppointment) => {
-    setAppointments([...appointments, appointment]);
+    setAppointments([appointment, ...appointments]);
     setAddingModalVisibility(false);
   };
 

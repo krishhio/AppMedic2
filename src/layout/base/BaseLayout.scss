@@ -46,8 +46,9 @@
 
           .page-title {
             color: rgba(main-palette(500), 0.5);
-            font-size: 2rem;
             margin: 0 0 ($module-rem * 2);
+            font-size: 2rem;
+            width: 100%;
           }
 
           .page-breadcrumbs {

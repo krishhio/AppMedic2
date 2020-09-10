@@ -8,8 +8,7 @@ import posed from 'react-pose';
 
 import className from '../../../utils/class-names';
 
-const isHorizontal = (layout: string) =>
-  window.innerWidth >= 992 && layout === 'horizontal';
+const isHorizontal = (layout: string) => window.innerWidth >= 992 && layout === 'horizontal';
 
 type Props = {
   sub: IMenuItemSub[];
@@ -26,14 +25,7 @@ const Sub = posed.div({
   transition: { ease: 'ease-in-out', duration: 200 }
 });
 
-const ItemWithSub = ({
-  location,
-  title,
-  layout,
-  sub,
-  opened,
-  onClick
-}: Props) => {
+const ItemWithSub = ({ location, title, layout, sub, opened, onClick }: Props) => {
   const subItemClass = (routing: string) =>
     className({
       'menu-item': true,
@@ -58,10 +50,7 @@ const ItemWithSub = ({
   };
 
   return (
-    <li
-      className={`menu-item has-sub ${opened ? 'active' : ''}`}
-      onClick={handleOnClick}
-    >
+    <li className={`menu-item has-sub ${opened ? 'active' : ''}`} onClick={handleOnClick}>
       <span className='item-link'>
         <span className='link-text'>{title}</span>
 
@@ -69,15 +58,11 @@ const ItemWithSub = ({
       </span>
 
       {isHorizontal(layout) ? (
-        <ul className='sub' onClick={e => e.stopPropagation()}>
+        <ul className='sub' onClick={(e) => e.stopPropagation()}>
           {itemSub}
         </ul>
       ) : (
-        <Sub
-          style={{ transform: 'translateY(5px)' }}
-          onClick={e => e.stopPropagation()}
-          pose={opened ? 'open' : 'closed'}
-        >
+        <Sub onClick={(e) => e.stopPropagation()} pose={opened ? 'open' : 'closed'}>
           <ul className='sub'>{itemSub}</ul>
         </Sub>
       )}

@@ -35,7 +35,7 @@ const DoctorsPage = () => {
   const openModal = () => setAddingDoctor(true);
   const closeModal = () => setAddingDoctor(false);
 
-  const addDoctor = (doctor: IUser) => setDoctors([...doctors, doctor]);
+  const addDoctor = (doctor: IUser) => setDoctors([doctor, ...doctors]);
 
   const getClass = (index: number, length: number) =>
     className({
@@ -57,6 +57,7 @@ const DoctorsPage = () => {
         visible={addingDoctor}
         onCancel={closeModal}
         title={<h3 className='title'>Add doctor</h3>}
+        destroyOnClose
         footer={null}
       >
         <DoctorForm onSubmit={addDoctor} onCancel={closeModal} />

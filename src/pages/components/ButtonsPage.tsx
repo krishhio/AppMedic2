@@ -16,11 +16,11 @@ const pageDate: IPageData = {
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'UI Kit',
       route: 'default-dashboard'
     },
     {
-      title: 'UI Kit ',
+      title: 'Components',
       route: 'default-dashboard'
     },
     {

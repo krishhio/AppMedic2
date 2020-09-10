@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Button, Input } from 'antd';
 
@@ -32,7 +32,6 @@ const emptyAppointment = {
 };
 
 const appointmentSchema = Yup.object().shape({
-  img: Yup.string().required(),
   date: Yup.string().required(),
   doctor: Yup.string().required(),
   email: Yup.string().required(),
@@ -63,19 +62,19 @@ const AppointmentForm = ({
     validationSchema: appointmentSchema,
     initialValues: appointment,
     onSubmit: (form) => {
-      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}` });
+      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}`, img });
       resetForm();
     }
   });
-
   const [from, to] = values.fromTo.split('-');
+  const [img, setImg] = useState(values.img);
 
   useEffect(() => {
     setValues({ ...values, from, to });
   }, [appointment]);
 
-  const handleImageLoad = (img) => {
-    setValues({ ...values, img });
+  const handleImageLoad = (image) => {
+    setImg(image);
   };
 
   const handleCancel = () => {
@@ -89,7 +88,7 @@ const AppointmentForm = ({
     <>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
-          <ImageLoader onLoad={handleImageLoad} src={values.img} />
+          <ImageLoader onLoad={handleImageLoad} src={img} />
         </div>
 
         <div className='form-group'>
@@ -141,9 +140,9 @@ const AppointmentForm = ({
           <div className='col-sm-12 col-md-6'>
             <div className='form-group'>
               <Input
-                defaultValue={from}
-                placeholder='From'
                 name='from'
+                placeholder='From'
+                defaultValue={from}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className={hasError('from')}
@@ -167,12 +166,12 @@ const AppointmentForm = ({
 
         <div className='form-group'>
           <Input
-            name='number'
             type='phone'
+            name='number'
+            onBlur={handleBlur}
             placeholder='Number'
             onChange={handleChange}
             defaultValue={values.number}
-            onBlur={handleBlur}
             className={hasError('number')}
           />
         </div>

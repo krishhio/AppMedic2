@@ -18,6 +18,10 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
 }
 
 .ant-table-wrapper {
+  .ant-pagination:last-child {
+    margin-bottom: 0;
+  }
+
   .ant-table-container {
     border-radius: 0;
   }
@@ -32,6 +36,10 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
 
     tr {
       transition: box-shadow 0.2s ease-in-out;
+
+      th {
+        white-space: nowrap;
+      }
 
       th,
       td {
@@ -92,6 +100,10 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
 
       > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
         background: accent-palette(300);
+      }
+
+      .ant-table-column-sorter-full {
+        margin-top: 0 !important;
       }
 
       .ant-table-column-sorters {

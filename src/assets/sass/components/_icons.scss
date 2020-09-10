@@ -12,13 +12,16 @@ $_icon-color: accent-palette(500);
 
   justify-content: center;
   height: 95px;
-  width: 140px;
+  width: 120px;
 
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   .selector {
     margin-top: $module-rem * 2;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    overflow: hidden;
   }
 
   &.simple {
@@ -45,7 +48,7 @@ $_icon-color: accent-palette(500);
     }
 
     .anticon {
-      transform: scale(1.5);
+      transform: scale(1.6);
     }
   }
 }

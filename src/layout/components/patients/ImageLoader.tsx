@@ -18,6 +18,7 @@ const ImageLoader = ({ src, size = 40, onLoad = () => null }: Props) => {
     if (!src) {
       onLoad(img);
     }
+
     return () => {
       setImg(null);
     };
@@ -31,9 +32,8 @@ const ImageLoader = ({ src, size = 40, onLoad = () => null }: Props) => {
 
     reader.onloadend = () => {
       const result = reader.result as string;
-      if (onLoad) {
-        onLoad(result);
-      }
+
+      onLoad(result);
       setImg(result);
     };
 
