@@ -20,7 +20,7 @@ export function patientsReducer(
 
     case ADD_PATIENT: {
       const id = getNewId(state);
-      return [...state, { ...action.payload, id }];
+      return [{ ...action.payload, id }, ...state];
     }
 
     case DELETE_PATIENT: {

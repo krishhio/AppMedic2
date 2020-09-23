@@ -173,10 +173,9 @@ const PatientProfilePage = () => {
       <>
         <div className='row mb-4'>
           <div className='col-md-6 col-sm-12'>
-            <div className='header'>
-              <Card title={<h6 className='my-0'>Photo</h6>}>
-                <ImageLoader src={patient.profileImg as string} size={100} />
-              </Card>
+            <div className='header mb-3'>
+              <h6 className='mt-0 mb-3'>Photo</h6>
+              <ImageLoader src={patient.profileImg as string} size={100} />
             </div>
 
             <div className='info stack'>

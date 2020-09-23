@@ -1,67 +1,46 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Modal } from 'antd';
 
-import { IPageData } from '../../interfaces/page';
-import { IAppSettings } from '../../interfaces/settings';
+import Footer from '../components/footer/Footer';
+import SettingsForm from '../components/settings/SettingsForm';
 
-import { toggleSidebar, updateSettings, resetSettings } from '../../redux/settings/actions';
+import { updateSettings, resetSettings } from '../../redux/settings/actions';
 import { fetchPatients } from '../../redux/patients/actions';
 
 import className from '../../utils/class-names';
 
-import { IPatient } from '../../interfaces/patient';
+import { IAppSettings } from '../../interfaces/settings';
+import { IAppState } from '../../interfaces/app-state';
+import { IPageData } from '../../interfaces/page';
 
 import './BaseLayout.scss';
-import Footer from '../components/footer/Footer';
-import SettingsForm from '../components/settings/SettingsForm';
 
 const patientsUrl = '/data/patients.json';
 
-type StateProps = {
-  pageData: IPageData;
-  patients: IPatient[];
-  settings: IAppSettings;
-};
-
-type DispatchProps = {
-  onSidebarToggle: () => void;
-  onUpdateSettings: (settings: IAppSettings) => void;
-  onResetSettings: () => void;
-  onFetchPatients: (url) => void;
-};
-
-type OwnProps = {
-  nav: ReactElement<any>;
-  sideNav?: ReactElement<any>;
-  topNav?: ReactElement<any>;
+type Props = {
+  nav: ReactNode;
+  sideNav?: ReactNode;
+  topNav?: ReactNode;
+  children: ReactNode;
   orientation: 'vertical' | 'horizontal';
-  children: ReactElement;
 };
 
-type Props = OwnProps & DispatchProps & StateProps;
-
-const BaseLayout = ({
-  nav,
-  topNav,
-  sideNav,
-  settings,
-  pageData,
-  orientation,
-  children,
-  onUpdateSettings,
-  onResetSettings,
-  onFetchPatients
-}: Props) => {
+const BaseLayout = ({ nav, topNav, sideNav, orientation, children }: Props) => {
   const [showSettings, setShowSettings] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const dispatch = useDispatch();
+
+  const sidebarOpened = useSelector<IAppState, boolean>((state) => state.settings.sidebarOpened);
+  const settings = useSelector<IAppState, IAppSettings>((state) => state.settings);
+  const pageData = useSelector<IAppState, IPageData>((state) => state.pageData);
+
   useEffect(() => {
-    onFetchPatients(patientsUrl);
-  }, [onFetchPatients]);
+    dispatch(fetchPatients(patientsUrl));
+  }, [patientsUrl]);
 
   const handleScroll = (event) => {
     setScrolled(event.target.scrollTop > 0);
@@ -77,7 +56,18 @@ const BaseLayout = ({
     'main-content-wrap': true
   });
 
+  const onUpdateSettings = (settings) => dispatch(updateSettings(settings));
   const toggleSettings = () => setShowSettings(!showSettings);
+  const onResetSettings = () => dispatch(resetSettings());
+
+  const contentOverlay = (
+    <div
+      className={className({
+        'content-overlay': true,
+        show: sidebarOpened
+      })}
+    />
+  );
 
   return (
     <div className={`layout ${orientation}`}>
@@ -110,7 +100,7 @@ const BaseLayout = ({
           loaded={pageData.loaded}
           openModal={toggleSettings}
         />
-
+        {contentOverlay}
         <Modal
           visible={showSettings}
           onCancel={toggleSettings}
@@ -132,22 +122,4 @@ const BaseLayout = ({
   );
 };
 
-const mapStateToProps = ({ patients, pageData, settings }) => ({
-  settings,
-  pageData,
-  patients
-});
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => ({
-  onFetchPatients: (url: string) => dispatch(fetchPatients(url)),
-  onResetSettings: () => dispatch(resetSettings()),
-  onSidebarToggle: () => dispatch(toggleSidebar()),
-  onUpdateSettings: (settings) => dispatch(updateSettings(settings))
-});
-
-const ConnectedLayout: (props: OwnProps) => ReactElement = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BaseLayout);
-
-export default ConnectedLayout;
+export default BaseLayout;

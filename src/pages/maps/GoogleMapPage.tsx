@@ -23,7 +23,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Google Maps'
+      title: 'Google maps'
     }
   ]
 };

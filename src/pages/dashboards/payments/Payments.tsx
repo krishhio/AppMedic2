@@ -41,22 +41,19 @@ const paymentScheme = Yup.object({
 });
 
 const PaymentForm = ({ onSubmit, onClose }) => {
-  const { handleSubmit, handleChange, isValid, errors, resetForm, touched, handleBlur } = useFormik<
-    any
-  >({
+  const { handleSubmit, handleChange, isValid, errors, touched, handleBlur } = useFormik<any>({
     initialValues: {},
     initialErrors: { empty: null },
     validationSchema: paymentScheme,
     onSubmit: (values) => {
       onSubmit(values);
-      resetForm();
+      onClose();
     }
   });
 
   const hasError = hasErrorFactory(touched, errors);
 
   const handleClose = () => {
-    resetForm();
     onClose();
   };
 
@@ -164,8 +161,7 @@ const Payments = () => {
   usePageData(pageData);
 
   const handleSubmit = (payment) => {
-    setBillings([...billings, payment]);
-    setVisibility(false);
+    setBillings([payment, ...billings]);
   };
 
   const handleClose = () => setVisibility(false);
@@ -179,6 +175,7 @@ const Payments = () => {
         title={<h5 className='m-0'>Add Payment</h5>}
         onCancel={handleClose}
         visible={visible}
+        destroyOnClose
         footer={null}
       >
         <PaymentForm onSubmit={handleSubmit} onClose={handleClose} />

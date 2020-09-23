@@ -20,7 +20,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'World Map'
+      title: 'World map'
     }
   ]
 };

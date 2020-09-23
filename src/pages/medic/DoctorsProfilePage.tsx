@@ -26,7 +26,7 @@ import { IPageData } from '../../interfaces/page';
 import { IUser } from '../../interfaces/user';
 
 const pageData: IPageData = {
-  title: 'doctor profile page',
+  title: 'Doctor profile page',
   fulFilled: true,
   breadcrumbs: [
     {

@@ -217,7 +217,7 @@ export const defaultRoutes: IRoute[] = [
     component: FormValidationPage
   },
   {
-    path: 'antd-icons',
+    path: 'ant-icons',
     component: AntdIconsPage
   },
   {

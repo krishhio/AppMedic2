@@ -17,7 +17,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Vector Maps'
+      title: 'Vector maps'
     }
   ]
 };

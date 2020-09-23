@@ -37,6 +37,7 @@ $_sub-separator: main-palette(300);
   max-width: 100%;
   padding: 0;
   width: inherit;
+  line-height: 20px;
 
   .main-menu-wrap {
     width: inherit;
@@ -55,8 +56,7 @@ $_sub-separator: main-palette(300);
           color: $_item-group-color;
           display: block;
           opacity: 0.3;
-          padding: ($module-rem * 3) ($_item-h-indents + ($module-rem / 2))
-            $module-rem;
+          padding: ($module-rem * 3) ($_item-h-indents + ($module-rem / 2)) $module-rem;
           text-transform: uppercase;
         }
         &:first-child {
@@ -129,7 +129,6 @@ $_sub-separator: main-palette(300);
           }
           > .item-link {
             color: $_item-active-color;
-
 
             .link-caret {
               transform: rotate(90deg);
@@ -206,8 +205,7 @@ $_sub-separator: main-palette(300);
               opacity: 0;
               padding: $module-rem 0;
               position: absolute;
-              transition: 0.2s opacity 0s $animation,
-                0s visibility 0.2s $animation;
+              transition: 0.2s opacity 0s $animation, 0s visibility 0.2s $animation;
               visibility: hidden !important;
               width: $module-rem * 25;
               z-index: 500;
@@ -229,8 +227,7 @@ $_sub-separator: main-palette(300);
             &:hover {
               > .sub {
                 opacity: 1;
-                transition: 0.2s opacity 0s $animation,
-                  0s visibility 0s $animation;
+                transition: 0.2s opacity 0s $animation, 0s visibility 0s $animation;
                 visibility: visible !important;
               }
             }

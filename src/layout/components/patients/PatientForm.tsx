@@ -5,10 +5,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import ImageLoader from './ImageLoader';
-
-import { IPatient } from '../../../interfaces/patient';
 import { hasErrorFactory } from '../../../utils/hasError';
 
+import { IPatient } from '../../../interfaces/patient';
+
+const { TextArea } = Input;
 type Props = {
   onSubmit: (patient: IPatient) => void;
   onCancel: () => void;
@@ -154,7 +155,8 @@ const PatientForm = ({
         </div>
 
         <div className='form-group'>
-          <Input
+          <TextArea
+            rows={3}
             name='address'
             placeholder='Address'
             onBlur={handleBlur}

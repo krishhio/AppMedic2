@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { AutoComplete, Input } from 'antd';
-
-import { SelectValue } from 'antd/es/select';
 import { history } from '../../../redux/store';
 
 import './Search.scss';
 
 type Props = {
-  data: { value: string }[];
+  data: { value: string; text: string }[];
   layout: 'vertical' | 'horizontal';
 };
 
 const Search = ({ data, layout = 'vertical' }: Props) => {
-  const handleSelect = (value: SelectValue) => {
-    const route = `/${layout}/${value}`;
+  const [text, setText] = useState('');
+
+  const handleSelect = (value: string, option) => {
+    const route = value.startsWith('/') ? value : `/${layout}/${value}`;
     history.push(route);
+    setText(option.label);
+  };
+
+  const handleChange = (value) => {
+    setText(value);
   };
 
   return (
-    <AutoComplete className='app-search' onSelect={handleSelect} options={data} filterOption>
+    <AutoComplete
+      value={text}
+      filterOption
+      options={data}
+      className='app-search'
+      onChange={handleChange}
+      onSelect={handleSelect}
+    >
       <Input placeholder='Type to search' suffix={<span className='icofont icofont-search' />} />
     </AutoComplete>
   );

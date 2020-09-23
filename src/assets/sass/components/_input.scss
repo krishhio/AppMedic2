@@ -61,6 +61,12 @@ $_padding-v-lg: $_module-rem * 1.5;
   }
 }
 
+@mixin input-height {
+  &:not(textarea) {
+    height: (4 * $module);
+  }
+}
+
 @mixin input-sm {
   border-radius: $_shape * 0.8 !important;
   font-size: $_fs-sm !important;
@@ -89,7 +95,8 @@ $_padding-v-lg: $_module-rem * 1.5;
 }
 
 @mixin textarea-padding {
-  @include input-padding;
+  padding: $module-rem $_padding-h !important;
+  padding: $module-rem calc(#{$_padding-h} - 0.2em) !important;
 }
 
 @mixin default-input {
@@ -98,8 +105,8 @@ $_padding-v-lg: $_module-rem * 1.5;
 
   &:hover {
     background: transparent !important;
-    border: none;
     box-shadow: none;
+    border: none;
   }
 }
 
@@ -117,13 +124,14 @@ $_padding-v-lg: $_module-rem * 1.5;
   border-radius: $_shape;
   display: flex;
   flex: 1;
-  height: (4 * $module);
   color: map_get($_color, default);
   line-height: $_lh;
   transition: background 0.2s $_animation, border 0.2s $_animation, box-shadow 0.2s $_animation,
     color 0.2s $_animation;
   will-change: background, border, box-shadow, color;
   width: 100%;
+
+  @include input-height;
 
   @include placeholder {
     color: $_placeholder-color !important;
@@ -193,6 +201,10 @@ $_padding-v-lg: $_module-rem * 1.5;
     @include input();
     @include input-padding();
 
+    &.ant-input-affix-wrapper-textarea-with-clear-btn {
+      height: unset !important;
+    }
+
     .ant-input-prefix {
       margin-right: -($module-rem * 3);
     }
@@ -213,7 +225,10 @@ html {
 
   .ant-input {
     @include input();
-    @include input-padding();
+
+    &:not(textarea) {
+      @include input-padding();
+    }
 
     .ant-input-prefix {
       margin-right: -($module-rem * 3);
@@ -224,8 +239,7 @@ html {
     }
   }
 
-  .ant-input-affix-wrapper,
-  .ant-input-affix-wrapper-textarea-with-clear-btn {
+  .ant-input-affix-wrapper {
     @include input-box;
 
     input.ant-input {
@@ -246,8 +260,9 @@ html {
   }
 
   textarea.ant-input {
-    padding: $_area-padding-v $_area-padding-h;
+    @include textarea-padding;
   }
+
   .ant-cascader-picker-clear {
     border-radius: 50%;
   }
@@ -260,7 +275,7 @@ html {
     padding-left: $module-rem * 4 !important;
   }
 
-  .ant-input-affix-wrapper .ant-input:first-child {
+  .ant-input-affix-wrapper .ant-input:not(textarea):first-child {
     padding-left: 2px !important;
   }
 

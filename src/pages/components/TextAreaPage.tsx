@@ -20,7 +20,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Text Areas'
+      title: 'Textareas'
     }
   ]
 };
