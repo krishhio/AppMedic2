@@ -148,36 +148,31 @@ const FormLayoutsPage = () => {
         <Form>
           <div className='row'>
             <div className='col-md-3 col-sm-12'>
-              <Form.Item>
-                <Input
-                  prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder='First name'
-                />
-              </Form.Item>
+              <Input
+                placeholder='First name'
+                className='mb-md-0 mb-4'
+                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+              />
             </div>
             <div className='col-md-3 col-sm-12'>
-              <Form.Item>
-                <Input
-                  prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder='Last name'
-                />
-              </Form.Item>
+              <Input
+                placeholder='Last name'
+                className='mb-md-0 mb-4'
+                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+              />
             </div>
             <div className='col-md-3 col-sm-12'>
-              <Form.Item>
-                <Input
-                  prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder='Password'
-                />
-              </Form.Item>
+              <Input
+                placeholder='Password'
+                className='mb-md-0 mb-4'
+                prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+              />
             </div>
 
             <div className='col-md-3 col-sm-12'>
-              <Form.Item>
-                <Button block type='primary' htmlType='submit'>
-                  Log in
-                </Button>
-              </Form.Item>
+              <Button block type='primary' htmlType='submit'>
+                Log in
+              </Button>
             </div>
           </div>
         </Form>

@@ -152,7 +152,7 @@ const InvoicePage = () => {
         <InvoiceInfo {...invoice} />
         <InvoiceTable records={records} />
 
-        <div className='d-flex align-items-center justify-content-end elem-list w-100'>
+        <div className='d-flex align-items-center justify-content-end w-100'>
           <a href='' className='mr-4'>
             <PrinterOutlined style={{ fontSize: '25px' }} />
           </a>

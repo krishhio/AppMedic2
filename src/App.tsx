@@ -9,6 +9,7 @@ import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';
 
 import './App.scss';
+import { useHideLoader } from './hooks/useHideLoader';
 
 const Routes = ({ routes, layout = '' }) => (
   <Switch>
@@ -32,6 +33,8 @@ const DefaultRoutes = ({ layout }) => <Routes routes={defaultRoutes} layout={lay
 const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
 
 const App = () => {
+  useHideLoader();
+
   return (
     <Switch>
       <Route path='/' exact>

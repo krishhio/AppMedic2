@@ -261,11 +261,11 @@ $shapes: (
   bottom: $footer-height;
   right: 0;
 
-  height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 4}));
+  height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 5}));
   width: 100%;
 
   @media only screen and (max-width: 768px) {
-    height: calc(100% - (#{$footer-height + $module-rem} + #{$module-rem * 6}));
+    height: calc(100% - (#{$footer-height} + #{$module-rem * 6}));
   }
 
   .vertical & {

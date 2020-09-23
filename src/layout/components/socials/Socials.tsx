@@ -15,7 +15,7 @@ const NetworkLayout = ({ iconInput, linkInput, actionBtn = null }) => (
       </div>
     </div>
 
-    <div className='col-auto'>{actionBtn}</div>
+    <div className='col col-auto'>{actionBtn}</div>
   </div>
 );
 
@@ -74,7 +74,7 @@ const Socials = ({ links }: Props) => {
     setNetworks(filteredNetworks);
   };
 
-  const SocialLink = ({ link, icon }: IUserLink, index, { length }) => {
+  const SocialLink = ({ link, icon }: IUserLink, index) => {
     const buttonStyle = { background: 'white', border: 'none' };
 
     return (

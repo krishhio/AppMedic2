@@ -55,7 +55,7 @@ const AutocompletePage = () => {
       <div className='col-md-6 col-sm-12'>
         <Card title='Basic'>
           <div className='elem-list'>
-            <AutoComplete filterOption options={dataSource} value={'USA'} />
+            <AutoComplete filterOption options={dataSource} defaultValue='USA' />
             <AutoComplete filterOption options={dataSource} placeholder='With placeholder' />
           </div>
         </Card>

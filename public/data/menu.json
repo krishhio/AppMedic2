@@ -122,8 +122,8 @@
         "routing": "icons-options"
       },
       {
-        "title": "Antd icons",
-        "routing": "antd-icons"
+        "title": "Ant icons",
+        "routing": "ant-icons"
       },
       {
         "title": "Icofont",

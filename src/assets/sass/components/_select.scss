@@ -26,15 +26,15 @@
     .ant-select-selection-placeholder {
       position: absolute;
       transform: translateY(-50%);
-      padding: 0 2px !important;
       top: 50%;
     }
 
     .ant-select-selection-search {
-      left: $module-rem * 2;
+      left: calc(#{$module-rem * 2} - 2px);
 
+      .ant-select-selection-placeholder,
       > input {
-        margin-left: 0 !important;
+        margin-left: -2px !important;
       }
     }
 
@@ -44,7 +44,7 @@
       left: $module-rem * 2;
     }
 
-    input {
+    .ant-select-selection-search-input {
       padding: 0 2px !important;
     }
   }
