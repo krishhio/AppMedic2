@@ -6,12 +6,24 @@
       &-vertical {
         background-color: #fbfbfb;
       }
+
+      .app-search {
+        @media #{$max767} {
+          display: none;
+        }
+      }
+
       .navbar-wrap {
         .logo {
           padding: 0;
+
           @media #{$min992} {
             padding-left: 0;
             padding-right: 0;
+          }
+
+          @media #{$max991} {
+            display: none;
           }
         }
       }
@@ -31,6 +43,19 @@
           }
         }
       }
+    }
+  }
+
+  .app-search {
+    @media #{$max543} {
+      display: none;
+    }
+  }
+  .navbar-mobile-header {
+    display: none;
+
+    @media #{$max991} {
+      display: block;
     }
   }
 }

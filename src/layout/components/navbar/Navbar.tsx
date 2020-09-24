@@ -26,7 +26,7 @@ const Navbar = ({
   opened = false,
   color,
   boxed = false,
-  onClickOutside
+  onClickOutside = () => null
 }: NavProps) => {
   const containerRef = useRef(null);
 
