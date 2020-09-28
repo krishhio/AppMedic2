@@ -12,6 +12,7 @@ import Search from '../components/search/Search';
 import LogoSvg from './../../assets/img/logo.svg';
 
 import Actions from '../components/actions/Actions';
+
 import { useSearchData } from '../../hooks/useSearchData';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../redux/settings/actions';
