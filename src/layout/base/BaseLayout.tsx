@@ -7,6 +7,7 @@ import { Modal } from 'antd';
 import Footer from '../components/footer/Footer';
 import SettingsForm from '../components/settings/SettingsForm';
 
+
 import { updateSettings, resetSettings, toggleSidebar } from '../../redux/settings/actions';
 import { fetchPatients } from '../../redux/patients/actions';
 
