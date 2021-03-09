@@ -78,9 +78,9 @@ const WithCustomShape = () => {
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis dataKey='name' />
         <YAxis />
-        <Bar dataKey='female' fill='#8884d8' shape={<TriangleBar />} label={{ position: 'top' }}>
+        <Bar dataKey='female' fill='#8884d8' shape={<TriangleBar />}>
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colors[index % 20]} />
+            <Cell key={`cell-${index}`} fill={colors[index % 20] as any} />
           ))}
         </Bar>
       </BarChart>

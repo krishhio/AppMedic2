@@ -72,7 +72,7 @@ const off = gradientOffset();
 
 const AreaChartFillByValue = () => {
   return (
-    <ResponsiveContainer height={300} widht={'100%'}>
+    <ResponsiveContainer height={300} width={'100%'}>
       <AreaChart
         width={500}
         height={400}

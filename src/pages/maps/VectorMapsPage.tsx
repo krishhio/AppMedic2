@@ -29,11 +29,11 @@ const PageVectorMaps = () => {
   const [world] = useFetchPageData(mapUrl);
 
   if (!world) return <></>;
-  console.log(world);
+
   return (
     <>
       <div className='full-height-page p-4'>
-        <VectorMap style={{ maxHeight: '100%' }} {...world} />
+        <VectorMap {...world as any} />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import ReactEcharts from 'echarts-for-react';
-import echarts from 'echarts';
+import * as echarts from 'echarts';
 
 import { usePageData, useFetchPageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
