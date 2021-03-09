@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import { store, history } from './redux/store';
+import { store } from './redux/store';
 
 import './index.scss';
 import App from './App';
 
 import * as serviceWorker from './serviceWorker';
-import { ConnectedRouter } from 'connected-react-router';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <HashRouter>
       <App />
-    </ConnectedRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById('root')
 );

@@ -1,24 +1,23 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import { connectRouter } from 'connected-react-router';
 import { createHashHistory } from 'history';
 
 import { settingsReducer } from './settings/reducer';
 import { pageDataReducer } from './page-data/reducer';
 import { patientsReducer } from './patients/reducer';
 
-export const history = createHashHistory({
-  hashType: 'slash'
-});
+export const history = createHashHistory();
 
 const rootReducer = combineReducers({
   pageData: pageDataReducer,
   settings: settingsReducer,
-  patients: patientsReducer,
-  router: connectRouter(history)
+  patients: patientsReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(
+  rootReducer,
+  compose(applyMiddleware(thunk))
+);
