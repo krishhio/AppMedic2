@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import { AutoComplete, Input } from 'antd';
-import { history } from '../../../redux/store';
 
 import './Search.scss';
 
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const Search = ({ data, layout = 'vertical' }: Props) => {
+  const history = useHistory();
   const [text, setText] = useState('');
 
   const handleSelect = (value: string, option) => {

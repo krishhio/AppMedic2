@@ -14,6 +14,7 @@ type Props = IUser & OwnProps;
 
 const Contact = ({ address, img, name, role, social, className }: Props) => {
   const history = useHistory();
+
   const handleGoToProfile = () => {
     const layout = history.location.pathname.split('/')[1];
     history.push(`/${layout}/doctor-profile`);
