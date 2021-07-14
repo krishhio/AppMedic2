@@ -6,12 +6,13 @@ import { LoginOutlined } from '@ant-design/icons/lib';
 import PublicLayout from '../../layout/public/Public';
 import { Link } from 'react-router-dom';
 import { useForm } from 'antd/es/form/Form';
-import { navigateHome } from '../../utils/naviagate-home';
+import { useNavigateHome } from '../../utils/use-navigate-home';
 
 const { Item } = Form;
 
 const SignIn = () => {
   const [form] = useForm();
+  const navigateHome = useNavigateHome();
 
   const login = () => {
     form

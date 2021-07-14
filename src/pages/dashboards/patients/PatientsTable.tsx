@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Avatar, Table, Button, Modal, Tag } from 'antd';
+
+import { useHistory } from 'react-router-dom';
+
 import { ColumnProps } from 'antd/es/table';
+import { Avatar, Table, Button, Modal, Tag } from 'antd';
 
 import { IPatient } from '../../../interfaces/patient';
 
-import { history } from '../../../redux/store';
 import PatientForm from '../../../layout/components/patients/PatientForm';
 
 type Props = {
@@ -33,6 +35,8 @@ const PatientsTable = ({
   onEditPatient = () => null,
   onDeletePatient = () => null
 }: Props) => {
+  const history = useHistory();
+
   const [patient, setPatient] = useState(null);
   const [visibility, setVisibility] = useState(false);
 

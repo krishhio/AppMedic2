@@ -5,11 +5,12 @@ import { Button, Form, Input, Switch } from 'antd';
 import PublicLayout from '../../layout/public/Public';
 import { Link } from 'react-router-dom';
 import { useForm } from 'antd/es/form/Form';
-import { navigateHome } from '../../utils/naviagate-home';
+import { useNavigateHome } from '../../utils/use-navigate-home';
 
 const { Item } = Form;
 
 const SignUp = () => {
+  const navigateHome = useNavigateHome();
   const [form] = useForm();
 
   const signUp = () => {

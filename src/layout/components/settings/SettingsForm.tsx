@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import { Form, Select, Switch, Button } from 'antd';
 
 import ColorPicker from '../../../ui/color-picker/ColorPicker';
-import { history } from '../../../redux/store';
 
 import { IAppSettings } from '../../../interfaces/settings';
 
@@ -19,6 +20,7 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
   const downloadLink = useRef<HTMLAnchorElement>(null);
   const { boxed, sidebarBg, topbarBg } = settings;
 
+  const history = useHistory();
   const layoutUrl = history.location.pathname.split('/')[1];
 
   const handleReset = () => {
