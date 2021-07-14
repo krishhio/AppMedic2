@@ -17,7 +17,7 @@ const Routes = ({ routes, layout = '' }) => (
       <Route
         key={index}
         exact={route.exact}
-        path={layout.length > 0 ? `/${layout}/${route.path}` : `/${route.path}\``}
+        path={layout.length > 0 ? `/${layout}/${route.path}` : `/${route.path}`}
         component={() => <route.component />}
       />
     ))}

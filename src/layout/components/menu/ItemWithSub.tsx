@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Location } from 'history';
 import { IMenuItemSub } from '../../../interfaces/main-menu';
 
-import posed from 'react-pose';
+import { motion } from 'framer-motion';
 
 import className from '../../../utils/class-names';
 
@@ -19,11 +19,13 @@ type Props = {
   opened?: boolean;
 };
 
-const Sub = posed.div({
-  closed: { height: 0, overflow: 'hidden' },
-  open: { height: 'auto', overflow: 'auto' },
-  transition: { ease: 'ease-in-out', duration: 200 }
-});
+const container = {
+  hidden: { opacity: 0, height: 0 },
+  show: {
+    opacity: 1,
+    height: 'auto'
+  }
+};
 
 const ItemWithSub = ({ location, title, layout, sub, opened, onClick }: Props) => {
   const subItemClass = (routing: string) =>
@@ -62,9 +64,15 @@ const ItemWithSub = ({ location, title, layout, sub, opened, onClick }: Props) =
           {itemSub}
         </ul>
       ) : (
-        <Sub onClick={(e) => e.stopPropagation()} pose={opened ? 'open' : 'closed'}>
+        <motion.div
+          initial='hidden'
+          variants={container}
+          animate={opened ? 'show' : 'hidden'}
+          transition={{ type: 'tween', duration: 0.3 }}
+          onClick={(e) => e.stopPropagation()}
+        >
           <ul className='sub'>{itemSub}</ul>
-        </Sub>
+        </motion.div>
       )}
     </li>
   );

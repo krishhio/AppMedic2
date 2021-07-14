@@ -1,8 +1,8 @@
 import React from 'react';
+import { Button } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 import { IUser } from '../../../interfaces/user';
-import { history } from '../../../redux/store';
-import { Button } from 'antd';
 
 import './Contact.scss';
 
@@ -13,6 +13,7 @@ type OwnProps = {
 type Props = IUser & OwnProps;
 
 const Contact = ({ address, img, name, role, social, className }: Props) => {
+  const history = useHistory();
   const handleGoToProfile = () => {
     const layout = history.location.pathname.split('/')[1];
     history.push(`/${layout}/doctor-profile`);
