@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Button, Dropdown, Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { Badge, Button, Dropdown } from 'antd';
+
 import { INotification } from '../../../interfaces/notification';
 
 const defaultNotifications = [
@@ -45,21 +46,24 @@ const Notifications = ({ data = defaultNotifications }: Props) => {
     setNotifications(data);
   }, [data]);
 
-  const handleClearAll = () => setNotifications([]);
+  const handleClearAll = (e) => {
+    e.preventDefault();
+    setNotifications([]);
+  };
 
-  const notificationsMenu = (
-    <Menu className='action-menu' style={{ minWidth: '280px' }}>
-      <span className='dropdown-header'>
+  const notificationsMenu = () => (
+    <ul className='actions-menu' style={{ minWidth: '280px' }}>
+      <li className='dropdown-header' key='header-item'>
         <h3 className='dropdown-title'>Notifications</h3>
 
-        <a onClick={handleClearAll} className='text-danger'>
+        <a href="#" onClick={handleClearAll} className='text-danger'>
           Clear all
         </a>
-      </span>
+      </li>
 
-      {notifications.length &&
+      {notifications.length > 0 &&
         notifications.map((item, index) => (
-          <Menu.Item className='action-item' key={index}>
+          <li className='action-item' key={index}>
             <NavLink className='d-flex w-100' to={homeRoute}>
               <span className={`icon mr-3 ${item.icon}`} />
               <span className='text'>
@@ -67,15 +71,15 @@ const Notifications = ({ data = defaultNotifications }: Props) => {
                 <span className='sub-text'>{item.time}</span>
               </span>
             </NavLink>
-          </Menu.Item>
+          </li>
         ))}
 
       {!notifications.length && (
-        <span className='empty-item'>No notifications</span>
+        <li className='empty-item'>No notifications</li>
       )}
 
-      {notifications.length && (
-        <div className='dropdown-actions'>
+      {notifications.length > 0 && (
+        <li className='dropdown-actions' key='actions-item'>
           <Button type='primary' className='w-100'>
             View all notifications
             <span
@@ -83,17 +87,17 @@ const Notifications = ({ data = defaultNotifications }: Props) => {
               className='icofont-calendar ml-3'
             />
           </Button>
-        </div>
+        </li>
       )}
-    </Menu>
+    </ul>
   );
   return (
     <Dropdown
       className='mr-3'
-      overlay={notificationsMenu}
+      dropdownRender={notificationsMenu}
       trigger={['click']}
-      visible={visible}
-      onVisibleChange={setVisible}
+      open={visible}
+      onOpenChange={setVisible}
       placement='bottomRight'
     >
       <Badge className='action-badge' count={notifications.length}>

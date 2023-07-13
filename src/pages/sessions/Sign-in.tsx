@@ -1,14 +1,10 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Button, Form, Input, Switch } from 'antd';
 import { LoginOutlined } from '@ant-design/icons/lib';
-
-import PublicLayout from '../../layout/public/Public';
-import { Link } from 'react-router-dom';
 import { useForm } from 'antd/es/form/Form';
+import PublicLayout from '../../layout/public/Public';
 import { useNavigateHome } from '../../utils/use-navigate-home';
-
-const { Item } = Form;
 
 const SignIn = () => {
   const [form] = useForm();
@@ -28,12 +24,12 @@ const SignIn = () => {
       <p className='text-color-200'>Login to access your Account</p>
 
       <Form form={form} layout='vertical' className='mb-4'>
-        <Item name='login' rules={[{ required: true, message: <></> }]}>
+        <Form.Item name='login' rules={[{ required: true, message: <></> }]}>
           <Input placeholder='Login' />
-        </Item>
-        <Item name='password' rules={[{ required: true, message: <></> }]}>
+        </Form.Item>
+        <Form.Item name='password' rules={[{ required: true, message: <></> }]}>
           <Input placeholder='Password' type='password' />
-        </Item>
+        </Form.Item>
 
         <div className='d-flex align-items-center mb-4'>
           <Switch defaultChecked /> <span className='ml-2'>Remember me</span>
@@ -55,7 +51,7 @@ const SignIn = () => {
       </p>
 
       <p>
-        Don't have an account? <Link to='sign-up'>Sign up!</Link>
+        Don't have an account? <Link to='../sign-up'>Sign up!</Link>
       </p>
     </PublicLayout>
   );

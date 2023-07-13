@@ -40,11 +40,11 @@ const Navbar = ({
     [orientation]: true
   });
 
-  const navStyle: CSSProperties = {
-    background,
-    minHeight,
-    color
-  };
+  const navStyle = {
+    '--navbar-bg': background,
+    '--navbar-color': color,
+    minHeight
+  } as CSSProperties;
 
   return (
     <div ref={containerRef} className={`navbar ${navClasses}`} style={navStyle}>

@@ -1,10 +1,6 @@
 import React from 'react';
-
 import { Button, Card, Form, Input } from 'antd';
 import { Rule } from 'antd/es/form';
-
-import { usePageData } from '../../hooks/usePage';
-import { IPageData } from '../../interfaces/page';
 import {
   IdcardOutlined,
   LockOutlined,
@@ -13,12 +9,15 @@ import {
   SendOutlined,
   UserOutlined
 } from '@ant-design/icons/lib';
+import { usePageData } from '../../hooks/usePage';
+import { IPageData } from '../../interfaces/page';
+
 
 const { Item } = Form;
 
 const rules = {
-  required: { required: true, message: <></> } as Rule,
-  email: { type: 'email', message: <></> } as Rule
+  required: { required: true, message: 'Please input value!' } as Rule,
+  email: { type: 'email', message: 'The input is not valid E-mail!' } as Rule
 };
 
 const formItemLayout = {
@@ -34,47 +33,47 @@ const formItemLayout = {
 
 const BasicLoginForm = () => (
   <Form layout='vertical'>
-    <Item name='First name' rules={[rules.required]}>
+    <Form.Item name='First name' rules={[rules.required]}>
       <Input placeholder='First Name' />
-    </Item>
+    </Form.Item>
 
-    <Item name='Last name' rules={[rules.required]}>
+    <Form.Item name='Last name' rules={[rules.required]}>
       <Input placeholder='Last Name' />
-    </Item>
+    </Form.Item>
 
-    <Item name='Email' rules={[rules.required, rules.email]}>
+    <Form.Item name='Email' rules={[rules.required, rules.email]}>
       <Input placeholder='Email' />
-    </Item>
+    </Form.Item>
 
-    <Item name='Comment' rules={[rules.required]}>
+    <Form.Item name='Comment' rules={[rules.required]}>
       <Input.TextArea placeholder='Comment' rows={4} />
-    </Item>
+    </Form.Item>
 
-    <Item rules={[rules.required]}>
+    <Form.Item rules={[rules.required]}>
       <Button htmlType='submit' type='primary' block>
         Send Form
       </Button>
-    </Item>
+    </Form.Item>
   </Form>
 );
 
 const FormWithLabels = () => (
   <Form {...formItemLayout}>
-    <Item label='First name' name='First name' rules={[rules.required]}>
+    <Form.Item label='First name' name='First name' rules={[rules.required]}>
       <Input prefix={<IdcardOutlined />} placeholder='First Name' />
-    </Item>
+    </Form.Item>
 
-    <Item label='Last name' name='Last name' rules={[rules.required]}>
+    <Form.Item label='Last name' name='Last name' rules={[rules.required]}>
       <Input prefix={<UserOutlined />} placeholder='Last Name' />
-    </Item>
+    </Form.Item>
 
-    <Item label='Email' name='Email' rules={[rules.required, rules.email]}>
+    <Form.Item label='Email' name='Email' rules={[rules.required, rules.email]}>
       <Input prefix={<MailOutlined />} placeholder='Email' />
-    </Item>
+    </Form.Item>
 
-    <Item label='Password' name='Password' rules={[rules.required]}>
+    <Form.Item label='Password' name='Password' rules={[rules.required]}>
       <Input.Password prefix={<LockOutlined />} placeholder='Password' />
-    </Item>
+    </Form.Item>
 
     <Button htmlType='submit' type='primary' block icon={<SendOutlined />}>
       Send Form
@@ -89,23 +88,23 @@ const FormWithMessages = () => {
 
   return (
     <Form form={form} layout='vertical'>
-      <Item
+      <Form.Item
         label='First name'
         name='First name'
         rules={[{ ...rules.required, message: 'First name is required' }]}
       >
         <Input suffix={<IdcardOutlined />} placeholder='First Name' />
-      </Item>
+      </Form.Item>
 
-      <Item
+      <Form.Item
         label='Last name'
         name='Last name'
         rules={[{ ...rules.required, message: 'Last name is required' }]}
       >
         <Input suffix={<UserOutlined />} placeholder='Last Name' />
-      </Item>
+      </Form.Item>
 
-      <Item
+      <Form.Item
         label='Email'
         name='Email'
         rules={[
@@ -114,9 +113,9 @@ const FormWithMessages = () => {
         ]}
       >
         <Input suffix={<MailOutlined />} placeholder='Email' />
-      </Item>
+      </Form.Item>
 
-      <Item
+      <Form.Item
         label='Password'
         name='Password'
         rules={[
@@ -125,7 +124,7 @@ const FormWithMessages = () => {
         ]}
       >
         <Input.Password placeholder='Password' />
-      </Item>
+      </Form.Item>
 
       <div className='d-flex justify-content-end'>
         <div className='elem-list'>

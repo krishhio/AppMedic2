@@ -3,7 +3,20 @@ import React from 'react';
 import { Alert, Card } from 'antd';
 import { BarChartOutlined } from '@ant-design/icons/lib';
 
-import { Bar, Doughnut, Line, Pie, Polar, Radar } from 'react-chartjs-2';
+import { Bar, Doughnut, Line, Pie, Radar, PolarArea } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  RadialLinearScale,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 
 import lineChart from './options/linear-chart';
 import barChart from './options/bar-chart';
@@ -14,6 +27,19 @@ import pieChart from './options/pie-chart';
 
 import { usePageData } from '../../../hooks/usePage';
 import { IPageData } from '../../../interfaces/page';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  RadialLinearScale,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const pageData: IPageData = {
   title: 'ChartJs',
@@ -71,7 +97,7 @@ const ChartJsPage = () => {
 
         <div className='col-12 col-md-6'>
           <Card title='Polar area chart'>
-            <Polar {...polarAreaChart} />
+            <PolarArea {...polarAreaChart} />
           </Card>
         </div>
       </div>

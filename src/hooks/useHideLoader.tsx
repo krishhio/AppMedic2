@@ -6,8 +6,13 @@ export function useHideLoader() {
     const loader = document.querySelector('.main-loader');
 
     setTimeout(() => {
-      loader.remove();
-      overlay.remove();
+      if (loader) {
+        loader.remove();
+      }
+
+      if (overlay) {
+        overlay.remove();
+      }
     }, 300)
   }, []);
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Alert, Card } from 'antd';
+import { BarChartOutlined } from '@ant-design/icons/lib';
 
 import ReactEcharts from 'echarts-for-react';
 
@@ -15,7 +16,6 @@ import {
 
 import { usePageData } from '../../../hooks/usePage';
 import { IPageData } from '../../../interfaces/page';
-import { BarChartOutlined } from '@ant-design/icons/lib';
 
 const pageData: IPageData = {
   title: 'Echarts',

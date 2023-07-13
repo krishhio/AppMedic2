@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { AutoComplete, Input } from 'antd';
 
@@ -12,12 +11,13 @@ type Props = {
 };
 
 const Search = ({ data, layout = 'vertical' }: Props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [text, setText] = useState('');
 
   const handleSelect = (value: string, option) => {
     const route = value.startsWith('/') ? value : `/${layout}/${value}`;
-    history.push(route);
+
+    navigate(route);
     setText(option.label);
   };
 

@@ -74,10 +74,16 @@
   padding: $module-rem ($module-rem * 2);
 }
 
-.action-menu {
+.actions-menu {
+  background: #fff;
+  border-radius: $shape;
+  box-shadow: $shadow-hover;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  list-style-type: none;
+  margin: $module-rem 0 0;
+  padding: $module-rem 0;
 }
 .action-badge {
   .ant-badge-count {
@@ -87,6 +93,9 @@
 .action-item {
   > a {
     align-items: center;
+    color: var(--main-color);
+    display: flex;
+    padding: $module-rem ($module-rem * 2);
   }
 
   .icon {
@@ -132,11 +141,11 @@
   justify-content: space-between;
   padding: $module-rem ($module-rem * 2);
 
+  > * {
+    padding: 0;
+  }
   .dropdown-title {
     font-size: 1.25rem;
-  }
-
-  > * {
     padding: 0;
   }
 }
@@ -147,7 +156,7 @@
 }
 
 .ant-badge-count {
-  box-shadow: 0 0 0 2px #fff !important;
+  box-shadow: 0 0 0 2px var(--navbar-bg) !important;
   height: 18px;
   min-width: 18px;
 }

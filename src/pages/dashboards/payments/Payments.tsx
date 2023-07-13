@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Form, Input, Modal } from 'antd';
+import { Button, DatePicker, Form, Input, Modal } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -12,6 +12,7 @@ import { useGetPayments } from '../../../hooks/useGetBillings';
 import { usePageData } from '../../../hooks/usePage';
 
 import { IPageData } from '../../../interfaces/page';
+import dayjs from 'dayjs';
 
 const pageData: IPageData = {
   title: 'Payments',
@@ -41,7 +42,7 @@ const paymentScheme = Yup.object({
 });
 
 const PaymentForm = ({ onSubmit, onClose }) => {
-  const { handleSubmit, handleChange, isValid, errors, touched, handleBlur } = useFormik<any>({
+  const { handleSubmit, handleChange, isValid, errors, touched, handleBlur, setFieldValue } = useFormik<any>({
     initialValues: {},
     initialErrors: { empty: null },
     validationSchema: paymentScheme,
@@ -60,7 +61,7 @@ const PaymentForm = ({ onSubmit, onClose }) => {
   return (
     <>
       <Form layout='vertical'>
-        <Item>
+        <Form.Item>
           <Input
             type='number'
             name='billNo'
@@ -69,9 +70,9 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('billNo')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
+        <Form.Item>
           <Input
             name='patient'
             placeholder='Patient'
@@ -79,9 +80,9 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('patient')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
+        <Form.Item>
           <Input
             name='doctor'
             placeholder='Doctor'
@@ -89,19 +90,18 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('doctor')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
-          <Input
+        <Form.Item>
+          <DatePicker
             name='billDate'
             placeholder='Date'
-            onBlur={handleBlur}
-            onChange={handleChange}
+            onChange={(date) => setFieldValue('billDate', date ? date.toISOString() : null)}
             className={hasError('billDate')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
+        <Form.Item>
           <Input
             name='charges'
             placeholder='Charges'
@@ -109,9 +109,9 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('charges')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
+        <Form.Item>
           <Input
             name='tax'
             placeholder='Tax'
@@ -119,9 +119,9 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('tax')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
+        <Form.Item>
           <Input
             name='discount'
             placeholder='Discount'
@@ -129,9 +129,9 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('discount')}
           />
-        </Item>
+        </Form.Item>
 
-        <Item>
+        <Form.Item>
           <Input
             name='total'
             placeholder='Total'
@@ -139,7 +139,7 @@ const PaymentForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             className={hasError('total')}
           />
-        </Item>
+        </Form.Item>
       </Form>
 
       <div className='modal-footer d-flex justify-content-between mt-3'>
@@ -174,7 +174,7 @@ const Payments = () => {
       <Modal
         title={<h5 className='m-0'>Add Payment</h5>}
         onCancel={handleClose}
-        visible={visible}
+        open={visible}
         destroyOnClose
         footer={null}
       >

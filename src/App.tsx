@@ -1,66 +1,50 @@
 import React from 'react';
-
-import { Switch, Route, Redirect } from 'react-router-dom';
-
+import { Routes, Route, Navigate } from 'react-router-dom';
+import ConfigProvider from 'antd/es/config-provider';
 import VerticalLayout from './layout/vertical/Vertical';
 import HorizontalLayout from './layout/horizontal/Horizontal';
-
 import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';
-
-import './App.scss';
 import { useHideLoader } from './hooks/useHideLoader';
+import './App.scss';
 
-const Routes = ({ routes, layout = '' }) => (
-  <Switch>
+const LayoutRoutes = ({ routes, layout = '' }) => (
+  <Routes>
     {routes.map((route, index) => (
-      <Route
-        key={index}
-        exact={route.exact}
-        path={layout.length > 0 ? `/${layout}/${route.path}` : `/${route.path}`}
-        component={() => <route.component />}
-      />
+      <Route key={index} path={`/${route.path}`} element={<route.component />} />
     ))}
 
-    <Route path='*'>
-      <Redirect to='/public/page-404' />
-    </Route>
-  </Switch>
+    <Route path='*' element={<Navigate replace to='/public/page-404' />} />
+  </Routes>
 );
 
-const DefaultRoutes = ({ layout }) => <Routes routes={defaultRoutes} layout={layout} />;
+const DefaultRoutes = ({ layout }) => <LayoutRoutes routes={defaultRoutes} layout={layout} />;
 
-const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
+const SessionRoutes = () => <LayoutRoutes routes={sessionRoutes} layout='public' />;
 
 const App = () => {
   useHideLoader();
 
   return (
-    <Switch>
-      <Route path='/' exact>
-        <Redirect to='/vertical/default-dashboard' />
-      </Route>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontFamily: "'Lato', sans-serif",
+        },
+      }}
+    >
+      <Routes>
+        <Route path='/' element={<Navigate replace to='/vertical/default-dashboard' />} />
 
-      <Route path='/public'>
-        <SessionRoutes />
-      </Route>
+        <Route path='/public/*' element={<SessionRoutes />} />
 
-      <Route path='/horizontal'>
-        <HorizontalLayout>
-          <DefaultRoutes layout='horizontal' />
-        </HorizontalLayout>
-      </Route>
+        <Route path='/horizontal/*' element={<HorizontalLayout><DefaultRoutes layout='horizontal' /></HorizontalLayout>} />
 
-      <Route path='/vertical'>
-        <VerticalLayout>
-          <DefaultRoutes layout='vertical' />
-        </VerticalLayout>
-      </Route>
+        <Route path='/vertical/*' element={<VerticalLayout><DefaultRoutes layout='vertical' /></VerticalLayout>} />
 
-      <Route path='*'>
-        <NotFound />
-      </Route>
-    </Switch>
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </ConfigProvider>
   );
 };
 

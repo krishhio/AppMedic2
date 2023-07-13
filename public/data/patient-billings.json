@@ -1,7 +1,7 @@
 [
   {
     "billNo": "132",
-    "billDate": "18 Feb 2019",
+    "billDate": "2023-05-25T14:48:00.000Z",
     "patient": "Priya Patel",
     "doctor": "Juan Freeman",
     "charges": "155$",
@@ -11,7 +11,7 @@
   },
   {
     "billNo": "131",
-    "billDate": "17 Feb 2019",
+    "billDate": "2023-05-24T14:48:00.000Z",
     "patient": "Mayank Jani",
     "doctor": "Christina Thomas",
     "charges": "121$",
@@ -21,7 +21,7 @@
   },
   {
     "billNo": "130",
-    "billDate": "17 Feb 2019",
+    "billDate": "2023-05-23T14:48:00.000Z",
     "patient": "Jenish Shah",
     "doctor": "Juan Freeman",
     "charges": "70$",
@@ -31,7 +31,7 @@
   },
   {
     "billNo": "129",
-    "billDate": "16 Feb 2019",
+    "billDate": "2023-05-22T14:48:00.000Z",
     "patient": "Jayna Sharma",
     "doctor": "Jessica Patterson",
     "charges": "45$",
@@ -41,7 +41,7 @@
   },
   {
     "billNo": "128",
-    "billDate": "15 Feb 2019",
+    "billDate": "2023-05-21T14:48:00.000Z",
     "patient": "Sonali Malik",
     "doctor": "Lori Perkins",
     "charges": "120$",
@@ -51,7 +51,7 @@
   },
   {
     "billNo": "133",
-    "billDate": "13 Feb 2019",
+    "billDate": "2023-05-20T14:48:00.000Z",
     "patient": "Mayank Jani",
     "doctor": "Jessica Patterson",
     "charges": "25$",
@@ -61,7 +61,7 @@
   },
   {
     "billNo": "134",
-    "billDate": "13 Feb 2019",
+    "billDate": "2023-05-19T14:48:00.000Z",
     "patient": "Pooja Patel",
     "doctor": "Juan Freeman",
     "charges": "320$",

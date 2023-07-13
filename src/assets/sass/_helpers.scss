@@ -162,7 +162,7 @@
   display: flex;
   height: 60px !important;
   justify-content: center;
-  position: fixed;
+  position: fixed !important;
   right: $module-rem * 2;
   width: 60px !important;
   z-index: 997;

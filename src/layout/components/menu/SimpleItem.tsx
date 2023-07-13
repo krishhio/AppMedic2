@@ -12,9 +12,8 @@ type Props = {
 const SimpleItem = ({ routing, title, layout, icon }: Props) => (
   <li className='menu-item'>
     <NavLink
-      className='item-link'
+      className={`item-link ${({ isActive }) => (isActive ? 'active' : 'inactive')}`}
       to={`/${layout}/${routing}`}
-      activeClassName='active'
       replace
     >
       {icon && (

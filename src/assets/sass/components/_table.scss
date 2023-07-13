@@ -90,7 +90,8 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
 
   .ant-table-thead {
     tr {
-      > th {
+      th,
+      td {
         background-color: $_header-bg;
         color: $_header-color;
         font-weight: 700;
@@ -98,7 +99,7 @@ $_shadow: 0 0 10px rgba(#000, 0.12);
         height: 40px;
       }
 
-      > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
+      th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
         background: accent-palette(300);
       }
 

@@ -1,17 +1,12 @@
 import React from 'react';
-
 import { Card } from 'antd';
 import ReactEcharts from 'echarts-for-react';
-
 import Logo from '../../../layout/components/logo/Logo';
 import LogoSvg from '../../../assets/img/logo.svg';
-
 import { chartOptions } from './chart-options';
-
 import { OurTimeline } from './Timeline';
 import { LastClients, LastPayments } from './Tables';
 import { usePageData } from '../../../hooks/usePage';
-
 import { IPageData } from '../../../interfaces/page';
 
 const pageData: IPageData = {

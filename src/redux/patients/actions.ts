@@ -32,7 +32,7 @@ export const editPatient = (patient: IPatient): EditPatientAction => ({
   payload: patient
 });
 
-export const fetchPatients = (url: string) => {
+export const fetchPatients: any = (url: string) => {
   return dispatch => {
     axios
       .get<IPatient[]>(url)

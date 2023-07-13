@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { IUserLink } from '../../../interfaces/user';
+import React, { useState } from 'react';
 import { Button, Divider, Input } from 'antd';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons/lib';
+import { IUserLink } from '../../../interfaces/user';
 
 type Props = { links?: IUserLink[] };
 
@@ -22,22 +22,19 @@ const NetworkLayout = ({ iconInput, linkInput, actionBtn = null }) => (
 const AddLink = ({ onLinkAdd }) => {
   const buttonStyle = { background: 'white', border: 'none' };
 
-  const iconInput = useRef<Input>(null);
-  const linkInput = useRef<Input>(null);
+  const [iconValue, setIconValue] = useState('');
+  const [linkValue, setLinkValue] = useState('');
 
   const getUserLink = (): IUserLink => {
-    const icon = iconInput.current.input.value;
-    const link = linkInput.current.input.value;
-
     return {
-      icon,
-      link
+      icon: iconValue,
+      link: linkValue
     };
   };
 
   const resetInputs = () => {
-    iconInput.current.setValue('');
-    linkInput.current.setValue('');
+    setIconValue('');
+    setLinkValue('');
   };
 
   const handleAdd = () => {
@@ -48,12 +45,17 @@ const AddLink = ({ onLinkAdd }) => {
 
   return (
     <NetworkLayout
-      iconInput={<Input ref={iconInput} placeholder='Icon class' />}
-      linkInput={<Input ref={linkInput} placeholder='Link' />}
+      iconInput={
+        <Input value={iconValue} onChange={event => setIconValue(event.target.value)} placeholder='Icon class' />
+      }
+      linkInput={
+        <Input value={linkValue} onChange={event => setLinkValue(event.target.value)} placeholder='Link' />
+      }
       actionBtn={
         <Button
           shape='circle'
           onClick={handleAdd}
+          disabled={!iconValue || !linkValue}
           style={buttonStyle}
           icon={<PlusOutlined className='icon-blue' />}
         />

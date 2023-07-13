@@ -1,71 +1,73 @@
 import React from 'react';
 import { Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 
-const renderContent = (value, row, index) => {
-  const obj: any = {
-    children: value,
-    props: {}
-  };
-  if (index === 4) {
-    obj.props.colSpan = 0;
+interface DataType {
+  key: string;
+  name: string;
+  age: number;
+  tel: string;
+  phone: number;
+  address: string;
+}
+
+const sharedOnCell = (_: DataType, index: number) => {
+  if (index === 1) {
+    return { colSpan: 0 };
   }
-  return obj;
+
+  return {};
 };
 
-const columns = [
+const columns: ColumnsType<DataType> = [
+  {
+    title: 'RowHead',
+    dataIndex: 'key',
+    rowScope: 'row',
+  },
   {
     title: 'Name',
     dataIndex: 'name',
-    render: (text, row, index) => {
-      if (index < 4) {
-        return <a onClick={e => e.preventDefault()} href='#'>{text}</a>;
-      }
-      return {
-        children: <a onClick={e => e.preventDefault()} href='#'>{text}</a>,
-        props: {
-          colSpan: 5
-        }
-      };
-    }
+    render: (text) => <a>{text}</a>,
+    onCell: (_, index) => ({
+      colSpan: index === 1 ? 5 : 1,
+    }),
   },
   {
     title: 'Age',
     dataIndex: 'age',
-    render: renderContent
+    onCell: sharedOnCell,
   },
   {
     title: 'Home phone',
     colSpan: 2,
     dataIndex: 'tel',
-    render: (value, row, index) => {
-      const obj: any = {
-        children: value,
-        props: {}
-      };
-      if (index === 2) {
-        obj.props.rowSpan = 2;
+    onCell: (_, index) => {
+      if (index === 3) {
+        return { rowSpan: 2 };
       }
       // These two are merged into above cell
-      if (index === 3) {
-        obj.props.rowSpan = 0;
-      }
       if (index === 4) {
-        obj.props.colSpan = 0;
+        return { rowSpan: 0 };
       }
-      return obj;
-    }
+      if (index === 1) {
+        return { colSpan: 0 };
+      }
+
+      return {};
+    },
   },
   {
     title: 'Phone',
     colSpan: 0,
     dataIndex: 'phone',
-    render: renderContent
+    onCell: sharedOnCell,
   },
   {
     title: 'Address',
     dataIndex: 'address',
-    render: renderContent
-  }
+    onCell: sharedOnCell,
+  },
 ];
 
 const data = [

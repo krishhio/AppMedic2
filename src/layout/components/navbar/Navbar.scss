@@ -1,12 +1,12 @@
 @import '../../../assets/sass/variables';
 
 .navbar {
-  $_bg: #fff;
   $_color: $main-color;
-  $_color: var(--main-color);
+  --navbar-bg: #fff;
+  --navbar-color: #{var(--main-color)};
 
-  background: $_bg;
-  color: $_color;
+  background: var(--navbar-bg);
+  color: var(--navbar-color);
   display: block;
   transition: box-shadow 0.2s $animation;
   will-change: box-shadow;
@@ -122,7 +122,8 @@
     }
   }
   &.vertical {
-    background: #fbfbfb;
+    --navbar-bg: #fbfbfb;
+
     display: flex;
     justify-content: flex-end;
     height: 100%;

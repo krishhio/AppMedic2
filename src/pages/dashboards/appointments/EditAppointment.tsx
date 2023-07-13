@@ -13,7 +13,7 @@ type Props = {
 const EditAppointment = ({ appointment, visible, onClose, onEdited }: Props) => {
   return (
     <Modal
-      visible={visible}
+      open={visible}
       onCancel={onClose}
       destroyOnClose
       footer={null}

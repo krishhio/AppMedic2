@@ -1,8 +1,7 @@
 import React from 'react';
+import ReactEcharts from 'echarts-for-react';
 
 import { Card } from 'antd';
-
-import ReactEcharts from 'echarts-for-react';
 
 import AppointmentsTable from '../../../layout/components/appointmentsTable/AppointmentsTable';
 import hospitalOptions from './charts/hospital-options';
@@ -158,10 +157,7 @@ const DashboardPage = () => {
 
         <div className='col-12 col-md-4'>
           <Card title={'patients gender'}>
-            <ReactEcharts
-              className='chart-container container-h-300'
-              option={patientsGenderOptions}
-            />
+            <ReactEcharts className='chart-container container-h-300' option={patientsGenderOptions} />
           </Card>
         </div>
 

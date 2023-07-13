@@ -1,13 +1,8 @@
 import React, { useRef } from 'react';
-
-import { useHistory } from 'react-router-dom';
-
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Form, Select, Switch, Button } from 'antd';
-
 import ColorPicker from '../../../ui/color-picker/ColorPicker';
-
 import { IAppSettings } from '../../../interfaces/settings';
-
 import './SettingsForm.scss';
 
 type Props = {
@@ -18,10 +13,10 @@ type Props = {
 
 const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => {
   const downloadLink = useRef<HTMLAnchorElement>(null);
-  const { boxed, sidebarBg, topbarBg } = settings;
+  const { boxed, sidebarBg, topbarBg, layout } = settings;
 
-  const history = useHistory();
-  const layoutUrl = history.location.pathname.split('/')[1];
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleReset = () => {
     onResetSettings();
@@ -41,20 +36,21 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
   };
 
   const handleLayoutChange = (type: string) => {
-    const currentRoute = history.location.pathname.split('/')[2];
+    const currentRoute = location.pathname.split('/')[2];
 
-    history.push(`/${type}/${currentRoute}`);
+    navigate(`/${type}/${currentRoute}`);
     setValue('layout', type);
   };
 
   const handleSideBgChange = ({ color, contrast }) =>
     onUpdateSetting({ ...settings, sidebarBg: color, sidebarColor: contrast });
 
-  const handleNavBgChange = ({ color }) => setValue('topbarBg', color);
+  const handleNavBgChange = ({ color, contrast }) =>
+    onUpdateSetting({ ...settings, topbarBg: color, topbarColor: contrast });
+
   const handleBoxedChange = (boxed: boolean) => setValue('boxed', boxed);
 
-  const sidebarPickerLabel =
-    layoutUrl === 'vertical' ? 'Sidebar background' : 'Second navbar background';
+  const sidebarPickerLabel = layout === 'vertical' ? 'Sidebar background' : 'Second navbar background';
 
   return (
     <Form layout='vertical' className='settings-form'>
@@ -67,7 +63,7 @@ const SettingsForm = ({ settings, onResetSettings, onUpdateSetting }: Props) => 
       </Form.Item>
 
       <Form.Item label='Layout'>
-        <Select onChange={handleLayoutChange} defaultValue={layoutUrl}>
+        <Select onChange={handleLayoutChange} defaultValue={layout}>
           <Select.Option value={'vertical'}>Vertical</Select.Option>
 
           <Select.Option value={'horizontal'}>Horizontal</Select.Option>

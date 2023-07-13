@@ -76,7 +76,7 @@ const ModalsPage = () => {
         </div>
 
         <Modal
-          visible={isOpened(modals.basic)}
+          open={isOpened(modals.basic)}
           footer={null}
           closable={false}
           title={null}
@@ -86,7 +86,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.multiplex)}
+          open={isOpened(modals.multiplex)}
           footer={null}
           closable={false}
           title={null}
@@ -102,7 +102,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withHeader)}
+          open={isOpened(modals.withHeader)}
           footer={null}
           closable={false}
           title={<h3 className='m-0'>Modal with header</h3>}
@@ -118,7 +118,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withCustomHeader)}
+          open={isOpened(modals.withCustomHeader)}
           footer={null}
           closable={false}
           title={
@@ -141,7 +141,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withFooter)}
+          open={isOpened(modals.withFooter)}
           closable={false}
           title={null}
           onCancel={closeModal}
@@ -171,7 +171,7 @@ const ModalsPage = () => {
         </div>
 
         <Modal
-          visible={isOpened(modals.withOverlayClose)}
+          open={isOpened(modals.withOverlayClose)}
           footer={null}
           closable={false}
           title={<h3 className='m-0'>Modal with overlay close</h3>}
@@ -187,7 +187,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withCloseBtn)}
+          open={isOpened(modals.withCloseBtn)}
           footer={null}
           closable={true}
           title={<h3 className='m-0'>Modal with close btn</h3>}
@@ -203,7 +203,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withCustomCloseBtn)}
+          open={isOpened(modals.withCustomCloseBtn)}
           closable={false}
           title={<h3 className='m-0'>Modal with custom close</h3>}
           onCancel={closeModal}
@@ -239,7 +239,7 @@ const ModalsPage = () => {
         </div>
 
         <Modal
-          visible={isOpened(modals.withDefaultOverlay)}
+          open={isOpened(modals.withDefaultOverlay)}
           title={<h3 className='m-0'>Modal with default overlay</h3>}
           closable={false}
           onCancel={closeModal}
@@ -255,7 +255,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withNoOverlay)}
+          open={isOpened(modals.withNoOverlay)}
           footer={null}
           mask={false}
           onCancel={closeModal}
@@ -270,7 +270,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withOverlayWithoutClose)}
+          open={isOpened(modals.withOverlayWithoutClose)}
           closable={true}
           maskClosable={false}
           title={<h3 className='m-0'>Overlay withount close</h3>}
@@ -296,7 +296,7 @@ const ModalsPage = () => {
           <Button onClick={openModal(modals.withCustomHeight)}>With custom height</Button>
         </div>
         <Modal
-          visible={isOpened(modals.withCustomWidth)}
+          open={isOpened(modals.withCustomWidth)}
           footer={null}
           width='50%'
           closable={false}
@@ -313,7 +313,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withFullWidth)}
+          open={isOpened(modals.withFullWidth)}
           closable={false}
           width='95%'
           title={<h3 className='m-0'>Modal with header</h3>}
@@ -340,7 +340,7 @@ const ModalsPage = () => {
         </Modal>
 
         <Modal
-          visible={isOpened(modals.withCustomHeight)}
+          open={isOpened(modals.withCustomHeight)}
           footer={null}
           closable={false}
           bodyStyle={{ height: 500, maxHeight: '100%', overflow: 'auto' }}

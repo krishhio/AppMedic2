@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
 import { Avatar, Table } from 'antd';
-
 import { ColumnProps } from 'antd/es/table';
+
 import { IAppointment } from '../../../interfaces/patient';
 
 const AppointmentImg = ({ img }) => {
@@ -48,7 +48,7 @@ const columns: ColumnProps<IAppointment>[] = [
     title: 'Date',
     render: (date) => (
       <span className='nowrap' style={{ color: '#a5a5a5' }}>
-        {date}
+        {date.split('T')[0]}
       </span>
     )
   },
@@ -57,7 +57,7 @@ const columns: ColumnProps<IAppointment>[] = [
     title: 'Visit time',
     render: (appointment) => (
       <span className='nowrap' style={{ color: '#a5a5a5' }}>
-        {appointment.fromTo}
+        {appointment.from} - {appointment.to}
       </span>
     )
   },
@@ -72,9 +72,16 @@ const columns: ColumnProps<IAppointment>[] = [
       </span>
     )
   },
-  { key: 'doctor', title: 'Doctor', dataIndex: 'doctor' },
-  { key: 'condition', title: 'Injury/Condition', dataIndex: 'injury' },
-  {}
+  {
+    key: 'doctor',
+    dataIndex: 'doctor',
+    title: 'Doctor'
+  },
+  {
+    key: 'condition',
+    dataIndex: 'injury',
+    title: 'Injury/Condition'
+  }
 ];
 
 type Props = {

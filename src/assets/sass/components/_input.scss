@@ -111,14 +111,23 @@ $_padding-v-lg: $_module-rem * 1.5;
 }
 
 @mixin input-focused {
-  background-color: map_get($_bg, focus) !important;
+  --input-bg-color: #{map_get($_bg, focus)};
+
   border-color: accent-palette(500) !important;
   box-shadow: none;
   color: map_get($_color, focus);
 }
 
+@mixin input-error {
+  --input-bg-color: #{rgba($error-color, .1)};
+
+  border-color: $error-color !important;
+}
+
 @mixin input {
-  background-color: map_get($_bg, default);
+  --input-bg-color: #{map_get($_bg, default)};
+
+  background-color: var(--input-bg-color);
   box-shadow: none;
   border: map_get($_border, default) $_border-width solid;
   border-radius: $_shape;
@@ -149,21 +158,22 @@ $_padding-v-lg: $_module-rem * 1.5;
     align-items: center;
     display: flex;
   }
-
+  .ant-input-prefix {
+    margin-inline-end: $_padding-h * .5;
+  }
   .ant-input-suffix {
-    padding-left: $_padding-h;
+    margin-inline-start: $_padding-h * .5;
   }
 
   > div,
   input,
   .ant-input-affix-wrapper {
     background: transparent !important;
-    border-radius: $_shape !important;
     height: 100%;
   }
 
   &.has-error {
-    border-color: $error-color;
+    @include input-error();
   }
 
   &:hover:not(.ant-input-disabled) {
@@ -204,10 +214,6 @@ $_padding-v-lg: $_module-rem * 1.5;
     &.ant-input-affix-wrapper-textarea-with-clear-btn {
       height: unset !important;
     }
-
-    .ant-input-prefix {
-      margin-right: -($module-rem * 3);
-    }
   }
 
   .ant-input-affix-wrapper-focused {
@@ -230,12 +236,11 @@ html {
       @include input-padding();
     }
 
-    .ant-input-prefix {
-      margin-right: -($module-rem * 3);
-    }
-
     &:focus {
       @include input-focused();
+    }
+    &.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless) {
+      @include input-error();
     }
   }
 
@@ -244,6 +249,14 @@ html {
 
     input.ant-input {
       @include default-input;
+    }
+    .ant-input {
+      border-radius: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    &.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless) {
+      @include input-error();
     }
   }
 
@@ -270,20 +283,14 @@ html {
   .ant-form-item-label {
     font-weight: 600;
   }
-
-  .ant-input-affix-wrapper .ant-input:not(:first-child) {
-    padding-left: $module-rem * 4 !important;
-  }
-
-  .ant-input-affix-wrapper .ant-input:not(textarea):first-child {
-    padding-left: 2px !important;
-  }
-
   .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
     border-color: map-get($_border, default);
   }
+}
 
-  .ant-input-affix-wrapper .ant-input:not(:last-child) {
-    padding-right: $module-rem * 4 !important;
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px map_get($_bg, default) inset !important;
 }

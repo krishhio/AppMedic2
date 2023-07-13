@@ -43,6 +43,7 @@ const VerticalLayout = ({ children }: Props) => {
   useEffect(() => {
     async function fetchMenuData() {
       const result = await axios('/data/menu.json');
+
       setMenuData(result.data);
     }
 
@@ -90,19 +91,25 @@ const VerticalLayout = ({ children }: Props) => {
       <AddPatient />
 
       <Menu className='assistant-menu' orientation='vertical'>
-        <NavLink className='link' to='/vertical/settings' activeClassName='active' replace>
+        <NavLink
+          to='/vertical/settings'
+          className={`link ${({ isActive }) => (isActive ? 'active' : 'inactive')}`}
+          replace
+        >
           <span className='link-icon icofont icofont-ui-settings' />
 
           <span className='link-text'>Settings</span>
         </NavLink>
 
-        <NavLink className='link' to='/vertical/default-dashboard' activeClassName='active' replace>
+        <NavLink
+          to='/vertical/default-dashboard'
+          className={`link ${({ isActive }) => (isActive ? 'active' : 'inactive')}`}
+          replace
+        >
           <span className='link-icon icofont icofont-question-square' />
 
           <span className='link-text'>FAQ & Support</span>
         </NavLink>
-
-        {}
       </Menu>
 
       <NavLoader loaded={pageData.loaded} type={'nav-bar'} />

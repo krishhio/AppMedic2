@@ -1,7 +1,7 @@
 import React from 'react';
+import { Avatar, Button, Card, Rate, Tag, Timeline } from 'antd';
 import { IPageData } from '../../interfaces/page';
 import { usePageData } from '../../hooks/usePage';
-import { Avatar, Button, Card, Rate, Tag, Timeline } from 'antd';
 
 const pageData: IPageData = {
   title: 'User profile',
@@ -165,90 +165,18 @@ const ContactInfo = () => {
   );
 };
 
-const Experience = () => {
+const Experience = ({items}) => {
   return (
     <Card title='Experience' className='with-shadow'>
-      <Timeline>
-        <Timeline.Item color='green'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            20017 - Present
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>UI/UX Designers</strong> - IronSketch
-          </span>
-        </Timeline.Item>
-
-        <Timeline.Item color='blue'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            2015 - 2017
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>Art & Multimedia From</strong> - Oxford University
-          </span>
-        </Timeline.Item>
-
-        <Timeline.Item color='red'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            2013 - 2015
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>Web Designer</strong> - WebDev Company
-          </span>
-        </Timeline.Item>
-
-        <Timeline.Item color='red'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            2009 - 2013
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>UI/UX Designer</strong> - Design ArtData
-          </span>
-        </Timeline.Item>
-      </Timeline>
+      <Timeline items={items} />
     </Card>
   );
 };
 
-const Education = () => {
+const Education = ({items}) => {
   return (
     <Card title='Education' className='with-shadow'>
-      <Timeline>
-        <Timeline.Item color='red'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            2008 - 2009
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>Special schools</strong> - Edison Schools
-          </span>
-        </Timeline.Item>
-
-        <Timeline.Item color='red'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            2007 - 2008
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>Technical schools</strong> - Jules E. Mastbaum Technical High School
-          </span>
-        </Timeline.Item>
-
-        <Timeline.Item color='red'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            2005 - 2007
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>High schools</strong> - Benjamin Franklin High School
-          </span>
-        </Timeline.Item>
-
-        <Timeline.Item color='green'>
-          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
-            1996 - 2004
-          </div>
-          <span className='primary-text mb-4'>
-            <strong>Middle schools</strong> - Bethune, Mary Mcleod School
-          </span>
-        </Timeline.Item>
-      </Timeline>
+      <Timeline items={items} />
     </Card>
   );
 };
@@ -291,6 +219,115 @@ const Skills = () => {
 const UserProfilePage = () => {
   usePageData(pageData);
 
+  const experienceItems = [
+    {
+      color: 'green',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            20017 - Present
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>UI/UX Designers</strong> - IronSketch
+          </span>
+        </>
+      )
+    },
+    {
+      color: 'blue',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            2015 - 2017
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>Art & Multimedia From</strong> - Oxford University
+          </span>
+        </>
+      )
+    },
+    {
+      color: 'red',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            2013 - 2015
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>Web Designer</strong> - WebDev Company
+          </span>
+        </>
+      )
+    },
+    {
+      color: 'red',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            2009 - 2013
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>UI/UX Designer</strong> - Design ArtData
+          </span>
+        </>
+      )
+    }
+  ];
+  const educationItems = [
+    {
+      color: 'red',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            2008 - 2009
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>Special schools</strong> - Edison Schools
+          </span>
+        </>
+      )
+    },
+    {
+      color: 'red',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            2007 - 2008
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>Technical schools</strong> - Jules E. Mastbaum Technical High School
+          </span>
+        </>
+      )
+    },
+    {
+      color: 'red',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            2005 - 2007
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>High schools</strong> - Benjamin Franklin High School
+          </span>
+        </>
+      )
+    },
+    {
+      color: 'green',
+      children: (
+        <>
+          <div style={{ opacity: 0.8 }} className='date w-100 mb-2'>
+            1996 - 2004
+          </div>
+          <span className='primary-text mb-4'>
+            <strong>Middle schools</strong> - Bethune, Mary Mcleod School
+          </span>
+        </>
+      )
+    }
+  ];
+
   return (
     <div className='row'>
       <div className='col-md-6 col-sm-12'>
@@ -300,8 +337,8 @@ const UserProfilePage = () => {
       </div>
 
       <div className='col-md-6 col-sm-12'>
-        <Experience />
-        <Education />
+        <Experience items={experienceItems} />
+        <Education items={educationItems} />
         <Skills />
       </div>
     </div>

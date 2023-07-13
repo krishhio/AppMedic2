@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { useFormik } from 'formik';
-
 import { Button, Card, Form, Input, Select, Timeline } from 'antd';
 import {
   ExperimentOutlined,
@@ -11,17 +9,12 @@ import {
   MedicineBoxOutlined,
   CalendarOutlined
 } from '@ant-design/icons/lib';
-
 import ReactEcharts from 'echarts-for-react';
-
 import { usePageData } from '../../hooks/usePage';
 import { useGetDoctor } from '../../hooks/useGetDoctor';
-
 import ImageLoader from '../../layout/components/patients/ImageLoader';
 import Socials from '../../layout/components/socials/Socials';
-
 import patientsOptions from '../chart-options/patients';
-
 import { IPageData } from '../../interfaces/page';
 import { IUser } from '../../interfaces/user';
 
@@ -87,105 +80,110 @@ const DoctorForm = ({ doctor }: DoctorFormProps) => {
   );
 };
 
-const DocTimeline = () => (
-  <Timeline mode='right'>
-    <Timeline.Item
-      dot={
+const DocTimeline = () => {
+  const timelineItems = [
+    {
+      dot: (
         <div className='p-2 bg-color-indigo rounded-full'>
           <UserOutlined className='text-contrast-500' />
         </div>
-      }
-    >
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>New prescription</h4>
-        <span className='text-base text-color-100'>Now</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item
-      dot={
+      ),
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>New prescription</h4>
+          <span className='text-base text-color-100'>Now</span>
+          <span className='text-base'>
+            Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
+            ut id elit.
+          </span>
+        </div>
+      )
+    },
+    {
+      dot: (
         <div className='p-2 bg-color-pink rounded-full'>
           <CalendarOutlined className='text-contrast-500' />
         </div>
-      }
-    >
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Appointment</h4>
-        <span className='text-base text-color-100'>2m ago</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item
-      dot={
+      ),
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Appointment</h4>
+          <span className='text-base text-color-100'>2m ago</span>
+          <span className='text-base'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          </span>
+        </div>
+      )
+    },
+    {
+      dot: (
         <div className='p-2 bg-color-red rounded-full'>
           <MedicineBoxOutlined className='text-contrast-500' />
         </div>
-      }
-    >
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Medication</h4>
-        <span className='text-base text-color-100'>2h ago</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item
-      dot={
+      ),
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Medication</h4>
+          <span className='text-base text-color-100'>2h ago</span>
+          <span className='text-base'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          </span>
+        </div>
+      )
+    },
+    {
+      dot: (
         <div className='p-2 bg-color-success rounded-full'>
           <ExperimentOutlined className='text-contrast-500' />
         </div>
-      }
-    >
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Operation</h4>
-        <span className='text-base text-color-100'>15h ago</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item
-      dot={
+      ),
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Operation</h4>
+          <span className='text-base text-color-100'>15h ago</span>
+          <span className='text-base'>
+            Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
+            ut id elit.
+          </span>
+        </div>
+      )
+    },
+    {
+      dot: (
         <div className='p-2 bg-color-yellow rounded-full'>
           <UserAddOutlined className='text-contrast-500' />
         </div>
-      }
-    >
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>New patient</h4>
-        <span className='text-base text-color-100'>Jul 10</span>
-        <span className='text-base'>Lorem ipsum dolor sit.</span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item
-      dot={
+      ),
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>New patient</h4>
+          <span className='text-base text-color-100'>Jul 10</span>
+          <span className='text-base'>Lorem ipsum dolor sit.</span>
+        </div>
+      )
+    },
+    {
+      dot: (
         <div className='p-2 bg-color-orange rounded-full'>
           <MonitorOutlined className='text-contrast-500' />
         </div>
-      }
-    >
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Examination</h4>
-        <span className='text-base text-color-100'>Jul 1</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-  </Timeline>
-);
+      ),
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Examination</h4>
+          <span className='text-base text-color-100'>Jul 1</span>
+          <span className='text-base'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          </span>
+        </div>
+      )
+    }
+  ];
+
+  return (
+    <Timeline items={timelineItems} mode='right' />
+  )
+};
 
 const DoctorProfilePage = () => {
   const { doctor } = useGetDoctor('Dr. Sophie');

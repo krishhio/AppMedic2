@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar, Dropdown, Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { Avatar, Dropdown } from 'antd';
 
 const accountItems = [
   { text: 'Edit account', icon: 'icofont-ui-home', route: '/vertical/edit-account' },
@@ -11,21 +11,21 @@ const accountItems = [
 ];
 
 const SettingsDropdown = () => {
-  const accountMenu = (
-    <Menu style={{ minWidth: '180px' }}>
+  const accountMenu = () => (
+    <ul className='actions-menu' style={{ minWidth: '180px' }}>
       {accountItems.map((item, index) => (
-        <Menu.Item className='action-item' key={index}>
+        <li className='action-item' key={index}>
           <NavLink className='d-flex w-100' to={item.route} replace>
             <span className={`icon mr-3 ${item.icon}`} />
             <span className='text'>{item.text}</span>
           </NavLink>
-        </Menu.Item>
+        </li>
       ))}
-    </Menu>
+    </ul>
   );
 
   return (
-    <Dropdown overlay={accountMenu} trigger={['click']} placement='bottomRight'>
+    <Dropdown dropdownRender={accountMenu} trigger={['click']} placement='bottomRight'>
       <div className='item'>
         <Avatar
           size={40}

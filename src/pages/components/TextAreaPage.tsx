@@ -64,10 +64,6 @@ const TextareasPage = () => {
             </Form.Item>
           </Form>
         </Card>
-
-        <Card title='Clear button' className='mb-0'>
-          <TextArea defaultValue='With clear button' allowClear />
-        </Card>
       </div>
     </div>
   );

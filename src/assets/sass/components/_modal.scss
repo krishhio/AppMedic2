@@ -1,6 +1,9 @@
 @import '../variables';
 
 .ant-modal {
+  .ant-modal-content {
+    padding: 0;
+  }
   .ant-modal-header,
   .ant-modal-footer {
     border: none;

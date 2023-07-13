@@ -27,7 +27,7 @@ const AddPatient = () => {
         Add patient
       </Button>
       <Modal
-        visible={visible}
+        open={visible}
         footer={null}
         onCancel={closeModal}
         destroyOnClose

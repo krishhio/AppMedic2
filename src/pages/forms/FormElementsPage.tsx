@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Alert,
   AutoComplete,
@@ -12,11 +13,10 @@ import {
   Switch,
   Tag
 } from 'antd';
-
-import { NavLink } from 'react-router-dom';
-import { usePageData } from '../../hooks/usePage';
-import { IPageData } from '../../interfaces/page';
 import { BookOutlined, UserOutlined } from '@ant-design/icons/lib';
+import { IPageData } from '../../interfaces/page';
+import { useFetchPageData, usePageData } from '../../hooks/usePage';
+import { IOption } from '../../interfaces/option';
 
 const { Option } = Select;
 
@@ -53,10 +53,7 @@ const pageData: IPageData = {
 const FormElementsPage = () => {
   usePageData(pageData);
 
-  const [dataSource, setDataSource] = useState([]);
-
-  const handleSearch = (value) =>
-    setDataSource(!value ? [] : [value, value + value, value + value + value]);
+  const [dataSource] = useFetchPageData<IOption[]>('./data/autocomplete.json', []);
 
   const [radioValue, setRadioValue] = useState(1);
 
@@ -138,15 +135,15 @@ const FormElementsPage = () => {
         <div className='row'>
           <div className='col-md-6 col-sm-12'>
             <AutoComplete
+              filterOption
               options={dataSource}
               placeholder='Input here'
-              onSearch={handleSearch}
               className='mb-2 mb-md-0'
             />
           </div>
           <div className='col-md-6 col-sm-12'>
-            <AutoComplete options={dataSource} onSearch={handleSearch}>
-              <Input placeholder='Input here' className='custom' suffix={<BookOutlined />} />
+            <AutoComplete options={dataSource} filterOption>
+              <Input placeholder='Input here' className='custom' prefix={<BookOutlined />} />
             </AutoComplete>
           </div>
         </div>
@@ -290,7 +287,7 @@ const FormElementsPage = () => {
       </Card>
 
       <Card title='Ratings' className='mb-0'>
-        <Rate value={5} />
+        <Rate />
 
         <Alert
           className='mt-4'

@@ -1,8 +1,8 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
 export function useNavigateHome() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  return useCallback(() => history.push('/'), []);
+  return useCallback(() => navigate('/'), []);
 }

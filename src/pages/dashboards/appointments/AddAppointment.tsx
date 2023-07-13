@@ -14,7 +14,7 @@ type Props = {
 const AddAppointment = ({ visible, onClose, onSubmit }: Props) => {
   return (
     <Modal
-      visible={visible}
+      open={visible}
       onCancel={onClose}
       destroyOnClose
       footer={null}

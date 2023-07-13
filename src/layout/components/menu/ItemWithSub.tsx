@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Location } from 'history';
 import { IMenuItemSub } from '../../../interfaces/main-menu';
 
 import { motion } from 'framer-motion';
@@ -38,8 +37,7 @@ const ItemWithSub = ({ location, title, layout, sub, opened, onClick }: Props) =
     <li className={subItemClass(item.routing)} key={i}>
       <NavLink
         to={`/${item.layout || layout}/${item.routing}`}
-        className='item-link'
-        activeClassName='active'
+        className={`item-link ${({ isActive }) => (isActive ? 'active' : 'inactive')}`}
         replace
       >
         <span className='link-text'>{item.title}</span>

@@ -103,28 +103,25 @@ const AutocompletePage = () => {
 
         <Card title='Char limiting' className='mb-0'>
           <div className='elem-list'>
-            <AutoComplete options={dataSource} filterOption onSearch={handleChange(10, setFirst)}>
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(10, setFirst)} maxLength={10}>
               <Input
                 placeholder='10 char limit'
-                maxLength={10}
                 prefix={<FontSizeOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{first}</span>}
               />
             </AutoComplete>
 
-            <AutoComplete options={dataSource} filterOption onSearch={handleChange(20, setSecond)}>
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(20, setSecond)} maxLength={20}>
               <Input
                 placeholder='20 char limit'
-                maxLength={20}
                 prefix={<FileTextOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{second}</span>}
               />
             </AutoComplete>
 
-            <AutoComplete options={dataSource} filterOption onSearch={handleChange(30, setThird)}>
+            <AutoComplete options={dataSource} filterOption onSearch={handleChange(30, setThird)} maxLength={30}>
               <Input
                 placeholder='30 char limit'
-                maxLength={30}
                 prefix={<EditOutlined />}
                 suffix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{third}</span>}
               />

@@ -100,9 +100,11 @@ const BaseLayout = ({ nav, topNav, sideNav, orientation, children }: Props) => {
           loaded={pageData.loaded}
           openModal={toggleSettings}
         />
+
         {contentOverlay}
+
         <Modal
-          visible={showSettings}
+          open={showSettings}
           onCancel={toggleSettings}
           footer={null}
           title={

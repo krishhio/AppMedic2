@@ -17,9 +17,7 @@ export const lineOptions = {
       data: [350, 933, 1184, 857, 1167, 1330, 1035],
       type: 'line',
       lineStyle: {
-        normal: {
-          color: '#ed5564'
-        }
+        color: '#ed5564'
       }
     }
   ]

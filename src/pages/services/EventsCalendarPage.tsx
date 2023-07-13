@@ -161,7 +161,7 @@ const EventsCalendarPage = () => {
       <Modal
         title={modalTitle}
         footer={modalFooter}
-        visible={modalVisibility}
+        open={modalVisibility}
         onCancel={closeModal}
       >
         {modalBody}

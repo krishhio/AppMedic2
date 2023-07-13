@@ -1,6 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from 'antd';
-import { useHistory } from 'react-router-dom';
 
 import { IUser } from '../../../interfaces/user';
 
@@ -12,12 +13,11 @@ type OwnProps = {
 
 type Props = IUser & OwnProps;
 
-const Contact = ({ address, img, name, role, social, className }: Props) => {
-  const history = useHistory();
+const Contact = ({ address, img, name, role, social, className, profileLink }: Props) => {
+  const navigate = useNavigate();
 
   const handleGoToProfile = () => {
-    const layout = history.location.pathname.split('/')[1];
-    history.push(`/${layout}/doctor-profile`);
+    navigate(`../${profileLink}`);
   };
 
   return (

@@ -14,7 +14,6 @@ const linearDataSets = () =>
 export default {
   data: {
     datasets: linearDataSets(),
-    labels: lineLabels,
-    type: 'line'
+    labels: lineLabels
   }
 };

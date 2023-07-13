@@ -1,14 +1,10 @@
 import React from 'react';
 import { Button, Card, Form, Input, Select, Timeline } from 'antd';
-
 import { useFormik } from 'formik';
-
 import { IPageData } from '../../interfaces/page';
-
 import { usePageData } from '../../hooks/usePage';
 import { useGetPatient } from '../../hooks/useGetPatient';
 import { useGetBillings } from '../../hooks/useGetBillings';
-
 import ImageLoader from '../../layout/components/patients/ImageLoader';
 import BillingTable from './components/BillingTable';
 
@@ -74,7 +70,7 @@ const ProfileForm = ({ patient }) => {
       </FormItem>
 
       <FormItem label='Last visit'>
-        <Input defaultValue={values.lastVisit} placeholder='Last visit' readOnly />
+        <Input defaultValue={values.lastVisit.split('T')[0]} placeholder='Last visit' readOnly />
       </FormItem>
 
       <FormItem label='Status'>
@@ -87,80 +83,97 @@ const ProfileForm = ({ patient }) => {
   );
 };
 
-const PatientTimeline = () => (
-  <Timeline mode='left'>
-    <Timeline.Item color='red'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>New prescription</h4>
-        <span className='text-base text-color-100'>Now</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item>
+const PatientTimeline = () => {
+  const timelineItems = [
+    {
+      color: 'red',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>New prescription</h4>
+          <span className='text-base text-color-100'>Now</span>
+          <span className='text-base'>
+            Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
+            ut id elit.
+          </span>
+        </div>
+      )
+    },
+    {
+      color: 'blue',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Appointment</h4>
+          <span className='text-base text-color-100'>2m ago</span>
+          <span className='text-base'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          </span>
+        </div>
+      )
+    },
+    {
+      color: 'yellow',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Medication</h4>
+          <span className='text-base text-color-100'>2h ago</span>
+          <span className='text-base'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          </span>
+        </div>
+      )
+    },
+    {
+      color: 'pink',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Operation</h4>
+          <span className='text-base text-color-100'>15h ago</span>
+          <span className='text-base'>
+            Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehiculaut id elit.
+          </span>
+        </div>
+      )
+    },
+    {
+      color: 'blue',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>New patient</h4>
+          <span className='text-base text-color-100'>Jul 10</span>
+          <span className='text-base'>Lorem ipsum dolor sit.</span>
+        </div>
+      )
+    },
+    {
+      color: 'red',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Examination</h4>
+          <span className='text-base text-color-100'>Jul 11</span>
+          <span className='text-base'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
+          </span>
+        </div>
+      )
+    },
+    {
+      color: 'green',
+      children: (
+        <div className='d-flex flex-column'>
+          <h4 className='m-0'>Re-Examination</h4>
+          <span className='text-base text-color-100'>Jul 25</span>
+          <span className='text-base'>
+            Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehiculaut id elit.
+          </span>
+        </div>
+      )
+    }
+  ];
 
-    <Timeline.Item color='blue'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Appointment</h4>
-        <span className='text-base text-color-100'>2m ago</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='yellow'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Medication</h4>
-        <span className='text-base text-color-100'>2h ago</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='pink'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Operation</h4>
-        <span className='text-base text-color-100'>15h ago</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='blue'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>New patient</h4>
-        <span className='text-base text-color-100'>Jul 10</span>
-        <span className='text-base'>Lorem ipsum dolor sit.</span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='red'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Examination</h4>
-        <span className='text-base text-color-100'>Jul 11</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='green'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Re-Examination</h4>
-        <span className='text-base text-color-100'>Jul 25</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item>
-  </Timeline>
-);
+  return (
+    <Timeline items={timelineItems} />
+  )
+};
 
 const PatientProfilePage = () => {
   const { patient } = useGetPatient('Liam');

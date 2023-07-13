@@ -20,20 +20,20 @@ export const worldMapOptions = {
     {
       name: 'World Population (2018)',
       type: 'map',
-      mapType: 'HK', // map type should be registered
+      map: 'HK', // map type should be registered
       itemStyle: {
-        normal: {
-          areaColor: '#cda499',
-          borderColor: '#cd5447',
-          label: {
-            show: false
-          }
+        areaColor: '#cda499',
+        borderColor: '#cd5447',
+        label: {
+          show: false
+        }
+      },
+      emphasis: {
+        itemStyle: {
+          areaColor: '#cd5447'
         },
-        emphasis: {
-          areaColor: '#cd5447',
-          label: {
-            show: true
-          }
+        label: {
+          show: true
         }
       },
       data: [

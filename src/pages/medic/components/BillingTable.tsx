@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { Table } from 'antd';
 import { ColumnProps, TableProps } from 'antd/es/table';
-
 import { IBilling } from '../../../interfaces/patient';
 
 const columns: ColumnProps<IBilling>[] = [
@@ -30,7 +28,7 @@ const columns: ColumnProps<IBilling>[] = [
     title: 'Date',
     className: 'nowrap',
     sorter: (a, b) => a.billDate.localeCompare(b.billDate),
-    render: ({ billDate }) => <span className='text-align-left text-color-200'>{billDate}</span>
+    render: ({ billDate }) => <span className='text-align-left text-color-200'>{billDate.split('T')[0]}</span>
   },
   {
     key: 'charges',

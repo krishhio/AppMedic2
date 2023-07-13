@@ -19,18 +19,14 @@ export const line2Options = {
       symbol: 'triangle',
       symbolSize: 20,
       lineStyle: {
-        normal: {
-          color: '#64B5F6',
-          width: 4,
-          type: 'dashed'
-        }
+        color: '#64B5F6',
+        width: 4,
+        type: 'dashed'
       },
       itemStyle: {
-        normal: {
-          borderWidth: 2,
-          borderColor: '#336cfb',
-          color: '#64B5F6'
-        }
+        borderWidth: 2,
+        borderColor: '#336cfb',
+        color: '#64B5F6'
       }
     }
   ]

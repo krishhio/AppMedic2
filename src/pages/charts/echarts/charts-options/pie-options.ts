@@ -26,28 +26,20 @@ export const pieOptions = {
       }),
       roseType: 'radius',
       label: {
-        normal: {
-          textStyle: {
-            color: 'rgba(0, 0, 0, 0.3)'
-          }
-        }
+        color: 'rgba(0, 0, 0, 0.3)'
       },
       labelLine: {
-        normal: {
-          lineStyle: {
-            color: 'rgba(0, 0, 0, 0.3)'
-          },
-          smooth: 0.2,
-          length: 10,
-          length2: 20
-        }
+        lineStyle: {
+          color: 'rgba(0, 0, 0, 0.3)'
+        },
+        smooth: 0.2,
+        length: 10,
+        length2: 20
       },
       itemStyle: {
-        normal: {
-          color: '#c23531',
-          shadowBlur: 200,
-          shadowColor: 'rgba(0,0,0,0.05)'
-        }
+        color: '#c23531',
+        shadowBlur: 200,
+        shadowColor: 'rgba(0,0,0,0.05)'
       },
       animationType: 'scale',
       animationEasing: 'elasticOut',

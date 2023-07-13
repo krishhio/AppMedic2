@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { withRouter } from 'react-router-dom';
 import { IMenuItem, IMenuItemSub } from '../../../interfaces/main-menu';
 
 import classNames from '../../../utils/class-names';
@@ -20,11 +19,7 @@ type MenuProps = {
   className?: string;
 };
 
-type RouterProps = {
-  location: Location;
-};
-
-type Props = RouterProps & MenuProps | any;
+type Props = MenuProps | any;
 
 const haveActive = (sub: IMenuItemSub[], route: string) =>
   !!sub.find(item => item.routing === route);
@@ -32,12 +27,12 @@ const haveActive = (sub: IMenuItemSub[], route: string) =>
 const Menu = ({
   data,
   orientation,
-  location,
   children,
   className,
   onCloseSidebar,
   opened
 }: Props) => {
+  const location = window.location;
   const [menu, setMenu] = useState<IMenuItem[]>([]);
 
   useEffect(() => {
@@ -126,4 +121,4 @@ const Menu = ({
   );
 };
 
-export default withRouter(Menu);
+export default Menu;

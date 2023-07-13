@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { ColumnProps } from 'antd/es/table';
 import { Avatar, Table, Button, Modal, Tag } from 'antd';
@@ -35,14 +34,14 @@ const PatientsTable = ({
   onEditPatient = () => null,
   onDeletePatient = () => null
 }: Props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [patient, setPatient] = useState(null);
   const [visibility, setVisibility] = useState(false);
 
   const closeModal = () => setVisibility(false);
 
-  const handleShowInfo = () => history.push('/vertical/patient-profile');
+  const handleShowInfo = () => navigate('/vertical/patient-profile');
   const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
@@ -122,7 +121,7 @@ const PatientsTable = ({
       title: 'Last visit',
       render: (visit) => (
         <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {visit}
+          {visit.split('T')[0]}
         </span>
       )
     },
@@ -157,7 +156,7 @@ const PatientsTable = ({
       />
 
       <Modal
-        visible={visibility}
+        open={visibility}
         footer={null}
         onCancel={closeModal}
         title={<h3 className='title'>Add patient</h3>}
