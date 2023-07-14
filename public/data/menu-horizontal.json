@@ -4,23 +4,49 @@
     "routing": "default-dashboard"
   },
   {
-    "title": "Appointments",
+    "title": "Citas",
     "routing": "appointments"
   },
   {
-    "title": "Doctors",
+    "title": "Medicos",
     "routing": "doctors"
   },
   {
-    "title": "Departments",
-    "routing": "departments"
+    "title": "Departamentos",
+    "sub": [
+      {
+        "title": "Odontologia",
+        "routing": "odontologia"
+      },
+      {
+        "title": "Psicologia",
+        "routing": "psicologia"
+      },
+      {
+        "title": "Nutricion",
+        "routing": "nutricion"
+      },
+      {
+        "title": "Neurologia",
+        "routing": "neurologia"
+      },
+      {
+        "title": "Gastroenterologia",
+        "routing": "gastroenterologia"
+      },
+      {
+        "title": "Oftalmologia",
+        "routing": "oftalmologia"
+      }
+
+    ]
   },
   {
-    "title": "Patients",
+    "title": "Pacientes",
     "routing": "patients"
   },
   {
-    "title": "payments",
+    "title": "Pagos y Facturas",
     "routing": "payments"
   }
 ]

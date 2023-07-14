@@ -41,7 +41,7 @@ const PatientsTable = ({
 
   const closeModal = () => setVisibility(false);
 
-  const handleShowInfo = () => navigate('/vertical/patient-profile');
+  const handleShowInfo = () => navigate('/horizontal/patient-profile');
   const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);

@@ -6,6 +6,7 @@ import { usePatients } from '../../../hooks/usePatients';
 import PatientsTable from './PatientsTable';
 
 import { IPageData } from '../../../interfaces/page';
+import AddPatient from '../../../layout/components/patients/AddPatient';
 
 const pageData: IPageData = {
   title: 'Patients',
@@ -32,6 +33,7 @@ const PatientsPage = () => {
         onEditPatient={editPatient}
         patients={patients}
       />
+      <AddPatient/>
     </>
   );
 };
