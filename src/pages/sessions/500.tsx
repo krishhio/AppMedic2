@@ -12,7 +12,7 @@ const InternalError = () => {
   return (
     <BaseErrorPage
       subTitle={
-        <h6 className='text-md text-center'>Oopps. There was an error, please try again later.</h6>
+        <h6 className='text-md text-center'>Oopps. Hay un error. Pruebe mas tarde.</h6>
       }
       msg='The server encountered an internal server error and was unable to complete your request.'
       bg={`${window.origin}/content/500-page.jpg`}

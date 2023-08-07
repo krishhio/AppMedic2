@@ -14,7 +14,7 @@ const headerOptions = {
 };
 
 const pageData: IPageData = {
-  title: 'Events calendar',
+  title: 'Calendario de Eventos',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -26,7 +26,7 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Events calendar'
+      title: 'Calendario de Eventos'
     }
   ]
 };

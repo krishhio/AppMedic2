@@ -14,7 +14,7 @@ type Props = {
   submitText?: string;
 };
 
-const defaultSubmitText = 'Add Appointment';
+const defaultSubmitText = 'Agregar Cita';
 const emptyAppointment = {
   date: null,
   doctor: '',
@@ -96,7 +96,7 @@ const AppointmentForm = ({
         <Form.Item>
           <Input
             name='name'
-            placeholder='Name'
+            placeholder='Nombre'
             onBlur={handleBlur}
             onChange={handleChange}
             defaultValue={values.name}
@@ -107,7 +107,7 @@ const AppointmentForm = ({
         <Form.Item>
           <Input
             defaultValue={values.doctor}
-            placeholder='Doctor'
+            placeholder='Medico'
             onBlur={handleBlur}
             name='doctor'
             onChange={handleChange}
@@ -130,7 +130,7 @@ const AppointmentForm = ({
         <Form.Item className='form-group'>
           <DatePicker
             defaultValue={values.date ? dayjs(values.date) : null}
-            placeholder='Date'
+            placeholder='Fecha'
             name='date'
             onChange={onDateChange}
             className={hasError('date')}
@@ -142,7 +142,7 @@ const AppointmentForm = ({
             <Form.Item>
               <TimePicker
                 defaultValue={values.from ? dayjs(values.from, timeFormat) : null}
-                placeholder='From'
+                placeholder='Desde'
                 name='from'
                 format={timeFormat}
                 onChange={(date, time) => setFieldValue('from', time ? time : null)}
@@ -155,7 +155,7 @@ const AppointmentForm = ({
             <Form.Item>
               <TimePicker
                 defaultValue={values.to ? dayjs(values.to, timeFormat) : null}
-                placeholder='To'
+                placeholder='Hasta'
                 name='to'
                 format={timeFormat}
                 onChange={(date, time) => setFieldValue('to', time ? time : null)}
@@ -170,7 +170,7 @@ const AppointmentForm = ({
             type='phone'
             name='number'
             onBlur={handleBlur}
-            placeholder='Number'
+            placeholder='Numero'
             onChange={handleChange}
             defaultValue={values.number}
             className={hasError('number')}
@@ -180,7 +180,7 @@ const AppointmentForm = ({
         <Form.Item>
           <Input
             name='injury'
-            placeholder='Injury'
+            placeholder='Caso de atención'
             onChange={handleChange}
             defaultValue={values.injury}
             onBlur={handleBlur}
@@ -190,7 +190,7 @@ const AppointmentForm = ({
 
         <div className='d-flex justify-content-between buttons-list settings-actions'>
           <Button danger onClick={handleCancel}>
-            Cancel
+            Cancelar
           </Button>
 
           <Button disabled={!isValid} type='primary' htmlType='submit'>

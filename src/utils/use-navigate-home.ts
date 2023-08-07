@@ -4,5 +4,5 @@ import { useCallback } from 'react';
 export function useNavigateHome() {
   const navigate = useNavigate();
 
-  return useCallback(() => navigate('/'), []);
+  return useCallback(() => navigate('/horizontal/default-dashboard'), []);
 }

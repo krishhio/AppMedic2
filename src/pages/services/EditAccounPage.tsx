@@ -12,7 +12,7 @@ import { IPageData } from '../../interfaces/page';
 import { IPatient } from '../../interfaces/patient';
 
 const pageData: IPageData = {
-  title: 'Edit account',
+  title: 'Editar Cuenta',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -61,31 +61,31 @@ const AccountForm = ({ user }) => {
 
   return (
     <Form layout='vertical'>
-      <FormItem label='First Name'>
+      <FormItem label='Nombre'>
         <Input
           name='name'
           onChange={handleChange}
-          placeholder='First Name'
+          placeholder='Nombre'
           defaultValue={values.name}
         />
       </FormItem>
 
-      <FormItem label='Last Name'>
+      <FormItem label='Apellido'>
         <Input
           name='lastName'
           onChange={handleChange}
           defaultValue={values.lastName}
-          placeholder='Last Name'
+          placeholder='Apellido'
         />
       </FormItem>
 
-      <FormItem label='Age'>
+      <FormItem label='Edad'>
         <Input
           type='number'
           name='age'
           onChange={handleChange}
           defaultValue={values.age}
-          placeholder='Age'
+          placeholder='Edad'
         />
       </FormItem>
 
@@ -93,55 +93,55 @@ const AccountForm = ({ user }) => {
         <Select
           onChange={handleSelectChange('gender')}
           defaultValue={values.gender}
-          placeholder='Gender'
+          placeholder='Genero'
         >
-          <Option value='male'>Male</Option>
-          <Option value='female'>Female</Option>
+          <Option value='male'>Masculino</Option>
+          <Option value='female'>Femenino</Option>
         </Select>
       </FormItem>
 
-      <FormItem label='Phone number'>
+      <FormItem label='Numero Telefónico'>
         <Input
           type='number'
           name='number'
           onChange={handleChange}
           defaultValue={values.number}
-          placeholder='Phone number'
+          placeholder='Numero Telefónico'
         />
       </FormItem>
 
-      <FormItem label='Address'>
+      <FormItem label='Dirección'>
         <Input.TextArea
           name='address'
           onChange={handleChange}
           rows={4}
           defaultValue={values.address}
-          placeholder='Address'
+          placeholder='Dirección'
         />
       </FormItem>
 
-      <FormItem label='Last visit'>
-        <Input defaultValue={values.lastVisit} placeholder='Last visit' readOnly />
+      <FormItem label='Última Visita'>
+        <Input defaultValue={values.lastVisit} placeholder='Última Visita' readOnly />
       </FormItem>
 
       <FormItem label='Status'>
         <Select
           defaultValue={values.status}
-          placeholder='Status'
+          placeholder='Estatu'
           onChange={handleSelectChange('status')}
         >
-          <Option value='approved'>Approved</Option>
-          <Option value='pending'>Pending</Option>
+          <Option value='approved'>Aprobado</Option>
+          <Option value='pending'>Pendiente</Option>
         </Select>
       </FormItem>
 
       <div className='elem-list justify-content-between'>
         <Button disabled={!hasChanged} className='bg-color-success' onClick={() => handleSubmit()}>
-          <span className='text-color-500'>Save changes</span>
+          <span className='text-color-500'>Guardar Cambios</span>
         </Button>
 
         <Button ghost danger className='ml-auto'>
-          Delete account
+          Borrar Cuenta
         </Button>
       </div>
     </Form>
@@ -151,46 +151,46 @@ const AccountForm = ({ user }) => {
 const PasswordForm = () => {
   return (
     <Form layout='vertical'>
-      <FormItem label='Current password'>
-        <Input.Password placeholder='Current Password' />
+      <FormItem label='Contraseña Actual'>
+        <Input.Password placeholder='Contraseña Actual' />
       </FormItem>
 
       <div className='row'>
         <div className='col-md-6 col-sm-12'>
           <FormItem
             name='password'
-            label='New Password'
+            label='Nueva Contraseña'
             rules={[{ required: true, message: 'Please enter new password' }]}
           >
-            <Input.Password placeholder='New Password' />
+            <Input.Password placeholder='Nueva Contraseña' />
           </FormItem>
         </div>
 
         <div className='col-md-6 col-sm-12'>
           <FormItem
             name='confirmPassword'
-            label='Confirm Password'
+            label='Confirmar Contraseña'
             rules={[
               {
                 required: true,
-                message: 'Please confirm your password!'
+                message: 'Por Favor, confirma tu contraseña!'
               },
               ({ getFieldValue }) => ({
                 validator(rule, value) {
                   if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject('The two passwords that you entered do not match!');
+                  return Promise.reject('No coinciden las 2 contraseñas!');
                 }
               })
             ]}
           >
-            <Input.Password placeholder='Confirm Password' />
+            <Input.Password placeholder='Confirmar Contraseña' />
           </FormItem>
         </div>
       </div>
 
-      <Button type='primary'>Change password</Button>
+      <Button type='primary'>Confirmar Contraseña</Button>
     </Form>
   );
 };

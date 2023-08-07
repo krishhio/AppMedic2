@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ConfigProvider from 'antd/es/config-provider';
-import VerticalLayout from './layout/vertical/Vertical';
 import HorizontalLayout from './layout/horizontal/Horizontal';
 import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';
@@ -34,13 +33,11 @@ const App = () => {
       }}
     >
       <Routes>
-        <Route path='/' element={<Navigate replace to='/vertical/default-dashboard' />} />
+        <Route path='/' element={<Navigate replace to='/horizontal/default-dashboard' />} />
 
         <Route path='/public/*' element={<SessionRoutes />} />
 
         <Route path='/horizontal/*' element={<HorizontalLayout><DefaultRoutes layout='horizontal' /></HorizontalLayout>} />
-
-        <Route path='/vertical/*' element={<VerticalLayout><DefaultRoutes layout='vertical' /></VerticalLayout>} />
 
         <Route path='*' element={<NotFound />} />
       </Routes>

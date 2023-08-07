@@ -25,7 +25,7 @@ type Props = {
   sideNav?: ReactNode;
   topNav?: ReactNode;
   children: ReactNode;
-  orientation: 'vertical' | 'horizontal';
+  orientation: 'horizontal';
 };
 
 const BaseLayout = ({ nav, topNav, sideNav, orientation, children }: Props) => {
